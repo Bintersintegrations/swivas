@@ -1250,6 +1250,7 @@
 
     <!-- Bootstrap js-->
     <script src="{{asset('assets/js/bootstrap.js')}}"></script>
+    {{-- <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script> --}}
 
     <!-- Bootstrap Notification js-->
     <script src="{{asset('assets/js/bootstrap-notify.min.js')}}"></script>
@@ -1258,8 +1259,8 @@
     <script src="{{asset('assets/js/fly-cart.js')}}"></script>
     <script src="{{asset('assets/js/select2.full.js')}}"></script>
     <!-- Theme js-->
-    <script src="{{asset('assets/js/script5.js')}}"></script>
-    {{-- <script src="{{asset('assets/js/script.js')}}"></script> --}}
+    {{-- <script src="{{asset('assets/js/script5.js')}}"></script> --}}
+    <script src="{{asset('assets/js/script.js')}}"></script>
     <script src="{{asset('assets/js/custom-slick-animated.js')}}"></script>
 
     
