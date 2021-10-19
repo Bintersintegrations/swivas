@@ -1,0 +1,113 @@
+.select2-selection__rendered{
+    border-bottom: 0px !important;
+}
+.datepickers-container{
+    top:-86px !important;
+}
+ul.note-dropdown-menu li{
+    display:block !important;
+}
+
+.library-image{
+    background-position: center center;
+    background-size: 100% 100%;
+    min-height: 100px;
+}
+.add-product img {
+    width: 500px;
+}
+.add-product ul li {
+    display: inline-block !important;
+    margin-bottom: 15px; 
+    cursor:pointer;
+}
+.add-product ul li .box-input-file {
+    width: 100px;
+    height: 100px;
+    background-color: #f1f4fb;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    vertical-align: middle; 
+
+}
+.add-product ul li .box-input-file i {
+    color: #ff8084; 
+}
+.add-product ul li .box-input-file .upload {
+    position: absolute;
+    width: 70px;
+    left: 0;
+    right: 0;
+    opacity: 0; 
+} 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.switch-field {
+    display: flex;
+    margin-bottom: 36px;
+    overflow: hidden;
+}
+
+.switch-field input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+}
+
+.switch-field label {
+    background-color: #e4e4e4;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    padding: 8px 16px;
+    margin-right: -1px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.1s ease-in-out;
+}
+
+.switch-field label:hover {
+    cursor: pointer;
+}
+
+.switch-field input:checked + label {
+    background-color: #a5dc86;
+    box-shadow: none;
+}
+
+.switch-field label:first-of-type {
+    border-radius: 4px 0 0 4px;
+}
+
+.switch-field label:last-of-type {
+    border-radius: 0 4px 4px 0;
+}
+
+        

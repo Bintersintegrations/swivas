@@ -1,0 +1,154 @@
+ajax get state from country selected..in create & edit giving, offer
+ajax get city from state selected..in create & edit giving, offer
+
+
+checkout
+
+retain timeline in product page for promos
+sidebar on product page
+process payment via pinvoice
+process payment okra
+vendor payments and earnings
+settlement to bank
+
+emails
+
+
+profiles {prevent changing of vendor type}
+orphanage application
+charity organization application
+followership
+subscriptions
+blog admin, blog vendor, blog user
+
+giveaway automatic selection
+take reasons for request of giveaway
+add quantity available & quantity per person to giveaway
+giveaway view page
+prevent edit/delete of giving when there's a request
+
+
+auction instant take off price
+auction automatic selection
+bid winners are given timeline to pay, failure to do so will offer it to the next person and with the same timeline
+do not show bidders multiple times, pick their highest bid and show
+checkout instant bid for buy now
+prevent edit/delete of offer when there's a request
+auctions view page
+
+
+
+
+advert for product/giveaway/external/vendor profiles
+admin page to manage advert, 
+vendors to have a link to create the advert
+
+akeraino.aki@gmail.com
+Actionpointer@2021
+
+
+bring message list
+click to display conversations
+reply to message
+notification
+
+
+
+color : 1
+
+
+
+size: 2
+
+array:10 [
+  0 => {1233 
+    "id": 352,
+    "name": "10kg",
+    "slug": "10kg",
+    "description": ""
+    
+    "count": 1
+     {1167 ▶}
+  }
+  1 => {225 
+    "id": 350
+    "name": "2kg"
+    "slug": "2kg"
+    "description": ""
+    
+    "count": 1
+     {1376 ▶}
+  }
+  2 => {1378 
+    "id": 351
+    "name": "5kg"
+    "slug": "5kg"
+    "description": ""
+    
+    "count": 1
+     {1380 ▶}
+  }
+  3 => {1382 
+    "id": 149
+    "name": "L"
+    "slug": "l"
+    "description": ""
+    
+    
+     {1384 ▶}
+  }
+  4 => {1386 
+    "id": 465
+    "name": "L"
+    "slug": "large"
+    "description": ""
+    
+    
+     {1388 ▶}
+  }
+  5 => {1390 
+    "id": 151
+    "name": "M"
+    "slug": "m"
+    "description": ""
+    
+    
+     {1392 ▶}
+  }
+  6 => {1394 
+    "id": 158
+    "name": "S"
+    "slug": "s"
+    "description": ""
+    
+    
+     {1396 ▶}
+  }
+  7 => {1398 
+    "id": 468
+    "name": "S"
+    "slug": "small"
+    "description": ""
+    
+    
+     {1400 ▶}
+  }
+  8 => {1402 
+    "id": 186
+    "name": "XL"
+    "slug": "xl"
+    "description": ""
+    
+    
+     {1404 ▶}
+  }
+  9 => {1406 
+    "id": 474
+    "name": "XL"
+    "slug": "big"
+    "description": ""
+    
+    
+     {1408 ▶}
+  }
+]
