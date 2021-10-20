@@ -28,10 +28,19 @@ class HomeController extends Controller
         // // dd($response);
         $products = WoocommerceProduct::all();
         foreach($products as $product){
-            $text = str_replace("https:\/\/swivas.com\/wp-content\/uploads\/2021\/02\/","template/",$product->images); 
+            $text = str_replace("https:\/\/swivas.com\/wp-content\/uploads\/2021\/03\/","uploads/2021/03/",$product->images); 
             // dd($text);
             $product->images = $text;
             $product->save();
+            // if($product->images && is_array($product->images)){
+            //     $img = [];
+            //     foreach($product->images as $image){
+            //         if(array_key_exists('src',$image))
+            //             $img[] = $image['src'];
+            //     }
+            //     $product->images = $img;
+            //     $product->save();
+            // }
         }
         dd('Done');
     }

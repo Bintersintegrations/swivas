@@ -327,8 +327,10 @@
                     <div class="col-lg-6">
                         <div class="header-contact text-right">
                             <ul>
-                                <li><i class="fa fa-truck" aria-hidden="true"></i>Track Order</li>
-                                <li class="pr-0"><i class="fa fa-gift" aria-hidden="true"></i>Gift Cards</li>
+                                <li><a href="#" class="text-white"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Sell</a></li>
+                                <li><a href="#" class="text-white"><i class="fa fa-sitemap" aria-hidden="true"></i>Multi-Level Network</a></li>
+                                <li><a href="#" class="text-white"><i class="fa fa-truck" aria-hidden="true"></i>Track Order</a></li>
+                                <li class="pr-0"><a href="{{route('login')}}" class="text-white"><i class="fa fa-user" aria-hidden="true"></i>Account</a></li>
                             </ul>
                         </div>
                     </div>
@@ -542,8 +544,8 @@
                                             <li><a href="#">makeup</a></li>
                                             <li><a href="#">skincare</a></li>
                                             <li><a href="#">premium beaty</a></li>
-                                            <li> <a href="#" class="has-submenu" id="sm-1634015758794352-5" aria-haspopup="true" aria-controls="sm-1634015758794352-6" aria-expanded="false">more<span class="sub-arrow"></span></a>
-                                                <ul id="sm-1634015758794352-6" role="group" aria-hidden="true" aria-labelledby="sm-1634015758794352-5" aria-expanded="false">
+                                            <li> <a href="#">more<span class="sub-arrow"></span></a>
+                                                <ul>
                                                     <li><a href="#">fragrances</a></li>
                                                     <li><a href="#">luxury beauty</a></li>
                                                     <li><a href="#">hair care</a></li>
@@ -574,27 +576,27 @@
                                             <li><a href="#">casual shoes</a></li>
                                         </ul>
                                     </li>
-                                    {{-- <li><a href="#">Kitchen &amp; Home</a></li>
+                                    <li><a href="#">Kitchen &amp; Home</a></li>
                                     <li><a href="#">Gaming Consoles</a></li>
-                                    <li> <a href="#" class="has-submenu" id="sm-1634015758794352-13" aria-haspopup="true" aria-controls="sm-1634015758794352-14" aria-expanded="false">cameras<span class="sub-arrow"></span></a>
-                                        <ul id="sm-1634015758794352-14" role="group" aria-hidden="true" aria-labelledby="sm-1634015758794352-13" aria-expanded="false">
+                                    <li> <a href="#">cameras<span class="sub-arrow"></span></a>
+                                        <ul>
                                             <li><a href="#">fashion jewellery</a></li>
                                             <li><a href="#">caps and hats</a></li>
                                             <li><a href="#">precious jewellery</a></li>
-                                            <li> <a href="#" class="has-submenu" id="sm-1634015758794352-15" aria-haspopup="true" aria-controls="sm-1634015758794352-16" aria-expanded="false">more..<span class="sub-arrow"></span></a>
-                                                <ul id="sm-1634015758794352-16" role="group" aria-hidden="true" aria-labelledby="sm-1634015758794352-15" aria-expanded="false">
+                                            <li> <a href="#">more..<span class="sub-arrow"></span></a>
+                                                <ul>
                                                     <li><a href="#">necklaces</a></li>
                                                     <li><a href="#">earrings</a></li>
                                                     <li><a href="#">wrist wear</a></li>
-                                                    <li> <a href="#" class="has-submenu" id="sm-1634015758794352-17" aria-haspopup="true" aria-controls="sm-1634015758794352-18" aria-expanded="false">accessories<span class="sub-arrow"></span></a>
-                                                        <ul id="sm-1634015758794352-18" role="group" aria-hidden="true" aria-labelledby="sm-1634015758794352-17" aria-expanded="false">
+                                                    <li> <a href="#">accessories<span class="sub-arrow"></span></a>
+                                                        <ul>
                                                             <li><a href="#">ties</a></li>
                                                             <li><a href="#">cufflinks</a></li>
                                                             <li><a href="#">pockets squares</a></li>
                                                             <li><a href="#">helmets</a></li>
                                                             <li><a href="#">scarves</a></li>
-                                                            <li> <a href="#" class="has-submenu" id="sm-1634015758794352-19" aria-haspopup="true" aria-controls="sm-1634015758794352-20" aria-expanded="false">more...<span class="sub-arrow"></span></a>
-                                                                <ul id="sm-1634015758794352-20" role="group" aria-hidden="true" aria-labelledby="sm-1634015758794352-19" aria-expanded="false">
+                                                            <li> <a href="#">more...<span class="sub-arrow"></span></a>
+                                                                <ul>
                                                                     <li><a href="#">accessory gift sets</a></li>
                                                                     <li><a href="#">travel accessories</a></li>
                                                                     <li><a href="#">phone cases</a></li>
@@ -610,7 +612,7 @@
                                     </li>
                                     <li><a href="#">Heating &amp; Cooling</a></li>
                                     <li><a href="#">All accessories </a></li>
-                                    <li><a href="#">All Electronics </a></li> --}}
+                                    <li><a href="#">All Electronics </a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -619,14 +621,14 @@
                         <div class="main-nav-center">
                             <nav class="text-left">
                                 <!-- Sample menu definition -->
-                                <ul id="main-menu" class="sm pixelstrap sm-horizontal hover-unset" data-smartmenus-id="16340157587770315">
+                                <ul id="main-menu" class="sm pixelstrap sm-horizontal">
                                     <li>
                                         <div class="mobile-back text-right">Back<i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                                     </li>
                                     <li><a href="index.html">Home</a></li>
                                     <li class="mega" id="hover-cls">
-                                        <a href="#" class="has-submenu" id="sm-16340157587770315-1" aria-haspopup="true" aria-controls="sm-16340157587770315-2" aria-expanded="false">feature<span class="sub-arrow"></span></a>
-                                        <ul class="mega-menu full-mega-menu" id="sm-16340157587770315-2" role="group" aria-hidden="true" aria-labelledby="sm-16340157587770315-1" aria-expanded="false">
+                                        <a href="#">latest<span class="sub-arrow"></span></a>
+                                        <ul class="mega-menu full-mega-menu">
                                             <li>
                                                 <div class="container">
                                                     <div class="row">
@@ -766,8 +768,8 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#" class="has-submenu" id="sm-16340157587770315-3" aria-haspopup="true" aria-controls="sm-16340157587770315-4" aria-expanded="false">shop<span class="sub-arrow"></span></a>
-                                        <ul id="sm-16340157587770315-4" role="group" aria-hidden="true" aria-labelledby="sm-16340157587770315-3" aria-expanded="false">
+                                        <a href="#">Trending</a>
+                                        <ul>
                                             <li><a href="category-page(top-filter).html">top filter<span class="new-tag">new</span></a></li>
                                             <li><a href="category-page(modern).html">modern<span class="new-tag">new</span></a></li>
                                             <li><a href="category-page.html">left sidebar</a></li>
@@ -785,14 +787,14 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#" class="has-submenu" id="sm-16340157587770315-5" aria-haspopup="true" aria-controls="sm-16340157587770315-6" aria-expanded="false">product<span class="sub-arrow"></span></a>
-                                        <ul id="sm-16340157587770315-6" role="group" aria-hidden="true" aria-labelledby="sm-16340157587770315-5" aria-expanded="false" class="sm-nowrap" style="width: auto; min-width: 10em; display: none; max-width: 20em; top: auto; left: 0px; margin-left: 0px; margin-top: 0px;">
+                                        <a href="#">offers</a>
+                                        <ul>
                                             <li><a href="product-page(360-view).html">360 view <span class="new-tag">new</span></a></li>
                                             <li><a href="product-page(video-thumbnail).html">video
                                                     thumbnail<span class="new-tag">new</span></a></li>
                                             <li>
-                                                <a href="#" class="has-submenu" id="sm-16340157587770315-7" aria-haspopup="true" aria-controls="sm-16340157587770315-8" aria-expanded="false">sidebar<span class="sub-arrow"></span></a>
-                                                <ul id="sm-16340157587770315-8" role="group" aria-hidden="true" aria-labelledby="sm-16340157587770315-7" aria-expanded="false">
+                                                <a href="#">sidebar<span class="sub-arrow"></span></a>
+                                                <ul>
                                                     <li><a href="product-page.html">left sidebar</a></li>
                                                     <li><a href="product-page(right-sidebar).html">right
                                                             sidebar</a>
@@ -802,8 +804,8 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#" class="has-submenu" id="sm-16340157587770315-9" aria-haspopup="true" aria-controls="sm-16340157587770315-10" aria-expanded="false">thumbnail image<span class="sub-arrow"></span></a>
-                                                <ul id="sm-16340157587770315-10" role="group" aria-hidden="true" aria-labelledby="sm-16340157587770315-9" aria-expanded="false">
+                                                <a href="#">thumbnail image<span class="sub-arrow"></span></a>
+                                                <ul>
                                                     <li><a href="product-page(left-image).html">left image</a>
                                                     </li>
                                                     <li><a href="product-page(right-image).html">right image</a>
@@ -813,8 +815,8 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#" class="has-submenu" id="sm-16340157587770315-11" aria-haspopup="true" aria-controls="sm-16340157587770315-12" aria-expanded="false">three column<span class="sub-arrow"></span></a>
-                                                <ul id="sm-16340157587770315-12" role="group" aria-hidden="true" aria-labelledby="sm-16340157587770315-11" aria-expanded="false">
+                                                <a href="#">three column<span class="sub-arrow"></span></a>
+                                                <ul>
                                                     <li><a href="product-page(3-col-left).html">thumbnail
                                                             left</a>
                                                     </li>
@@ -834,11 +836,11 @@
                                             <li><a href="product-page(vertical-tab).html">vertical tab</a></li>
                                         </ul><span class="scroll-up" style="top: auto; left: 0px; margin-left: 0px; width: 224px; z-index: 2; margin-top: -186px; visibility: hidden; display: none;"><span class="scroll-up-arrow"></span></span><span class="scroll-down" style="display: none; top: auto; left: 0px; margin-left: 0px; width: 224px; z-index: 2; margin-top: 144px; visibility: hidden;"><span class="scroll-down-arrow"></span></span>
                                     </li>
-                                    <li><a href="#" class="has-submenu" id="sm-16340157587770315-13" aria-haspopup="true" aria-controls="sm-16340157587770315-14" aria-expanded="false">pages<span class="sub-arrow"></span></a>
-                                        <ul id="sm-16340157587770315-14" role="group" aria-hidden="true" aria-labelledby="sm-16340157587770315-13" aria-expanded="false">
+                                    <li><a href="#">shops<span class="sub-arrow"></span></a>
+                                        <ul>
                                             <li>
-                                                <a href="#" class="has-submenu" id="sm-16340157587770315-15" aria-haspopup="true" aria-controls="sm-16340157587770315-16" aria-expanded="false">vendor<span class="sub-arrow"></span></a>
-                                                <ul id="sm-16340157587770315-16" role="group" aria-hidden="true" aria-labelledby="sm-16340157587770315-15" aria-expanded="false">
+                                                <a href="#">vendor<span class="sub-arrow"></span></a>
+                                                <ul>
                                                     <li><a href="vendor-dashboard.html">vendor dashboard</a>
                                                     </li>
                                                     <li><a href="vendor-profile.html">vendor profile</a></li>
@@ -846,8 +848,8 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#" class="has-submenu" id="sm-16340157587770315-17" aria-haspopup="true" aria-controls="sm-16340157587770315-18" aria-expanded="false">account<span class="sub-arrow"></span></a>
-                                                <ul id="sm-16340157587770315-18" role="group" aria-hidden="true" aria-labelledby="sm-16340157587770315-17" aria-expanded="false">
+                                                <a href="#">account<span class="sub-arrow"></span></a>
+                                                <ul>
                                                     <li><a href="wishlist.html">wishlist</a></li>
                                                     <li><a href="cart.html">cart</a></li>
                                                     <li><a href="dashboard.html">Dashboard</a></li>
@@ -862,10 +864,10 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#" class="has-submenu" id="sm-16340157587770315-19" aria-haspopup="true" aria-controls="sm-16340157587770315-20" aria-expanded="false">portfolio<span class="sub-arrow"></span></a>
-                                                <ul id="sm-16340157587770315-20" role="group" aria-hidden="true" aria-labelledby="sm-16340157587770315-19" aria-expanded="false">
-                                                    <li><a href="" class="has-submenu" id="sm-16340157587770315-21" aria-haspopup="true" aria-controls="sm-16340157587770315-22" aria-expanded="false">grid<span class="sub-arrow"></span></a>
-                                                        <ul id="sm-16340157587770315-22" role="group" aria-hidden="true" aria-labelledby="sm-16340157587770315-21" aria-expanded="false">
+                                                <a href="#">portfolio<span class="sub-arrow"></span></a>
+                                                <ul>
+                                                    <li><a href="">grid<span class="sub-arrow"></span></a>
+                                                        <ul>
                                                             <li><a href="grid-2-col.html">grid
                                                                     2</a></li>
                                                             <li><a href="grid-3-col.html">grid
@@ -874,8 +876,8 @@
                                                                     4</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="" class="has-submenu" id="sm-16340157587770315-23" aria-haspopup="true" aria-controls="sm-16340157587770315-24" aria-expanded="false">masonry<span class="sub-arrow"></span></a>
-                                                        <ul id="sm-16340157587770315-24" role="group" aria-hidden="true" aria-labelledby="sm-16340157587770315-23" aria-expanded="false">
+                                                    <li><a href="">masonry<span class="sub-arrow"></span></a>
+                                                        <ul>
                                                             <li><a href="masonary-2-grid.html">grid 2</a></li>
                                                             <li><a href="masonary-3-grid.html">grid 3</a></li>
                                                             <li><a href="masonary-4-grid.html">grid 4</a></li>
@@ -890,8 +892,8 @@
                                             <li><a href="review.html">review</a>
                                             </li>
                                             <li>
-                                                <a href="#" class="has-submenu" id="sm-16340157587770315-25" aria-haspopup="true" aria-controls="sm-16340157587770315-26" aria-expanded="false">compare<span class="sub-arrow"></span></a>
-                                                <ul id="sm-16340157587770315-26" role="group" aria-hidden="true" aria-labelledby="sm-16340157587770315-25" aria-expanded="false">
+                                                <a href="#">compare<span class="sub-arrow"></span></a>
+                                                <ul>
                                                     <li><a href="compare.html">compare</a></li>
                                                     <li><a href="compare-2.html">compare-2</a></li>
                                                 </ul>
@@ -905,40 +907,60 @@
                                             <li><a href="faq.html">FAQ</a></li>
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a href="#" class="has-submenu" id="sm-16340157587770315-27" aria-haspopup="true" aria-controls="sm-16340157587770315-28" aria-expanded="false">blog<span class="sub-arrow"></span></a>
-                                        <ul id="sm-16340157587770315-28" role="group" aria-hidden="true" aria-labelledby="sm-16340157587770315-27" aria-expanded="false">
+                                    {{-- <li>
+                                        <a href="#">blog<span class="sub-arrow"></span></a>
+                                        <ul>
                                             <li><a href="blog-page.html">left sidebar</a></li>
                                             <li><a href="blog(right-sidebar).html">right sidebar</a></li>
                                             <li><a href="blog(no-sidebar).html">no sidebar</a></li>
                                             <li><a href="blog-details.html">blog details</a></li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </nav>
                         </div>
                     </div>
                     <div class="col-xxl-3 d-none d-xxl-inline-block">
                         <div class="header-options">
-                            <div class="vertical-slider no-arrow slick-initialized slick-slider slick-vertical">
-                                <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="display: inline-block;">Previous</button>
-                                <div class="slick-list draggable" style="height: 0px;"><div class="slick-track" style="opacity: 1; height: 0px; transform: translate3d(0px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" tabindex="-1" style="width: 0px;"><div><div style="width: 100%; display: inline-block;">
-                                    <span><i class="ti-gift" aria-hidden="true"></i>Gift Card for all the season</span>
-                                </div></div></div><div class="slick-slide" data-slick-index="0" aria-hidden="true" style="width: 0px;" tabindex="-1"><div><div style="width: 100%; display: inline-block;">
-                                    <span><i class="ti-truck" aria-hidden="true"></i>Free Shipping on Orders
-                                        $100+</span>
-                                </div></div></div><div class="slick-slide" data-slick-index="1" aria-hidden="true" style="width: 0px;" tabindex="-1"><div><div style="width: 100%; display: inline-block;">
-                                    <span><i class="ti-announcement" aria-hidden="true"></i>Buy One Get Two Free</span>
-                                </div></div></div><div class="slick-slide slick-current slick-active" data-slick-index="2" aria-hidden="false" style="width: 0px;"><div><div style="width: 100%; display: inline-block;">
-                                    <span><i class="ti-gift" aria-hidden="true"></i>Gift Card for all the season</span>
-                                </div></div></div><div class="slick-slide slick-cloned" data-slick-index="3" aria-hidden="true" tabindex="-1" style="width: 0px;"><div><div style="width: 100%; display: inline-block;">
-                                    <span><i class="ti-truck" aria-hidden="true"></i>Free Shipping on Orders
-                                        $100+</span>
-                                </div></div></div><div class="slick-slide slick-cloned" data-slick-index="4" aria-hidden="true" tabindex="-1" style="width: 0px;"><div><div style="width: 100%; display: inline-block;">
-                                    <span><i class="ti-announcement" aria-hidden="true"></i>Buy One Get Two Free</span>
-                                </div></div></div><div class="slick-slide slick-cloned" data-slick-index="5" aria-hidden="true" tabindex="-1" style="width: 0px;"><div><div style="width: 100%; display: inline-block;">
-                                    <span><i class="ti-gift" aria-hidden="true"></i>Gift Card for all the season</span>
-                                </div></div></div></div></div><button class="slick-next slick-arrow" aria-label="Next" type="button" style="display: inline-block;">Next</button></div>
+                            <div class="vertical-slider no-arrow">
+                                <div>
+                                    <div>
+                                        <span><i class="ti-gift" aria-hidden="true"></i>Gift Card for all the season</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div >
+                                        <span><i class="ti-truck" aria-hidden="true"></i>Free Shipping on Orders $100+</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div >
+                                        <span><i class="ti-announcement" aria-hidden="true"></i>Buy One Get Two Free</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div >
+                                        <span><i class="ti-gift" aria-hidden="true"></i>Gift Card for all the season</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div >
+                                        <span><i class="ti-truck" aria-hidden="true"></i>Free Shipping on Orders
+                                            $100+</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div >
+                                        <span><i class="ti-announcement" aria-hidden="true"></i>Buy One Get Two Free</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div >
+                                        <span><i class="ti-gift" aria-hidden="true"></i>Gift Card for all the season</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
                         </div>
                     </div>
                 </div>

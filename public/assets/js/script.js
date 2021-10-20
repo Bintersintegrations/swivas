@@ -162,17 +162,6 @@
         $(".offer-box").toggleClass("toggle-cls");
     });
 
-
-    // /*=====================
-    //  08. toggle nav
-    //  ==========================*/
-    // $('.toggle-nav').on('click', function() {
-    //     $('.sm-horizontal').css("right", "0px");
-    // });
-    // $(".mobile-back").on('click', function() {
-    //     $('.sm-horizontal').css("right", "-410px");
-    // });
-
     /*=====================
      08. toggle nav
      ==========================*/

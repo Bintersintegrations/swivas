@@ -7287,7 +7287,7 @@ header {
     padding-top: 30px;
     padding-bottom: 30px; }
   .header-style-5.color-style .main-menu .menu-left .navbar i {
-    color: white; }
+    color: var(--theme-deafult); }
   .header-style-5.color-style .main-menu .menu-right .icon-nav li img {
      filter: unset;
     /* -webkit-filter: invert(1);
