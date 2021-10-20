@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\WoocommerceProduct;
 use Illuminate\Http\Request;
 use Ixudra\Curl\Facades\Curl;
-use App\WoocommerceAttributeTerm;
 
 class HomeController extends Controller
 {
@@ -27,7 +26,14 @@ class HomeController extends Controller
         //             ->asJsonResponse()
         //             ->get();
         // // dd($response);
-        
+        $products = WoocommerceProduct::all();
+        foreach($products as $product){
+            $text = str_replace("https:\/\/swivas.com\/wp-content\/uploads\/2021\/02\/","template/",$product->images); 
+            // dd($text);
+            $product->images = $text;
+            $product->save();
+        }
+        dd('Done');
     }
     
 }

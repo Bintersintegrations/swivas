@@ -1259,15 +1259,15 @@ $(".color-box li").click(function() {
     $(this).addClass('active').siblings().removeClass('active');
 });
 
-// dark & light
-(function() {
-    $('<div class="sidebar-btn dark-light-btn">' +
-        '<div class="dark-light">' +
-        '<div class="theme-layout-version">Dark' +
-        '</div>' +
-        '</div>' +
-        '</div>').appendTo($('body'));
-})();
+// // dark & light
+// (function() {
+//     $('<div class="sidebar-btn dark-light-btn">' +
+//         '<div class="dark-light">' +
+//         '<div class="theme-layout-version">Dark' +
+//         '</div>' +
+//         '</div>' +
+//         '</div>').appendTo($('body'));
+// })();
 
 var body_event = $("body");
 body_event.on("click", ".theme-layout-version", function() {

@@ -7,7 +7,10 @@ Route::get('/', function () {
 });
 
 Route::get('woocommerce/products','HomeController@woocommerce');
-Route::get('test','HomeController@test');
+// Route::get('test','HomeController@test');
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 
 //ABOUT PAGES
 Route::view('about','frontend.outside.general.about')->name('about');

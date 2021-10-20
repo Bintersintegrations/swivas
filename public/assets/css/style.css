@@ -7232,9 +7232,14 @@ header {
         font-size: 19px;
         text-transform: capitalize; }
   .header-style-5 .bottom-part .pixelstrap > li > a {
-    color: white; }
+    /* color: white;  */
+    color: #000; 
+  }
     .header-style-5 .bottom-part .pixelstrap > li > a:hover, .header-style-5 .bottom-part .pixelstrap > li > a:active {
-      color: white; }
+      /* color: white;  */
+      color: #000; 
+      font-weight: 600;
+    }
   .header-style-5 .bottom-part.bottom-light {
     background-color: transparent;
     padding-top: 16px;
@@ -7267,7 +7272,9 @@ header {
     padding-bottom: 20px; }
 
 .header-style-5.color-style {
-  background-color: var(--theme-deafult2); }
+  /* background-color: var(--theme-deafult2);  */
+  background-color: #ffffff; 
+}
   .header-style-5.color-style .form_search {
     border-radius: 5px; }
     .header-style-5.color-style .form_search button {
@@ -7282,29 +7289,36 @@ header {
   .header-style-5.color-style .main-menu .menu-left .navbar i {
     color: white; }
   .header-style-5.color-style .main-menu .menu-right .icon-nav li img {
-    -webkit-filter: invert(1);
-            filter: invert(1); }
+     filter: unset;
+    /* -webkit-filter: invert(1);
+            filter: invert(1);  */}
   .header-style-5.color-style .main-menu .menu-right .icon-nav li ul img {
     -webkit-filter: invert(0);
             filter: invert(0); }
   .header-style-5.color-style .main-menu .brand-logo {
-    padding-top: 25px;
-    padding-bottom: 25px; }
+    padding-top: 0px;
+    /* padding-top: 25px; */
+    /* padding-bottom: 25px;  */
+    padding-bottom: 0px; 
+  }
   .header-style-5.color-style .main-menu .onhover-div {
     padding-top: 30px;
     padding-bottom: 30px; }
   .header-style-5.color-style .top-header {
     background-color: var(--theme-deafult1); }
     .header-style-5.color-style .top-header.top-header-theme {
-      background-color: var(--theme-deafult2);
-      border-bottom: 1px solid #506177; }
+      background-color: var(--theme-deafult);
+      /* border-bottom: 1px solid #506177;  */
+    }
       .header-style-5.color-style .top-header.top-header-theme .header-contact li i {
         font-size: 15px; }
     .header-style-5.color-style .top-header .header-dropdown > li {
       padding: 30px 25px;
       padding-right: 0; }
   .header-style-5.color-style .bottom-part {
-    background-color: var(--theme-deafult2); }
+    /* background-color: var(--theme-deafult2);  */
+    background-color: #ffffff; 
+  }
     .header-style-5.color-style .bottom-part .pixelstrap.sm-vertical > li > a {
       color: #222222; }
       .header-style-5.color-style .bottom-part .pixelstrap.sm-vertical > li > a:hover, .header-style-5.color-style .bottom-part .pixelstrap.sm-vertical > li > a:active {
