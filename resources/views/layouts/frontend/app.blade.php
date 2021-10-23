@@ -66,29 +66,23 @@
                         <div class="col-lg-6">
                             <div class="header-contact text-right">
                                 <ul>
-                                    <li><a href="{{route('sell')}}" class="text-white"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Sell</a></li>
+                                    <li><a @guest href="{{route('sell')}}" @else href="{{route('vendor.dashboard')}}" @endguest class="text-white"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Sell</a></li>
                                     <li><a href="#" class="text-white"><i class="fa fa-sitemap" aria-hidden="true"></i>Multi-Level Network</a></li>
                                     <li><a href="#" class="text-white"><i class="fa fa-truck" aria-hidden="true"></i>Track Order</a></li>
                                     
                                     @guest
                                     <li class="pr-0">
                                         <a href="{{route('login')}}" class="text-white"><i class="fa fa-user"></i>Account</a>
-                                    </li>
+                                    
                                         @else
-                                        <li class="onhover-dropdown mobile-account">
-                                            <i class="fa fa-user" aria-hidden="true"></i> Dashboards
-                                            <ul class="onhover-show-div">
-                                                <li><a href="#" data-lng="en">User Dashboard</a></li>
-                                                <li><a href="#" data-lng="es">Vendor Dashboard</a></li>
-                                            </ul>
-                                        </li>
-                                        {{-- <a href="{{ route('logout') }}" class="text-white" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();"><i class="fa fa-user"></i>Logout</a>
+                                        
+                                        <a href="{{ route('logout') }}" class="text-white" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i>Logout</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
-                                        </form> --}}
+                                        </form>
                                     
-                                   
+                                   </li>
                                     @endguest
                                 </ul>
                             </div>
@@ -745,27 +739,21 @@
                     <div class="col-lg-6">
                         <div class="header-contact text-right">
                             <ul class="">
-                                <li><a href="{{route('sell')}}" class="text-white"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Sell</a></li>
+                                <li><a @guest href="{{route('sell')}}" @else href="{{route('vendor.dashboard')}}" @endguest class="text-white"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Sell</a></li>
                                 <li><a href="#" class="text-white"><i class="fa fa-sitemap" aria-hidden="true"></i>Multi-Level Network</a></li>
                                 <li><a href="#" class="text-white"><i class="fa fa-truck" aria-hidden="true"></i>Track Order</a></li>
                                 @guest
                                     <li class="pr-0">
                                         <a href="{{route('login')}}" class="text-white"><i class="fa fa-user"></i>Account</a>
-                                    </li>
+                                    
                                         @else
-                                        <li class="onhover-dropdown mobile-account">
-                                            <i class="fa fa-home" aria-hidden="true"></i> Dashboards
-                                            <ul class="onhover-show-div px-3">
-                                                <li><a href="index.html" class="text-dark">User Dashboard</a></li>
-                                                <li><a href="index.html" class="text-dark">Vendor Dashboard</a></li>
-                                            </ul>
-                                        </li>
-                                        {{-- <a href="{{ route('logout') }}" class="text-white" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();"><i class="fa fa-user"></i>Logout</a>
+                                        
+                                        <a href="{{ route('logout') }}" class="text-white" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i>Logout</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
-                                        </form> --}}
-                                    
+                                        </form>
+                                    </li>
                                    
                                     @endguest
                             </ul>

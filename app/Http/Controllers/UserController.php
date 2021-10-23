@@ -83,6 +83,7 @@ class UserController extends Controller
         $countries = Country::all();
         return view('frontend.inside.user.address',compact('user','countries'));
     }
+    
     public function manageAddress(Request $request){
         $validator = Validator::make($request->all(), [
             'oldpin' => 'required|string',

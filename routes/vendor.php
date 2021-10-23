@@ -1,11 +1,11 @@
 <?php
 
 Route::group(['as'=>'vendor.','namespace'=>'Vendor','prefix'=>'vendor'], function () {
-    Route::get('dashboard','VendorController@index')->name('dashboard');
-    Route::get('{vendor}','VendorController@view')->name('view');
-    Route::get('profile','VendorController@profile')->name('profile');
-    Route::post('profile','VendorController@saveprofile')->name('profile');
-    Route::get('settings','VendorController@settings')->name('settings');
+    Route::get('dashboard','ShopController@dashboard')->name('dashboard');
+    Route::get('/shop','ShopController@index')->name('view');
+    Route::get('profile','ShopController@profile')->name('profile');
+    Route::post('profile','ShopController@saveprofile')->name('profile');
+    Route::get('settings','ShopController@settings')->name('settings');
 
     Route::group(['prefix'=> 'media'], function () {
         Route::get('/','MediaController@list')->name('media');
