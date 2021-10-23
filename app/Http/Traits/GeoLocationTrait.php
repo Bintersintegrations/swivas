@@ -12,11 +12,12 @@ trait GeoLocationTrait
 {
     protected function getLocation(){
         $userLocation = Cache::rememberForever(request()->ip(), function () {
-            $place = Curl::to('https://ipapi.co/json')
-                    ->withData( array( 'key' => config('services.ip_api') ) )
+            // $place = Curl::to('https://ipapi.co/json')
+            $place = Curl::to('https://api.ipdata.co/')
+                    ->withData( array( 'api-key' => config('services.ipdata') ) )
+                    // ->withData( array( 'key' => config('services.ip_api') ) )
                     ->asJsonResponse()
                     ->get();
-                    //dd($place);
             if(isset($place->country_code))
                 $temp = [
                             'iso_code'=> $place->country_code,
@@ -24,12 +25,12 @@ trait GeoLocationTrait
                             'state'=> $place->region ,
                             'state_code'=> $place->region_code ,
                             'city'=> $place->city,
-                            'dialing_code'=> $place->country_calling_code,
+                            'dialing_code'=> $place->calling_code,
                             'flag'=>'https://ipdata.co/flags/'.$place->country_code.'.png',
-                            'timezone'=> $place->timezone,
-                            'currency_name' => $place->currency_name,
-                            'currency_iso' => $place->currency,
-                            'currency_symbol' => $place->currency_symbol
+                            'timezone'=> $place->time_zone->name,
+                            'currency_name' => $place->currency->name,
+                            'currency_iso' => $place->currency->code,
+                            'currency_symbol' => $place->currency->symbol
                         ];
             else
                 $temp = [
