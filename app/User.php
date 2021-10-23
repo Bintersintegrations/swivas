@@ -2,31 +2,36 @@
 
 namespace App;
 
-use App\Bid;
+
 use App\City;
-use App\Item;
+
 use App\Post;
 use App\Role;
-use App\Shop;
-use App\Media;
+
 use App\State;
-use App\Giving;
-use App\Auction;
-use App\Company;
+
 use App\Country;
 use App\Message;
 use App\Payment;
-use App\Product;
-use App\Currency;
-use App\GivingRequest;
 use App\PasswordHistory;
 use Illuminate\Notifications\Notifiable;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable,Sluggable;
+
+    public function sluggable()
+    {
+        return [
+            'username' => [
+                'source' => ['surname','firstame'],
+                'separator' => '_'
+            ]
+        ];
+    }
 
     protected $fillable = [
         'firstname','surname','email','mobile','password','timezone','currency_id','country_id','state_id','city_id'
@@ -75,6 +80,10 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany(Role::class,'user_roles');
     }
+    public function isAdmin(){
+        if(in_array('admin',$this->roles->pluck('name')->toArray()))
+        return true;
+    }
     
     public function hasAnyRole($values){
         $exist = false;
@@ -85,29 +94,6 @@ class User extends Authenticatable
             } 
         }
         return $exist;
-    }
-
-    public function products(){
-        return $this->hasManyThrough(Product::class, Item::class);
-    }
-
-    public function givings(){
-        return $this->hasManyThrough(Giving::class, Item::class);
-    }
-    public function giving_requests(){
-        return $this->hasMany(GivingRequest::class);
-    }
-
-    public function requestedGiving($value){
-        return $this->giving_requests->where('giving_id',$value)->isNotEmpty();
-    }
-
-    public function auctions(){
-        return $this->hasManyThrough(Auction::class, Item::class);
-    }
-
-    public function bids(){
-        return $this->hasMany(Bid::class); 
     }
 
     public function messages(){
@@ -121,24 +107,9 @@ class User extends Authenticatable
     public function payments(){
         return $this->hasMany(Payment::class);
     }
-
-    
+ 
     public function posts(){
         return $this->hasMany(Post::class);
     }
-    public function employer(){
-        return $this->hasOne(Company::class);
-    }
-
-    public function media(){
-        return $this->hasMany(Media::class);
-    }
-    public function currency(){
-        return $this->belongsTo(Currency::class);
-    }
-    public function shop(){
-        return $this->hasOne(Shop::class);
-    }
-  
     
 }

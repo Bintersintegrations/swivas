@@ -1,5 +1,5 @@
 <?php
-Route::group(['prefix'=>'admin','as'=>'admin.','namespace'=>'Backend','middleware'=> 'role:super_admin'], function () {
+Route::group(['prefix'=>'admin','as'=>'admin.','namespace'=>'Backend','middleware'=> 'role:admin'], function () {
     // Route::view('/','backend.auth.login')->name('login');
     // Route::post('/','AuthController@login')->name('login');
     // Route::get('forgot-password','AuthController@forgotpassword')->name('forgot.password');

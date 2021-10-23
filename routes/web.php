@@ -1,12 +1,8 @@
 <?php
 
-Route::get('/', function () {
-    // request()->session()->put('wish',null);
-    // dd(request()->session()->get('wish'));
-    return view('frontend.outside.welcome2');
-});
+Route::get('/','HomeController@index')->name('index');
 
-Route::get('woocommerce/products','HomeController@woocommerce');
+// Route::get('woocommerce/products','HomeController@woocommerce');
 // Route::get('test','HomeController@test');
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
@@ -18,48 +14,48 @@ Route::view('faq','frontend.outside.general.faq')->name('faq');
 Route::view('contact','frontend.outside.general.contact')->name('contact');
 Route::view('orphanages','frontend.outside.general.orphanages')->name('orphanages');
 Route::view('charity-organizations','frontend.outside.general.charity')->name('charity');
+Route::view('start-selling','frontend.outside.become_a_vendor')->name('sell');
 
-Route::group(['namespace'=>"Frontend"],function(){
-    Route::get('blog','BlogController@list')->name('blogroll');
-    Route::get('blog/post/{post}','BlogController@post')->name('blogpost');
-    Route::post('blog/comment','BlogController@comment')->name('blogcomment');
+Route::get('blog','BlogController@list')->name('blogroll');
+Route::get('blog/post/{post}','BlogController@post')->name('blogpost');
+Route::post('blog/comment','BlogController@comment')->name('blogcomment');
 
 
-    Route::get('products','ProductController@list')->name('products');
-    Route::get('product/{product}','ProductController@view')->name('product.view');
-    Route::post('product/add-to-cart','ProductController@addtocart')->name('product.addtocart');
-    Route::post('product/remove-from-cart','ProductController@removefromcart')->name('product.removefromcart');
-    Route::post('product/add-to-wish','ProductController@addtowish')->name('product.addtowish');
-    Route::post('product/remove-from-wish','ProductController@removefromwish')->name('product.removefromwish');
+Route::get('products','ProductController@list')->name('products');
+Route::get('product/{product}','ProductController@view')->name('product.view');
+Route::post('product/add-to-cart','ProductController@addtocart')->name('product.addtocart');
+Route::post('product/remove-from-cart','ProductController@removefromcart')->name('product.removefromcart');
+Route::post('product/add-to-wish','ProductController@addtowish')->name('product.addtowish');
+Route::post('product/remove-from-wish','ProductController@removefromwish')->name('product.removefromwish');
 
-    Route::get('cart','SalesThreadController@cart')->name('cart');
-    Route::get('wishlist','SalesThreadController@wishlist')->name('wishlist');
-    Route::post('checkout','SalesThreadController@checkout')->name('checkout');
+Route::get('cart','SalesThreadController@cart')->name('cart');
+Route::get('wishlist','SalesThreadController@wishlist')->name('wishlist');
+Route::post('checkout','SalesThreadController@checkout')->name('checkout');
 
-    Route::get('support','SupportThreadController@create')->name('support');
-    Route::post('support','SupportThreadController@save')->name('support');
+Route::get('support','SupportThreadController@create')->name('support');
+Route::post('support','SupportThreadController@save')->name('support');
 
     
-});
 
 //AUTH
 Auth::routes();
-include('admin.php');
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('dashboard', 'HomeController@dashboards')->name('home');
 Route::get('profile','HomeController@profile')->name('profile');
 Route::post('orphanage/charity/register','HomeController@orphanageCharity')->name('orphanage.charity');
  
 //USER PAGES
-Route::group(['as'=>'user.','namespace'=>'User'], function () {
-    Route::get('dashboard','UserController@dashboard')->name('dashboard');
+Route::group(['as'=>'user.'], function () {
+    Route::get('dashboard','UserController@index')->name('dashboard');
     Route::get('user/profile','UserController@profile')->name('profile');
     Route::post('user/profile','UserController@saveprofile')->name('profile');
-
+    Route::get('user/addresses','UserController@address')->name('address');
+    Route::post('user/addresses','UserController@manageAddress')->name('address');
+    Route::get('user/change-password','UserController@password')->name('password');
     Route::post('user/change-password','UserController@changePassword')->name('changePassword');
-    Route::post('user/change-accesspin','UserController@changeAccessPin')->name('changeAccessPin');
-
-    Route::get('my-order','UserController@orders')->name('orders');
-    Route::get('my-bids','UserController@bids')->name('bids');
+    
+    Route::get('orders','SalesController@orders')->name('orders');
+    Route::get('wishlist','SalesController@wishlist')->name('wishlist');
     Route::get('my-giveaway-request','UserController@give_request')->name('giverequest');
 
     Route::group(['prefix'=> 'messages','as'=> 'messages.'],function(){
@@ -74,6 +70,7 @@ Route::group(['as'=>'user.','namespace'=>'User'], function () {
 
 //VENDOR PAGES
 include('vendor.php');
+include('admin.php');
 
 
 

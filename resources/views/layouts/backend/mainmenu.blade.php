@@ -7,7 +7,7 @@
             <div><img class="img-60 rounded-circle blur-up lazyloaded" src="{{asset('assets/images/dashboard/man.png')}}" alt="#">
             </div>
             <h6 class="mt-3 f-14">{{Auth::user()->firstname.' '.Auth::user()->surname}}</h6>
-            <p>{{Auth::user()->roles->where('type','admin')->first()->description}}.</p>
+            <p>{{Auth::user()->roles->where('name','admin')->first()->description}}.</p>
         </div>
         <ul class="sidebar-menu">
             <li><a class="sidebar-header" href="{{route('admin.dashboard')}}"><i data-feather="home"></i><span>Dashboard</span></a></li>
@@ -20,22 +20,8 @@
                     {{-- <li><a href="product-list.html"><i class="fa fa-circle"></i>Categories</a></li> --}}
                 </ul>
             </li>
-            <li>
-                <a class="sidebar-header" href="#"><i data-feather="box"></i> <span>Give Aways</span><i class="fa fa-angle-right pull-right"></i></a>
-                <ul class="sidebar-submenu">
-                    <li><a href="{{route('admin.items.giveaway.new')}}"><i class="fa fa-circle"></i>New</a></li>
-                    <li><a href="{{route('admin.items.giveaways')}}"><i class="fa fa-circle"></i>All</a></li>
-                    {{-- <li><a href="{{route('admin.items.requests')}}"><i class="fa fa-circle"></i>Requests</a></li> --}}
-                </ul>
-            </li>
-            <li>
-                <a class="sidebar-header" href="#"><i data-feather="box"></i> <span>Auction</span><i class="fa fa-angle-right pull-right"></i></a>
-                <ul class="sidebar-submenu">
-                    <li><a href="{{route('admin.items.auction.new')}}"><i class="fa fa-circle"></i>New</a></li>
-                    <li><a href="{{route('admin.items.auctions')}}"><i class="fa fa-circle"></i>All</a></li>
-                    {{-- <li><a href="{{route('admin.items.bids')}}"><i class="fa fa-circle"></i>Bids</a></li> --}}
-                </ul>
-            </li>
+            
+            
             <li><a class="sidebar-header" href="{{route('admin.categories')}}"><i data-feather="bar-chart"></i>Categories</a></li>
             <li><a class="sidebar-header" href="{{route('admin.attributes')}}"><i data-feather="bar-chart"></i>Attributes</a></li>
             <li><a class="sidebar-header" href="{{route('admin.media.list')}}"><i data-feather="camera"></i><span>Media</span></a></li>

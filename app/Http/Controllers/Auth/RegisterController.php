@@ -2,40 +2,22 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Role;
 use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Traits\GeoLocationTrait;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
 
-    use RegistersUsers;
+    use RegistersUsers,GeoLocationTrait;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
@@ -65,8 +47,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
         $role = Role::where('name','user')->first();
-        $info = Cache::get(request()->ip());
+        $info = $this->getLocation();
         $user = User::create([
             'firstname' => $data['fname'],
             'surname' => $data['lname'],
@@ -74,7 +57,6 @@ class RegisterController extends Controller
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
             'timezone' => $info['timezone'], 
-            'currency_id' => $info['country_currency'], 
             'country_id' => $info['country_id'], 
             'state_id' => $info['state_id'], 
             'city_id' => $info['city_id'], 

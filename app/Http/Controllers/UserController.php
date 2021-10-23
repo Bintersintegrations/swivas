@@ -20,15 +20,17 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-    public function dashboard(){
-        return view('frontend.inside.dashboard');
+    
+    public function index(){
+        $user = Auth::user();
+        return view('frontend.inside.user.dashboard',compact('user'));
     }
     
     public function profile(){
         $user = Auth::user();
         $countries = Country::all();
         $languages = Language::all();
-        return view('frontend.inside.profile.user.edit',compact('user','countries','languages'));
+        return view('frontend.inside.user.profile',compact('user','countries','languages'));
     }
 
     public function saveprofile(Request $request){
@@ -47,6 +49,10 @@ class UserController extends Controller
         if($request->filled("timezone")) $user->timezone = $request->timezone;
         $user->save();
         return redirect()->route('profile');
+    }
+
+    public function password(){
+        return view('frontend.inside.user.password');
     }
 
     public function changePassword(Request $request){
@@ -72,7 +78,12 @@ class UserController extends Controller
         else return redirect()->back()->withErrors(['oldpassword' => 'Your old password is wrong'])->with(['flash_type' => 'danger','flash_msg'=>'Something went wrong']);
     }
 
-    public function changeAccessPin(Request $request){
+    public function address(){
+        $user = Auth::user();
+        $countries = Country::all();
+        return view('frontend.inside.user.address',compact('user','countries'));
+    }
+    public function manageAddress(Request $request){
         $validator = Validator::make($request->all(), [
             'oldpin' => 'required|string',
             'newpin' => 'required|string|confirmed',

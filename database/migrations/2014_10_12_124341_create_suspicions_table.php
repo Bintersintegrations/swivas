@@ -29,6 +29,7 @@ class CreateSuspicionsTable extends Migration
             $table->string('url');
             $table->string('method');
             $table->integer('visit')->default(0);
+            $table->SoftDeletes();
             $table->timestamps();
             $table->foreign('country_id')->references('id')->on('countries');
             $table->foreign('state_id')->references('id')->on('states');

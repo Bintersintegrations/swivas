@@ -1,11 +1,11 @@
 <?php
 
 Route::group(['as'=>'vendor.','namespace'=>'Vendor','prefix'=>'vendor'], function () {
-    Route::get('{shop}','ShopController@index')->name('vendor');
-    // Route::get('dashboard','ProfileController@dashboard')->name('dashboard');
-    Route::get('profile','ProfileController@profile')->name('profile');
-    Route::post('profile','ProfileController@saveprofile')->name('profile');
-    Route::get('settings','ProfileController@settings')->name('settings');
+    Route::get('dashboard','VendorController@index')->name('dashboard');
+    Route::get('{vendor}','VendorController@view')->name('view');
+    Route::get('profile','VendorController@profile')->name('profile');
+    Route::post('profile','VendorController@saveprofile')->name('profile');
+    Route::get('settings','VendorController@settings')->name('settings');
 
     Route::group(['prefix'=> 'media'], function () {
         Route::get('/','MediaController@list')->name('media');
@@ -14,7 +14,7 @@ Route::group(['as'=>'vendor.','namespace'=>'Vendor','prefix'=>'vendor'], functio
         Route::post('delete','MediaController@delete')->name('media.delete');
     });
 
-    Route::group(['prefix'=> 'products'], function () {
+    Route::group(['prefix'=> 'products','namespace'=> 'Vendor'], function () {
         Route::get('/','ProductController@list')->name('products');
         Route::get('add','ProductController@create')->name('product.create');
         Route::post('save','ProductController@save')->name('product.save');
@@ -33,7 +33,7 @@ Route::group(['as'=>'vendor.','namespace'=>'Vendor','prefix'=>'vendor'], functio
         // Route::get('withdrawal','');
     });
 
-    Route::group(['prefix'=>'coupon'],function(){
+    Route::group(['prefix'=>'coupon','namespace'=> 'Vendor'],function(){
         Route::get('/','CouponController@list')->name('coupons');
         Route::get('create','CouponController@create')->name('coupon.create');
         Route::post('save','CouponController@save')->name('coupon.save');

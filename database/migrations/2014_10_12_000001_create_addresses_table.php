@@ -15,14 +15,18 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('addressable_id');
-            $table->string('addressable_type');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('country_id');
             $table->unsignedBigInteger('state_id');
             $table->unsignedBigInteger('city_id');
-            $table->string('address');
-            $table->string('type'); //home, shipping, billing
+            $table->string('street');
+            $table->string('description')->nullable(); //home, company, office, Grandma's place
+            $table->string('contact_name')->nullable();
+            $table->string('contact_number')->nullable();
+            $table->string('contact_email')->nullable();
+            $table->SoftDeletes();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('country_id')->references('id')->on('countries');
             $table->foreign('state_id')->references('id')->on('states');
             $table->foreign('city_id')->references('id')->on('cities');

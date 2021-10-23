@@ -13495,11 +13495,11 @@ header.stickycls {
   .login-page .theme-card .theme-form label {
     text-transform: capitalize;
     color: #333333;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600; }
   .login-page .theme-card .theme-form input {
     border-color: #eaeaea;
-    font-size: 12px;
+    font-size: 16px;
     padding: 17px 25px;
     margin-bottom: 30px;
     height: inherit; }
@@ -13534,11 +13534,11 @@ header.stickycls {
   .register-page .theme-card .theme-form label {
     text-transform: capitalize;
     color: #333333;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600; }
   .register-page .theme-card .theme-form input {
     border-color: #eaeaea;
-    font-size: 12px;
+    font-size: 16px;
     padding: 17px 25px;
     margin-bottom: 30px;
     height: inherit; }

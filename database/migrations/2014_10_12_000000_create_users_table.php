@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('username');
             $table->string('surname');
             $table->string('firstname');
             $table->string('email')->unique();
@@ -28,7 +29,6 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('country_id')->nullable();
             $table->unsignedBigInteger('state_id')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
-            $table->unsignedBigInteger('currency_id')->nullable();
             $table->unsignedBigInteger('language_id')->nullable();
             $table->boolean('notify_email')->default(0);
             $table->boolean('notify_sms')->default(0);
