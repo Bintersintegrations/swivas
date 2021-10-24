@@ -31,7 +31,7 @@
                         </div>
                         <div class="card" style="width:300px;">
                             <div class="card-body d-flex">
-                                <div class="rounded-circle bg-success">
+                                <div class="rounded-circle bg-dark text-white">
                                     <div class="align-self-center text-center">
                                         <div class="pt-2 px-3"><i class="fa fa-money"></i></div>
                                     </div>
