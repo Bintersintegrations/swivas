@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/','HomeController@index')->name('index');
+Route::get('shops','Vendor\ShopController@list')->name('vendor.list');
 
 // Route::get('woocommerce/products','HomeController@woocommerce');
 // Route::get('test','HomeController@test');
@@ -14,7 +15,7 @@ Route::view('faq','frontend.outside.general.faq')->name('faq');
 Route::view('contact','frontend.outside.general.contact')->name('contact');
 Route::view('orphanages','frontend.outside.general.orphanages')->name('orphanages');
 Route::view('charity-organizations','frontend.outside.general.charity')->name('charity');
-Route::view('start-selling','frontend.outside.become_a_vendor')->name('sell');
+Route::view('start-selling','frontend.outside.shop.intro')->name('sell');
 
 Route::get('blog','BlogController@list')->name('blogroll');
 Route::get('blog/post/{post}','BlogController@post')->name('blogpost');

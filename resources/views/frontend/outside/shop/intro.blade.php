@@ -254,7 +254,7 @@
                         </div>
                     </div>
                 </form>
-                <a href="#" class="btn btn-solid btn-sm">start selling</a>
+                <a href="{{route('vendor.create')}}" class="btn btn-solid btn-sm">start selling</a>
             </div>
         </div>
     </div>

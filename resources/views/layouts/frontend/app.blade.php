@@ -50,7 +50,7 @@
 <body>
     <!-- loader start -->
     <div class="loader_skeleton">
-        <header class="header-style-5 color-style" id="sticky-header">
+        <header class="header-style-5 color-style">
             <div class="mobile-fix-option"></div>
             <div class="top-header top-header-theme">
                 <div class="container">
@@ -97,12 +97,12 @@
                             <div class="menu-left">
                                 <div class="navbar d-block d-xl-none">
                                     <a href="javascript:void(0)">
-                                        <div class="bar-style" id="toggle-sidebar-res"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
+                                        <div class="bar-style" id=""><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="brand-logo">
-                                    <a href="index.html"><img src="{{asset('assets/images/icon/swivas.jpg')}}" class="img-fluid blur-up lazyloaded" alt=""></a>
+                                    <a href="{{route('index')}}"><img src="{{asset('assets/images/icon/swivas.jpg')}}" class="img-fluid blur-up lazyloaded" alt=""></a>
                                 </div>
                             </div>
                             <div>
@@ -234,7 +234,7 @@
                     <div class="row">
                         <div class="col-xl-3">
                             <div class="category-menu d-none d-xl-block h-100">
-                                <div id="toggle-sidebar" class="toggle-sidebar">
+                                <div id="" class="">
                                     <i class="fa fa-bars sidebar-bar"></i>
                                     <h5 class="mb-0">shop by category</h5>
                                 </div>
@@ -379,9 +379,9 @@
                                             <div class="mobile-back text-right">Back<i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                                         </li>
                                         <li><a href="{{route('index')}}">Home</a></li>
-                                        <li class="mega" id="hover-cls">
-                                            <a href="#">latest<span class="sub-arrow"></span></a>
-                                            <ul class="mega-menu full-mega-menu">
+                                        <li>
+                                            <a href="#">latest</a>
+                                            {{-- <ul class="mega-menu full-mega-menu">
                                                 <li>
                                                     <div class="container">
                                                         <div class="row">
@@ -518,11 +518,11 @@
                                                         </div>
                                                     </div>
                                                 </li>
-                                            </ul>
+                                            </ul> --}}
                                         </li>
                                         <li>
                                             <a href="#">Trending</a>
-                                            <ul>
+                                            {{-- <ul>
                                                 <li><a href="category-page(top-filter).html">top filter<span class="new-tag">new</span></a></li>
                                                 <li><a href="category-page(modern).html">modern<span class="new-tag">new</span></a></li>
                                                 <li><a href="category-page.html">left sidebar</a></li>
@@ -537,11 +537,11 @@
                                                 <li><a href="category-page(3-grid).html">three grid</a></li>
                                                 <li><a href="category-page(6-grid).html">six grid</a></li>
                                                 <li><a href="category-page(list-view).html">list view</a></li>
-                                            </ul>
+                                            </ul> --}}
                                         </li>
                                         <li>
                                             <a href="#">offers</a>
-                                            <ul>
+                                            {{-- <ul>
                                                 <li><a href="product-page(360-view).html">360 view <span class="new-tag">new</span></a></li>
                                                 <li><a href="product-page(video-thumbnail).html">video
                                                         thumbnail<span class="new-tag">new</span></a></li>
@@ -587,10 +587,10 @@
                                                 <li><a href="product-page(bundle).html">bundle</a></li>
                                                 <li><a href="product-page(image-swatch).html">image swatch </a></li>
                                                 <li><a href="product-page(vertical-tab).html">vertical tab</a></li>
-                                            </ul><span class="scroll-up" style="top: auto; left: 0px; margin-left: 0px; width: 224px; z-index: 2; margin-top: -186px; visibility: hidden; display: none;"><span class="scroll-up-arrow"></span></span><span class="scroll-down" style="display: none; top: auto; left: 0px; margin-left: 0px; width: 224px; z-index: 2; margin-top: 144px; visibility: hidden;"><span class="scroll-down-arrow"></span></span>
+                                            </ul><span class="scroll-up" style="top: auto; left: 0px; margin-left: 0px; width: 224px; z-index: 2; margin-top: -186px; visibility: hidden; display: none;"><span class="scroll-up-arrow"></span></span><span class="scroll-down" style="display: none; top: auto; left: 0px; margin-left: 0px; width: 224px; z-index: 2; margin-top: 144px; visibility: hidden;"><span class="scroll-down-arrow"></span></span> --}}
                                         </li>
-                                        <li><a href="#">shops<span class="sub-arrow"></span></a>
-                                            <ul>
+                                        <li><a href="#">shops</a>
+                                            {{-- <ul>
                                                 <li>
                                                     <a href="#">vendor<span class="sub-arrow"></span></a>
                                                     <ul>
@@ -658,7 +658,7 @@
                                                 <li><a href="404.html">404</a></li>
                                                 <li><a href="coming-soon.html">coming soon</a></li>
                                                 <li><a href="faq.html">FAQ</a></li>
-                                            </ul>
+                                            </ul> --}}
                                         </li>
                                         {{-- <li>
                                             <a href="#">blog<span class="sub-arrow"></span></a>
@@ -774,7 +774,7 @@
                                 </a>
                             </div>
                             <div class="brand-logo">
-                                <a href="index.html"><img src="{{asset('assets/images/icon/swivas.jpg')}}" class="img-fluid blur-up lazyloaded" alt=""></a>
+                                <a href="{{route('index')}}"><img src="{{asset('assets/images/icon/swivas.jpg')}}" class="img-fluid blur-up lazyloaded" alt=""></a>
                             </div>
                         </div>
                         <div>
@@ -1051,9 +1051,9 @@
                                         <div class="mobile-back text-right">Back<i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                                     </li>
                                     <li><a href="{{route('index')}}">Home</a></li>
-                                    <li class="mega" id="hover-cls">
-                                        <a href="#">latest<span class="sub-arrow"></span></a>
-                                        <ul class="mega-menu full-mega-menu">
+                                    <li>
+                                        <a href="#">latest</a>
+                                        {{-- <ul class="mega-menu full-mega-menu">
                                             <li>
                                                 <div class="container">
                                                     <div class="row">
@@ -1190,11 +1190,11 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
                                     <li>
                                         <a href="#">Trending</a>
-                                        <ul>
+                                        {{-- <ul>
                                             <li><a href="category-page(top-filter).html">top filter<span class="new-tag">new</span></a></li>
                                             <li><a href="category-page(modern).html">modern<span class="new-tag">new</span></a></li>
                                             <li><a href="category-page.html">left sidebar</a></li>
@@ -1209,11 +1209,11 @@
                                             <li><a href="category-page(3-grid).html">three grid</a></li>
                                             <li><a href="category-page(6-grid).html">six grid</a></li>
                                             <li><a href="category-page(list-view).html">list view</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
                                     <li>
                                         <a href="#">offers</a>
-                                        <ul>
+                                        {{-- <ul>
                                             <li><a href="product-page(360-view).html">360 view <span class="new-tag">new</span></a></li>
                                             <li><a href="product-page(video-thumbnail).html">video
                                                     thumbnail<span class="new-tag">new</span></a></li>
@@ -1259,78 +1259,10 @@
                                             <li><a href="product-page(bundle).html">bundle</a></li>
                                             <li><a href="product-page(image-swatch).html">image swatch </a></li>
                                             <li><a href="product-page(vertical-tab).html">vertical tab</a></li>
-                                        </ul><span class="scroll-up" style="top: auto; left: 0px; margin-left: 0px; width: 224px; z-index: 2; margin-top: -186px; visibility: hidden; display: none;"><span class="scroll-up-arrow"></span></span><span class="scroll-down" style="display: none; top: auto; left: 0px; margin-left: 0px; width: 224px; z-index: 2; margin-top: 144px; visibility: hidden;"><span class="scroll-down-arrow"></span></span>
+                                        </ul><span class="scroll-up" style="top: auto; left: 0px; margin-left: 0px; width: 224px; z-index: 2; margin-top: -186px; visibility: hidden; display: none;"><span class="scroll-up-arrow"></span></span><span class="scroll-down" style="display: none; top: auto; left: 0px; margin-left: 0px; width: 224px; z-index: 2; margin-top: 144px; visibility: hidden;"><span class="scroll-down-arrow"></span></span> --}}
                                     </li>
-                                    <li><a href="#">shops<span class="sub-arrow"></span></a>
-                                        <ul>
-                                            <li>
-                                                <a href="#">vendor<span class="sub-arrow"></span></a>
-                                                <ul>
-                                                    <li><a href="vendor-dashboard.html">vendor dashboard</a>
-                                                    </li>
-                                                    <li><a href="vendor-profile.html">vendor profile</a></li>
-                                                    <li><a href="become-vendor.html">become vendor</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="#">account<span class="sub-arrow"></span></a>
-                                                <ul>
-                                                    <li><a href="wishlist.html">wishlist</a></li>
-                                                    <li><a href="cart.html">cart</a></li>
-                                                    <li><a href="dashboard.html">Dashboard</a></li>
-                                                    <li><a href="login.html">login</a></li>
-                                                    <li><a href="register.html">register</a></li>
-                                                    <li><a href="contact.html">contact</a></li>
-                                                    <li><a href="forget_pwd.html">forget password</a></li>
-                                                    <li><a href="profile.html">profile</a></li>
-                                                    <li><a href="checkout.html">checkout</a></li>
-                                                    <li><a href="order-success.html">order success</a></li>
-                                                    <li><a href="order-tracking.html">order tracking<span class="new-tag">new</span></a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="#">portfolio<span class="sub-arrow"></span></a>
-                                                <ul>
-                                                    <li><a href="">grid<span class="sub-arrow"></span></a>
-                                                        <ul>
-                                                            <li><a href="grid-2-col.html">grid
-                                                                    2</a></li>
-                                                            <li><a href="grid-3-col.html">grid
-                                                                    3</a></li>
-                                                            <li><a href="grid-4-col.html">grid
-                                                                    4</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="">masonry<span class="sub-arrow"></span></a>
-                                                        <ul>
-                                                            <li><a href="masonary-2-grid.html">grid 2</a></li>
-                                                            <li><a href="masonary-3-grid.html">grid 3</a></li>
-                                                            <li><a href="masonary-4-grid.html">grid 4</a></li>
-                                                            <li><a href="masonary-fullwidth.html">full width</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="about-page.html">about us</a></li>
-                                            <li><a href="search.html">search</a></li>
-                                            <li><a href="review.html">review</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">compare<span class="sub-arrow"></span></a>
-                                                <ul>
-                                                    <li><a href="compare.html">compare</a></li>
-                                                    <li><a href="compare-2.html">compare-2</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="collection.html">collection</a></li>
-                                            <li><a href="lookbook.html">lookbook</a></li>
-                                            <li><a href="sitemap.html">site map</a>
-                                            </li>
-                                            <li><a href="404.html">404</a></li>
-                                            <li><a href="coming-soon.html">coming soon</a></li>
-                                            <li><a href="faq.html">FAQ</a></li>
-                                        </ul>
+                                    <li>
+                                        <a href="{{route('vendor.list')}}">shops</a> 
                                     </li>
                                     {{-- <li>
                                         <a href="#">blog<span class="sub-arrow"></span></a>

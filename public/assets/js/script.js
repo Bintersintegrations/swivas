@@ -1338,3 +1338,7 @@ function closeCart() {
 $(window).on('load', function() {
     $('[data-toggle="tooltip"]').tooltip()
 });
+
+/*=====================
+ 26. Select2
+ ==========================*/

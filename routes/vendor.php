@@ -1,6 +1,8 @@
 <?php
 
 Route::group(['as'=>'vendor.','namespace'=>'Vendor','prefix'=>'vendor'], function () {
+    Route::get('setup','ShopController@create')->name('create');
+    Route::post('setup','ShopController@setup')->name('setup');
     Route::get('dashboard','ShopController@dashboard')->name('dashboard');
     Route::get('/shop','ShopController@index')->name('view');
     Route::get('profile','ShopController@profile')->name('profile');

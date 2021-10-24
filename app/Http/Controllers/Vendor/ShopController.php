@@ -2,23 +2,41 @@
 
 namespace App\Http\Controllers\Vendor;
 
+use App\Country;
+use App\Vendor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ShopController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['create','setup','list']);
+    }
+
+    public function list(){
+        $vendors = Vendor::all();
+        return view('frontend.outside.shop.list',compact('vendors'));
     }
     
-    public function index(){ 
-        return view('frontend.outside.shop.vendor');
+    public function create(){
+        $countries = Country::all();
+        return view('frontend.outside.shop.create',compact('countries'));
     }
+
+    public function setup(Request $request){
+        return redirect()->route('vendor.dashboard');
+    }
+
+    //public view of shop
+    public function index(Vendor $vendor){ 
+        return view('frontend.outside.shop.view',compact('vendor'));
+    }
+
+    //vendor dashboard
     public function dashboard(){
         return view('frontend.inside.vendor.dashboard');
     }
     
-
     public function profile(){
         $user = Auth::user();
         $countries = Country::all();
