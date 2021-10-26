@@ -87,26 +87,10 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="address">Address</label>
-                                        <input type="text" class="form-control mb-0" name="address" placeholder="Street Address" value="{{$user->address ?? old('address')}}" id="address">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
                                         <label for="country">Country *</label>
                                         <select class="form-control" id="country" name="country_id" disabled>
                                             @foreach ($countries as $country)
                                                 <option value="{{$country->id}}" @if($user->country_id == $country->id) selected @endif>{{$country->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="city">City *</label>
-                                        <select class="form-control" id="city" name="city_id">
-                                            @foreach ($user->country->cities as $city)
-                                                <option value="{{$city->id}}">{{$city->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -122,6 +106,17 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="city">City *</label>
+                                        <select class="form-control select2" id="city" name="city_id">
+                                            @foreach ($user->country->cities as $city)
+                                                <option value="{{$city->id}}">{{$city->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="language">Language</label>
                                         <select class="form-control" id="language" name="language_id">
@@ -141,7 +136,7 @@
                                             <option value="Canada/Ontario">Canada/Ontario</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
                                 {{-- <div class="col-md-6">
                                     <div class="input-group mb-3 px-0">
                                         <div class="input-group-prepend">
@@ -191,7 +186,7 @@
 @endsection
 
 @push('scripts')
-
+    
     <!-- dare picker js -->
     <script src="{{asset('assets/js/date-picker.js')}}"></script>
     
@@ -201,9 +196,7 @@
         });
         
     </script>
-    {{-- <script>
-        $('.select2').select2({
-            'placeholder':'Select Attributes',
-        });
-    </script> --}}
+    <script>
+        $('.select2').select2();
+    </script>
 @endpush

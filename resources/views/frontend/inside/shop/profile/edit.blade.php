@@ -37,7 +37,7 @@
                         <div class="tab-content p-4" id="top-tabContent">
                             <div class="tab-pane fade active show" id="top-profile" role="tabpanel" aria-labelledby="top-profile-tab">
                                 <h5 class="f-w-600">Company Details</h5>
-                                <form class="theme-form" action="{{route('vendor.profile')}}" method="POST" enctype="multipart/form-data">@csrf
+                                <form class="theme-form" action="{{route('shop.profile')}}" method="POST" enctype="multipart/form-data">@csrf
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group">

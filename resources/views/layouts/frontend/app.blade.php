@@ -59,14 +59,14 @@
                             <div class="header-contact">
                                 <ul>
                                     <li>Welcome to Swivas Multishops</li>
-                                    <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: +234-816-749-5008</li>
+                                    <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: +234-817-933-3448</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="header-contact text-right">
                                 <ul>
-                                    <li><a @guest href="{{route('sell')}}" @else href="{{route('vendor.dashboard')}}" @endguest class="text-white"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Sell</a></li>
+                                    <li><a href="{{route('sell')}}" class="text-white"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Sell</a></li>
                                     <li><a href="#" class="text-white"><i class="fa fa-sitemap" aria-hidden="true"></i>Multi-Level Network</a></li>
                                     <li><a href="#" class="text-white"><i class="fa fa-truck" aria-hidden="true"></i>Track Order</a></li>
                                     
@@ -732,14 +732,14 @@
                         <div class="header-contact">
                             <ul>
                                 <li>Welcome to Swivas Multishops</li>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: +234-816-749-5008</li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: +234-817-933-3448</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="header-contact text-right">
                             <ul class="">
-                                <li><a @guest href="{{route('sell')}}" @else href="{{route('vendor.dashboard')}}" @endguest class="text-white"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Sell</a></li>
+                                <li><a href="{{route('sell')}}" class="text-white"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Sell</a></li>
                                 <li><a href="#" class="text-white"><i class="fa fa-sitemap" aria-hidden="true"></i>Multi-Level Network</a></li>
                                 <li><a href="#" class="text-white"><i class="fa fa-truck" aria-hidden="true"></i>Track Order</a></li>
                                 @guest
@@ -1262,7 +1262,7 @@
                                         </ul><span class="scroll-up" style="top: auto; left: 0px; margin-left: 0px; width: 224px; z-index: 2; margin-top: -186px; visibility: hidden; display: none;"><span class="scroll-up-arrow"></span></span><span class="scroll-down" style="display: none; top: auto; left: 0px; margin-left: 0px; width: 224px; z-index: 2; margin-top: 144px; visibility: hidden;"><span class="scroll-down-arrow"></span></span> --}}
                                     </li>
                                     <li>
-                                        <a href="{{route('vendor.list')}}">shops</a> 
+                                        <a href="{{route('shop.list')}}">shops</a> 
                                     </li>
                                     {{-- <li>
                                         <a href="#">blog<span class="sub-arrow"></span></a>
@@ -1345,7 +1345,7 @@
                             <ul class="contact-list">
                                 <li><i class="fa fa-map-marker"></i>17, Dele Aiyedun Close, Ogba Lagos
                                 </li>
-                                <li><i class="fa fa-phone"></i>Call Us: +234-816-749-5008</li>
+                                <li><i class="fa fa-phone"></i>Call Us: +234-817-933-3448</li>
                                 <li><i class="fa fa-envelope-o"></i>Email Us: <a href="#">business@swivas.com</a></li>
                             </ul>
                         </div>

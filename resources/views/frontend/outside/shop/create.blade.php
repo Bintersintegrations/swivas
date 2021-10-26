@@ -23,16 +23,16 @@
                         </span>
                     </div>
                     <div class="block-content">
-                        <ul class="nav nav-tabs" id="top-tab" role="tablist">
-                            <li class="active show w-100"><a href="#welcome" data-toggle="tab">Welcome</a></li>
+                        <ul class="nav nav-tabs setupmenu" id="top-tab" role="tablist">
+                            <li class="active show welcome w-100"><a href="#welcome" data-toggle="tab">Welcome</a></li>
                             
-                            <li class="w-100"><a href="#owner" data-toggle="tab">Owner</a></li>
+                            <li class="w-100 owner"><a href="#owner" data-toggle="tab">Owner</a></li>
                            
-                            <li class="w-100"><a href="#details" data-toggle="tab">Details</a></li>
+                            <li class="w-100 details"><a href="#details" data-toggle="tab">Details</a></li>
                             
-                            <li class="w-100"><a href="#address" data-toggle="tab">Location</a></li>
-                            <li class="w-100"><a href="#identification" data-toggle="tab">Identification</a></li>
-                            <li class="w-100"><a href="#bankaccount" data-toggle="tab">Bank Account</a></li>
+                            <li class="w-100 address"><a href="#address" data-toggle="tab">Location</a></li>
+                            <li class="w-100 identification"><a href="#identification" data-toggle="tab">Identification</a></li>
+                            <li class="w-100 bankaccount"><a href="#bankaccount" data-toggle="tab">Bank Account</a></li>
                             
                         </ul>
                     </div>
@@ -76,8 +76,8 @@
                                                 <div class="form-group ">
                                                     {{-- <label class="col-xl-3 col-md-4">Free Shipping</label> --}}
                                                     <div class="checkbox checkbox-primary ">
-                                                        <input id="checkbox-primary-1" type="checkbox" data-original-title="" title="" name="shipping" value="1">
-                                                        <label for="checkbox-primary-1 px-2"> Allow Free Shipping</label>
+                                                        <input id="checkbox-primary-1" type="checkbox" data-original-title="" title="" name="agreement" value="1">
+                                                        <label for="checkbox-primary-1 px-2"> I have read the agreement</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -362,7 +362,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary previous " id="goto-address">previous</button>
+                                        <a href="javascript:void(0)" class="btn btn-primary previous " id="goto-address">previous</a>
                                         <a href="javascript:void(0)" class="btn btn-dark next float-right" id="goto-bankaccount">next</a>
                                         
                                     </div>
@@ -483,24 +483,24 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $('#goto-welcome').on('click',function(){
-            $('#welcome').addClass('active show').siblings().removeClass('active show');
-        });
-        $('#goto-owner').on('click',function(){
-            $('#owner').addClass('active show').siblings().removeClass('active show');
-        });
-        $('#goto-details').on('click',function(){
-            $('#details').addClass('active show').siblings().removeClass('active show');
-        });
+        $('.next').on('click',function(){
+            $('.tab-pane').removeClass('active show');
+            $(this).closest('.tab-pane').next().addClass('active show');
+            $('li.'+$(this).closest('.tab-pane').attr('id')).removeClass('active show');
+            $('li.'+$(this).closest('.tab-pane').next().attr('id')).addClass('active show');
+            $(window).scrollTop(0);
+        })
+        $('.previous').on('click',function(){
+            $('.tab-pane').removeClass('active show');
+            $(this).closest('.tab-pane').prev().addClass('active show');
+            $('li.'+$(this).closest('.tab-pane').attr('id')).removeClass('active show');
+            $('li.'+$(this).closest('.tab-pane').prev().attr('id')).addClass('active show');
+            $(window).scrollTop(0);
+        })
+        $('ul.setupmenu li').on('click',function(){
+            $('ul.setupmenu li').removeClass('active show');
+            $(this).addClass('active show');
+        })
         
-        $('#goto-address').on('click',function(){
-            $('#address').addClass('active show').siblings().removeClass('active show');
-        });
-        $('#goto-identification').on('click',function(){
-            $('#identification').addClass('active show').siblings().removeClass('active show');
-        });
-        $('#goto-bankaccount').on('click',function(){
-            $('#bankaccount').addClass('active show').siblings().removeClass('active show');
-        });
     </script>
 @endpush

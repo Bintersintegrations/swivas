@@ -24,7 +24,7 @@ class ShopController extends Controller
     }
 
     public function setup(Request $request){
-        return redirect()->route('vendor.dashboard');
+        return redirect()->route('shop.dashboard');
     }
 
     //public view of shop
@@ -34,13 +34,13 @@ class ShopController extends Controller
 
     //vendor dashboard
     public function dashboard(){
-        return view('frontend.inside.vendor.dashboard');
+        return view('frontend.inside.shop.dashboard');
     }
     
     public function profile(){
         $user = Auth::user();
         $countries = Country::all();
-        return view('frontend.inside.profile.vendor.edit',compact('user','countries'));
+        return view('frontend.inside.profile.shop.edit',compact('user','countries'));
         
     }
     public function saveprofile(Request $request){

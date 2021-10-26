@@ -1,6 +1,4 @@
-ajax get state from country selected..in create & edit giving, offer
-ajax get city from state selected..in create & edit giving, offer
-
+add to address book.. delete function and modal (are you sure you want to delete)
 
 checkout
 

@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class SalesController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth')->only(['orders','orderDetails']);
     }
     public function cart(){
         return view('frontend.outside.sale.cart');
@@ -30,7 +30,10 @@ class SalesController extends Controller
         return view('frontend.outside.sale.wishlist');
     }
     public function orders(){
-        dd('hold');
+        return view('frontend.inside.user.orders');
+    }
+    public function orderDetails(){
+        return view('frontend.inside.user.orderDetails');
     }
 
 }

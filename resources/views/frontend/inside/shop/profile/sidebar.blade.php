@@ -19,9 +19,9 @@
                     Products
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('vendor.product.create')}}">New Product</a>
-                    <a class="dropdown-item" href="{{route('vendor.products')}}">All Products</a>
-                    <a class="dropdown-item" href="{{route('vendor.product.orders')}}">Orders</a>
+                    <a class="dropdown-item" href="{{route('shop.product.create')}}">New Product</a>
+                    <a class="dropdown-item" href="{{route('shop.products')}}">All Products</a>
+                    <a class="dropdown-item" href="{{route('shop.product.orders')}}">Orders</a>
                 </div>
             </li>
             
@@ -31,12 +31,12 @@
                     Blog
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('vendor.posts.create')}}">New Post</a>
-                    <a class="dropdown-item" href="{{route('vendor.posts')}}">All Posts</a>
-                    <a class="dropdown-item" href="{{route('vendor.posts.comments')}}">Comments</a>
+                    <a class="dropdown-item" href="{{route('shop.posts.create')}}">New Post</a>
+                    <a class="dropdown-item" href="{{route('shop.posts')}}">All Posts</a>
+                    <a class="dropdown-item" href="{{route('shop.posts.comments')}}">Comments</a>
                 </div>
             </li>
-            <li class="nav-item"><a class="nav-link" href="{{route('vendor.coupons')}}">Coupon</a>
+            <li class="nav-item"><a class="nav-link" href="{{route('shop.coupons')}}">Coupon</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -51,7 +51,7 @@
             
             <li class="nav-item"><a class="nav-link" href="{{route('profile')}}">profile</a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="{{route('vendor.settings')}}">settings</a>
+            <li class="nav-item"><a class="nav-link" href="{{route('shop.settings')}}">settings</a>
             </li>
             <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout"
                     href="">logout</a>

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
+use App\State;
+use App\Address;
 use App\Country;
 use App\Language;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Rules\OldPasswordRule;
 use App\Rules\PasswordLengthRule;
@@ -12,7 +16,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Notifications\UserChangesNotification;
 
 class UserController extends Controller
 {
@@ -34,21 +37,19 @@ class UserController extends Controller
     }
 
     public function saveprofile(Request $request){
-        //dd($request->all());
+        // dd($request->all());
         $user = Auth::user();
         if($request->filled("firstname")) $user->firstname = $request->firstname;
         if($request->filled("surname")) $user->surname = $request->surname;
         if($request->filled("mobile")) $user->mobile = $request->mobile;
         if($request->filled("email")) $user->email = $request->email;
-        if($request->filled("dob")) $user->dob = $request->dob;
+        if($request->filled("dob")) $user->dob = Carbon::createFromFormat('m/d/Y',$request->dob);
         if($request->filled("gender")) $user->gender = $request->gender;
-        if($request->filled("address")) $user->address = $request->address;
+        // if($request->filled("address")) $user->address = $request->address;
         if($request->filled("state_id")) $user->state_id = $request->state_id;
         if($request->filled("city_id")) $user->city_id = $request->city_id;
-        if($request->filled("language")) $user->language_id = $request->language_id;
-        if($request->filled("timezone")) $user->timezone = $request->timezone;
         $user->save();
-        return redirect()->route('profile');
+        return redirect()->back()->with(['flash_type' => 'success','flash_msg'=>'Profile Saved successfully']); //with success
     }
 
     public function password(){
@@ -60,7 +61,7 @@ class UserController extends Controller
         $user = Auth::user();
         $validator = Validator::make($request->all(), [
             'oldpassword' => 'required|string',
-            'password' => ['required','string','confirmed',new PasswordLengthRule,new StrongPasswordRule,new OldPasswordRule($user)]
+            'password' => ['required','string','confirmed']
         ]);
         if ($validator->fails()) {
             return redirect()->back()
@@ -71,8 +72,6 @@ class UserController extends Controller
         if(Hash::check($request->oldpassword, $user->password)){
             $user->password = Hash::make($request->password);
             $user->save();
-            $user->password_histories()->create(['password'=> $user->password]);
-            // $user->notify(new UserChangesNotification('password'));
             return redirect()->back()->with(['flash_type' => 'success','flash_msg'=>'Password changed successfully']); //with success
         }
         else return redirect()->back()->withErrors(['oldpassword' => 'Your old password is wrong'])->with(['flash_type' => 'danger','flash_msg'=>'Something went wrong']);
@@ -81,28 +80,20 @@ class UserController extends Controller
     public function address(){
         $user = Auth::user();
         $countries = Country::all();
-        return view('frontend.inside.user.address',compact('user','countries'));
+        $states = State::all();
+        $cities = City::all();
+        return view('frontend.inside.user.address',compact('user','countries','states','cities'));
     }
     
     public function manageAddress(Request $request){
-        $validator = Validator::make($request->all(), [
-            'oldpin' => 'required|string',
-            'newpin' => 'required|string|confirmed',
-        ]);
-        if ($validator->fails()) {
-            return redirect()->back()
-                        ->withErrors($validator)
-                        ->withInput()->with(['flash_type' => 'danger','flash_msg'=>'Something went wrong']);
-        }
-        if(Hash::check($request->oldpin, Auth::user()->accesspin)){
-            $user = Auth::user();
-            $user->accesspin = Hash::make($request->newpin);
-            $user->save();
-            // $user->notify(new UserChangesNotification('pin'));
-            return redirect()->back()->with(['flash_type' => 'success','flash_msg'=>'Pin changed successfully']); //with success
-        }
-        else return redirect()->back()->withErrors(['oldpassword' => 'Your old pin is wrong'])->with(['flash_type' => 'danger','flash_msg'=>'Something went wrong']);
+        // dd($request->all());
+        $user = Auth::user();
+        $address = Address::updateOrCreate(['user_id'=> $user->id ,'description'=> $request->description],
+                    ['country_id'=> $request->country_id,'state_id'=> $request->state_id,'city_id'=> $request->city_id,'street'=> $request->street,'contact_name'=> $request->contact,'contact_number'=> $request->mobile]);
+        return redirect()->back()->with(['flash_type' => 'success','flash_msg'=>'Address Saved successfully']); //with success
     }
+
+    
     
 
 }

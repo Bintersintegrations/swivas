@@ -17,7 +17,7 @@
                             <div class="card-body">
                                 <div class="top-sec">
                                     <h3>all posts</h3>
-                                    <a href="{{route('vendor.posts.create')}}" class="btn btn-sm btn-solid">add posts</a>
+                                    <a href="{{route('shop.posts.create')}}" class="btn btn-sm btn-solid">add posts</a>
                                 </div>
                                 <table class="table-responsive-md table mb-0">
                                     <thead>
@@ -45,12 +45,12 @@
                                                 <td>
                                                     @if($post->status)
                                                         <span class="badge badge-success">Published</span>
-                                                        | <form action="{{route('vendor.posts.status')}}" method="POST" class="d-inline">@csrf
+                                                        | <form action="{{route('shop.posts.status')}}" method="POST" class="d-inline">@csrf
                                                             <input type="hidden" name="post_id" value="{{$post->id}}">
                                                             <button class="btn btn-sm btn-warning border-rounded">Make Draft</button></form>
                                                     @else
                                                         <span class="badge badge-warning">Draft</span>
-                                                        | <form action="{{route('vendor.posts.status')}}" method="POST" class="d-inline">@csrf
+                                                        | <form action="{{route('shop.posts.status')}}" method="POST" class="d-inline">@csrf
                                                             <input type="hidden" name="post_id" value="{{$post->id}}">
                                                             <button class="btn btn-sm btn-success border-rounded">Publish Now</button></form> 
                                                     @endif
@@ -59,7 +59,7 @@
                                                 </td>
                                                 <td><i class="fa fa-eye">2</i> <i class="fa fa-comment">2</i></td>
                                                 <td>
-                                                    <a href="{{route('vendor.posts.edit',$post)}}" class="btn btn-sm btn-success" title="pen"><i class="fa fa-pencil"></i></a>
+                                                    <a href="{{route('shop.posts.edit',$post)}}" class="btn btn-sm btn-success" title="pen"><i class="fa fa-pencil"></i></a>
                                                     <button class="btn btn-sm btn-primary"  title="Delete" data-toggle="modal" data-target="#deletepost{{$post->id}}"><i class="fa fa-trash"></i></button>
                                                     <div class="modal fade" id="deletepost{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="deletepost{{$post->id}}" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
@@ -68,7 +68,7 @@
                                                                     <h5 class="modal-title f-w-600" id="exampleModalLabel">Delete Post</h5>
                                                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                                 </div>
-                                                                <form class="needs-validation" action="{{route('vendor.posts.delete')}}" method="POST">@csrf
+                                                                <form class="needs-validation" action="{{route('shop.posts.delete')}}" method="POST">@csrf
                                                                     <div class="modal-body">
                                                                         <h5>Are you sure you want to delete post titled: {{$post->title}} </h5>
                                                                         <input type="hidden" name="post_id" value="{{$post->id}}">

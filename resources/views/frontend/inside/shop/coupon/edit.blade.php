@@ -20,7 +20,7 @@
                                         <li class="nav-item"><a class="nav-link active show" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true" data-original-title="" title="">General</a></li>
                                         <li class="nav-item"><a class="nav-link" id="restriction-tabs" data-toggle="tab" href="#restriction" role="tab" aria-controls="restriction" aria-selected="false" data-original-title="" title="">Restriction</a></li>
                                     </ul>
-                                    <form class="needs-validation" action="{{route('vendor.coupon.save')}}" method="POST">@csrf
+                                    <form class="needs-validation" action="{{route('shop.coupon.save')}}" method="POST">@csrf
                                         <div class="tab-content p-5" id="myTabContent">
                                             <div class="tab-pane fade active show" id="general" role="tabpanel" aria-labelledby="general-tab">
                                                 

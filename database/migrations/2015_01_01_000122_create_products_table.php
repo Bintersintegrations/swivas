@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('vendor_id')->default(1);
+            $table->unsignedBigInteger('shop_id')->default(1);
             $table->text('name');
             $table->text('slug');
             $table->text('permalink');

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\City;
 use Illuminate\Http\Request;
 use Ixudra\Curl\Facades\Curl;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     
     public function __construct(){
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth')->only('dashboards');
     }
 
     public function index(){
@@ -23,6 +23,14 @@ class HomeController extends Controller
         return redirect(route('admin.dashboard'));
         else
         return redirect(route('user.dashboard'));
+    }
+    public function getCities(Request $request){
+        $cities = City::where('state_id',$request->state_id)->get();
+        return view('layouts.cities',compact('cities'));
+    }
+    public function getStates(Request $request){
+        $states = State::where('country_id',$request->country_id)->get();
+        return view('layouts.states',compact('states'));
     }
     // public function woocommerce(){
     //     // $response = Curl::to('https://swivas.com/wp-json/wc/v3/products')

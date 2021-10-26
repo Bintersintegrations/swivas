@@ -48,7 +48,7 @@ class CouponController extends Controller
         $coupon->status = $request->status ? true:false;
         $coupon->is_global = false;
         $coupon->save();
-        return redirect()->route('vendor.coupons')->with(['flash_type' => 'success','flash_msg' => 'Coupon Created Successfully']);
+        return redirect()->route('shop.coupons')->with(['flash_type' => 'success','flash_msg' => 'Coupon Created Successfully']);
     }
     public function edit(Coupon $coupon){
         $user = Auth::user();
@@ -79,7 +79,7 @@ class CouponController extends Controller
         $coupon->status= $request->status ? true:false;
         $coupon->is_global = false;
         $coupon->save();
-        return redirect()->route('vendor.coupons')->with(['flash_type' => 'success','flash_msg' => 'Coupon Edited Successfully']);
+        return redirect()->route('shop.coupons')->with(['flash_type' => 'success','flash_msg' => 'Coupon Edited Successfully']);
     
         
     }

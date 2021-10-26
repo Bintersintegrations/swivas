@@ -65,7 +65,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                @include('frontend.inside.sidebar')
+                @include('frontend.inside.shop.sidebar')
             </div>
             <div class="col-lg-9">
                 <div class="row">
@@ -74,7 +74,7 @@
                             <div class="card-body">
                                 <div class="dashboard-box">
                                     <h3>Add Products</h3>
-                                    <form action="{{route('vendor.product.save')}}" method="POST">@csrf
+                                    <form action="{{route('shop.product.save')}}" method="POST">@csrf
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-12 col-xs-12">
                                                 <div class="row">

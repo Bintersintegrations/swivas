@@ -50,7 +50,7 @@ class BlogController extends Controller
         $post->save();
         if($request->featured_image)
         $post->media()->attach($request->featured_image);
-        return redirect()->route('vendor.posts')->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=>'Post Created']); //with success;
+        return redirect()->route('shop.posts')->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=>'Post Created']); //with success;
     }
 
     public function edit(Post $post){

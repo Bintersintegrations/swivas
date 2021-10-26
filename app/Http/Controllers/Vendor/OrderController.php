@@ -7,5 +7,7 @@ use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
-    //
+    public function list(){
+        return view('frontend.inside.shop.order.purchase');
+    }
 }

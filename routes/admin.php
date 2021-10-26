@@ -62,7 +62,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.','namespace'=>'Backend','middlewar
     Route::get('vendor/edit','VendorManagementController@editvendor')->name('vendors.edit');
     Route::post('vendor/save','VendorManagementController@savevendor')->name('vendors.save');
     Route::get('vendor/applications','VendorManagementController@applications')->name('vendors.applications');    
-    Route::get('vendor/application/view','VendorManagementController@applicationview')->name('vendor.application.view');   
+    Route::get('vendor/application/view','VendorManagementController@applicationview')->name('shop.application.view');   
     
     Route::get('plans','MembershipManagementController@listplans')->name('plans.list');
     Route::get('plan/create','MembershipManagementController@createplan')->name('plans.create');

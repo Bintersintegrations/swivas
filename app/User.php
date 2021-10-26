@@ -4,12 +4,11 @@ namespace App;
 
 
 use App\City;
-
 use App\Post;
 use App\Role;
-
+use App\Shop;
 use App\State;
-
+use App\Address;
 use App\Country;
 use App\Message;
 use App\Payment;
@@ -67,6 +66,9 @@ class User extends Authenticatable
         return 'users.'.$this->id;
     }
 
+    public function addresses(){
+        return $this->hasMany(Address::class);
+    }
     public function country(){
         return $this->belongsTo(Country::class);
     }
@@ -110,6 +112,9 @@ class User extends Authenticatable
  
     public function posts(){
         return $this->hasMany(Post::class);
+    }
+    public function shops(){
+        return $this->hasMany(Shop::class);
     }
     
 }

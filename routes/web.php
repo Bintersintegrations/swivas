@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/','HomeController@index')->name('index');
-Route::get('shops','Vendor\ShopController@list')->name('vendor.list');
+Route::get('shops','Vendor\ShopController@list')->name('shop.list');
 
 // Route::get('woocommerce/products','HomeController@woocommerce');
 // Route::get('test','HomeController@test');
@@ -42,7 +42,8 @@ Route::post('support','SupportThreadController@save')->name('support');
 Auth::routes();
 
 Route::get('dashboard', 'HomeController@dashboards')->name('home');
-Route::get('profile','HomeController@profile')->name('profile');
+Route::post('getCities','HomeController@getCities')->name('getCities');
+Route::post('getStates','HomeController@getStates')->name('getStates');
 Route::post('orphanage/charity/register','HomeController@orphanageCharity')->name('orphanage.charity');
  
 //USER PAGES
@@ -56,8 +57,10 @@ Route::group(['as'=>'user.'], function () {
     Route::post('user/change-password','UserController@changePassword')->name('changePassword');
     
     Route::get('orders','SalesController@orders')->name('orders');
+    Route::get('order/details','SalesController@orderDetails')->name('order.details');
     Route::get('wishlist','SalesController@wishlist')->name('wishlist');
-    Route::get('my-giveaway-request','UserController@give_request')->name('giverequest');
+
+    // Route::get('network','')
 
     Route::group(['prefix'=> 'messages','as'=> 'messages.'],function(){
         Route::get('inbox','MessageController@inbox')->name('inbox');
@@ -70,7 +73,7 @@ Route::group(['as'=>'user.'], function () {
 });
 
 //VENDOR PAGES
-include('vendor.php');
+include('shop.php');
 include('admin.php');
 
 

@@ -12,46 +12,38 @@
     <div class="faq-tab">
         <ul class="nav nav-tabs" id="top-tab" role="tablist">
             <li class="nav-item"><a data-toggle="tab" class="nav-link active"
-                    href="{{route('user.dashboard')}}">dashboard</a>
+                    href="{{route('shop.dashboard')}}">dashboard</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     Products
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('vendor.product.create')}}">New Product</a>
-                    <a class="dropdown-item" href="{{route('vendor.products')}}">All Products</a>
-                    <a class="dropdown-item" href="{{route('vendor.product.orders')}}">Orders</a>
+                    <a class="dropdown-item" href="{{route('shop.product.create')}}">New Product</a>
+                    <a class="dropdown-item" href="{{route('shop.products')}}">All Products</a>
+                    
                 </div>
             </li>
             
             
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    Blog
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('vendor.posts.create')}}">New Post</a>
-                    <a class="dropdown-item" href="{{route('vendor.posts')}}">All Posts</a>
-                    <a class="dropdown-item" href="{{route('vendor.posts.comments')}}">Comments</a>
-                </div>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="{{route('vendor.coupons')}}">Coupon</a>
+            
+            <li class="nav-item"><a class="nav-link" href="{{route('shop.orders')}}">Orders</a>
+            <li class="nav-item"><a class="nav-link" href="{{route('shop.coupons')}}">Coupon</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     Messages
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('user.messages.inbox')}}">Inbox</a>
-                    <a class="dropdown-item" href="{{route('user.messages.draft')}}">Draft</a>
-                    <a class="dropdown-item" href="{{route('user.messages.sent')}}">Sent</a>
+                    <a class="dropdown-item" href="#">Inbox</a>
+                    <a class="dropdown-item" href="#">Draft</a>
+                    <a class="dropdown-item" href="#">Sent</a>
                 </div>
             </li>
             
-            <li class="nav-item"><a class="nav-link" href="{{route('profile')}}">profile</a>
+            <li class="nav-item"><a class="nav-link" href="{{route('shop.profile')}}">profile</a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="{{route('vendor.settings')}}">settings</a>
+            <li class="nav-item"><a class="nav-link" href="{{route('shop.settings')}}">settings</a>
             </li>
             <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout"
                     href="">logout</a>

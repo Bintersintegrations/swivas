@@ -221,7 +221,7 @@
         function deleteFile(dfile){
             $.ajax({
                 type: "POST",
-                url:'{{route("vendor.media.delete")}}',
+                url:'{{route("shop.media.delete")}}',
                     data:{
                         '_token' : $('meta[name="csrf-token"]').attr('content'),
                         'file_name': dfile

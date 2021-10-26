@@ -24,7 +24,7 @@
                             <div class="card-body">
                                 <div class="dashboard-box">
                                     <h3>Add Post</h3>
-                                    <form action="{{route('vendor.posts.save')}}" method="POST">@csrf
+                                    <form action="{{route('shop.posts.save')}}" method="POST">@csrf
                                         <div class="row">
                                             <div class="col-lg-7 col-sm-12 col-xs-12">
                                                 <div class="row">
@@ -231,7 +231,7 @@
         function deleteFile(dfile){
             $.ajax({
                 type: "POST",
-                url:'{{route("vendor.media.delete")}}',
+                url:'{{route("shop.media.delete")}}',
                     data:{
                         '_token' : $('meta[name="csrf-token"]').attr('content'),
                         'file_name': dfile

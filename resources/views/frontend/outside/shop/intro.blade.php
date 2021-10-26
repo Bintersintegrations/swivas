@@ -243,18 +243,28 @@
                     India.
                     Selling on Multikart.com is easy and absolutely free. All you need is to register, list your
                     catalogue and start selling your products.</p>
-                <form>
+                @if (Auth::check() && Auth::user()->shops->isNotEmpty())
+
                     <div class="row">
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" placeholder="Email ID">
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="form-control"
-                                placeholder="Phone Number">
-                        </div>
+                        @foreach (Auth::user()->shops as $shop)
+                            <div class="col-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title h4">
+                                            {{$shop->name}}
+                                        </div>
+                                        <div>
+                                            {{$shop->description}}
+                                        </div>
+                                        <a href="{{route('shop.dashboard',$shop)}}" class="btn btn-warning">Open Shop</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                </form>
-                <a href="{{route('vendor.create')}}" class="btn btn-solid btn-sm">start selling</a>
+                @else
+                <a href="{{route('shop.create')}}" class="btn btn-solid btn-sm">start selling</a>
+                @endif
             </div>
         </div>
     </div>

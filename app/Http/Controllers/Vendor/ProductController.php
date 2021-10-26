@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Vendor;
 
-use App\Item;
-use App\Color;
 use App\Product;
+use App\Color;
 use App\Category;
 use App\Attribute;
 use Illuminate\Http\Request;
@@ -17,79 +16,77 @@ class ProductController extends Controller
     {
         $this->middleware('auth');
     } 
-    public function list(){
-        $user = Auth::user();
-        $products = $user->products;
-        // dd($products[1]->image);
-        return view('frontend.inside.product.list',compact('products'));
+    public function list(Vendor $vendor){
+        $products = $vendor->products;
+        return view('frontend.inside.shop.product.list',compact('products'));
     }
-    public function create(){
+    public function create(Vendor $vendor){
         $categories = Category::all();
         $colors = Color::all();
         $attributes = Attribute::all();
-        return view('frontend.inside.product.create',compact('categories','colors','attributes'));
+        return view('frontend.inside.shop.product.create',compact('categories','colors','attributes'));
     }
-    public function save(Request $request){
+    public function save(Vendor $vendor,Request $request){
         // dd($request->all());
         $user = Auth::user();
-        $item = Item::create(['user_id'=> $user->id,'name'=> $request->title,'description'=> $request->description,'category_id'=> $request->category_id,'currency_id'=> $user->currency_id]);
-        //dd($item->category->attributes->pluck('slug')->toArray());
-        foreach($request->item_media as $key => $media){
-            if($media) $item->media()->attach($media);
+        $product = Product::create(['user_id'=> $user->id,'name'=> $request->title,'description'=> $request->description,'category_id'=> $request->category_id,'currency_id'=> $user->currency_id]);
+        //dd($product->category->attributes->pluck('slug')->toArray());
+        foreach($request->product_media as $key => $media){
+            if($media) $product->media()->attach($media);
         }
         for($i = 0; $i < count($request->price); $i++){
             $product = new Product;
-            $product->item_id = $item->id;
+            $product->product_id = $product->id;
             $product->image_id = $request->product_image[$i];
             $product->quantity = $request->quantity[$i];
             $product->available = $request->quantity[$i];
             $product->amount = $request->price[$i];
             $product->save();
-            foreach(Attribute::wherein('slug',$item->category->attributes->pluck('slug')->toArray())->get() as $attrib){
+            foreach(Attribute::wherein('slug',$product->category->attributes->pluck('slug')->toArray())->get() as $attrib){
                 if($request->input($attrib->slug)[$i]) $product->attributes()->attach($attrib->id,['result'=> $request->input($attrib->slug)[$i]]);
             }
         }
-        return redirect()->route('vendor.products')->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=> 'Item created successfully']);
+        return redirect()->route('shop.products')->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=> 'Product created successfully']);
     }
-    public function edit(Item $item){
-        // dd($item->category->attributes->pluck('slug')->toArray());
+    public function edit(Vendor $vendor,Product $product){
+        // dd($product->category->attributes->pluck('slug')->toArray());
         $categories = Category::all();
         $colors = Color::all();
         $attributes = Attribute::all();
-        // dd($item->media->where('format','video')[0]);
-        return view('frontend.inside.product.edit',compact('categories','colors','attributes','item'));
+        // dd($product->media->where('format','video')[0]);
+        return view('frontend.inside.shop.product.edit',compact('categories','colors','attributes','product'));
     }
-    public function update(Item $item,Request $request){
+    public function update(Vendor $vendor,Product $product,Request $request){
         // dd($request->all());
-        if($request->title) $item->name = $request->title;
-        if($request->description) $item->description = $request->description;
-        if($request->category_id) $item->category_id = $request->category_id;
-        $item->save();
-        $item->media()->detach();
-        foreach($request->item_media as $media){
-            if($media) $item->media()->attach($media);
+        if($request->title) $product->name = $request->title;
+        if($request->description) $product->description = $request->description;
+        if($request->category_id) $product->category_id = $request->category_id;
+        $product->save();
+        $product->media()->detach();
+        foreach($request->product_media as $media){
+            if($media) $product->media()->attach($media);
         }
-        foreach($item->products as $prod){
+        foreach($product->products as $prod){
             $prod->attributes()->detach();
         }
-        foreach($item->products as $prod){
+        foreach($product->products as $prod){
             $prod->delete();
         }
         for($i = 0; $i < count($request->price); $i++){
             $product = new Product;
-            $product->item_id = $item->id;
+            $product->product_id = $product->id;
             $product->image_id = $request->product_image[$i];
             $product->quantity = $request->quantity[$i];
             $product->available = $request->quantity[$i];
             $product->amount = $request->price[$i];
             $product->save();
-            foreach(Attribute::wherein('slug',$item->category->attributes->pluck('slug')->toArray())->get() as $slug){
+            foreach(Attribute::wherein('slug',$product->category->attributes->pluck('slug')->toArray())->get() as $slug){
                 if($request->input($slug->slug)[$i]) $product->attributes()->attach($slug->id,['result'=> $request->input($slug->slug)[$i]]);
             }
         }
-        return redirect()->route('vendor.products');
+        return redirect()->route('shop.products');
     }
-    public function delete(Request $request){
+    public function delete(Vendor $vendor,Request $request){
         $product = Product::find($request->product_id);
         if($product->orders->isNotEmpty())
         return redirect()->back()->with(['flash_type' => 'danger','flash_title' => 'Unsuccessful','flash_msg'=> 'Cannot delete Product']);
@@ -97,14 +94,14 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->back()->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=> 'Product deleted successfully']);
     }
-    public function publish(Request $request){
+    public function publish(Vendor $vendor,Request $request){
         $product = Product::find($request->product_id);
         $product->status = true;
         $product->save();
         return redirect()->back();
     }
 
-    public function unpublish(Request $request){
+    public function unpublish(Vendor $vendor,Request $request){
         $product = Product::find($request->product_id);
         $product->status = false;
         $product->save();
