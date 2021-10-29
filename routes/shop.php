@@ -1,7 +1,7 @@
 <?php
 
-Route::get('setup','Vendor\ShopController@create')->name('shop.create');
-Route::post('setup','Vendor\ShopController@setup')->name('shop.setup');
+Route::get('shop/setup','Vendor\ShopController@create')->name('shop.create');
+Route::post('shop/setup','Vendor\ShopController@setup')->name('shop.setup');
 
 Route::group(['as'=>'shop.','namespace'=>'Vendor','prefix'=>'shop/{shop}'], function () {
     Route::get('/','ShopController@index')->name('view');
@@ -26,6 +26,7 @@ Route::group(['as'=>'shop.','namespace'=>'Vendor','prefix'=>'shop/{shop}'], func
         Route::get('/','OrderController@list')->name('orders');
         // Route::get('/','OrderController@list')->name('orders');
     });
+
     Route::group(['prefix'=> 'payments'], function () {
         Route::get('/','PaymentController@list')->name('payments');
         Route::get('add','PaymentController@create')->name('payments.create');
@@ -47,8 +48,7 @@ Route::group(['as'=>'shop.','namespace'=>'Vendor','prefix'=>'shop/{shop}'], func
         Route::post('update/{coupon}','CouponController@update')->name('coupon.update');
         Route::post('delete','CouponController@delete')->name('coupon.delete');
     });
-
-    
+  
     Route::group(['prefix'=> 'media'], function () {
         Route::get('/','MediaController@list')->name('media');
         Route::post('dropzone','MediaController@dropzone_media')->name('media.dropzone');

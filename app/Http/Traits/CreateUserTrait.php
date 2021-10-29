@@ -3,76 +3,59 @@ namespace App\Http\Traits;
 
 use App\Role;
 use App\User;
-use App\Rules\UserExistRule;
-use App\Rules\CustomerExistRule;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
 trait CreateUserTrait
 {
-    protected function create(array $data,$userRole){
-        $role = Role::where('name',$userRole)->first();
-        $user = User::where('email',$data['email'])->first();
-        if(!$user){
-            $name = explode(' ',$data['name'],2);
-            $info = Cache::get(request()->ip());
-            $user = User::create([
-                'firstname' => $name[0],
-                'surname' => array_key_exists(1, $name) ? $name[1]:"",
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-                'country_id' => $info['country_id'],
-                'state_id' => $info['state_id'],
-                'place_id' => $info['city_id'],
-                'timezone' => $info['timezone'], 
-                'currency_id' => $info['country_currency'], 
-            ]);
+    protected function getUser(Request $request){
+        if(Auth::check()){
+            $user = Auth::user();
+        }else{
+            $credentials = $request->only('email', 'password');
+            if (Auth::attempt($credentials)) 
+                $user = User::where('email',$request->email)->first();
+                // return redirect()->intended('dashboard');
+            else{   
+                    $this->validator($request);
+                    $info = Cache::get(request()->ip());
+                    $user = User::create([
+                                'firstname' => $request->firstname,
+                                'surname' => $request->firstname,
+                                'email' => $request->firstname,
+                                'mobile' => $request->mobile,
+                                'password' => Hash::make($request->firstname),
+                                'timezone' => $info['timezone'], 
+                                'country_id' => $info['country_id'], 
+                                'state_id' => $info['state_id'], 
+                                'city_id' => $info['city_id'], 
+                            ]);
+                    $role = Role::where('name','user')->first();
+                    $user->roles()->attach($role->id);
+            }
         }
-        $user->roles()->attach($role->id);
         return $user;
     }
 
-    protected function validator(array $data,$role)
+    protected function validator(Request $request)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', new UserExistRule($role)],
+        $validator =  Validator::make($request->all(), [
+            'firstname' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'mobile' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-    }
-
-    protected function createCustomer(array $data,$merchant_id){
-        //check if user exist, check if user is customer, check if user is merchant's customer
-        $role = Role::where('name','customer')->first();
-        $user = User::where('email',$data['email'])->first();
-        if(!$user){
-            $name = explode(' ',$data['name'],2);
-            $info = Cache::get(request()->ip());
-            $user = User::create([
-                'firstname' => $name[0],
-                'surname' => array_key_exists(1, $name) ? $name[1]:"",
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-                'country_id' => $info['country_id'],
-                'state_id' => $info['state_id'],
-                'place_id' => $info['city_id'],
-                'timezone' => $info['timezone'], 
-                'currency_id' => $info['country_currency'], 
-            ]);
-            $user->roles()->attach($role->id);
+        if ($validator->fails()) {
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        else $user->roles()->attach($role->id);
-        $user->merchants()->attach($merchant_id,['relationship'=> 'customer']);
-        return $user;
     }
 
-    protected function validateCustomer(array $data){
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', new CustomerExistRule],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
+    
 }
 

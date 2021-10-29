@@ -31,7 +31,7 @@
                             <li class="w-100 details"><a href="#details" data-toggle="tab">Details</a></li>
                             
                             <li class="w-100 address"><a href="#address" data-toggle="tab">Location</a></li>
-                            <li class="w-100 identification"><a href="#identification" data-toggle="tab">Identification</a></li>
+                            <li class="w-100 identification"><a href="#identification" data-toggle="tab">Verification</a></li>
                             <li class="w-100 bankaccount"><a href="#bankaccount" data-toggle="tab">Bank Account</a></li>
                             
                         </ul>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="col-lg-9">
-                <form action="">
+                <form action="{{route('shop.setup')}}" method="POST" enctype="multipart/form-data">@csrf
                     <div class="tab-content" id="top-tabContent">
                         <div class="tab-pane fade active show" id="welcome" role="tabpanel">
                             <div class="dashboard-right tab-content">
@@ -150,12 +150,57 @@
                                             </div>
                                         </div>
                                         @endguest  
+                                    </div>
+                                    <div class="page-title">
+                                        <h2>Contact Person</h2>
+                                    </div>
+                                    <div class="welcome-msg">
+                                        <p>With an something your transactions and operations are authenticated to confirm its really you that is performing those actions. Please choose an accesspin that is hard to guess and do not share it with anyone, including us.</p>
+                                    </div>
+                                    <div class="box-account box-info my-3">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="firstname" class="form-label">First Name</label>
+                                                    <input type="text" name="contact_name" class="form-control" id="contact_name" placeholder="Contact Person Full name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="surname" class="form-label">Phone Number</label>
+                                                    <input type="text" name="contact_phone" class="form-control" id="contact_phone" placeholder="Contact Person Mobile number">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="document_type">Contact Person ID Type</label>
+                                                    <select id="document_type" name="document_type" class="form-control">
+                                                        <option value="internation_passport">International Passport</option> 
+                                                        <option value="drivers_license">Drivers License</option> 
+                                                        <option value="national_identity">National Identity</option> 
+                                                    </select>
+                                                </div>   
+                                                
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="document">Upload Contact Person's ID</label>
+                                                    <input type="file" name="document" class="form-control" id="document" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                         <a href="javascript:void(0)" class="btn btn-primary previous" id="goto-welcome">previous</a>
                                         <a href="javascript:void(0)" class="btn btn-dark next float-right" id="goto-details">next</a>
                                             
                                         </form>
                                     </div>
                                 </div>
+                                {{-- <div class="dashboard">
+                                    
+                                </div> --}}
                             </div>
                         </div>
                         
@@ -180,23 +225,23 @@
                                                     <div class="box-title">
                                                         <h3>Upload Cover Image</h3>
                                                     </div>
-                                                    <div class="box-content" id="upload-photo">
-                                                        
-                                                        <img src="{{asset('assets/images/img/1.jpg')}}" class="img-fluid" style="width:100%;height:500px;cursor:pointer" id="photo-upload">
+                                                    <div class="box-content upload-photo mb-4">
+                                                        <input type="file" style="visibility:hidden" name="cover" id="cover">
+                                                        <img src="{{asset('assets/images/img/1.jpg')}}" class="img-fluid" style="width:100%;height:500px;cursor:pointer" id="cover-upload">
                                                     </div>
-                                                    <input type="file" style="visibility:hidden" name="photo" id="photo">
+                                                    
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-3">
                                                 <div class="box">
                                                     <div class="box-title">
                                                         <h3>Upload Logo</h3>
                                                     </div>
-                                                    <div class="box-content" id="upload-photo">
-                                                        
-                                                        <img src="{{asset('assets/images/img/1.jpg')}}" style="height:150px;width:150px;cursor:pointer" id="photo-upload">
+                                                    <div class="box-content upload-photo mb-3">
+                                                        <input type="file" style="visibility:hidden" name="logo" id="logo">
+                                                        <img src="{{asset('assets/images/img/1.jpg')}}" style="height:150px;width:150px;cursor:pointer" id="logo-upload">
                                                     </div>
-                                                    <input type="file" style="visibility:hidden" name="photo" id="photo">
+                                                    
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
@@ -207,22 +252,25 @@
                                                     <div class="box-content">
                                                         <div class="form-group">
                                                             <label>Business Name</label>
-                                                            <input name="name" id="name" class="form-control digits" type="text" >
+                                                            <input name="business_name" id="business_name" class="form-control digits" type="text" autocomplete="">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>Categories</label>
+                                                            <label>Business Description</label>
+                                                            <input name="business_description" id="business_description" placeholder="We are into sales of..." class="form-control digits" type="text" autocomplete="">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Select Categories of Products You Sell</label>
                                                             <div class="">
-                                                                <select name="categories" class="select2" multiple>
-                                                                    <option>Food</option>
-                                                                    <option>Agriculture</option>
-                                                                    <option>Spare Parts</option>
-                                                                    <option>Vehicles</option>
+                                                                <select name="business_categories[]" class="select2" multiple>
+                                                                @foreach ($categories as $category)
+                                                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                                                @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             
                                         </div>
                                         
@@ -250,50 +298,48 @@
                                         <div class="box-head mb-3">
                                             <h2>Fill Address Information</h2>
                                         </div>
-                                        <form> 
-                                            <div class="form-group">
-                                                <label for="inputAddress">Address</label>
-                                                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                        <div class="form-group">
+                                            <label for="inputAddress">Address</label>
+                                            <input type="text" name="address" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="country">Country</label>
+                                                <select id="country" name="country_id" class="countries select2 form-control">
+                                                    @foreach ($countries as $country)
+                                                        <option value="{{$country->id}}">{{$country->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
+                                            {{-- <div class="form-group col-md-6">
+                                                <label for="timezone">Timezone</label>
+                                                <select id="timezone" name="timezone" class=" form-control">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                                </select>
+                                            </div> --}}
                                             
-                                            <div class="form-row">
-                                                <div class="form-group col-md-4">
-                                                    <label for="country">Country</label>
-                                                    <select id="country" class="form-control">
-                                                        @foreach ($countries as $country)
-                                                            <option value="{{$country->id}}">{{$country->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputState">Timezone</label>
-                                                    <select id="inputState" class="form-control">
-                                                    <option selected>Choose...</option>
-                                                    <option>...</option>
-                                                    </select>
-                                                </div>
-                                                
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputState">State</label>
+                                                <select id="inputState" name="state_id" class="states form-control">
+                                                    @foreach ($states as $state)
+                                                        <option value="{{$state->id}}">{{$state->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-4">
-                                                    <label for="inputState">State</label>
-                                                    <select id="inputState" class="form-control">
-                                                        <option>Long</option>
-                                                        <option>Lat</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="inputCity">City</label>
-                                                    <select id="inputCity" class="form-control">
-                                                        <option>Long</option>
-                                                        <option>Lat</option>
-                                                    </select>
-                                                </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputCity">City</label>
+                                                <select id="inputCity" name="city_id" class="cities form-control">
+                                                    <option>Long</option>
+                                                    <option>Lat</option>
+                                                </select>
                                             </div>
-                                            <a href="javascript:void(0)" class="btn btn-primary previous" id="goto-details">Previous</a>
-                                            <a href="javascript:void(0)" class="btn btn-dark next float-right" id="goto-identification">next</a>
-                                            
-                                        </form>
+                                        </div>
+                                        <a href="javascript:void(0)" class="btn btn-primary previous" id="goto-details">Previous</a>
+                                        <a href="javascript:void(0)" class="btn btn-dark next float-right" id="goto-identification">next</a>
+                                     
                                         
                                     </div>
                                 </div>
@@ -304,7 +350,7 @@
                             <div class="dashboard-right tab-content">
                                 <div class="dashboard">
                                     <div class="page-title">
-                                        <h2>Identification</h2>
+                                        <h2>Verification</h2>
                                     </div>
                                     <div class="welcome-msg">
                                         <p>This procedure is necessary to confirm that we are dealing with who you say you are. This will help you prevent impersonations of your personal identity on the use of our platform.</p>
@@ -317,37 +363,17 @@
                                             <div class="col-sm-6">
                                                 <div class="box">
                                                     <div class="box-title">
-                                                        <h3>Upload Document</h3>
+                                                        <h3>Business Documents</h3>
                                                     </div>
                                                     <div class="box-content">
-                                                        <form>   
-                                                            <div class="form-group">
-                                                                <label for="document_type">Document Type</label>
-                                                                <select id="document_type" class="form-control">
-                                                                    <option value="internation_passport">International Passport</option> 
-                                                                    <option value="drivers_license">Drivers License</option> 
-                                                                    <option value="national_identity">National Identity</option> 
-                                                                </select>
-                                                            </div>   
-                                                            <div class="form-group">
-                                                                <label for="document">Upload Document</label>
-                                                                <input type="file" class="form-control" id="document" >
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="identity_number">Document Number</label>
-                                                                <input type="text" class="form-control" id="identity_number" placeholder="">
-                                                            </div>
-                                                            <div class="form-row">
-                                                                <div class="form-group col-6">
-                                                                    <label for="issue_date">Issue Date</label>
-                                                                    <input name="issue_date" id="issue_date" class="datepicker form-control digits" type="text" data-language="en">
-                                                                </div>
-                                                                <div class="form-group col-6">
-                                                                    <label for="expiry_date">Expiry Date</label>
-                                                                    <input name="expiry_date" id="expiry_date" class="datepicker form-control digits" type="text" data-language="en">
-                                                                </div>
-                                                            </div>
-                                                        </form>
+                                                          
+                                                             
+                                                        <div class="form-group">
+                                                            <label for="certificate">CAC Document</label>
+                                                            <input type="file" name="business_certificate" class="form-control" id="certificate" >
+                                                        </div>
+                                                            
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -391,33 +417,26 @@
                                                         <h3>Bank Information</h3>
                                                     </div>
                                                     <div class="box-content">
-                                                        <form>   
-                                                            <div class="form-group">
-                                                                <label for="bank_verification">Bank Verification Number (BVN)</label>
-                                                                <input type="text" class="form-control" id="bvn" placeholder="">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="bank w-100">Select Bank</label>
-                                                                <select id="bank" class="form-control select2 w-100">
-                                                                    <option value="uba">United Bank of Africa</option> 
-                                                                    <option value="access">Access Bank</option> 
-                                                                    <option value="zenith">Zenith Bank</option> 
-                                                                </select>
-                                                            </div>   
-                                                            <div class="form-group">
-                                                                <label for="account_number">Account Number</label>
-                                                                <input type="text" class="form-control" id="document" >
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="branch">Select Branch</label>
-                                                                <select id="branch" class="form-control select2">
-                                                                    <option value="uba">United Bank of Africa</option> 
-                                                                    <option value="access">Access Bank</option> 
-                                                                    <option value="zenith">Zenith Bank</option> 
-                                                                </select>
-                                                            </div>
-                                                            
-                                                        </form>
+                                                        <div class="form-group">
+                                                            <label for="bank w-100">Select Bank</label>
+                                                            <select id="bank" class="form-control select2 w-100">
+                                                                <option value="uba">United Bank of Africa</option> 
+                                                                <option value="access">Access Bank</option> 
+                                                                <option value="zenith">Zenith Bank</option> 
+                                                            </select>
+                                                        </div>   
+                                                        <div class="form-group">
+                                                            <label for="account_number">Account Number</label>
+                                                            <input type="text" class="form-control" id="document" >
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="branch">Select Branch</label>
+                                                            <select id="branch" class="form-control select2">
+                                                                <option value="uba">United Bank of Africa</option> 
+                                                                <option value="access">Access Bank</option> 
+                                                                <option value="zenith">Zenith Bank</option> 
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -452,12 +471,7 @@
 <script src="{{asset('assets/js/date-picker.js')}}"></script>
     <script>
         
-        $('#birthday').datepicker({
-            uiLibrary: 'bootstrap4'
-        });
-        $('.select2').select2({
-            placeholder:'Select Categories'
-        });
+        $('.select2').select2();
         $('#issue_date').datepicker({
             uiLibrary: 'bootstrap4'
         });
@@ -466,12 +480,13 @@
         });
     </script>
     <script>
-        $('#upload-photo').click(function(){
-            $('#photo').trigger('click');
+        $('.upload-photo').click(function(e){
+            e.stopPropagation();
+            $(this).find('input').trigger('click.input');
         });
-        $("#photo").change(function() {
-            readURL(this,'photo-upload');
-            $('#remove_image').show();
+        $("#logo,#cover").change(function() {
+            readURL(this,$(this).siblings('img').attr('id'));
+            // $('#remove_image').show();
         });
         function readURL(input,output) {
             console.log(input.id);
@@ -483,6 +498,18 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+        $('.next').css('disabled');
+        // var required = $('input,textarea,select').filter('[required]:visible');
+        // var allRequired = true;
+        // required.each(function(){
+        //     if($(this).val() == ''){
+        //         allRequired = false;
+        //     }
+        // });
+
+        // if(!allRequired){
+        //     //DO SOMETHING HERE... POPUP AN ERROR MESSAGE, ALERT , ETC.
+        // }
         $('.next').on('click',function(){
             $('.tab-pane').removeClass('active show');
             $(this).closest('.tab-pane').next().addClass('active show');
@@ -500,6 +527,46 @@
         $('ul.setupmenu li').on('click',function(){
             $('ul.setupmenu li').removeClass('active show');
             $(this).addClass('active show');
+        })
+
+
+        $('.countries').on('change',function(){
+            var country_id = $(this).val();
+            // alert(state_id)
+            $.ajax({
+                type:'POST',
+                dataType: 'html',
+                url: "{{route('getStates')}}",
+                data:{
+                    '_token' : $('meta[name="csrf-token"]').attr('content'),
+                    'country_id': country_id
+                },
+                success:function(data) {
+                    $('.cities').html(data);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        })
+        $('.states').on('change',function(){
+            var state_id = $(this).val();
+            // alert(state_id)
+            $.ajax({
+                type:'POST',
+                dataType: 'html',
+                url: "{{route('getCities')}}",
+                data:{
+                    '_token' : $('meta[name="csrf-token"]').attr('content'),
+                    'state_id': state_id
+                },
+                success:function(data) {
+                    $('.cities').html(data);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
         })
         
     </script>

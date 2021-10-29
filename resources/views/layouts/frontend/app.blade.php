@@ -193,7 +193,7 @@
                                                                 <a href="#">
                                                                     <h4>item name</h4>
                                                                 </a>
-                                                                <h4><span>1 x $ 299.00</span></h4>
+                                                                <h4><span>1 x ₦ 299.00</span></h4>
                                                             </div>
                                                         </div>
                                                         <div class="close-circle"><a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></div>
@@ -205,14 +205,14 @@
                                                                 <a href="#">
                                                                     <h4>item name</h4>
                                                                 </a>
-                                                                <h4><span>1 x $ 299.00</span></h4>
+                                                                <h4><span>1 x ₦ 299.00</span></h4>
                                                             </div>
                                                         </div>
                                                         <div class="close-circle"><a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></div>
                                                     </li>
                                                     <li>
                                                         <div class="total">
-                                                            <h5>subtotal : <span>$299.00</span></h5>
+                                                            <h5>subtotal : <span>₦299.00</span></h5>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -683,7 +683,7 @@
                                     </div>
                                     <div>
                                         <div >
-                                            <span><i class="ti-truck" aria-hidden="true"></i>Free Shipping on Orders $100+</span>
+                                            <span><i class="ti-truck" aria-hidden="true"></i>Free Shipping on Orders ₦100+</span>
                                         </div>
                                     </div>
                                     <div>
@@ -699,7 +699,7 @@
                                     <div>
                                         <div >
                                             <span><i class="ti-truck" aria-hidden="true"></i>Free Shipping on Orders
-                                                $100+</span>
+                                                ₦100+</span>
                                         </div>
                                     </div>
                                     <div>
@@ -838,7 +838,10 @@
                                             </div>
                                         </li>
                                         <li class="onhover-div mobile-setting">
-                                            <div><img src="{{asset('assets/images/icon/setting-1.png')}}" class="img-fluid blur-up lazyloaded" alt=""> <i class="ti-settings"></i></div>
+                                            <div>
+                                                <img src="{{asset('assets/images/icon/setting-1.png')}}" class="img-fluid blur-up lazyloaded" alt=""> 
+                                                <i class="ti-settings"></i>
+                                            </div>
                                             <div class="show-div setting">
                                                 <h6>language</h6>
                                                 <ul>
@@ -865,7 +868,7 @@
                                                             <a href="#">
                                                                 <h4>item name</h4>
                                                             </a>
-                                                            <h4><span>1 x $ 299.00</span></h4>
+                                                            <h4><span>1 x ₦ 299.00</span></h4>
                                                         </div>
                                                     </div>
                                                     <div class="close-circle"><a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></div>
@@ -877,14 +880,14 @@
                                                             <a href="#">
                                                                 <h4>item name</h4>
                                                             </a>
-                                                            <h4><span>1 x $ 299.00</span></h4>
+                                                            <h4><span>1 x ₦ 299.00</span></h4>
                                                         </div>
                                                     </div>
                                                     <div class="close-circle"><a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></div>
                                                 </li>
                                                 <li>
                                                     <div class="total">
-                                                        <h5>subtotal : <span>$299.00</span></h5>
+                                                        <h5>subtotal : <span>₦299.00</span></h5>
                                                     </div>
                                                 </li>
                                                 <li>
@@ -1287,7 +1290,7 @@
                                 </div>
                                 <div>
                                     <div >
-                                        <span><i class="ti-truck" aria-hidden="true"></i>Free Shipping on Orders $100+</span>
+                                        <span><i class="ti-truck" aria-hidden="true"></i>Free Shipping on Orders ₦100+</span>
                                     </div>
                                 </div>
                                 <div>
@@ -1303,7 +1306,7 @@
                                 <div>
                                     <div >
                                         <span><i class="ti-truck" aria-hidden="true"></i>Free Shipping on Orders
-                                            $100+</span>
+                                            ₦100+</span>
                                     </div>
                                 </div>
                                 <div>

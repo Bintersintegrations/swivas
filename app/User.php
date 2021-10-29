@@ -14,24 +14,13 @@ use App\Message;
 use App\Payment;
 use App\PasswordHistory;
 use Illuminate\Notifications\Notifiable;
-use Cviebrock\EloquentSluggable\Sluggable;
+use App\Http\Traits\RecursiveRelationships;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable,Sluggable;
-
-    public function sluggable()
-    {
-        return [
-            'username' => [
-                'source' => ['surname','firstame'],
-                'separator' => '_'
-            ]
-        ];
-    }
-
+    use Notifiable, RecursiveRelationships;
     protected $fillable = [
         'firstname','surname','email','mobile','password','timezone','currency_id','country_id','state_id','city_id'
     ];

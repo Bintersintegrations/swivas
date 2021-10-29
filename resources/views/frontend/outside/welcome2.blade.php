@@ -20,7 +20,7 @@
                                 <div class="slider-contain">
                                     <div>
                                         <h4>Headsets for all styles</h4>
-                                        <h1>Starting $19</h1>
+                                        <h1>Starting ₦50019</h1>
                                         <a href="{{route('products')}}" class="btn btn-solid">shop now</a>
                                     </div>
                                 </div>
@@ -175,7 +175,7 @@
                             <a href="product-page(no-sidebar).html">
                                 <h6>Slim Fit Cotton Shirt</h6>
                             </a>
-                            <h4>$500.00</h4>
+                            <h4>₦500.00</h4>
                             <div class="add-btn">
                                 <a href="javascript:void(0)" class="">
                                     <i class="ti-shopping-cart"></i> add to cart
@@ -197,7 +197,7 @@
                             <a href="product-page(no-sidebar).html">
                                 <h6>Slim Fit Cotton Shirt</h6>
                             </a>
-                            <h4>$500.00</h4>
+                            <h4>₦500.00</h4>
                             <div class="add-btn">
                                 <a href="javascript:void(0)" class="">
                                     <i class="ti-shopping-cart"></i> add to cart
@@ -219,7 +219,7 @@
                             <a href="product-page(no-sidebar).html">
                                 <h6>Slim Fit Cotton Shirt</h6>
                             </a>
-                            <h4>$500.00</h4>
+                            <h4>₦500.00</h4>
                             <div class="add-btn">
                                 <a href="javascript:void(0)" class="">
                                     <i class="ti-shopping-cart"></i> add to cart
@@ -241,7 +241,7 @@
                             <a href="product-page(no-sidebar).html">
                                 <h6>Slim Fit Cotton Shirt</h6>
                             </a>
-                            <h4>$500.00</h4>
+                            <h4>₦500.00</h4>
                             <div class="add-btn">
                                 <a href="javascript:void(0)" class="">
                                     <i class="ti-shopping-cart"></i> add to cart
@@ -263,7 +263,7 @@
                             <a href="product-page(no-sidebar).html">
                                 <h6>Slim Fit Cotton Shirt</h6>
                             </a>
-                            <h4>$500.00</h4>
+                            <h4>₦500.00</h4>
                             <div class="add-btn">
                                 <a href="javascript:void(0)" class="">
                                     <i class="ti-shopping-cart"></i> add to cart
@@ -285,7 +285,7 @@
                             <a href="product-page(no-sidebar).html">
                                 <h6>Slim Fit Cotton Shirt</h6>
                             </a>
-                            <h4>$500.00</h4>
+                            <h4>₦500.00</h4>
                             <div class="add-btn">
                                 <a href="javascript:void(0)" class="">
                                     <i class="ti-shopping-cart"></i> add to cart
@@ -307,7 +307,7 @@
                             <a href="product-page(no-sidebar).html">
                                 <h6>Slim Fit Cotton Shirt</h6>
                             </a>
-                            <h4>$500.00</h4>
+                            <h4>₦500.00</h4>
                             <div class="add-btn">
                                 <a href="javascript:void(0)" class="">
                                     <i class="ti-shopping-cart"></i> add to cart
@@ -329,7 +329,7 @@
                             <a href="product-page(no-sidebar).html">
                                 <h6>Slim Fit Cotton Shirt</h6>
                             </a>
-                            <h4>$500.00</h4>
+                            <h4>₦500.00</h4>
                             <div class="add-btn">
                                 <a href="javascript:void(0)" class="">
                                     <i class="ti-shopping-cart"></i> add to cart
@@ -351,7 +351,7 @@
                             <a href="product-page(no-sidebar).html">
                                 <h6>Slim Fit Cotton Shirt</h6>
                             </a>
-                            <h4>$500.00</h4>
+                            <h4>₦500.00</h4>
                             <div class="add-btn">
                                 <a href="javascript:void(0)" class="">
                                     <i class="ti-shopping-cart"></i> add to cart
@@ -373,7 +373,7 @@
                             <a href="product-page(no-sidebar).html">
                                 <h6>Slim Fit Cotton Shirt</h6>
                             </a>
-                            <h4>$500.00</h4>
+                            <h4>₦500.00</h4>
                             <div class="add-btn">
                                 <a href="javascript:void(0)" class="">
                                     <i class="ti-shopping-cart"></i> add to cart
@@ -395,7 +395,7 @@
                             <a href="product-page(no-sidebar).html">
                                 <h6>Slim Fit Cotton Shirt</h6>
                             </a>
-                            <h4>$500.00</h4>
+                            <h4>₦500.00</h4>
                             <div class="add-btn">
                                 <a href="javascript:void(0)" class="">
                                     <i class="ti-shopping-cart"></i> add to cart
@@ -417,7 +417,7 @@
                             <a href="product-page(no-sidebar).html">
                                 <h6>Slim Fit Cotton Shirt</h6>
                             </a>
-                            <h4>$500.00</h4>
+                            <h4>₦500.00</h4>
                             <div class="add-btn">
                                 <a href="javascript:void(0)" class="">
                                     <i class="ti-shopping-cart"></i> add to cart
@@ -472,7 +472,7 @@
                                                     <a href="product-page(no-sidebar).html" tabindex="0">
                                                         <h6>Slim Fit Cotton Shirt</h6>
                                                     </a>
-                                                    <h4>$500.00 <del>$600.00</del></h4>
+                                                    <h4>₦500.00 <del>₦600.00</del></h4>
                                                     <ul class="color-variant">
                                                         <li class="bg-light0"></li>
                                                         <li class="bg-light1"></li>
@@ -495,7 +495,7 @@
                                                     <a href="product-page(no-sidebar).html" tabindex="0">
                                                         <h6>Slim Fit Cotton Shirt</h6>
                                                     </a>
-                                                    <h4>$500.00 <del>$600.00</del></h4>
+                                                    <h4>₦500.00 <del>₦600.00</del></h4>
                                                     <ul class="color-variant">
                                                         <li class="bg-light0"></li>
                                                         <li class="bg-light1"></li>
@@ -518,7 +518,7 @@
                                                     <a href="product-page(no-sidebar).html" tabindex="0">
                                                         <h6>Slim Fit Cotton Shirt</h6>
                                                     </a>
-                                                    <h4>$500.00 <del>$600.00</del></h4>
+                                                    <h4>₦500.00 <del>₦600.00</del></h4>
                                                     <ul class="color-variant">
                                                         <li class="bg-light0"></li>
                                                         <li class="bg-light1"></li>
@@ -570,7 +570,7 @@
                                 <a href="product-page(no-sidebar).html">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -598,7 +598,7 @@
                                 <a href="product-page(no-sidebar).html">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -626,7 +626,7 @@
                                 <a href="product-page(no-sidebar).html">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -654,7 +654,7 @@
                                 <a href="product-page(no-sidebar).html">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -682,7 +682,7 @@
                                 <a href="product-page(no-sidebar).html">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -710,7 +710,7 @@
                                 <a href="product-page(no-sidebar).html">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -747,7 +747,7 @@
                                 <a href="product-page(no-sidebar).html">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -775,7 +775,7 @@
                                 <a href="product-page(no-sidebar).html">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -803,7 +803,7 @@
                                 <a href="product-page(no-sidebar).html">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -831,7 +831,7 @@
                                 <a href="product-page(no-sidebar).html">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -859,7 +859,7 @@
                                 <a href="product-page(no-sidebar).html">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -887,7 +887,7 @@
                                 <a href="product-page(no-sidebar).html">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -961,7 +961,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00 <del>$600.00</del></h4>
+                                        <h4>₦500.00 <del>₦600.00</del></h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -974,7 +974,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -987,7 +987,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                             </div>
@@ -1002,7 +1002,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00 <del>$600.00</del></h4>
+                                        <h4>₦500.00 <del>₦600.00</del></h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -1015,7 +1015,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -1028,7 +1028,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                             </div>
@@ -1050,7 +1050,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -1063,7 +1063,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00 <del>$600.00</del></h4>
+                                        <h4>₦500.00 <del>₦600.00</del></h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -1076,7 +1076,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                             </div>
@@ -1091,7 +1091,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -1104,7 +1104,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -1117,7 +1117,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00 <del>$600.00</del></h4>
+                                        <h4>₦500.00 <del>₦600.00</del></h4>
                                     </div>
                                 </div>
                             </div>
@@ -1139,7 +1139,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00 <del>$600.00</del></h4>
+                                        <h4>₦500.00 <del>₦600.00</del></h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -1152,7 +1152,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -1165,7 +1165,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                             </div>
@@ -1180,7 +1180,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00 <del>$600.00</del></h4>
+                                        <h4>₦500.00 <del>₦600.00</del></h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -1193,7 +1193,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -1206,7 +1206,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                             </div>
@@ -1228,7 +1228,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -1241,7 +1241,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -1254,7 +1254,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                             </div>
@@ -1269,7 +1269,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -1282,7 +1282,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -1295,7 +1295,7 @@
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
-                                        <h4>$500.00</h4>
+                                        <h4>₦500.00</h4>
                                     </div>
                                 </div>
                             </div>
@@ -1395,7 +1395,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1416,7 +1416,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1437,7 +1437,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1458,7 +1458,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1479,7 +1479,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1500,7 +1500,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="0">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="0">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1521,7 +1521,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="0">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="0">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1542,7 +1542,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="0">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="0">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1572,7 +1572,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1593,7 +1593,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1614,7 +1614,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1635,7 +1635,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1656,7 +1656,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1677,7 +1677,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="0">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="0">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1698,7 +1698,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="0">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="0">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1719,7 +1719,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="0">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="0">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1740,7 +1740,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="0">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="0">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1761,7 +1761,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="0">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="0">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1782,7 +1782,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1803,7 +1803,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1824,7 +1824,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1845,7 +1845,7 @@
                                     <a href="product-page(no-sidebar).html" tabindex="-1">
                                         <h6>Slim Fit Cotton Shirt</h6>
                                     </a>
-                                    <h4>$500.00</h4>
+                                    <h4>₦500.00</h4>
                                     <div class="add-btn">
                                         <a href="javascript:void(0)" class="" tabindex="-1">
                                             <i class="ti-shopping-cart"></i> add to cart
@@ -1866,7 +1866,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1887,7 +1887,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart
@@ -1908,7 +1908,7 @@
                                 <a href="product-page(no-sidebar).html" tabindex="-1">
                                     <h6>Slim Fit Cotton Shirt</h6>
                                 </a>
-                                <h4>$500.00</h4>
+                                <h4>₦500.00</h4>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" class="" tabindex="-1">
                                         <i class="ti-shopping-cart"></i> add to cart

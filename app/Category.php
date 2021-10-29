@@ -6,10 +6,11 @@ use App\Item;
 use App\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use App\Http\Traits\RecursiveRelationships;
 
 class Category extends Model
 {
-    use Sluggable;
+    use Sluggable,RecursiveRelationships;
     protected $fillable = [
         'name','parent_id','image','grand_id'
     ];

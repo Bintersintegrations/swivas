@@ -85,7 +85,7 @@
                                             <a href="#">
                                                 <h4>{{$cart['name']}}</h4>
                                             </a>
-                                            <h4><span>{{$cart['quantity']}} x $ {{$cart['amount']}}</span></h4>
+                                            <h4><span>{{$cart['quantity']}} x ₦ {{$cart['amount']}}</span></h4>
                                         </div>
                                     </div>
                                     <div class="close-circle">
@@ -102,7 +102,7 @@
                                 @foreach((array) session('cart') as $id => $details)
                                     @php $total += $details['amount'] * $details['quantity'] @endphp
                                 @endforeach
-                                <h5>subtotal : <span id="cart_total">${{$total}}</span></h5>
+                                <h5>subtotal : <span id="cart_total">₦{{$total}}</span></h5>
                             </div>
                         </li>
                         <li>

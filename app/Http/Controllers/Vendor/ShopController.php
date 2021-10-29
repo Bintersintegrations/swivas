@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers\Vendor;
 
+use App\City;
+use App\Shop;
+use App\State;
 use App\Country;
-use App\Vendor;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Traits\CreateUserTrait;
 
 class ShopController extends Controller
 {
+    use CreateUserTrait;
+
     public function __construct(){
         $this->middleware('auth')->except(['create','setup','list']);
     }
@@ -20,10 +26,17 @@ class ShopController extends Controller
     
     public function create(){
         $countries = Country::all();
-        return view('frontend.outside.shop.create',compact('countries'));
+        $categories = Category::where('parent_id',0)->get();
+        $states = State::all();
+        $cities = City::all();
+        // dd($categories);
+        return view('frontend.outside.shop.create',compact('countries','categories','states','cities'));
     }
 
     public function setup(Request $request){
+        // dd($request->all());
+        $user = $this->getUser($request);
+        dd($user);
         return redirect()->route('shop.dashboard');
     }
 
