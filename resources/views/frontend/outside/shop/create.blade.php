@@ -25,15 +25,11 @@
                     <div class="block-content">
                         <ul class="nav nav-tabs setupmenu" id="top-tab" role="tablist">
                             <li class="active show welcome w-100"><a href="#welcome" data-toggle="tab">Welcome</a></li>
-                            
                             <li class="w-100 owner"><a href="#owner" data-toggle="tab">Owner</a></li>
-                           
                             <li class="w-100 details"><a href="#details" data-toggle="tab">Details</a></li>
-                            
                             <li class="w-100 address"><a href="#address" data-toggle="tab">Location</a></li>
-                            <li class="w-100 identification"><a href="#identification" data-toggle="tab">Verification</a></li>
+                            <li class="w-100 identification"><a href="#identification" data-toggle="tab">Logistics</a></li>
                             <li class="w-100 bankaccount"><a href="#bankaccount" data-toggle="tab">Bank Account</a></li>
-                            
                         </ul>
                     </div>
                 </div>
@@ -76,7 +72,7 @@
                                                 <div class="form-group ">
                                                     {{-- <label class="col-xl-3 col-md-4">Free Shipping</label> --}}
                                                     <div class="checkbox checkbox-primary ">
-                                                        <input id="checkbox-primary-1" type="checkbox" data-original-title="" title="" name="agreement" value="1">
+                                                        <input id="checkbox-primary-1" type="checkbox" data-original-title="" title="" name="agreement" value="1" required>
                                                         <label for="checkbox-primary-1 px-2"> I have read the agreement</label>
                                                     </div>
                                                 </div>
@@ -87,7 +83,7 @@
                                         <div class="d-flex justify-content-end">
                                             
                                             <div>
-                                                <a href="javascript:void(0)" class="btn btn-dark next float-right" id="goto-owner">Next</a>
+                                                <button type="button" type="button" class="btn btn-dark next float-right" id="goto-owner">Next</button>
                                             </div>
                                         </div>
                                         
@@ -110,13 +106,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="firstname" class="form-label">First Name</label>
-                                                    <input type="text" name="firstname" class="form-control" id="firstname" @auth value="{{Auth::user()->firstname}}" readonly @endauth placeholder="First Name">
+                                                    <input type="text" name="firstname" class="form-control" id="firstname" @auth value="{{Auth::user()->firstname}}" readonly @endauth placeholder="First Name" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="surname" class="form-label">Surname</label>
-                                                    <input type="text" name="surname" class="form-control" id="surname" @auth value="{{Auth::user()->surname}}" readonly @endauth   placeholder="Last Name">
+                                                    <input type="text" name="surname" class="form-control" id="surname" @auth value="{{Auth::user()->surname}}" readonly @endauth   placeholder="Last Name" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,13 +120,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="surname" class="form-label">Email</label>
-                                                    <input type="email" name="email" class="form-control" id="email" @auth value="{{Auth::user()->email}}" readonly @endauth   placeholder="Email">
+                                                    <input type="email" name="email" class="form-control" id="email" @auth value="{{Auth::user()->email}}" readonly @endauth   placeholder="Email" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="surname" class="form-label">Mobile</label>
-                                                    <input type="text" name="mobile" class="form-control" id="mobile" @auth value="{{Auth::user()->mobile}}" readonly @endauth   placeholder="Mobile">
+                                                    <input type="text" name="mobile" class="form-control" id="mobile" @auth value="{{Auth::user()->mobile}}" readonly @endauth   placeholder="Mobile" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -161,22 +157,22 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="firstname" class="form-label">First Name</label>
-                                                    <input type="text" name="contact_name" class="form-control" id="contact_name" placeholder="Contact Person Full name">
+                                                    <label for="contact_name" class="form-label">Full Name</label>
+                                                    <input type="text" name="contact_name" class="form-control" id="contact_name" placeholder="Contact Person Full name" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="surname" class="form-label">Phone Number</label>
-                                                    <input type="text" name="contact_phone" class="form-control" id="contact_phone" placeholder="Contact Person Mobile number">
+                                                    <input type="text" name="contact_phone" class="form-control" id="contact_phone" placeholder="Contact Person Mobile number" required>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="document_type">Contact Person ID Type</label>
-                                                    <select id="document_type" name="document_type" class="form-control">
+                                                    <label for="contact_document_type">Contact Person ID Type</label>
+                                                    <select id="contact_document_type" name="contact_document_type" class="form-control" required>
                                                         <option value="internation_passport">International Passport</option> 
                                                         <option value="drivers_license">Drivers License</option> 
                                                         <option value="national_identity">National Identity</option> 
@@ -186,21 +182,18 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="document">Upload Contact Person's ID</label>
-                                                    <input type="file" name="document" class="form-control" id="document" >
+                                                    <label for="contact_document">Upload Contact Person's ID</label>
+                                                    <input type="file" name="contact_document" class="form-control" id="contact_document" required>
                                                 </div>
                                             </div>
                                         </div>
                                         
-                                        <a href="javascript:void(0)" class="btn btn-primary previous" id="goto-welcome">previous</a>
-                                        <a href="javascript:void(0)" class="btn btn-dark next float-right" id="goto-details">next</a>
+                                        <button type="button" class="btn btn-primary previous" id="goto-welcome">previous</button>
+                                        <button type="button" class="btn btn-dark next float-right" id="goto-details">next</button>
                                             
                                         </form>
                                     </div>
                                 </div>
-                                {{-- <div class="dashboard">
-                                    
-                                </div> --}}
                             </div>
                         </div>
                         
@@ -216,9 +209,7 @@
                                             This setup process includes your profile completion, accesspin, bank acccount, identity verification.</p>
                                     </div>
                                     <div class="box-account box-info">
-                                        {{-- <div class="box-head">
-                                            <h2>Account Information</h2>
-                                        </div> --}}
+                                       
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="box">
@@ -244,7 +235,7 @@
                                                     
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-5">
                                                 <div class="box">
                                                     <div class="box-title">
                                                         <h3>Info</h3>
@@ -252,16 +243,31 @@
                                                     <div class="box-content">
                                                         <div class="form-group">
                                                             <label>Business Name</label>
-                                                            <input name="business_name" id="business_name" class="form-control digits" type="text" autocomplete="">
+                                                            <input name="business_name" id="business_name" class="form-control digits" type="text" autocomplete="" required>
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Business Description</label>
-                                                            <input name="business_description" id="business_description" placeholder="We are into sales of..." class="form-control digits" type="text" autocomplete="">
+                                                            <textarea name="business_description" id="business_description" placeholder="We are into sales of..." class="form-control digits" required></textarea>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="box">
+                                                    <div class="box-title">
+                                                        <h3>Info</h3>
+                                                    </div>
+                                                    <div class="box-content">
+                                                        
+                                                        <div class="form-group">
+                                                            <label for="certificate">CAC Document</label>
+                                                            <input type="file" name="business_certificate" class="form-control" id="certificate" required>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>Select Categories of Products You Sell</label>
+                                                            <label>Categories of Products You Sell</label>
                                                             <div class="">
-                                                                <select name="business_categories[]" class="select2" multiple>
+                                                                <select name="business_categories[]" class="select2" multiple required>
                                                                 @foreach ($categories as $category)
                                                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                                                 @endforeach
@@ -274,12 +280,9 @@
                                             
                                         </div>
                                         
-                                            <a href="javascript:void(0)" class="btn btn-primary previous" id="goto-owner">Previous</a>
-                                            
-                                            <a href="javascript:void(0)" class="btn btn-dark next float-right" id="goto-address">Next</a>
-                                            
+                                        <button type="button" class="btn btn-primary previous" id="goto-owner">Previous</button>
                                         
-                                        
+                                        <button type="button" class="btn btn-dark next float-right" id="goto-address">Next</button>  
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +291,7 @@
                             <div class="dashboard-right tab-content">
                                 <div class="dashboard">
                                     <div class="page-title">
-                                        <h2>ADDRESS</h2>
+                                        <h2>PHYSICAL LOCATION</h2>
                                     </div>
                                     <div class="welcome-msg">
                                         
@@ -300,45 +303,38 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputAddress">Address</label>
-                                            <input type="text" name="address" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                            <input type="text" name="address" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="country">Country</label>
-                                                <select id="country" name="country_id" class="countries select2 form-control">
+                                                <select id="country" name="country_id" class="countries select2 form-control" required>
                                                     @foreach ($countries as $country)
                                                         <option value="{{$country->id}}">{{$country->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            {{-- <div class="form-group col-md-6">
-                                                <label for="timezone">Timezone</label>
-                                                <select id="timezone" name="timezone" class=" form-control">
-                                                <option selected>Choose...</option>
-                                                <option>...</option>
-                                                </select>
-                                            </div> --}}
-                                            
-                                        </div>
-                                        <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="inputState">State</label>
-                                                <select id="inputState" name="state_id" class="states form-control">
+                                                <select id="inputState" name="state_id" class="states form-control" required>
                                                     @foreach ($states as $state)
                                                         <option value="{{$state->id}}">{{$state->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputCity">City</label>
-                                                <select id="inputCity" name="city_id" class="cities form-control">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputCity">Area</label>
+                                                <select id="inputCity" name="city_id" class="cities form-control" required>
                                                     <option>Long</option>
                                                     <option>Lat</option>
                                                 </select>
                                             </div>
+                                            
+                                            
                                         </div>
-                                        <a href="javascript:void(0)" class="btn btn-primary previous" id="goto-details">Previous</a>
-                                        <a href="javascript:void(0)" class="btn btn-dark next float-right" id="goto-identification">next</a>
+                                        
+                                        <button type="button" class="btn btn-primary previous" id="goto-details">Previous</button>
+                                        <button type="button" class="btn btn-dark next float-right" id="goto-identification">next</button>
                                      
                                         
                                     </div>
@@ -350,47 +346,72 @@
                             <div class="dashboard-right tab-content">
                                 <div class="dashboard">
                                     <div class="page-title">
-                                        <h2>Verification</h2>
+                                        <h2>Delivery Details</h2>
                                     </div>
                                     <div class="welcome-msg">
-                                        <p>This procedure is necessary to confirm that we are dealing with who you say you are. This will help you prevent impersonations of your personal identity on the use of our platform.</p>
+                                        <p>With an something your transactions and operations are authenticated to confirm its really you that is performing those actions. Please choose an accesspin that is hard to guess and do not share it with anyone, including us.</p>
                                     </div>
-                                    <div class="box-account box-info">
-                                        {{-- <div class="box-head">
-                                            <h2>Account Information</h2>
-                                        </div> --}}
+                                    <div class="box-account box-info my-3">
                                         <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="box">
-                                                    <div class="box-title">
-                                                        <h3>Business Documents</h3>
-                                                    </div>
-                                                    <div class="box-content">
-                                                          
-                                                             
-                                                        <div class="form-group">
-                                                            <label for="certificate">CAC Document</label>
-                                                            <input type="file" name="business_certificate" class="form-control" id="certificate" >
-                                                        </div>
-                                                            
-                                                        
-                                                    </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="delivery_company_name_1" class="form-label">Logistic Company Name</label>
+                                                    <input type="text" name="delivery_company_name_1" class="form-control" id="delivery_company_name_1" placeholder="Delivery Company">
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <div class="box">
-                                                    <div class="box-title">
-                                                        <h3>Information</h3>
-                                                    </div>
-                                                    <div class="box-content">
-                                                        <p>Please be informed that these information will be verified before your account is completely active.</p>
-                                                    </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="delivery_man_name_1" class="form-label">Delivery Personnel Name</label>
+                                                    <input type="text" name="delivery_man_name_1" class="form-control" id="delivery_man_name_1" placeholder="Delivery Personnel" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="delivery_man_phone_1" class="form-label">Delivery Personnel Phone</label>
+                                                    <input type="text" name="delivery_man_phone_1" class="form-control" id="delivery_man_phone_1" placeholder="Delivery Person Mobile number" required>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="delivery_man_id_1">Upload Delivery Person's ID</label>
+                                                    <input type="file" name="delivery_man_id_1" class="form-control" id="delivery_man_id_1" required>
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="javascript:void(0)" class="btn btn-primary previous " id="goto-address">previous</a>
-                                        <a href="javascript:void(0)" class="btn btn-dark next float-right" id="goto-bankaccount">next</a>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="delivery_company_name_2" class="form-label">Logistic Company Name</label>
+                                                    <input type="text" name="delivery_company_name_2" class="form-control" id="delivery_company_name_2" placeholder="Delivery Company">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="delivery_man_name_2" class="form-label">Delivery Personnel Name</label>
+                                                    <input type="text" name="delivery_man_name_2" class="form-control" id="delivery_man_name_2" placeholder="Delivery Personnel" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="delivery_man_phone_2" class="form-label">Delivery Personnel Phone</label>
+                                                    <input type="text" name="delivery_man_phone_2" class="form-control" id="delivery_man_phone_2" placeholder="Delivery Person Mobile number" required>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="delivery_man_id_2">Upload Delivery Person's ID</label>
+                                                    <input type="file" name="delivery_man_id_2" class="form-control" id="delivery_man_id_2" required>
+                                                </div>
+                                            </div>
+                                        </div>
                                         
+                                        <button type="button" class="btn btn-primary previous" id="goto-welcome">previous</button>
+                                        <button type="button" class="btn btn-dark next float-right" id="goto-details">next</button>
+                                            
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -419,24 +440,27 @@
                                                     <div class="box-content">
                                                         <div class="form-group">
                                                             <label for="bank w-100">Select Bank</label>
-                                                            <select id="bank" class="form-control select2 w-100">
-                                                                <option value="uba">United Bank of Africa</option> 
-                                                                <option value="access">Access Bank</option> 
-                                                                <option value="zenith">Zenith Bank</option> 
+                                                            <select id="bank" name="bank_id" class="form-control select2 w-100" required>
+                                                                @foreach ($banks as $bank)
+                                                                    <option value="{{$bank->id}}">{{$bank->name}}</option>
+                                                               @endforeach
                                                             </select>
                                                         </div>   
                                                         <div class="form-group">
                                                             <label for="account_number">Account Number</label>
-                                                            <input type="text" class="form-control" id="document" >
+                                                            <input name="account_number" type="text" class="form-control" id="account_number" required>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label for="branch">Select Branch</label>
-                                                            <select id="branch" class="form-control select2">
-                                                                <option value="uba">United Bank of Africa</option> 
-                                                                <option value="access">Access Bank</option> 
-                                                                <option value="zenith">Zenith Bank</option> 
+                                                        <div class="form-group" style="display: none;">
+                                                            <label for="bank_branch">Select Branch</label>
+                                                            <select id="bank_branch" class="form-control select2" name="bank_branch">
+                                                                
                                                             </select>
                                                         </div>
+                                                        <div class="form-group">
+                                                            <label for="account_number">Account Name</label>
+                                                            <input name="account_name" type="text" class="form-control" id="document" readonly required>
+                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -451,7 +475,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="javascript:void(0)" class="btn btn-primary previous">previous</a>
+                                        <button type="button" class="btn btn-primary previous">previous</button>
                                         <button type="submit" class="btn btn-dark float-right">save & continue</button>
                                     </div>
                                 </div>
@@ -498,18 +522,24 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $('.next').css('disabled');
-        // var required = $('input,textarea,select').filter('[required]:visible');
-        // var allRequired = true;
-        // required.each(function(){
-        //     if($(this).val() == ''){
-        //         allRequired = false;
-        //     }
-        // });
+        // // function checkinput(){
+        //     var required = $('input,textarea,select').filter('[required]:visible');
+        //     var allRequired = false;
+            
+        //     required.each(function(){
+        //         alert($(this).val())
+        //         // if($(this).val() != ''){
+        //         //     allRequired = true;
+        //         // }
+        //     });
 
-        // if(!allRequired){
-        //     //DO SOMETHING HERE... POPUP AN ERROR MESSAGE, ALERT , ETC.
-        // }
+        //     if(allRequired){
+        //         $('.next').attr('disabled',false)
+        //         //DO SOMETHING HERE... POPUP AN ERROR MESSAGE, ALERT , ETC.
+        //     }
+        // // }
+        
+        
         $('.next').on('click',function(){
             $('.tab-pane').removeClass('active show');
             $(this).closest('.tab-pane').next().addClass('active show');

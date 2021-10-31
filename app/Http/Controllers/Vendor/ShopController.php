@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Vendor;
 
+use App\Bank;
 use App\City;
 use App\Shop;
 use App\State;
@@ -26,17 +27,18 @@ class ShopController extends Controller
     
     public function create(){
         $countries = Country::all();
-        $categories = Category::where('parent_id',0)->get();
+        $categories = Category::where('parent_id',null)->get();
         $states = State::all();
         $cities = City::all();
+        $banks = Bank::where('status',true)->orderBy('name','ASC')->get();
         // dd($categories);
-        return view('frontend.outside.shop.create',compact('countries','categories','states','cities'));
+        return view('frontend.outside.shop.create',compact('countries','categories','states','cities','banks'));
     }
 
     public function setup(Request $request){
-        // dd($request->all());
         $user = $this->getUser($request);
         dd($user);
+        
         return redirect()->route('shop.dashboard');
     }
 
