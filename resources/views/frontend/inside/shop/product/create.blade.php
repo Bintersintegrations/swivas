@@ -74,7 +74,7 @@
                             <div class="card-body">
                                 <div class="dashboard-box">
                                     <h3>Add Products</h3>
-                                    <form action="{{route('shop.product.save')}}" method="POST">@csrf
+                                    <form action="{{route('shop.product.save',$shop)}}" method="POST">@csrf
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-12 col-xs-12">
                                                 <div class="row">
@@ -205,7 +205,7 @@
                                                                                             <div class="input-group mb-3 col-6 px-0">
                                                                                                 <input type="number" name="price[]" value="0" id="price" class="form-control ">
                                                                                                 <div class="input-group-append">
-                                                                                                    <span class="input-group-text">{{Auth::user()->currency->symbol}}</span>
+                                                                                                    <span class="input-group-text">{{$shop->country->currency_symbol}}</span>
                                                                                                 </div>
                                                                                             </div>
                                                                                                
@@ -221,8 +221,8 @@
                                                                                         <div class="form-group row attrib-options  labelled_size" style="display:none;">
                                                                                             <label for="labelled_size" class="col-xl-5 col-sm-4 mb-0">Size :</label>
                                                                                             <select class="form-control digits col-xl-7 col-sm-7" id="labelled_size" name="labelled_size[]">
-                                                                                                @foreach ($attributes->where('slug','labelled_size')->first()->options as $label=>$size)
-                                                                                                    <option value="{{$label}}">{{$size}}</option>
+                                                                                                @foreach ($attributes->where('slug','size')->first()->options as $size)
+                                                                                                    <option value="{{$size->description}}">{{$size->name}}</option>
                                                                                                 @endforeach
                                                                                             </select>
                                                                                         </div>
@@ -237,69 +237,63 @@
                                                                                         <div class="form-group row attrib-options  fashion_brand" style="display:none;">
                                                                                             <label for="fashion_brand" class="col-xl-5 col-sm-4 mb-0">Brand :</label>
                                                                                             <select class="form-control digits col-xl-7 col-sm-7" id="fashion_brand" name="fashion_brand[]">
-                                                                                                @foreach ($attributes->where('slug','fashion_brand')->first()->options as $brand)
-                                                                                                    <option value="{{$brand}}">{{$brand}}</option>
-                                                                                                @endforeach
+                                                                                                
+                                                                                                    <option value="Nike">Nike</option>
+                                                                                                
                                                                                                 
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="form-group row attrib-options origin" style="display:none;">
                                                                                             <label for="origin" class="col-xl-5 col-sm-4 mb-0">Made in :</label>
                                                                                             <select class="form-control digits col-xl-7 col-sm-7" id="origin" name="origin[]">
-                                                                                                @foreach ($attributes->where('slug','origin')->first()->options as $origin)
-                                                                                                    <option value="{{$origin}}">{{$origin}}</option>
-                                                                                                @endforeach
+                                                                                                
+                                                                                                    <option value="Taiwan">Taiwan</option>
+                                                                                                    <option value="Italy">Italy</option>
+                                                                                                
                                                                                                 
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="form-group row attrib-options material" style="display:none;">
                                                                                             <label for="material" class="col-xl-5 col-sm-4 mb-0">Material :</label>
                                                                                             <select class="form-control digits col-xl-7 col-sm-7" id="material" name="material[]">
-                                                                                                @foreach ($attributes->where('slug','material')->first()->options as $material)
-                                                                                                    <option value="{{$material}}">{{$material}}</option>
-                                                                                                @endforeach
+                                                                                                <option value="Gold">Gold</option>
+                                                                                                <option value="Metal">Metal</option>
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="form-group row attrib-options  clothing_material" style="display:none;">
                                                                                             <label for="clothing_material" class="col-xl-5 col-sm-4 mb-0">Material :</label>
                                                                                             <select class="form-control digits col-xl-7 col-sm-7" id="clothing_material" name="clothing_material[]">
-                                                                                                @foreach ($attributes->where('slug','clothing_material')->first()->options as $clothing_material)
-                                                                                                    <option value="{{$clothing_material}}">{{$clothing_material}}</option>
-                                                                                                @endforeach
+                                                                                                <option value="Fibre">Fibre</option>
+                                                                                                <option value="Wool">Wool</option>
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="form-group row attrib-options  electronics_brand" style="display:none;">
                                                                                             <label for="electronics_brand" class="col-xl-5 col-sm-4 mb-0">Maker :</label>
                                                                                             <select class="form-control digits col-xl-7 col-sm-7" id="electronics_brand" name="electronics_brand[]">
-                                                                                                @foreach ($attributes->where('slug','electronics_brand')->first()->options as $electronics_brand)
-                                                                                                    <option>{{$electronics_brand}}</option>
-                                                                                                @endforeach
-                                                                                                
+                                                                                                <option value="samsung">Samsung</option>
+                                                                                                <option value="LG">LG</option>
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="form-group row attrib-options  electronics_model" style="display:none;">
                                                                                             <label for="electronics_model" class="col-xl-5 col-sm-4 mb-0">Model :</label>
                                                                                             <select class="form-control digits col-xl-7 col-sm-7" id="electronics_model" name="electronics_model[]">
-                                                                                                @foreach ($attributes->where('slug','electronics_model')->first()->options as $electronics_model)
-                                                                                                    <option>{{$electronics_model}}</option>
-                                                                                                @endforeach
+                                                                                                <option value="Hisense">Hisense</option>
+                                                                                                <option value="LG">LG</option>
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="form-group row attrib-options  vehicle_maker" style="display:none;">
                                                                                             <label for="vehicle_maker" class="col-xl-5 col-sm-4 mb-0">Maker :</label>
                                                                                             <select class="form-control digits col-xl-7 col-sm-7" id="vehicle_maker" name="vehicle_maker[]">
-                                                                                                @foreach ($attributes->where('slug','vehicle_maker')->first()->options as $maker)
-                                                                                                    <option>{{$maker}}</option>
-                                                                                                @endforeach
+                                                                                                <option value="toyota">Toyota</option>
+                                                                                                <option value="datsun">Datsun</option>
                                                                                                 
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="form-group row attrib-options  vehicle_model" style="display:none;">
                                                                                             <label for="vehicle_model" class="col-xl-5 col-sm-4 mb-0">Model :</label>
                                                                                             <select class="form-control digits col-xl-7 col-sm-7" id="vehicle_model" name="vehicle_model[]">
-                                                                                                @foreach ($attributes->where('slug','vehicle_model')->first()->options as $vehicle_model)
-                                                                                                    <option>{{$vehicle_model}}</option>
-                                                                                                @endforeach
+                                                                                                <option value="toyota">Toyota</option>
+                                                                                                <option value="datsun">Datsun</option>
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="form-group row attrib-options  year" style="display:none;">
@@ -400,7 +394,7 @@
         function deleteFile(dfile){
             $.ajax({
                 type: "POST",
-                url:'{{route("vendor.media.delete")}}',
+                url:'{{route("shop.media.delete")}}',
                     data:{
                         '_token' : $('meta[name="csrf-token"]').attr('content'),
                         'file_name': dfile

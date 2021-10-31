@@ -1,118 +1,8 @@
 @extends('layouts.frontend.app')
 @push('styles')
-    {{-- <style>
-        ul.note-dropdown-menu li{
-            display:none !important;
-        }
-    </style> --}}
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/custom.css')}}">
 @endpush
 @section('main')
-<!--section start-->
-{{-- <section class="collection section-b-space ratio_square ">
-    <div class="container">
-        <div class="row partition-collection">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="collection-block">
-                    <div><img src="{{asset('assets/images/collection/1.jpg')}}" class="img-fluid blur-up lazyload bg-img"
-                            alt=""></div>
-                    <div class="collection-content">
-                        <h5>(20 products)</h5>
-                        <h4 class="font-weight-bold">fashion</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry....</p><a
-                            href="category-page.html" class="btn btn-outline">shop here !</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="collection-block">
-                    <div><img src="{{asset('assets/images/collection/3.jpg')}}" class="img-fluid blur-up lazyload bg-img"
-                            alt=""></div>
-                    <div class="collection-content">
-                        <h5>(20 products)</h5>
-                        <h4 class="font-weight-bold">fashion</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry....</p><a
-                            href="category-page.html" class="btn btn-outline">shop here !</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="collection-block">
-                    <div><img src="{{asset('assets/images/collection/5.jpg')}}" class="img-fluid blur-up lazyload bg-img"
-                            alt=""></div>
-                    <div class="collection-content">
-                        <h5>(20 products)</h5>
-                        <h4 class="font-weight-bold">fashion</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry....</p><a
-                            href="category-page.html" class="btn btn-outline">shop here !</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="collection-block">
-                    <div><img src="{{asset('assets/images/collection/6.jpg')}}" class="img-fluid blur-up lazyload bg-img"
-                            alt=""></div>
-                    <div class="collection-content">
-                        <h5>(20 products)</h5>
-                        <h4 class="font-weight-bold">fashion</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry....</p><a
-                            href="category-page.html" class="btn btn-outline">shop here !</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row partition-collection section-t-space">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="collection-block">
-                    <div><img src="{{asset('assets/images/collection/7.jpg')}}" class="img-fluid blur-up lazyload bg-img"
-                            alt=""></div>
-                    <div class="collection-content">
-                        <h5>(20 products)</h5>
-                        <h4 class="font-weight-bold">fashion</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry....</p><a
-                            href="category-page.html" class="btn btn-outline">shop here !</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="collection-block">
-                    <div><img src="{{asset('assets/images/collection/8.jpg')}}" class="img-fluid blur-up lazyload bg-img"
-                            alt=""></div>
-                    <div class="collection-content">
-                        <h5>(20 products)</h5>
-                        <h4 class="font-weight-bold">fashion</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry....</p><a
-                            href="category-page.html" class="btn btn-outline">shop here !</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="collection-block">
-                    <div><img src="{{asset('assets/images/collection/9.jpg')}}" class="img-fluid blur-up lazyload bg-img"
-                            alt=""></div>
-                    <div class="collection-content">
-                        <h5>(20 products)</h5>
-                        <h4 class="font-weight-bold">fashion</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry....</p><a
-                            href="category-page.html" class="btn btn-outline">shop here !</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="collection-block">
-                    <div><img src="{{asset('assets/images/collection/11.jpg')}}" class="img-fluid blur-up lazyload bg-img"
-                            alt=""></div>
-                    <div class="collection-content">
-                        <h5>(20 products)</h5>
-                        <h4 class="font-weight-bold">fashion</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry....</p><a
-                            href="category-page.html" class="btn btn-outline">shop here !</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> --}}
-<!--Section ends-->
 
 <!-- collection section start -->
 <section class="section-b-space">
@@ -130,7 +20,7 @@
                             <div class="collection-brand-filter">
                                 <div class="custom-control custom-checkbox collection-filter-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="zara">
-                                    <label class="custom-control-label" for="zara">bags</label>
+                                    <label class="custom-control-label" for="zara">zara</label>
                                 </div>
                                 <div class="custom-control custom-checkbox collection-filter-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="vera-moda">
@@ -163,57 +53,29 @@
             <div class="col">
                 <div class="collection">
                     <div class="row partition-collection">
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="collection-block">
-                                <div>
-                                    <img src="{{asset('assets/images/collection/7.jpg')}}" class="img-fluid blur-up lazyload" alt="">
-                                </div>
-                                <div class="collection-content">
-                                    <h5>(20 products)</h5>
-                                    <h4 class="font-weight-bold">fashion</h4>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry....</p><a
-                                        href="category-page.html" class="btn btn-outline">shop here !</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="collection-block">
-                                <div>
-                                    <img src="{{asset('assets/images/collection/8.jpg')}}" class="img-fluid blur-up lazyload" alt="">
-                                </div>
-                                <div class="collection-content">
-                                    <h5>(20 products)</h5>
-                                    <h4 class="font-weight-bold">fashion</h4>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry....</p><a
-                                        href="category-page.html" class="btn btn-outline">shop here !</a>
+                        @forelse ($shops as $shop)
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="collection-block border">
+                                    <div>
+                                        <img src="{{asset('storage/media/'.$shop->logo)}}" class="img-fluid blur-up lazyload" alt="">
+                                    </div>
+                                    <div class="collection-content mb-3">
+                                        <h5>(20 products)</h5>
+                                        <h4 class="font-weight-bold">{{$shop->name}}</h4>
+                                        <p>{!! \Illuminate\Support\Str::words($shop->description, 5,'....')  !!}</p><a
+                                            href="{{route('shop.view',$shop)}}" class="btn btn-outline">shop here !</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 mb-4">
+                        @empty
+                        <div class="col-12 mb-4">
                             <div class="collection-block">
-                                <div>
-                                    <img src="{{asset('assets/images/collection/9.jpg')}}" class="img-fluid blur-up lazyload" alt="">
-                                </div>
-                                <div class="collection-content">
-                                    <h5>(20 products)</h5>
-                                    <h4 class="font-weight-bold">fashion</h4>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry....</p><a
-                                        href="category-page.html" class="btn btn-outline">shop here !</a>
-                                </div>
+                                <p>No Shops</p>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="collection-block">
-                                <div><img src="{{asset('assets/images/collection/11.jpg')}}" class="img-fluid blur-up lazyload"
-                                        alt=""></div>
-                                <div class="collection-content">
-                                    <h5>(20 products)</h5>
-                                    <h4 class="font-weight-bold">fashion</h4>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry....</p><a
-                                        href="category-page.html" class="btn btn-outline">shop here !</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforelse
+                        
+                
                     </div>
                 </div>
             </div>

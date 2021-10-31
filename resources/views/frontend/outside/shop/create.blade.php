@@ -38,6 +38,26 @@
                 <form action="{{route('shop.setup')}}" method="POST" enctype="multipart/form-data">@csrf
                     <div class="tab-content" id="top-tabContent">
                         <div class="tab-pane fade active show" id="welcome" role="tabpanel">
+                            @if (Session::has('errors'))
+                            <div class="dashboard-right tab-content">
+                                <div class="dashboard">
+                                    <div class="page-title text-danger">
+                                        <h2>Errors</h2>
+                                    </div>
+                                    <div class="welcome-msg">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                            <li>
+                                                <p class="invalid-feedback d-block text-danger" role="alert">
+                                                    <strong>{{ $error }}</strong>
+                                                </p>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="dashboard-right tab-content">
                                 <div class="dashboard">
                                     <div class="page-title">

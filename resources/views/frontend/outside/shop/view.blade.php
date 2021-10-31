@@ -1,16 +1,12 @@
 @extends('layouts.frontend.app')
 @push('styles')
-    {{-- <style>
-        ul.note-dropdown-menu li{
-            display:none !important;
-        }
-    </style> --}}
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/custom.css')}}">
 @endpush
 @section('main')
 <!-- vendor cover start -->
 <div class="vendor-cover">
     <div>
-        <img src="{{asset('assets/images/vendor/profile.jpg')}}" alt="" class="bg-img lazyload blur-up">
+        <img src="{{asset('storage/media/'.$shop->cover)}}" alt="" class="bg-img lazyload blur-up">
     </div>
 </div>
 <!-- vendor cover end -->
@@ -24,8 +20,8 @@
                 <div class="profile-left">
                     <div class="profile-image">
                         <div>
-                            <img src="{{asset('assets/images/logos/17.png')}}" alt="" class="img-fluid">
-                            <h3>Fashion Store</h3>
+                            <img src="{{asset('storage/media/'.$shop->logo)}}" alt="" class="img-fluid mb-3">
+                            <h3>{{$shop->name}}</h3>
                             <div class="rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Vendor;
 
 use App\Product;
-use App\Color;
+use App\Shop;
 use App\Category;
 use App\Attribute;
 use Illuminate\Http\Request;
@@ -15,18 +15,20 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    } 
-    public function list(Vendor $vendor){
-        $products = $vendor->products;
-        return view('frontend.inside.shop.product.list',compact('products'));
     }
-    public function create(Vendor $vendor){
+
+    public function list(Shop $shop){
+        $products = $shop->products;
+        return view('frontend.inside.shop.product.list',compact('shop','products'));
+    }
+
+    public function create(Shop $shop){
         $categories = Category::all();
-        $colors = Color::all();
         $attributes = Attribute::all();
-        return view('frontend.inside.shop.product.create',compact('categories','colors','attributes'));
+        return view('frontend.inside.shop.product.create',compact('shop','categories','attributes'));
     }
-    public function save(Vendor $vendor,Request $request){
+
+    public function save(Shop $shop,Request $request){
         // dd($request->all());
         $user = Auth::user();
         $product = Product::create(['user_id'=> $user->id,'name'=> $request->title,'description'=> $request->description,'category_id'=> $request->category_id,'currency_id'=> $user->currency_id]);
@@ -46,17 +48,19 @@ class ProductController extends Controller
                 if($request->input($attrib->slug)[$i]) $product->attributes()->attach($attrib->id,['result'=> $request->input($attrib->slug)[$i]]);
             }
         }
-        return redirect()->route('shop.products')->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=> 'Product created successfully']);
+        return redirect()->route('shop.products',$shop)->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=> 'Product created successfully']);
     }
-    public function edit(Vendor $vendor,Product $product){
+
+    public function edit(Shop $shop,Product $product){
         // dd($product->category->attributes->pluck('slug')->toArray());
         $categories = Category::all();
         $colors = Color::all();
         $attributes = Attribute::all();
         // dd($product->media->where('format','video')[0]);
-        return view('frontend.inside.shop.product.edit',compact('categories','colors','attributes','product'));
+        return view('frontend.inside.shop.product.edit',compact('shop','categories','colors','attributes','product'));
     }
-    public function update(Vendor $vendor,Product $product,Request $request){
+
+    public function update(Shop $shop,Product $product,Request $request){
         // dd($request->all());
         if($request->title) $product->name = $request->title;
         if($request->description) $product->description = $request->description;
@@ -84,9 +88,10 @@ class ProductController extends Controller
                 if($request->input($slug->slug)[$i]) $product->attributes()->attach($slug->id,['result'=> $request->input($slug->slug)[$i]]);
             }
         }
-        return redirect()->route('shop.products');
+        return redirect()->route('shop.products',$shop);
     }
-    public function delete(Vendor $vendor,Request $request){
+
+    public function delete(Shop $shop,Request $request){
         $product = Product::find($request->product_id);
         if($product->orders->isNotEmpty())
         return redirect()->back()->with(['flash_type' => 'danger','flash_title' => 'Unsuccessful','flash_msg'=> 'Cannot delete Product']);
@@ -94,14 +99,15 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->back()->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=> 'Product deleted successfully']);
     }
-    public function publish(Vendor $vendor,Request $request){
+    
+    public function publish(Shop $shop,Request $request){
         $product = Product::find($request->product_id);
         $product->status = true;
         $product->save();
         return redirect()->back();
     }
 
-    public function unpublish(Vendor $vendor,Request $request){
+    public function unpublish(Shop $shop,Request $request){
         $product = Product::find($request->product_id);
         $product->status = false;
         $product->save();

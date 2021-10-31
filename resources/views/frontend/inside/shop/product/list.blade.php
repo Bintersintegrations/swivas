@@ -17,7 +17,7 @@
                             <div class="card-body">
                                 <div class="top-sec">
                                     <h3>all products</h3>
-                                <a href="{{route('shop.product.create')}}" class="btn btn-sm btn-solid">add product</a>
+                                <a href="{{route('shop.product.create',$shop)}}" class="btn btn-sm btn-solid">add product</a>
                                 </div>
                                 <table class="table-responsive-md table mb-0">
                                     <thead>

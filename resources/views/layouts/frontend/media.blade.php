@@ -1,4 +1,4 @@
-<div class="modal fade" tabindex="-1" id="addMedia">
+{{-- <div class="modal fade" tabindex="-1" id="addMedia">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header pb-0">
@@ -26,7 +26,7 @@
                     <div class="col-12">
                         <div class="tab-content nav-material" id="top-tabContent">
                             <div class="tab-pane fade show active" id="media-home" role="tabpanel" aria-labelledby="media-home-tab">
-                                <form class="dropzone digits" id="myAwesomeDropzone" action="{{route('shop.media.dropzone')}}" enctype="multipart/form-data">@csrf
+                                <form class="dropzone digits" id="myAwesomeDropzone" action="{{route('shop.media.dropzone',$shop)}}" enctype="multipart/form-data">@csrf
                                     <div class="dz-message needsclick"><i class="fa fa-cloud-upload"></i>
                                         <h4 class="mb-0 f-w-600">Drop files here or click to upload.</h4>
                                     </div>
@@ -65,4 +65,4 @@
             </div><!-- .modal-body -->
         </div>
     </div>
-</div>
+</div> --}}

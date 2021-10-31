@@ -2,6 +2,12 @@
 
 Route::get('shop/setup','Vendor\ShopController@create')->name('shop.create');
 Route::post('shop/setup','Vendor\ShopController@setup')->name('shop.setup');
+Route::group(['prefix'=> 'shop','as'=>'shop.'], function () {
+    Route::get('/','MediaController@list')->name('media');
+    Route::post('dropzone','MediaController@dropzone_media')->name('media.dropzone');
+    Route::post('summernote','MediaController@summernote_media')->name('media.summernote');
+    Route::post('delete','MediaController@delete')->name('media.delete');
+});
 
 Route::group(['as'=>'shop.','namespace'=>'Vendor','prefix'=>'shop/{shop}'], function () {
     Route::get('/','ShopController@index')->name('view');
@@ -49,11 +55,5 @@ Route::group(['as'=>'shop.','namespace'=>'Vendor','prefix'=>'shop/{shop}'], func
         Route::post('delete','CouponController@delete')->name('coupon.delete');
     });
   
-    Route::group(['prefix'=> 'media'], function () {
-        Route::get('/','MediaController@list')->name('media');
-        Route::post('dropzone','MediaController@dropzone_media')->name('media.dropzone');
-        Route::post('summernote','MediaController@summernote_media')->name('media.summernote');
-        Route::post('delete','MediaController@delete')->name('media.delete');
-    });
-
+    
 });

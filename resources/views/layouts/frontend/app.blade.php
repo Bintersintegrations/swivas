@@ -32,18 +32,15 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/animate.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/select2-bootstrap.min.css')}}">
-    @stack('styles')
+    
     <!-- Themify icon -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/themify-icons.css')}}">
 
     <!-- Bootstrap css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.css')}}">
-    {{-- <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap5.css')}}"> --}}
-
     <!-- Theme css -->
-    {{-- <link rel="stylesheet" type="text/css" href="{{asset('assets/css/color1.css')}}" media="screen" id="color"> --}}
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}" media="screen" id="color">
-
+    @stack('styles')
 
 </head>
 

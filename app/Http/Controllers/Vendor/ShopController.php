@@ -20,12 +20,16 @@ class ShopController extends Controller
     use CreateUserTrait;
 
     public function __construct(){
-        $this->middleware('auth')->except(['create','setup','list']);
+        $this->middleware('auth')->except(['create','setup','list','index']);
     }
 
     public function list(){
         $shops = Shop::all();
         return view('frontend.outside.shop.list',compact('shops'));
+    }
+    //public view of shop
+    public function index(Shop $shop){ 
+        return view('frontend.outside.shop.view',compact('shop'));
     }
     
     public function create(){
@@ -41,8 +45,14 @@ class ShopController extends Controller
     public function setup(Request $request){
 
         // dd($request->all());
-        $user = $this->getUser($request);
-        dd($user);
+        if(Auth::check())
+            $user = Auth::user();
+        elseif(Auth::attempt($request->only('email', 'password')))
+            $user = User::where('email',$request->email)->first();
+        else{
+            $this->validator($request)->validate();
+            $user = $this->createUser($request);
+        } 
         $shop = new Shop;
         $shop->user_id = $user->id;
         $shop->contact_name = $request->business_name;
@@ -111,10 +121,7 @@ class ShopController extends Controller
         return redirect()->route('shop.dashboard',$shop);
     }
 
-    //public view of shop
-    public function index(Shop $shop){ 
-        return view('frontend.outside.shop.view',compact('shop'));
-    }
+    
 
     //vendor dashboard
     public function dashboard(Shop $shop){
@@ -150,6 +157,10 @@ class ShopController extends Controller
 
     public function settings(Shop $shop){
         return 'I dont exist';
+    }
+
+    public function createUser(){
+
     }
 
     
