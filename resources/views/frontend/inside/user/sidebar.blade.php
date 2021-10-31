@@ -14,4 +14,16 @@
             <li class="last"><a href="#">Log Out</a></li>
         </ul>
     </div>
+    @if(Auth::user()->shops->isNotEmpty())
+        <div class="block-content">
+            <h4>Your Shops</h4>
+            <ul>
+            @foreach (Auth::user()->shops as $shop)
+                <li><a href="{{route('shop.dashboard',$shop)}}">{{$shop->name}}</a></li>
+            @endforeach
+            </ul>
+            
+        </div>
+    @endif
+    
 </div>

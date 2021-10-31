@@ -55,6 +55,11 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="box">
+                                                    @error('email')
+                                                    <span class="invalid-feedback d-inline" role="alert">
+                                                        <strong>: {{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
                                                     <div class="box-title">
                                                         <h3>Terms</h3>
                                                     </div>
@@ -163,21 +168,17 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="surname" class="form-label">Phone Number</label>
-                                                    <input type="text" name="contact_phone" class="form-control" id="contact_phone" placeholder="Contact Person Mobile number" required>
+                                                    <label for="contact_email" class="form-label">Email</label>
+                                                    <input type="text" name="contact_email" class="form-control" id="contact_email" placeholder="Contact Email" required>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="contact_document_type">Contact Person ID Type</label>
-                                                    <select id="contact_document_type" name="contact_document_type" class="form-control" required>
-                                                        <option value="internation_passport">International Passport</option> 
-                                                        <option value="drivers_license">Drivers License</option> 
-                                                        <option value="national_identity">National Identity</option> 
-                                                    </select>
-                                                </div>   
+                                                    <label for="contact_phone" class="form-label">Phone Number</label>
+                                                    <input type="text" name="contact_phone" class="form-control" id="contact_phone" placeholder="Contact Mobile number" required>
+                                                </div> 
                                                 
                                             </div>
                                             <div class="col-md-6">
@@ -356,26 +357,26 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_company_name_1" class="form-label">Logistic Company Name</label>
-                                                    <input type="text" name="delivery_company_name_1" class="form-control" id="delivery_company_name_1" placeholder="Delivery Company">
+                                                    <input type="text" name="delivery_company_name[]" class="form-control" id="delivery_company_name_1" placeholder="Delivery Company">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_name_1" class="form-label">Delivery Personnel Name</label>
-                                                    <input type="text" name="delivery_man_name_1" class="form-control" id="delivery_man_name_1" placeholder="Delivery Personnel" required>
+                                                    <input type="text" name="delivery_username[]" class="form-control" id="delivery_man_name_1" placeholder="Delivery Personnel" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_phone_1" class="form-label">Delivery Personnel Phone</label>
-                                                    <input type="text" name="delivery_man_phone_1" class="form-control" id="delivery_man_phone_1" placeholder="Delivery Person Mobile number" required>
+                                                    <input type="text" name="delivery_phone[]" class="form-control" id="delivery_man_phone_1" placeholder="Delivery Person Mobile number" required>
                                                 </div>
                                             </div>
                                             
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_id_1">Upload Delivery Person's ID</label>
-                                                    <input type="file" name="delivery_man_id_1" class="form-control" id="delivery_man_id_1" required>
+                                                    <input type="file" name="delivery_id[]" class="form-control" id="delivery_man_id_1" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -384,26 +385,26 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_company_name_2" class="form-label">Logistic Company Name</label>
-                                                    <input type="text" name="delivery_company_name_2" class="form-control" id="delivery_company_name_2" placeholder="Delivery Company">
+                                                    <input type="text" name="delivery_company_name[]" class="form-control" id="delivery_company_name_2" placeholder="Delivery Company">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_name_2" class="form-label">Delivery Personnel Name</label>
-                                                    <input type="text" name="delivery_man_name_2" class="form-control" id="delivery_man_name_2" placeholder="Delivery Personnel" required>
+                                                    <input type="text" name="delivery_username[]" class="form-control" id="delivery_man_name_2" placeholder="Delivery Personnel" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_phone_2" class="form-label">Delivery Personnel Phone</label>
-                                                    <input type="text" name="delivery_man_phone_2" class="form-control" id="delivery_man_phone_2" placeholder="Delivery Person Mobile number" required>
+                                                    <input type="text" name="delivery_phone[]" class="form-control" id="delivery_man_phone_2" placeholder="Delivery Person Mobile number" required>
                                                 </div>
                                             </div>
                                             
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_id_2">Upload Delivery Person's ID</label>
-                                                    <input type="file" name="delivery_man_id_2" class="form-control" id="delivery_man_id_2" required>
+                                                    <input type="file" name="delivery_id[]" class="form-control" id="delivery_man_id_2" required>
                                                 </div>
                                             </div>
                                         </div>

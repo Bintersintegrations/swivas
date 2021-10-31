@@ -14,11 +14,18 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Shop extends Model
 {
     use Notifiable,Sluggable;
-    
+    protected $casts = ['categories'=> 'array'];
+
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     parent::observe(new \App\Observers\ShopObserver);
+    // }
+
     public function sluggable()
     {
         return [
-            'username' => [
+            'slug' => [
                 'source' => 'name',
                 'separator' => '_'
             ]

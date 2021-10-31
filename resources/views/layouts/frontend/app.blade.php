@@ -782,10 +782,10 @@
                                     </li>
                                     <li><a href="{{route('index')}}">Home</a></li>
                                     <li>
-                                        <a href="#">shops</a>
+                                        <a href="{{route('shop.list')}}">shops</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('shop.list')}}">sell</a>
+                                        <a href="{{route('sell')}}">sell</a>
                                         
                                     </li>
                                     <li>

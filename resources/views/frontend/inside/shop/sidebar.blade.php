@@ -12,23 +12,23 @@
     <div class="faq-tab">
         <ul class="nav nav-tabs" id="top-tab" role="tablist">
             <li class="nav-item"><a data-toggle="tab" class="nav-link active"
-                    href="{{route('shop.dashboard')}}">dashboard</a>
+                    href="{{route('shop.dashboard',$shop)}}">dashboard</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     Products
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('shop.product.create')}}">New Product</a>
-                    <a class="dropdown-item" href="{{route('shop.products')}}">All Products</a>
+                    <a class="dropdown-item" href="{{route('shop.product.create',$shop)}}">New Product</a>
+                    <a class="dropdown-item" href="{{route('shop.products',$shop)}}">All Products</a>
                     
                 </div>
             </li>
             
             
             
-            <li class="nav-item"><a class="nav-link" href="{{route('shop.orders')}}">Orders</a>
-            <li class="nav-item"><a class="nav-link" href="{{route('shop.coupons')}}">Coupon</a>
+            <li class="nav-item"><a class="nav-link" href="{{route('shop.orders',$shop)}}">Orders</a>
+            <li class="nav-item"><a class="nav-link" href="{{route('shop.coupons',$shop)}}">Coupon</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -41,9 +41,9 @@
                 </div>
             </li>
             
-            <li class="nav-item"><a class="nav-link" href="{{route('shop.profile')}}">profile</a>
+            <li class="nav-item"><a class="nav-link" href="{{route('shop.profile',$shop)}}">profile</a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="{{route('shop.settings')}}">settings</a>
+            <li class="nav-item"><a class="nav-link" href="{{route('shop.settings',$shop)}}">settings</a>
             </li>
             <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout"
                     href="">logout</a>
@@ -67,7 +67,11 @@
             </div>
             <div class="modal-footer">
                 <a href="#" class="btn btn-dark btn-custom" data-dismiss="modal">no</a>
-                <a href="index.html" class="btn btn-solid btn-custom">yes</a>
+                <a href="{{ route('logout') }}" class="btn btn-solid btn-custom" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i>yes</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </div>
         </div>
     </div>

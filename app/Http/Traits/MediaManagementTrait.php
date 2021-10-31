@@ -33,14 +33,12 @@ trait MediaManagementTrait
     }
 
     protected function uploadImage(Request $request){
-        request()->validate([
-            'file' => 'required',
-        ]);
+        
         $user = Auth::user();
         $ext = $request->file('file')->getClientOriginalExtension();
         $imageName = $user->id.rand().time().'.'.$ext;
         $media = Media::create(['name' => $imageName,'format' => 'image','user_id'=> $user->id]); //create media to database
-        $request->file('file')->storeAs('public/media/image',$imageName);//save the file to public folder
+        $request->file('file')->storeAs('public/media',$imageName);//save the file to public folder
         return $media;
     }
 }
