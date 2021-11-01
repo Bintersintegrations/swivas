@@ -19,7 +19,7 @@ class CategoryManagementController extends Controller
         $categories = Category::all();
         //dd(implode(',',$categories[0]->attributes->pluck('name')->toArray()));
         $attributes = Attribute::all();
-        return view('backend.items.categories',compact('categories','attributes'));
+        return view('backend.categories.list',compact('categories','attributes'));
     }
     public function savecategories(Request $request){
         //dd($request->all());
@@ -90,7 +90,7 @@ class CategoryManagementController extends Controller
 
     public function listattributes(){
         $attributes = Attribute::all();
-        return view('backend.items.attributes',compact('attributes'));
+        return view('backend.attributes.list',compact('attributes'));
     }
     public function saveattributes(Request $request){
         // dd($request->all());

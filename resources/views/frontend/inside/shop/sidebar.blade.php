@@ -1,11 +1,11 @@
 <div class="dashboard-sidebar">
     <div class="profile-top">
         <div class="profile-image">
-            <img src="{{asset('assets/images/logos/17.png')}}" alt="" class="img-fluid">
+            <img src="{{asset('storage/media/'.$shop->logo)}}" alt="" class="img-fluid">
         </div>
         <div class="profile-detail">
-            <h5>Fashion Store</h5>
-            <h6>750 followers | 10 review</h6>
+            <h5>{{$shop->name}}</h5>
+            <h6>750 products | 10 review</h6>
             <h6>mark.enderess@mail.com</h6>
         </div>
     </div>

@@ -20,8 +20,6 @@
                     {{-- <li><a href="product-list.html"><i class="fa fa-circle"></i>Categories</a></li> --}}
                 </ul>
             </li>
-            
-            
             <li><a class="sidebar-header" href="{{route('admin.categories')}}"><i data-feather="bar-chart"></i>Categories</a></li>
             <li><a class="sidebar-header" href="{{route('admin.attributes')}}"><i data-feather="bar-chart"></i>Attributes</a></li>
             <li><a class="sidebar-header" href="{{route('admin.media.list')}}"><i data-feather="camera"></i><span>Media</span></a></li>

@@ -2,8 +2,7 @@
 
 namespace App;
 
-use App\Item;
-use App\Media;
+use App\Shop;
 use App\Order;
 use App\Attribute;
 use Illuminate\Database\Eloquent\Model;
@@ -19,7 +18,7 @@ class Product extends Model
     {
         return [
             'slug' => [
-                'source' => ['item.name','id'],
+                'source' => ['name'],
                 'separator' => '_'
             ]
         ];
@@ -28,15 +27,11 @@ class Product extends Model
         return 'slug';
     }
     
-    
-    public function item(){
-        return $this->belongsTo(Item::class);
-    }
     public function attributes(){
-        return $this->morphToMany(Attribute::class, 'attributable')->withPivot('result');
+        return $this->hasMany(Attribute::class)->withPivot('result');
     }
-    public function image(){
-        return $this->belongsTo(Media::class);
+    public function shop(){
+        return $this->belongsTo(Shop::class);
     }
 
     public function orders(){

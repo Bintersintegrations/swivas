@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Item;
+use App\Product;
 use App\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -32,8 +32,8 @@ class Category extends Model
     public function attributes(){
         return $this->belongsToMany(Attribute::class,'attribute_categories');
     }
-    public function items(){
-        return $this->hasMany(Item::class);
+    public function products(){
+        return $this->hasMany(Product::class,'categories');
     }
     public function getGrand(){
         return \App\Category::where('id',$this->grand_id)->first();

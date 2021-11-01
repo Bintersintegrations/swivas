@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="page-header-left">
-                    <h3>Giving
+                    <h3>Products
                         <small>Multikart Admin panel</small>
                     </h3>
                 </div>
@@ -29,7 +29,7 @@
                 <ol class="breadcrumb pull-right">
                     <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
                     <li class="breadcrumb-item">Items</li>
-                    <li class="breadcrumb-item active">GiveAway</li>
+                    <li class="breadcrumb-item active">Products</li>
                 </ol>
             </div>
         </div>
@@ -43,44 +43,38 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Manage Givings</h5>
+                    <h5>Manage Product</h5>
                 </div>
                 <div class="card-body order-datatable">
                     <table class="display" id="basic-1">
                         <thead>
                         <tr>
                             <th>Id</th>
-                            {{-- <th>User</th> --}}
+                            <th>Shop</th>
                             <th>Image</th>
                             <th>Category</th>
-                            <th>Bids</th>
-                            <th>Author</th>
+                            <th>Price</th>
+                            <th>Available</th>
                             <th>Status</th>
-                            <th>Action</th>
-                            
+                            <th>Approve/Delete</th>
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach ($auctions as $auction)
+                            @foreach ($products as $product)
                             <tr>
-                                <td>#{{$auction->id}}|{{$auction->item->name}}</td>
-                                {{-- <td><a href="#">{{$auction->item->user->firstname}}</a></td> --}}
+                                <td>#{{$product->id}}|<a href="#">{{$product->item->name}}</a></td>
+                                <td>{{$product->shop->name}}</td>
                                 <td>
                                     <div class="d-flex">
-                                        {{-- @if($auction->image)
-                                            <img src="{{asset('storage/media/image/'.$auction->image->name)}}" class="img-fluid img-30 mr-2 blur-up lazyloaded" alt="">
-                                        @endif --}}
-                                        @forelse($auction->item->media->where('format','image') as $media)
-                                            <img src="{{asset('storage/media/image/'.$media->name)}}" class="img-fluid img-30 mr-2 blur-up lazyloaded" alt="">
-                                        @empty 
-                                            <img src="{{asset('assets/images/electronics/product/25.jpg')}}" alt="" class="img-fluid img-30 mr-2 blur-up lazyloaded">
-                                        @endforelse 
+                                        @if($product->image)
+                                            <img src="{{asset('storage/media/image/'.$product->image)}}" class="img-fluid img-30 mr-2 blur-up lazyloaded" alt="">
+                                        @endif
                                     </div>
                                 </td>
-                                <td><span class="badge badge-secondary">{{$auction->item->category->name}}</span></td>
-                                
-                                <td>{{$auction->bids->count()}}</td>
-                                <td>{{$auction->item->user->name}}</td>
+                                <td><span class="badge badge-secondary">{{$product->item->category->name}}</span></td>
+                                <td>{{$product->item->currency->symbol.' '.$product->amount}}</td>
+                                <td>Remaining: {{$product->available}}</td>
+                                <td>{{$product->item->user->name}}</td>
                 
                                 <td><span class="badge badge-success">Approved</span></td>
                                 <td>

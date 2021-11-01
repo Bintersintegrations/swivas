@@ -1,5 +1,5 @@
 <?php
-
+Route::view('adminlogin','backend.auth.login');
 Route::get('/','HomeController@index')->name('index');
 Route::get('shops','Vendor\ShopController@list')->name('shop.list');
 
@@ -41,7 +41,7 @@ Route::post('support','SupportThreadController@save')->name('support');
 //AUTH
 Auth::routes();
 
-Route::get('dashboard', 'HomeController@dashboards')->name('home');
+Route::get('dashboards', 'HomeController@dashboards')->name('home');
 Route::post('getCities','HomeController@getCities')->name('getCities');
 Route::post('getStates','HomeController@getStates')->name('getStates');
 Route::post('orphanage/charity/register','HomeController@orphanageCharity')->name('orphanage.charity');

@@ -19,7 +19,7 @@ class ProductManagementController extends Controller
     
     public function list(){
         $products = Product::all();
-        return view('backend.items.product.list',compact('products'));
+        return view('backend.product.list',compact('products'));
     }
     public function create(){
         $categories = Category::all();
