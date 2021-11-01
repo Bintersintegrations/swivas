@@ -24,6 +24,7 @@ class ProductController extends Controller
 
     public function create(Shop $shop){
         $categories = Category::all();
+        // dd($categories);
         $attributes = Attribute::all();
         return view('frontend.inside.shop.product.create',compact('shop','categories','attributes'));
     }

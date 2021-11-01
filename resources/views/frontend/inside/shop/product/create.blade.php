@@ -98,10 +98,10 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="categories" class="form-label">Select Category :</label>
-                                                            <select class="form-control" id="category" name="category_id" required>
-                                                                <option selected disabled>Select Category</option>
-                                                                @foreach ($categories->where('grand_id','!=',null)->where('parent_id','!=',null) as $child)
-                                                                <option value="{{$child->id}}" data-attrib="{{implode(',.',$child->attributes->pluck('slug')->toArray())}}">{{$child->name}} -> {{$child->getParent()->name }} @if($child->getGrand()) -> {{$child->getGrand()->name}} @endif</option>
+                                                            <select class="form-control select2" id="category" name="category_id" multiple required>
+                                                                
+                                                                @foreach ($categories->where('parent_id','!=',null) as $child)
+                                                                <option value="{{$child->id}}" data-attrib="">{{$child->name}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -484,5 +484,6 @@
             $('.attrib-options').hide();
             $('.'+attributes).show();
         }
+        $('.select2').select2();
     </script>
 @endpush
