@@ -390,7 +390,7 @@
                                             <a href="#">Track Order</a>
                                         </li>
                                         <li>
-                                            <a href="#">Account</a>
+                                            <a href="{{route('user.dashboard')}}">Account</a>
                                         </li>
                                         
                                     </ul>
@@ -792,7 +792,7 @@
                                         <a href="#">Track Order</a>
                                     </li>
                                     <li>
-                                        <a href="#">Account</a>
+                                        <a href="{{route('user.dashboard')}}">Account</a>
                                     </li>
                                     
                                   
