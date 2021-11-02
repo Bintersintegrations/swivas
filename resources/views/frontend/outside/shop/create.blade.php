@@ -131,13 +131,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="firstname" class="form-label">First Name</label>
-                                                    <input type="text" name="firstname" class="form-control" id="firstname" @auth value="{{Auth::user()->firstname}}" readonly @endauth placeholder="First Name" >
+                                                    <input type="text" name="firstname" class="form-control" id="firstname" @auth value="{{ Auth::user()->firstname ?? old('firstname') }}" readonly @endauth placeholder="First Name" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="surname" class="form-label">Surname</label>
-                                                    <input type="text" name="surname" class="form-control" id="surname" @auth value="{{Auth::user()->surname}}" readonly @endauth   placeholder="Last Name" >
+                                                    <input type="text" name="surname" class="form-control" id="surname" @auth value="{{Auth::user()->surname ?? old('surname')}}" readonly @endauth   placeholder="Last Name" >
                                                 </div>
                                             </div>
                                         </div>
@@ -145,13 +145,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="surname" class="form-label">Email</label>
-                                                    <input type="email" name="email" class="form-control" id="email" @auth value="{{Auth::user()->email}}" readonly @endauth   placeholder="Email" >
+                                                    <input type="email" name="email" class="form-control" id="email" @auth value="{{Auth::user()->email ?? old('email')}}" readonly @endauth   placeholder="Email" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="surname" class="form-label">Mobile</label>
-                                                    <input type="text" name="mobile" class="form-control" id="mobile" @auth value="{{Auth::user()->mobile}}" readonly @endauth   placeholder="Mobile" >
+                                                    <input type="text" name="mobile" class="form-control" id="mobile" @auth value="{{Auth::user()->mobile ?? old('mobile')}}" readonly @endauth   placeholder="Mobile" >
                                                 </div>
                                             </div>
                                         </div>
@@ -183,13 +183,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="contact_name" class="form-label">Full Name</label>
-                                                    <input type="text" name="contact_name" class="form-control" id="contact_name" placeholder="Contact Person Full name" >
+                                                    <input type="text" name="contact_name" value="{{ old('contact_name') }}" class="form-control" id="contact_name" placeholder="Contact Person Full name" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="contact_email" class="form-label">Email</label>
-                                                    <input type="text" name="contact_email" class="form-control" id="contact_email" placeholder="Contact Email" >
+                                                    <input type="text" name="contact_email" value="{{ old('contact_email') }}" class="form-control" id="contact_email" placeholder="Contact Email" >
                                                 </div>
                                             </div>
                                         </div>
@@ -197,7 +197,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="contact_phone" class="form-label">Phone Number</label>
-                                                    <input type="text" name="contact_phone" class="form-control" id="contact_phone" placeholder="Contact Mobile number" >
+                                                    <input type="text" name="contact_phone" value="{{ old('contact_phone') }}" class="form-control" id="contact_phone" placeholder="Contact Mobile number" >
                                                 </div> 
                                                 
                                             </div>
@@ -264,11 +264,11 @@
                                                     <div class="box-content">
                                                         <div class="form-group">
                                                             <label>Business Name</label>
-                                                            <input name="business_name" id="business_name" class="form-control digits" type="text" autocomplete="" >
+                                                            <input name="business_name" value="{{ old('business_name') }}" id="business_name" class="form-control digits" type="text" autocomplete="" >
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Business Description</label>
-                                                            <textarea name="business_description" id="business_description" placeholder="We are into sales of..." class="form-control digits" ></textarea>
+                                                            <textarea name="business_description" value="{{ old('business_description') }}" id="business_description" placeholder="We are into sales of..." class="form-control digits" ></textarea>
                                                         </div>
                                                         
                                                     </div>
@@ -324,7 +324,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputAddress">Address</label>
-                                            <input type="text" name="address" class="form-control" id="inputAddress" placeholder="1234 Main St" >
+                                            <input type="text" name="address" value="{{ old('address') }}" class="form-control" id="inputAddress" placeholder="1234 Main St" >
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
@@ -377,19 +377,19 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_company_name_1" class="form-label">Logistic Company Name</label>
-                                                    <input type="text" name="delivery_company_name[]" class="form-control" id="delivery_company_name_1" placeholder="Delivery Company">
+                                                    <input type="text" name="delivery_company_name[]" value="{{ old('delivery_company_name') }}" class="form-control" id="delivery_company_name_1" placeholder="Delivery Company">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_name_1" class="form-label">Delivery Personnel Name</label>
-                                                    <input type="text" name="delivery_username[]" class="form-control" id="delivery_man_name_1" placeholder="Delivery Personnel" >
+                                                    <input type="text" name="delivery_username[]" value="{{ old('delivery_username') }}" class="form-control" id="delivery_man_name_1" placeholder="Delivery Personnel" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_phone_1" class="form-label">Delivery Personnel Phone</label>
-                                                    <input type="text" name="delivery_phone[]" class="form-control" id="delivery_man_phone_1" placeholder="Delivery Person Mobile number" >
+                                                    <input type="text" name="delivery_phone[]" value="{{ old('delivery_phone') }}"  class="form-control" id="delivery_man_phone_1" placeholder="Delivery Person Mobile number" >
                                                 </div>
                                             </div>
                                             
@@ -405,19 +405,19 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_company_name_2" class="form-label">Logistic Company Name</label>
-                                                    <input type="text" name="delivery_company_name[]" class="form-control" id="delivery_company_name_2" placeholder="Delivery Company">
+                                                    <input type="text" name="delivery_company_name[]" value="{{ old('delivery_company_name') }}" class="form-control" id="delivery_company_name_2" placeholder="Delivery Company">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_name_2" class="form-label">Delivery Personnel Name</label>
-                                                    <input type="text" name="delivery_username[]" class="form-control" id="delivery_man_name_2" placeholder="Delivery Personnel" >
+                                                    <input type="text" name="delivery_username[]" value="{{ old('delivery_username') }}" class="form-control" id="delivery_man_name_2" placeholder="Delivery Personnel" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_phone_2" class="form-label">Delivery Personnel Phone</label>
-                                                    <input type="text" name="delivery_phone[]" class="form-control" id="delivery_man_phone_2" placeholder="Delivery Person Mobile number" >
+                                                    <input type="text" name="delivery_phone[]" value="{{ old('delivery_phone') }}" class="form-control" id="delivery_man_phone_2" placeholder="Delivery Person Mobile number" >
                                                 </div>
                                             </div>
                                             
@@ -469,7 +469,7 @@
                                                         </div>   
                                                         <div class="form-group">
                                                             <label for="account_number">Account Number</label>
-                                                            <input name="account_number" type="text" class="form-control" id="account_number" >
+                                                            <input name="account_number" value="{{ old('account_number') }}" type="text" class="form-control" id="account_number" >
                                                         </div>
                                                         <div class="form-group" style="display: none;">
                                                             <label for="bank_branch">Select Branch</label>
