@@ -47,7 +47,7 @@
                                     <div class="welcome-msg">
                                         <ul>
                                             @foreach ($errors->all() as $error)
-                                            <li>
+                                            <li class="d-block">
                                                 <p class="invalid-feedback d-block text-danger" role="alert">
                                                     <strong>{{ $error }}</strong>
                                                 </p>

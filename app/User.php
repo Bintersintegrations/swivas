@@ -74,6 +74,7 @@ class User extends Authenticatable
     public function isAdmin(){
         if(in_array('admin',$this->roles->pluck('name')->toArray()))
         return true;
+        else return false;
     }
     
     public function hasAnyRole($values){

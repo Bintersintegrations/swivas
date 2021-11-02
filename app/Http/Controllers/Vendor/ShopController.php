@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Vendor;
 
 use App\Bank;
-use App\BankAccount;
-use App\Logistic;
 use App\City;
 use App\Shop;
 use App\State;
 use App\Country;
 use App\Category;
+use App\Logistic;
+use App\BankAccount;
 use Illuminate\Http\Request;
+use App\Http\Requests\ShopRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\CreateUserTrait;
 use Illuminate\Support\Facades\Auth;
@@ -42,7 +43,7 @@ class ShopController extends Controller
         return view('frontend.outside.shop.create',compact('countries','categories','states','cities','banks'));
     }
 
-    public function setup(Request $request){
+    public function setup(ShopRequest $request){
 
         // dd($request->all());
         if(Auth::check())
@@ -55,7 +56,7 @@ class ShopController extends Controller
         } 
         $shop = new Shop;
         $shop->user_id = $user->id;
-        $shop->contact_name = $request->business_name;
+        $shop->contact_name = $request->contact_name;
         $shop->email = $request->contact_email;
         $shop->mobile = $request->contact_phone;
         $shop->name = $request->business_name;
