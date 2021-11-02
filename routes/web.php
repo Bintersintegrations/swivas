@@ -1,5 +1,5 @@
 <?php
-Route::view('adminlogin','backend.auth.login');
+
 Route::get('/','HomeController@index')->name('index');
 Route::get('shops','Vendor\ShopController@list')->name('shop.list');
 
