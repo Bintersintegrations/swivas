@@ -24,7 +24,7 @@
                             <h2>My Dashboard</h2>
                         </div>
                         <div class="welcome-msg">
-                            <p>Hello, MARK JECNO !</p>
+                            <p>Hello, {{$user->name}} !</p>
                             <p>From your My Account Dashboard you have the ability to view a snapshot of your recent
                                 account activity and update your account information. Select a link below to view or
                                 edit information.</p>

@@ -106,11 +106,11 @@
                         {{-- <form class="needs-validation" novalidate=""> --}}
                             <h4>Restriction</h4>
                             <div class="form-group row">
-                                <label for="items" class="col-xl-3 col-md-4">Items</label>
+                                <label for="products" class="col-xl-3 col-md-4">Products</label>
                                 <div class="col-md-7 px-0">
-                                    <select class="form-control  select2" id="items" name="items[]" multiple style="width:100%;">
-                                        @foreach ($items as $item)
-                                            <option value="{{$item->id}}" @if($coupon->item_limit && in_array($item->id,$coupon->item_limit)) selected @endif>{{$item->name}}</option>
+                                    <select class="form-control  select2" id="products" name="products[]" multiple style="width:100%;">
+                                        @foreach ($products as $product)
+                                            <option value="{{$product->id}}" @if($coupon->product_limit && in_array($product->id,$coupon->product_limit)) selected @endif>{{$product->name}}</option>
                                         @endforeach 
                                     </select>
                                 </div>

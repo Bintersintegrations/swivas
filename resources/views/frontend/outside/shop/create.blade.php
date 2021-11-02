@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="account-sidebar">
-                    <a class="popup-btn">my account</a>
+                    <a class="popup-btn">setup menu</a>
                 </div>
                 <div class="dashboard-left">
                     <div class="collection-mobile-back">
@@ -97,7 +97,7 @@
                                                 <div class="form-group ">
                                                     {{-- <label class="col-xl-3 col-md-4">Free Shipping</label> --}}
                                                     <div class="checkbox checkbox-primary ">
-                                                        <input id="checkbox-primary-1" type="checkbox" data-original-title="" title="" name="agreement" value="1" required>
+                                                        <input id="checkbox-primary-1" type="checkbox" data-original-title="" title="" name="agreement" value="1" >
                                                         <label for="checkbox-primary-1 px-2"> I have read the agreement</label>
                                                     </div>
                                                 </div>
@@ -131,13 +131,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="firstname" class="form-label">First Name</label>
-                                                    <input type="text" name="firstname" class="form-control" id="firstname" @auth value="{{Auth::user()->firstname}}" readonly @endauth placeholder="First Name" required>
+                                                    <input type="text" name="firstname" class="form-control" id="firstname" @auth value="{{Auth::user()->firstname}}" readonly @endauth placeholder="First Name" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="surname" class="form-label">Surname</label>
-                                                    <input type="text" name="surname" class="form-control" id="surname" @auth value="{{Auth::user()->surname}}" readonly @endauth   placeholder="Last Name" required>
+                                                    <input type="text" name="surname" class="form-control" id="surname" @auth value="{{Auth::user()->surname}}" readonly @endauth   placeholder="Last Name" >
                                                 </div>
                                             </div>
                                         </div>
@@ -145,13 +145,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="surname" class="form-label">Email</label>
-                                                    <input type="email" name="email" class="form-control" id="email" @auth value="{{Auth::user()->email}}" readonly @endauth   placeholder="Email" required>
+                                                    <input type="email" name="email" class="form-control" id="email" @auth value="{{Auth::user()->email}}" readonly @endauth   placeholder="Email" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="surname" class="form-label">Mobile</label>
-                                                    <input type="text" name="mobile" class="form-control" id="mobile" @auth value="{{Auth::user()->mobile}}" readonly @endauth   placeholder="Mobile" required>
+                                                    <input type="text" name="mobile" class="form-control" id="mobile" @auth value="{{Auth::user()->mobile}}" readonly @endauth   placeholder="Mobile" >
                                                 </div>
                                             </div>
                                         </div>
@@ -183,13 +183,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="contact_name" class="form-label">Full Name</label>
-                                                    <input type="text" name="contact_name" class="form-control" id="contact_name" placeholder="Contact Person Full name" required>
+                                                    <input type="text" name="contact_name" class="form-control" id="contact_name" placeholder="Contact Person Full name" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="contact_email" class="form-label">Email</label>
-                                                    <input type="text" name="contact_email" class="form-control" id="contact_email" placeholder="Contact Email" required>
+                                                    <input type="text" name="contact_email" class="form-control" id="contact_email" placeholder="Contact Email" >
                                                 </div>
                                             </div>
                                         </div>
@@ -197,14 +197,14 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="contact_phone" class="form-label">Phone Number</label>
-                                                    <input type="text" name="contact_phone" class="form-control" id="contact_phone" placeholder="Contact Mobile number" required>
+                                                    <input type="text" name="contact_phone" class="form-control" id="contact_phone" placeholder="Contact Mobile number" >
                                                 </div> 
                                                 
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="contact_document">Upload Contact Person's ID</label>
-                                                    <input type="file" name="contact_document" class="form-control" id="contact_document" required>
+                                                    <input type="file" name="contact_document" class="form-control" id="contact_document" >
                                                 </div>
                                             </div>
                                         </div>
@@ -264,11 +264,11 @@
                                                     <div class="box-content">
                                                         <div class="form-group">
                                                             <label>Business Name</label>
-                                                            <input name="business_name" id="business_name" class="form-control digits" type="text" autocomplete="" required>
+                                                            <input name="business_name" id="business_name" class="form-control digits" type="text" autocomplete="" >
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Business Description</label>
-                                                            <textarea name="business_description" id="business_description" placeholder="We are into sales of..." class="form-control digits" required></textarea>
+                                                            <textarea name="business_description" id="business_description" placeholder="We are into sales of..." class="form-control digits" ></textarea>
                                                         </div>
                                                         
                                                     </div>
@@ -283,12 +283,12 @@
                                                         
                                                         <div class="form-group">
                                                             <label for="certificate">CAC Document</label>
-                                                            <input type="file" name="business_certificate" class="form-control" id="certificate" required>
+                                                            <input type="file" name="business_certificate" class="form-control" id="certificate" >
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Categories of Products You Sell</label>
                                                             <div class="">
-                                                                <select name="business_categories[]" class="select2" multiple required>
+                                                                <select name="business_categories[]" class="select2" multiple >
                                                                 @foreach ($categories as $category)
                                                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                                                 @endforeach
@@ -324,12 +324,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputAddress">Address</label>
-                                            <input type="text" name="address" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+                                            <input type="text" name="address" class="form-control" id="inputAddress" placeholder="1234 Main St" >
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="country">Country</label>
-                                                <select id="country" name="country_id" class="countries select2 form-control" required>
+                                                <select id="country" name="country_id" class="countries select2 form-control" >
                                                     @foreach ($countries as $country)
                                                         <option value="{{$country->id}}">{{$country->name}}</option>
                                                     @endforeach
@@ -337,7 +337,7 @@
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputState">State</label>
-                                                <select id="inputState" name="state_id" class="states form-control" required>
+                                                <select id="inputState" name="state_id" class="states form-control" >
                                                     @foreach ($states as $state)
                                                         <option value="{{$state->id}}">{{$state->name}}</option>
                                                     @endforeach
@@ -345,7 +345,7 @@
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputCity">Area</label>
-                                                <select id="inputCity" name="city_id" class="cities form-control" required>
+                                                <select id="inputCity" name="city_id" class="cities form-control" >
                                                     <option>Long</option>
                                                     <option>Lat</option>
                                                 </select>
@@ -383,20 +383,20 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_name_1" class="form-label">Delivery Personnel Name</label>
-                                                    <input type="text" name="delivery_username[]" class="form-control" id="delivery_man_name_1" placeholder="Delivery Personnel" required>
+                                                    <input type="text" name="delivery_username[]" class="form-control" id="delivery_man_name_1" placeholder="Delivery Personnel" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_phone_1" class="form-label">Delivery Personnel Phone</label>
-                                                    <input type="text" name="delivery_phone[]" class="form-control" id="delivery_man_phone_1" placeholder="Delivery Person Mobile number" required>
+                                                    <input type="text" name="delivery_phone[]" class="form-control" id="delivery_man_phone_1" placeholder="Delivery Person Mobile number" >
                                                 </div>
                                             </div>
                                             
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_id_1">Upload Delivery Person's ID</label>
-                                                    <input type="file" name="delivery_id[]" class="form-control" id="delivery_man_id_1" required>
+                                                    <input type="file" name="delivery_id[]" class="form-control" id="delivery_man_id_1" >
                                                 </div>
                                             </div>
                                         </div>
@@ -411,20 +411,20 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_name_2" class="form-label">Delivery Personnel Name</label>
-                                                    <input type="text" name="delivery_username[]" class="form-control" id="delivery_man_name_2" placeholder="Delivery Personnel" required>
+                                                    <input type="text" name="delivery_username[]" class="form-control" id="delivery_man_name_2" placeholder="Delivery Personnel" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_phone_2" class="form-label">Delivery Personnel Phone</label>
-                                                    <input type="text" name="delivery_phone[]" class="form-control" id="delivery_man_phone_2" placeholder="Delivery Person Mobile number" required>
+                                                    <input type="text" name="delivery_phone[]" class="form-control" id="delivery_man_phone_2" placeholder="Delivery Person Mobile number" >
                                                 </div>
                                             </div>
                                             
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_id_2">Upload Delivery Person's ID</label>
-                                                    <input type="file" name="delivery_id[]" class="form-control" id="delivery_man_id_2" required>
+                                                    <input type="file" name="delivery_id[]" class="form-control" id="delivery_man_id_2" >
                                                 </div>
                                             </div>
                                         </div>
@@ -461,7 +461,7 @@
                                                     <div class="box-content">
                                                         <div class="form-group">
                                                             <label for="bank w-100">Select Bank</label>
-                                                            <select id="bank" name="bank_id" class="form-control select2 w-100" required>
+                                                            <select id="bank" name="bank_id" class="form-control select2 w-100" >
                                                                 @foreach ($banks as $bank)
                                                                     <option value="{{$bank->id}}">{{$bank->name}}</option>
                                                                @endforeach
@@ -469,7 +469,7 @@
                                                         </div>   
                                                         <div class="form-group">
                                                             <label for="account_number">Account Number</label>
-                                                            <input name="account_number" type="text" class="form-control" id="account_number" required>
+                                                            <input name="account_number" type="text" class="form-control" id="account_number" >
                                                         </div>
                                                         <div class="form-group" style="display: none;">
                                                             <label for="bank_branch">Select Branch</label>
@@ -479,7 +479,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="account_number">Account Name</label>
-                                                            <input name="account_name" type="text" class="form-control" id="document" readonly required>
+                                                            <input name="account_name" type="text" class="form-control" id="document" readonly >
                                                         </div>
                                                         
                                                     </div>
