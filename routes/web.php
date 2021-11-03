@@ -47,7 +47,7 @@ Route::post('getStates','HomeController@getStates')->name('getStates');
 Route::post('orphanage/charity/register','HomeController@orphanageCharity')->name('orphanage.charity');
  
 //USER PAGES
-Route::group(['as'=>'user.'], function () {
+Route::group(['as'=>'user.','middleware'=> 'role:user'], function () {
     Route::get('dashboard','UserController@index')->name('dashboard');
     Route::get('user/profile','UserController@profile')->name('profile');
     Route::post('user/profile','UserController@saveprofile')->name('profile');
