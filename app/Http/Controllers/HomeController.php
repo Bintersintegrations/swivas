@@ -21,8 +21,8 @@ class HomeController extends Controller
         $user = Auth::user();
         if($user->isAdmin())
             return redirect()->route('admin.dashboard');
-        else
-            return redirect()->route('user.dashboard');
+        // else
+        //     return redirect()->route('user.dashboard');
     }
     public function getCities(Request $request){
         $cities = City::where('state_id',$request->state_id)->get();
