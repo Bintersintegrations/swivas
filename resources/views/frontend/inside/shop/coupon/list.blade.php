@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                @include('frontend.inside.sidebar')
+                @include('frontend.inside.shop.sidebar')
             </div>
             <div class="col-lg-9">
                 <div class="row">
@@ -17,7 +17,7 @@
                             <div class="card-body">
                                 <div class="top-sec">
                                     <h3>all coupons</h3>
-                                <a href="{{route('shop.coupon.create')}}" class="btn btn-sm btn-solid">add coupon</a>
+                                <a href="{{route('shop.coupon.create',$shop)}}" class="btn btn-sm btn-solid">add coupon</a>
                                 </div>
                                 {{-- <table class="table-responsive-md table mb-0"> --}}
                                     <table class="table mb-0">

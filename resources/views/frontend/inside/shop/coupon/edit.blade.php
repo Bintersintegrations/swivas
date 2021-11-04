@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                @include('frontend.inside.sidebar')
+                @include('frontend.inside.shop.sidebar')
             </div>
             <div class="col-lg-9">
                 <div class="row">
@@ -20,7 +20,7 @@
                                         <li class="nav-item"><a class="nav-link active show" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true" data-original-title="" title="">General</a></li>
                                         <li class="nav-item"><a class="nav-link" id="restriction-tabs" data-toggle="tab" href="#restriction" role="tab" aria-controls="restriction" aria-selected="false" data-original-title="" title="">Restriction</a></li>
                                     </ul>
-                                    <form class="needs-validation" action="{{route('shop.coupon.save')}}" method="POST">@csrf
+                                    <form class="needs-validation" action="{{route('shop.coupon.save',$shop)}}" method="POST">@csrf
                                         <div class="tab-content p-5" id="myTabContent">
                                             <div class="tab-pane fade active show" id="general" role="tabpanel" aria-labelledby="general-tab">
                                                 
@@ -87,9 +87,9 @@
                                                 <div class="form-group row">
                                                     <label for="items" class="col-xl-3 col-md-4">Items</label>
                                                     <div class="col-md-7 px-0">
-                                                        <select class="form-control  select2" id="items" name="items[]" multiple style="width:100%;">
-                                                            @foreach ($items as $item)
-                                                                <option value="{{$item->id}}" @if($coupon->item_limit && in_array($item->id,$coupon->item_limit)) selected @endif>{{$item->name}}</option>
+                                                        <select class="form-control select2" id="items" name="products[]" multiple style="width:100%;">
+                                                            @foreach ($products as $product)
+                                                                <option value="{{$product->id}}" @if($coupon->product_limit && in_array($product->id,$coupon->product_limit)) selected @endif>{{$item->name}}</option>
                                                             @endforeach 
                                                         </select>
                                                     </div>
@@ -155,5 +155,6 @@
     $('#end_date').datepicker({
         uiLibrary: 'bootstrap4'
     });
+    $('.select2').select2();
 </script>
 @endpush

@@ -46,7 +46,7 @@ Route::group(['as'=>'shop.','namespace'=>'Vendor','prefix'=>'shop/{shop}'], func
         
     });
 
-    Route::group(['prefix'=>'coupon','namespace'=> 'Vendor'],function(){
+    Route::group(['prefix'=>'coupon'],function(){
         Route::get('/','CouponController@list')->name('coupons');
         Route::get('create','CouponController@create')->name('coupon.create');
         Route::post('save','CouponController@save')->name('coupon.save');

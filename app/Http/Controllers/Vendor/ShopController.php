@@ -132,7 +132,8 @@ class ShopController extends Controller
     public function profile(Shop $shop){
         $user = Auth::user();
         $countries = Country::all();
-        return view('frontend.inside.profile.shop.edit',compact('shop','user','countries'));
+        $categories = Category::all();
+        return view('frontend.inside.shop.profile.edit',compact('shop','user','countries','categories'));
         
     }
 

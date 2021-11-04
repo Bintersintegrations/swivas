@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                @include('frontend.inside.sidebar')
+                @include('frontend.inside.shop.sidebar')
             </div>
             <div class="col-lg-9">
                 <div class="card tab2-card">
@@ -37,41 +37,41 @@
                         <div class="tab-content p-4" id="top-tabContent">
                             <div class="tab-pane fade active show" id="top-profile" role="tabpanel" aria-labelledby="top-profile-tab">
                                 <h5 class="f-w-600">Company Details</h5>
-                                <form class="theme-form" action="{{route('shop.profile')}}" method="POST" enctype="multipart/form-data">@csrf
+                                <form class="theme-form" action="{{route('shop.profile',$shop)}}" method="POST" enctype="multipart/form-data">@csrf
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="shop_name">Entity Name</label>
-                                                <input type="text" class="form-control" id="shop_name" name="shop_name" value="{{$user->shop->name ?? old('shop_name')}}" placeholder="Company name" required="">
+                                                <label for="shop_name">Shop Name</label>
+                                                <input type="text" class="form-control" id="shop_name" name="shop_name" value="{{$shop->name ?? old('shop_name')}}" placeholder="Company name" required="">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="type">Profile</label>
-                                                <select class="form-control" id="type" name="type" required>
-                                                    <option value="seller">Seller</option>
-                                                    <option value="orphanage">Orphanages</option>
-                                                    <option value="charity">Charity Organizations</option>
+                                                <label for="type">Categories</label>
+                                                <select class="form-control select2" id="type" name="type" required multiple>
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{$category->id}}" @if(in_array($category->id,$shop->categories()->pluck('id')->toArray())) selected @endif>{{$category->name}}</option>
+                                                    @endforeach 
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                             <label for="mobile">Business phone</label>
-                                            <input type="text" class="form-control" id="mobile" name="mobile" value="{{$user->shop->mobile ?? old('mobile')}}" placeholder="Enter your number" required="">
+                                            <input type="text" class="form-control" id="mobile" name="mobile" value="{{$shop->mobile ?? old('mobile')}}" placeholder="Enter your number" required="">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="email">Business Email</label>
-                                                <input type="text" class="form-control" id="email" name="email" value="{{$user->shop->email ?? old('email')}}" placeholder="Email" required="">
+                                                <input type="text" class="form-control" id="email" name="email" value="{{$shop->email ?? old('email')}}" placeholder="Email" required="">
                                             </div>
                                         </div>
                                         
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="address">Address</label>
-                                                <input type="text" class="form-control mb-0" name="address" placeholder="Street Address" value="{{$user->shop->address ?? old('address')}}" id="address">
+                                                <input type="text" class="form-control mb-0" name="address" placeholder="Street Address" value="{{$shop->address ?? old('address')}}" id="address">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -79,7 +79,7 @@
                                                 <label for="country">Country *</label>
                                                 <select class="form-control select2" id="country" name="country_id" disabled>
                                                     @foreach ($countries as $country)
-                                                        <option value="{{$country->id}}" @if($user->shop->country_id == $country->id) selected @endif>{{$country->name}}</option>
+                                                        <option value="{{$country->id}}" @if($shop->country_id == $country->id) selected @endif>{{$country->name}}</option>
                                                     @endforeach
                                                 </select>
                                                 <small class="text-muted text-danger">You cannot change your country. <a href="#">Help</a></small>
@@ -89,8 +89,8 @@
                                             <div class="form-group">
                                                 <label for="city">City *</label>
                                                 <select class="form-control select2" id="city" name="city_id">
-                                                    @foreach ($user->country->cities as $city)
-                                                        <option value="{{$city->id}}" @if($user->shop->city_id == $city->id) selected @endif>{{$city->name}}</option>
+                                                    @foreach ($shop->country->cities as $city)
+                                                        <option value="{{$city->id}}" @if($shop->city_id == $city->id) selected @endif>{{$city->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -99,8 +99,8 @@
                                             <div class="form-group">
                                                 <label for="state">Region/State *</label>
                                                 <select class="form-control select2" id="state" name="state_id">
-                                                    @foreach ($user->country->states as $state)
-                                                        <option value="{{$state->id}}" @if($user->shop->state_id == $state->id) selected @endif>{{$state->name}}</option>
+                                                    @foreach ($shop->country->states as $state)
+                                                        <option value="{{$state->id}}" @if($shop->state_id == $state->id) selected @endif>{{$state->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -112,7 +112,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">F</span>
                                                 </div>
-                                                <input type="text" name="facebook" value="{{$user->shop->facebook ?? old('facebook')}}" id="facebook" placeholder="facebook.com/" class="form-control ">
+                                                <input type="text" name="facebook" value="{{$shop->facebook ?? old('facebook')}}" id="facebook" placeholder="facebook.com/" class="form-control ">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -120,7 +120,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">I</span>
                                                 </div>
-                                                <input type="text" name="instagram" value="{{$user->shop->instagram ?? old('instagram')}}" id="instagram" placeholder="instagram.com/" class="form-control ">
+                                                <input type="text" name="instagram" value="{{$shop->instagram ?? old('instagram')}}" id="instagram" placeholder="instagram.com/" class="form-control ">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -128,7 +128,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">T</span>
                                                 </div>
-                                                <input type="text" name="twitter" value="{{$user->shop->twitter ?? old('twitter')}}" id="twitter" placeholder="twitter.com/" class="form-control ">
+                                                <input type="text" name="twitter" value="{{$shop->twitter ?? old('twitter')}}" id="twitter" placeholder="twitter.com/" class="form-control ">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -136,7 +136,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">L</span>
                                                 </div>
-                                                <input type="text" name="linkedin" value="{{$user->shop->linkedin ?? old('linkedin')}}" id="linkedin" placeholder="linkedin.com/" class="form-control ">
+                                                <input type="text" name="linkedin" value="{{$shop->linkedin ?? old('linkedin')}}" id="linkedin" placeholder="linkedin.com/" class="form-control ">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -236,9 +236,7 @@
             uiLibrary: 'bootstrap4'
         });
     </script>
-    {{-- <script>
-        $('.select2').select2({
-            'placeholder':'Select Attributes',
-        });
-    </script> --}}
+    <script>
+        $('.select2').select2();
+    </script>
 @endpush

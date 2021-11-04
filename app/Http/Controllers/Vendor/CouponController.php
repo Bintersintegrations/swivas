@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Vendor;
 
-use App\Item;
+use App\Product;
 use App\Coupon;
+use App\Shop;
 use App\Country;
 use App\Category;
 use Carbon\Carbon;
@@ -13,19 +14,17 @@ use Illuminate\Support\Facades\Auth;
 
 class CouponController extends Controller
 {
-    public function list(){
-        $user = Auth::user();
-        $coupons = Coupon::where('user_id',$user->id)->get();
-        return view('frontend.inside.coupon.list',compact('coupons'));
+    public function list(Shop $shop){
+        $coupons = Coupon::where('shop_id',$shop->id)->get();
+        return view('frontend.inside.shop.coupon.list',compact('shop','coupons'));
     }
-    public function create(){
-        $user = Auth::user();
-        $items = Item::where('user_id',$user->id)->get();
+    public function create(Shop $shop){
+        $products = Product::where('shop_id',$shop->id)->get();
         $categories = Category::all();
         $countries = Country::all();
-        return view('frontend.inside.coupon.create',compact('items','categories','countries'));
+        return view('frontend.inside.shop.coupon.create',compact('shop','products','categories','countries'));
     }
-    public function save(Request $request){
+    public function save(Shop $shop,Request $request){
         // dd($request->all());
         $user = Auth::user();
         $coupon = new Coupon;
@@ -42,23 +41,22 @@ class CouponController extends Controller
         $coupon->minimum_spend = $request->minimum_spend;
         $coupon->free_shipping = $request->shipping ? true:false;
         $coupon->category_limit = $request->categories ? $request->categories : null;
-        $coupon->item_limit = $request->items ? $request->items :null;
+        $coupon->product_limit = $request->products ? $request->products :null;
         $coupon->country_limit = $request->countries ? $request->countries : null;
         $coupon->limit_per_user = $request->per_customer ? $request->per_customer : null;
         $coupon->status = $request->status ? true:false;
         $coupon->is_global = false;
         $coupon->save();
-        return redirect()->route('shop.coupons')->with(['flash_type' => 'success','flash_msg' => 'Coupon Created Successfully']);
+        return redirect()->route('shop.coupons',$shop)->with(['flash_type' => 'success','flash_msg' => 'Coupon Created Successfully']);
     }
-    public function edit(Coupon $coupon){
-        $user = Auth::user();
-        $items = Item::where('user_id',$user->id)->get();
+    public function edit(Shop $shop,Coupon $coupon){
+        $products = Product::where('shop_id',$shop->id)->get();
         $categories = Category::all();
         $countries = Country::all();
-        return view('frontend.inside.coupon.edit',compact('coupon','items','categories','countries'));
+        return view('frontend.inside.shop.coupon.edit',compact('shop','coupon','products','categories','countries'));
     }
 
-    public function update(Coupon $coupon,Request $request){
+    public function update(Shop $shop,Coupon $coupon,Request $request){
         // dd($request->all());
         $user = Auth::user();
         $coupon->name= $request->name;
@@ -73,18 +71,18 @@ class CouponController extends Controller
         $coupon->minimum_spend = $request->minimum_spend;
         $coupon->free_shipping= $request->shipping ? true:false;
         $coupon->category_limit= $request->categories ? $request->categories : null;
-        $coupon->item_limit= $request->items ? $request->items :null;
+        $coupon->product_limit= $request->products ? $request->products :null;
         $coupon->country_limit= $request->countries ? $request->countries : null;
         $coupon->limit_per_user= $request->per_customer ? $request->per_customer : null;
         $coupon->status= $request->status ? true:false;
         $coupon->is_global = false;
         $coupon->save();
-        return redirect()->route('shop.coupons')->with(['flash_type' => 'success','flash_msg' => 'Coupon Edited Successfully']);
+        return redirect()->route('shop.coupons',$shop)->with(['flash_type' => 'success','flash_msg' => 'Coupon Edited Successfully']);
     
         
     }
 
-    public function delete(Request $request){
+    public function delete(Shop $shop,Request $request){
         $coupon = Coupon::find($request->coupon_id);
         $coupon->delete();
         return redirect()->back();

@@ -7,6 +7,7 @@ use App\User;
 use App\State;
 use App\Country;
 use App\Product;
+use App\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -54,6 +55,13 @@ class Shop extends Model
 
     public function products(){
         return $this->hasMany(Product::class);
+    }
+    public function categories(){
+        $categories = collect([]);
+        foreach($this->categories as $category_id){
+            $categories->push(Category::find($category_id));
+        }
+        return $categories;
     }
 
     
