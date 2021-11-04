@@ -244,10 +244,9 @@
                     Selling on Multikart.com is easy and absolutely free. All you need is to register, list your
                     catalogue and start selling your products.</p>
                 @if (Auth::check() && Auth::user()->shops->isNotEmpty())
-
                     <div class="row">
                         @foreach (Auth::user()->shops as $shop)
-                            <div class="col-3">
+                            <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="card-title h4">
@@ -262,6 +261,7 @@
                             </div>
                         @endforeach
                     </div>
+                    <a href="{{route('shop.create')}}" class="btn btn-solid btn-sm">Create New Shop</a>
                 @else
                 <a href="{{route('shop.create')}}" class="btn btn-solid btn-sm">start selling</a>
                 @endif

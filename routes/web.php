@@ -22,12 +22,12 @@ Route::get('blog/post/{post}','BlogController@post')->name('blogpost');
 Route::post('blog/comment','BlogController@comment')->name('blogcomment');
 
 
-Route::get('products','ProductController@list')->name('products');
-Route::get('product/{product}','ProductController@view')->name('product.view');
-Route::post('product/add-to-cart','ProductController@addtocart')->name('product.addtocart');
-Route::post('product/remove-from-cart','ProductController@removefromcart')->name('product.removefromcart');
-Route::post('product/add-to-wish','ProductController@addtowish')->name('product.addtowish');
-Route::post('product/remove-from-wish','ProductController@removefromwish')->name('product.removefromwish');
+Route::get('products','ProductThreadController@list')->name('products');
+Route::get('product/{product}','ProductThreadController@view')->name('product.view');
+Route::post('product/add-to-cart','ProductThreadController@addtocart')->name('product.addtocart');
+Route::post('product/remove-from-cart','ProductThreadController@removefromcart')->name('product.removefromcart');
+Route::post('product/add-to-wish','ProductThreadController@addtowish')->name('product.addtowish');
+Route::post('product/remove-from-wish','ProductThreadController@removefromwish')->name('product.removefromwish');
 
 Route::get('cart','SalesThreadController@cart')->name('cart');
 Route::get('wishlist','SalesThreadController@wishlist')->name('wishlist');

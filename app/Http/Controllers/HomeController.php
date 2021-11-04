@@ -18,6 +18,7 @@ class HomeController extends Controller
         return view('frontend.outside.welcome2');
     }
     public function dashboards(){
+        // dd('here');
         $user = Auth::user();
         if($user->isAdmin()){
             return redirect()->route('admin.dashboard');
