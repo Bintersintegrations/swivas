@@ -1,11 +1,15 @@
+product page
+
+
+
 add to address book.. delete function and modal (are you sure you want to delete)
 
 checkout
 
 retain timeline in product page for promos
 sidebar on product page
-process payment via pinvoice
-process payment okra
+
+
 vendor payments and earnings
 settlement to bank
 

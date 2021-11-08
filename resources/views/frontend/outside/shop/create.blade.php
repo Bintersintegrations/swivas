@@ -334,7 +334,7 @@
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputState">State</label>
-                                                <select id="inputState" name="state_id" class="states form-control" >
+                                                <select id="inputState" name="state_id" class="states form-control select2" >
                                                     @foreach ($states as $state)
                                                         <option value="{{$state->id}}">{{$state->name}}</option>
                                                     @endforeach
@@ -342,7 +342,7 @@
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputCity">Area</label>
-                                                <select id="inputCity" name="city_id" class="cities form-control" >
+                                                <select id="inputCity select2" name="city_id" class="cities form-control" >
                                                     <option>Long</option>
                                                     <option>Lat</option>
                                                 </select>

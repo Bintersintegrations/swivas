@@ -21,11 +21,11 @@ Route::group(['as'=>'shop.','namespace'=>'Vendor','prefix'=>'shop/{shop}'], func
         Route::get('/','ProductController@list')->name('products');
         Route::get('add','ProductController@create')->name('product.create');
         Route::post('save','ProductController@save')->name('product.save');
-        Route::get('edit/{item}','ProductController@edit')->name('product.edit');
-        Route::post('update/{item}','ProductController@update')->name('product.update');
-        Route::post('delete','ProductController@delete')->name('product.delete');
-        Route::post('publish','ProductController@publish')->name('product.publish');
-        Route::post('unpublish','ProductController@unpublish')->name('product.unpublish');
+        Route::get('variant/{product}','ProductController@variant')->name('product.variant');
+        Route::post('variant/{product}','ProductController@saveVariant')->name('product.variant');
+        Route::get('edit/{product}','ProductController@edit')->name('product.edit');
+        Route::post('update/{product}','ProductController@update')->name('product.update');
+        Route::post('delete/{product}','ProductController@delete')->name('product.delete');
         Route::group(['prefix'=> 'templates'], function () {
             Route::get('/','ProductController@templates')->name('product.templates');
             Route::get('{template}/create','ProductController@createWithTemplates')->name('product.template.create');

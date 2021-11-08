@@ -22,6 +22,7 @@ class ProductController extends Controller
 
     public function list(Shop $shop){
         $products = $shop->products;
+        // dd($products);
         return view('frontend.inside.shop.product.list',compact('shop','products'));
     }
 
@@ -93,6 +94,10 @@ class ProductController extends Controller
         //     }
         // }
         return redirect()->route('shop.products',$shop)->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=> 'Product created successfully']);
+    }
+
+    public function variant(Shop $shop,Product $product){
+        return view('frontend.inside.shop.product.variant',compact('shop','product'));
     }
     
     public function saveVariant(Shop $shop,Product $product,Request $request){

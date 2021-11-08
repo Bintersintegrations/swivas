@@ -25,7 +25,6 @@
                                         <tr>
                                             <th scope="col">image</th>
                                             <th scope="col">product name</th>
-                                            <th scope="col">category</th>
                                             <th scope="col">price</th>
                                             <th scope="col">stock</th>
                                             <th scope="col">status</th>
@@ -41,7 +40,7 @@
                                                     </a>
                                                 </th>
                                                 <td><a href="{{route('product.view',$product)}}">{{$product->name}}</a></td>
-                                                <td>{{$product->category->name}}</td>
+                                                
                                                 <td>{{$product->shop->country->symbol.' '.$product->amount}}</td>
                                                 <td>{{$product->quantity}}</td>
                                                 <td>@if($product->status == "publish")
@@ -51,21 +50,9 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if($product->status)
-                                                    <form class="d-inline" action="{{route('shop.product.unpublish')}}" method="POST">@csrf
-                                                        <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                        <button type="submit" class="btn btn-sm btn-warning rounded" title="Unpublish"><i class="fa fa-eye-slash"></i></button>
-                                                    </form>
-                                                    
-                                                    @else
-                                                    <form class="d-inline" action="{{route('shop.product.publish')}}" method="POST">@csrf
-                                                        <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                        <button type="submit" class="btn btn-sm btn-success rounded" title="Publish"><i class="fa fa-eye"></i></button>
-                                                    </form>
-                                                    @endif
-                                
-                                                    <a href="{{route('shop.product.edit',$product)}}" class="btn btn-sm btn-info rounded" title="Edit"><i class="fa fa-pencil"></i></a>
-                                                    <button class="btn btn-sm btn-danger rounded" title="Delete" data-toggle="modal" data-target="#product{{$product->id}}"><i class="fa fa-trash"></i></button>
+                                                    <a href="{{route('shop.product.variant',[$shop,$product])}}" class="btn btn-sm btn-primary rounded" title="variation">Add Variant</a>
+                                                    <a href="{{route('shop.product.edit',[$shop,$product])}}" class="btn btn-sm btn-info rounded" title="Edit"><i class="fa fa-pencil"></i>Edit</a>
+                                                    <button class="btn btn-sm btn-danger rounded" title="Delete" data-toggle="modal" data-target="#product{{$product->id}}"><i class="fa fa-trash"></i>Delete</button>
                                                     <div class="modal fade" id="product{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="product{{$product->id}}" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
@@ -73,7 +60,7 @@
                                                                     <h5 class="modal-title f-w-600" id="exampleModalLabel">Delete Product</h5>
                                                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                                 </div>
-                                                                <form class="needs-validation" action="{{route('shop.product.delete')}}" method="POST" enctype="multipart/form-data">@csrf
+                                                                <form class="needs-validation" action="{{route('shop.product.delete',[$shop,$product])}}" method="POST" enctype="multipart/form-data">@csrf
                                                                     <div class="modal-body">
                                                                         <h5>Are you sure you want to delete product: {{$product->name}} </h5>
                                                                         <input type="hidden" name="product_id" value="{{$product->id}}">

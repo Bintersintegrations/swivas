@@ -285,7 +285,13 @@
     <script>
         {{-- offer --}}
         $('#offer').change(function(){
-            $('#offer-block').toggle();
+            if($(this).is(':checked')){
+                $('#offer-block').show();
+            }
+            else{
+                $('#offer-block').hide();
+            }
+            
         })
         $('#group').change(function(){
             if($(this).is(':checked')){
