@@ -25,7 +25,12 @@ Route::group(['as'=>'shop.','namespace'=>'Vendor','prefix'=>'shop/{shop}'], func
         Route::post('update/{item}','ProductController@update')->name('product.update');
         Route::post('delete','ProductController@delete')->name('product.delete');
         Route::post('publish','ProductController@publish')->name('product.publish');
-        Route::post('unpublish','ProductController@unpublish')->name('product.unpublish');        
+        Route::post('unpublish','ProductController@unpublish')->name('product.unpublish');
+        Route::group(['prefix'=> 'templates'], function () {
+            Route::get('/','ProductController@templates')->name('product.templates');
+            Route::get('{template}/create','ProductController@createWithTemplates')->name('product.template.create');
+        });
+
     });
 
     Route::group(['prefix'=> 'orders'],function() {

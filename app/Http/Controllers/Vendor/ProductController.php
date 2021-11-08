@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Vendor;
 
-use App\Product;
 use App\Shop;
+use App\Product;
 use App\Category;
+use App\Template;
 use App\Attribute;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -19,36 +22,97 @@ class ProductController extends Controller
 
     public function list(Shop $shop){
         $products = $shop->products;
+        dd($products);
         return view('frontend.inside.shop.product.list',compact('shop','products'));
+    }
+
+    public function templates(Shop $shop){
+        $categories = Category::all();
+        $templates = Template::orderBy('id','asc')->paginate(50);
+        $attributes = Attribute::all();
+        return view('frontend.inside.shop.template.list',compact('shop','categories','attributes','templates'));
     }
 
     public function create(Shop $shop){
         $categories = Category::all();
-        // dd($categories);
+        $temp = Template::orderBy('id','asc')->get();
+        $templates = collect([]);
+        foreach($temp as $templt){
+            if(Str::contains(json_encode($templt->categories),$shop->categories))
+                $templates->push($templt);
+        }
+        // dd($templates);
         $attributes = Attribute::all();
-        return view('frontend.inside.shop.product.create',compact('shop','categories','attributes'));
+        return view('frontend.inside.shop.product.create',compact('shop','categories','attributes','templates'));
+    }
+
+    public function createWithTemplates(Shop $shop,Template $template){
+        $categories = Category::all();
+        $attributes = Attribute::all();
+        return view('frontend.inside.shop.template.create',compact('shop','categories','attributes','template'));
     }
 
     public function save(Shop $shop,Request $request){
-        // dd($request->all());
-        $user = Auth::user();
-        $product = Product::create(['user_id'=> $user->id,'name'=> $request->title,'description'=> $request->description,'category_id'=> $request->category_id,'currency_id'=> $user->currency_id]);
-        //dd($product->category->attributes->pluck('slug')->toArray());
-        foreach($request->product_media as $key => $media){
-            if($media) $product->media()->attach($media);
-        }
-        for($i = 0; $i < count($request->price); $i++){
-            $product = new Product;
-            $product->product_id = $product->id;
-            $product->image_id = $request->product_image[$i];
-            $product->quantity = $request->quantity[$i];
-            $product->available = $request->quantity[$i];
-            $product->amount = $request->price[$i];
-            $product->save();
-            foreach(Attribute::wherein('slug',$product->category->attributes->pluck('slug')->toArray())->get() as $attrib){
-                if($request->input($attrib->slug)[$i]) $product->attributes()->attach($attrib->id,['result'=> $request->input($attrib->slug)[$i]]);
-            }
-        }
+        $product = new Product;
+        $product->shop_id = $shop->id;
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->images = $request->images;
+        $product->categories = $request->categories;
+        if($request->group)
+            $product->grouped_products = $request->group_items;
+        if($request->bought_together)
+            $product->bought_together = $request->bought_together;
+        if($request->related)
+            $product->related = $request->related;
+        $product->price = $request->price;
+        $product->quantity = $request->quantity;
+        if($request->offer){
+            $product->sale_price = $request->sale_price;
+            $product->sale_from = Carbon::createFromFormat('m/d/Y',$request->start_date);
+            $product->sale_to = Carbon::createFromFormat('m/d/Y',$request->end_date);
+        }   
+        if($request->save == 'draft')
+            $product->status = $request->save;
+        $product->save();
+
+        
+        // //dd($product->category->attributes->pluck('slug')->toArray());
+        // foreach($request->product_media as $key => $media){
+        //     if($media) $product->media()->attach($media);
+        // }
+        // for($i = 0; $i < count($request->price); $i++){
+        //     $product = new Product;
+        //     $product->product_id = $product->id;
+        //     $product->image_id = $request->product_image[$i];
+        //     $product->quantity = $request->quantity[$i];
+        //     $product->available = $request->quantity[$i];
+        //     $product->amount = $request->price[$i];
+        //     $product->save();
+        //     foreach(Attribute::wherein('slug',$product->category->attributes->pluck('slug')->toArray())->get() as $attrib){
+        //         if($request->input($attrib->slug)[$i]) $product->attributes()->attach($attrib->id,['result'=> $request->input($attrib->slug)[$i]]);
+        //     }
+        // }
+        return redirect()->route('shop.products',$shop)->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=> 'Product created successfully']);
+    }
+    
+    public function saveVariant(Shop $shop,Product $product,Request $request){
+        $variant = new Product;
+        $variant->shop_id = $product->shop->id;
+        $variant->name = $product->shop->name;
+        $variant->description = $product->shop->description;
+        $variant->images = $request->images;
+        $variant->categories = $product->shop->categories;
+        $variant->parent_id = $product->id;
+        if(count($product->grouped_products))
+            $variant->grouped_products = $product->grouped_products;
+        if(count($product->bought_together))
+            $variant->bought_together = $product->bought_together;
+        if(count($product->related))
+            $variant->related = $product->related;
+        if($product->status == 'draft')
+            $variant->status = $request->save;
+        $variant->save();
         return redirect()->route('shop.products',$shop)->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=> 'Product created successfully']);
     }
 

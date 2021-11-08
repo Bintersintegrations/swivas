@@ -5,15 +5,24 @@ namespace App;
 use App\Shop;
 use App\Order;
 use App\Attribute;
+use App\Category;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 class Product extends Model
 {   
     use Sluggable;
+    protected $casts = ['images'=> 'array','categories'=> 'array', 'grouped_products'=> 'array','bought_together'=> 'array','related'=> 'array'];
     protected $fillable = [
         'item_id','quantity','available','image','amount','attributes','slug'
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+        parent::observe(new \App\Observers\ProductObserver);
+    }
+    
     public function sluggable()
     {
         return [
@@ -37,4 +46,13 @@ class Product extends Model
     public function orders(){
         return $this->hasMany(Order::class);
     }
+
+    public function categories(){
+        $categories = collect([]);
+        foreach($this->categories as $category_id){
+            $categories->push(Category::find($category_id));
+        }
+        return $categories;
+    }
+
 }

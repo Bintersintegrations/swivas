@@ -17,8 +17,9 @@
                             <div class="card-body">
                                 <div class="top-sec">
                                     <h3>all products</h3>
-                                <a href="{{route('shop.product.create',$shop)}}" class="btn btn-sm btn-solid">add product</a>
+                                    <a href="{{route('shop.product.create',$shop)}}" class="btn btn-sm btn-solid">add product</a>
                                 </div>
+                                
                                 <table class="table-responsive-md table mb-0">
                                     <thead>
                                         <tr>
@@ -34,16 +35,16 @@
                                     <tbody>
                                         @forelse ($products as $product)
                                             <tr>
-                                                <th scope="row"><a href="{{route('product.view',$product)}}">
-                                                    <img
-                                                        src="{{asset('storage/media/image/'.$product->image->name)}}"
-                                                        class="blur-up lazyloaded"></a>
+                                                <th scope="row">
+                                                    <a href="{{route('product.view',$product)}}">
+                                                        <img src="{{$product->images[0]}}" class="blur-up lazyloaded">
+                                                    </a>
                                                 </th>
-                                                <td><a href="{{route('product.view',$product)}}">{{$product->item->name}}</a></td>
-                                                <td>{{$product->item->category->name}}</td>
-                                                <td>{{$product->item->currency->symbol.' '.$product->amount}}</td>
-                                                <td>{{$product->available}}</td>
-                                                <td>@if($product->status)
+                                                <td><a href="{{route('product.view',$product)}}">{{$product->name}}</a></td>
+                                                <td>{{$product->category->name}}</td>
+                                                <td>{{$product->shop->country->symbol.' '.$product->amount}}</td>
+                                                <td>{{$product->quantity}}</td>
+                                                <td>@if($product->status == "publish")
                                                     <span class="badge badge-success ">Published</span>
                                                     @else
                                                     <span class="badge badge-warning ">Draft</span>
@@ -63,7 +64,7 @@
                                                     </form>
                                                     @endif
                                 
-                                                    <a href="{{route('shop.product.edit',$product->item)}}" class="btn btn-sm btn-info rounded" title="Edit"><i class="fa fa-pencil"></i></a>
+                                                    <a href="{{route('shop.product.edit',$product)}}" class="btn btn-sm btn-info rounded" title="Edit"><i class="fa fa-pencil"></i></a>
                                                     <button class="btn btn-sm btn-danger rounded" title="Delete" data-toggle="modal" data-target="#product{{$product->id}}"><i class="fa fa-trash"></i></button>
                                                     <div class="modal fade" id="product{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="product{{$product->id}}" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
@@ -74,7 +75,7 @@
                                                                 </div>
                                                                 <form class="needs-validation" action="{{route('shop.product.delete')}}" method="POST" enctype="multipart/form-data">@csrf
                                                                     <div class="modal-body">
-                                                                        <h5>Are you sure you want to delete product: {{$product->item->name}} </h5>
+                                                                        <h5>Are you sure you want to delete product: {{$product->name}} </h5>
                                                                         <input type="hidden" name="product_id" value="{{$product->id}}">
                                                                     </div>
                                                                     <div class="modal-footer">
