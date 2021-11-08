@@ -26,6 +26,7 @@ class ShopRequest extends FormRequest
         return [
             'agreement' => 'required',
             'business_name' => 'required',
+            'contact_name' => 'required',
             'contact_email' => 'required',
             'contact_phone' => 'required',
             'business_name'=> 'required',
@@ -53,6 +54,7 @@ class ShopRequest extends FormRequest
             
             'agreement.required' => 'You must agree to terms and conditions',
             'business_name.required' => 'Business name is required',
+            'contact_name.required' => 'Contact name is required',
             'contact_email.required' => 'Contact email is required',
             'contact_phone.required' => 'Contact Phone number is required',
             'business_name.required'=> 'Business Name is required',

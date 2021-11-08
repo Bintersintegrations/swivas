@@ -53,7 +53,8 @@
                                                 </p>
                                             </li>
                                             @endforeach
-                                        </ul>
+                                            
+                                        </ul> 
                                     </div>
                                 </div>
                             </div>
@@ -75,11 +76,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="box">
-                                                    @error('email')
-                                                    <span class="invalid-feedback d-inline" role="alert">
-                                                        <strong>: {{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
+                                                    
                                                     <div class="box-title">
                                                         <h3>Terms</h3>
                                                     </div>
@@ -144,13 +141,13 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="surname" class="form-label">Email</label>
+                                                    <label for="email" class="form-label">Email</label>
                                                     <input type="email" name="email" class="form-control" id="email" @auth value="{{Auth::user()->email ?? old('email')}}" readonly @endauth   placeholder="Email" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="surname" class="form-label">Mobile</label>
+                                                    <label for="mobile" class="form-label">Mobile</label>
                                                     <input type="text" name="mobile" class="form-control" id="mobile" @auth value="{{Auth::user()->mobile ?? old('mobile')}}" readonly @endauth   placeholder="Mobile" >
                                                 </div>
                                             </div>
@@ -377,19 +374,19 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_company_name_1" class="form-label">Logistic Company Name</label>
-                                                    <input type="text" name="delivery_company_name[]" value="{{ old('delivery_company_name') }}" class="form-control" id="delivery_company_name_1" placeholder="Delivery Company">
+                                                    <input type="text" name="delivery_company_name[]" class="form-control" id="delivery_company_name_1" placeholder="Delivery Company">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_name_1" class="form-label">Delivery Personnel Name</label>
-                                                    <input type="text" name="delivery_username[]" value="{{ old('delivery_username') }}" class="form-control" id="delivery_man_name_1" placeholder="Delivery Personnel" >
+                                                    <input type="text" name="delivery_username[]" class="form-control" id="delivery_man_name_1" placeholder="Delivery Personnel" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_phone_1" class="form-label">Delivery Personnel Phone</label>
-                                                    <input type="text" name="delivery_phone[]" value="{{ old('delivery_phone') }}"  class="form-control" id="delivery_man_phone_1" placeholder="Delivery Person Mobile number" >
+                                                    <input type="text" name="delivery_phone[]"  class="form-control" id="delivery_man_phone_1" placeholder="Delivery Person Mobile number" >
                                                 </div>
                                             </div>
                                             
@@ -405,19 +402,19 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_company_name_2" class="form-label">Logistic Company Name</label>
-                                                    <input type="text" name="delivery_company_name[]" value="{{ old('delivery_company_name') }}" class="form-control" id="delivery_company_name_2" placeholder="Delivery Company">
+                                                    <input type="text" name="delivery_company_name[]" class="form-control" id="delivery_company_name_2" placeholder="Delivery Company">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_name_2" class="form-label">Delivery Personnel Name</label>
-                                                    <input type="text" name="delivery_username[]" value="{{ old('delivery_username') }}" class="form-control" id="delivery_man_name_2" placeholder="Delivery Personnel" >
+                                                    <input type="text" name="delivery_username[]" class="form-control" id="delivery_man_name_2" placeholder="Delivery Personnel" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="delivery_man_phone_2" class="form-label">Delivery Personnel Phone</label>
-                                                    <input type="text" name="delivery_phone[]" value="{{ old('delivery_phone') }}" class="form-control" id="delivery_man_phone_2" placeholder="Delivery Person Mobile number" >
+                                                    <input type="text" name="delivery_phone[]" class="form-control" id="delivery_man_phone_2" placeholder="Delivery Person Mobile number" >
                                                 </div>
                                             </div>
                                             

@@ -93,7 +93,7 @@ class ShopController extends Controller
         }
         $shop->save();
         
-        for($i = 0; $i < count($request->delivery_phone); $i++){
+        for($i = 0; $i < count($request->delivery_id); $i++){
             $logistic = new Logistic;
             $logistic->shop_id = $shop->id;
             $logistic->company_name = $request->delivery_company_name[$i];
