@@ -22,7 +22,6 @@ class ProductController extends Controller
 
     public function list(Shop $shop){
         $products = $shop->products;
-        dd($products);
         return view('frontend.inside.shop.product.list',compact('shop','products'));
     }
 
