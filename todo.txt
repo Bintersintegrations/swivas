@@ -1,4 +1,8 @@
-product page
+1. add attributes after category selection
+2 .product page
+3. public shop product list
+4. add variant page
+5. 
 
 
 

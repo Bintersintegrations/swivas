@@ -46,7 +46,7 @@
                     <h5>Manage Product</h5>
                 </div>
                 <div class="card-body order-datatable">
-                    <table class="display" id="basic-1">
+                    <table class="display table" id="basic-1">
                         <thead>
                         <tr>
                             <th>Id</th>
@@ -62,19 +62,19 @@
                         <tbody>
                             @foreach ($products as $product)
                             <tr>
-                                <td>#{{$product->id}}|<a href="#">{{$product->item->name}}</a></td>
+                                <td>#{{$product->id}}|<a href="#">{{$product->name}}</a></td>
                                 <td>{{$product->shop->name}}</td>
                                 <td>
                                     <div class="d-flex">
-                                        @if($product->image)
-                                            <img src="{{asset('storage/media/image/'.$product->image)}}" class="img-fluid img-30 mr-2 blur-up lazyloaded" alt="">
+                                        @if($product->images)
+                                            <img src="{{$product->images[0]}}" class="img-fluid img-30 mr-2 blur-up lazyloaded" alt="">
                                         @endif
                                     </div>
                                 </td>
-                                <td><span class="badge badge-secondary">{{$product->item->category->name}}</span></td>
-                                <td>{{$product->item->currency->symbol.' '.$product->amount}}</td>
-                                <td>Remaining: {{$product->available}}</td>
-                                <td>{{$product->item->user->name}}</td>
+                                <td><span class="badge badge-secondary">#</span></td>
+                                <td>{{$product->shop->country->currency_symbol.' '.$product->price}}</td>
+                                <td>Remaining: {{$product->quantity}}</td>
+                                {{-- <td>{{$product->shop->name}}</td> --}}
                 
                                 <td><span class="badge badge-success">Approved</span></td>
                                 <td>

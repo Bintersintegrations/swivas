@@ -54,22 +54,6 @@ class CategoryManagementController extends Controller
     public function updatecategories(Request $request){
         //dd($request->all());
         $category = Category::find($request->category_id);
-        $parent_id = $request->input('parent_id');
-        if($parent_id == 'null'){
-            $grand_id = null;
-            $parent_id = null;
-        }     
-        else{
-            $parent = Category::find($request->parent_id);
-            if($parent->parent_id){ //meaning the parent has a parent too
-                $grand_id = $parent->parent_id;
-                $parent_id = $parent->id;
-            }
-            else {
-                $grand_id = null;
-                $parent_id = $parent->id;
-            }
-        }
         if($request->has('image')){
             if($category->image){
                 Storage::delete('public/categories/'.$category->image);
@@ -80,8 +64,7 @@ class CategoryManagementController extends Controller
             $category->image = $fileName;
         }
         if($request->filled('category_name')) $category->name = $request->category_name;
-        $category->parent_id = $parent_id;
-        $category->grand_id = $grand_id;
+        $category->parent_id = $request->input('parent_id') == 'null' ? null: $request->input('parent_id') ;
         $category->save();
         $attributes = $request->input('attributes');
         $category->attributes()->sync($attributes);
@@ -94,10 +77,20 @@ class CategoryManagementController extends Controller
     }
     public function saveattributes(Request $request){
         // dd($request->all());
-        $attribute = Attribute::create(['name'=> $request->attribute_name,
-            'label'=> $request->label,'description'=> $request->description,'options'=> explode(',',$request->options)]);
+        $attribute = Attribute::updateOrCreate(['name'=> $request->attribute_name,
+            'element'=> $request->element],['description'=> $request->description,'status' => $request->status]);
+        if($request->options) {
+            foreach(explode(',',$request->options) as $option){
+                $attribute->options()->sync([
+                    'name' => explode(':',option)[0],
+                    'description' => explode(':',option)[1]
+                ]);
+            }
+        } 
+        
         return redirect()->back();
     }
+
     public function deleteattributes(Request $request){
         $attribute = Attribute::find($request->attribute_id);
         $attribute->categories()->detach();

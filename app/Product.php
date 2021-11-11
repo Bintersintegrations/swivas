@@ -14,7 +14,7 @@ class Product extends Model
     use Sluggable;
     protected $casts = ['images'=> 'array','categories'=> 'array', 'grouped_products'=> 'array','bought_together'=> 'array','related'=> 'array'];
     protected $fillable = [
-        'item_id','quantity','available','image','amount','attributes','slug'
+        'shop_id','quantity','images','price','slug'
     ];
 
     public static function boot()

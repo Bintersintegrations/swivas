@@ -21,25 +21,23 @@ class ProductThreadController extends Controller
     use CartSessionTrait,CartDatabaseTrait,WishlistSessionTrait,WishlistDatabaseTrait;
     
     public function list(){
-        $currency = Currency::find(Cache::get(request()->ip())['country_currency']);
-        $products = $currency->products;
-        $categories = Category::where('grand_id','!=',null)->where('parent_id','!=',null)->get();
-        return view('frontend.outside.shop.product.list',compact('products','categories'));
+        $products = Product::all();
+        $categories = Category::where('parent_id','!=',null)->get();
+        return view('frontend.outside.product.list',compact('products','categories'));
     }
 
     public function view(Product $product){
         // dd($product->amount);
-        $item = $product->item;
-        foreach($item->products->where('amount',$product->amount) as $productz){
-            foreach($productz->attributes as $attrib){
-                $options[$productz->id][] = $attrib->pivot->result;
-                $attributes[$attrib->slug][] = $attrib->pivot->result;
-            }
-        }
+        // foreach($products->where('price',$product->price) as $productz){
+        //     foreach($productz->attributes as $attrib){
+        //         $options[$productz->id][] = $attrib->pivot->result;
+        //         $attributes[$attrib->slug][] = $attrib->pivot->result;
+        //     }
+        // }
         // dd($options);
         // dd(array_unique($attributes['color']));
         // $item['productid']= ['color','size']
-        return view('frontend.outside.shop.product.view',compact('product','attributes','options'));
+        return view('frontend.outside.product.view',compact('product','attributes','options'));
     }
 
     public function addtocart(Request $request){

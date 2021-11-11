@@ -152,7 +152,7 @@
                                                             
                                                             
                                                             <ul class="file-upload-product">
-                                                                @if(count($template->images) && array_key_exists(0,$template->images) ))
+                                                                @if(count($template->images) && array_key_exists(0,$template->images) )
                                                                     <li>
                                                                         <input id="thumbnail1" class="form-control" type="hidden" name="images[]">
                                                                         <div class="box-input-file lfm d-inline-flex" data-input="thumbnail1" data-preview="holder1" id="holder1" >
@@ -186,7 +186,7 @@
                                                                     <li>
                                                                         <input id="thumbnail3" class="form-control" type="hidden" name="images[]">
                                                                         <div class="box-input-file lfm d-inline-flex" data-input="thumbnail3" data-preview="holder3" id="holder3" >
-                                                                            <img src="{{asset('storage/'.$template->images[1])}}" style="height: 5rem;">
+                                                                            <img src="{{asset('storage/'.$template->images[2])}}" style="height: 5rem;">
                                                                         </div>
                                                                     </li>
                                                                 @else 
@@ -201,7 +201,7 @@
                                                                     <li>
                                                                         <input id="thumbnail4" class="form-control" type="hidden" name="images[]">
                                                                         <div class="box-input-file lfm d-inline-flex" data-input="thumbnail4" data-preview="holder4" id="holder4" >
-                                                                            <img src="{{asset('storage/'.$template->images[1])}}" style="height: 5rem;">
+                                                                            <img src="{{asset('storage/'.$template->images[3])}}" style="height: 5rem;">
                                                                         </div>
                                                                     </li>
                                                                 @else 

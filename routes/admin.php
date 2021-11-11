@@ -4,14 +4,9 @@ Route::group(['prefix'=>'admin','as'=>'admin.','namespace'=>'Backend','middlewar
     Route::get('dashboard','HomeController@dashboard')->name('dashboard');
     Route::get('profile','HomeController@profile')->name('profile');
     //product
-    Route::group(['prefix'=> 'items','as'=>'items.'],function(){
-        Route::get('for-sale','ProductManagementController@list')->name('products');
-        Route::get('for-sale/new','ProductManagementController@create')->name('product.new');
-        Route::post('for-sale/new','ProductManagementController@save')->name('product.save');
-
-        Route::get('auction','AuctionManagementController@list')->name('auctions');
-        Route::get('auction/new','AuctionManagementController@create')->name('auction.new');
-        Route::post('auction/new','AuctionManagementController@save')->name('auction.save');
+    Route::group(['prefix'=> 'products','as'=>'items.'],function(){
+        Route::get('/','ProductManagementController@list')->name('products');
+       
     });
     
     

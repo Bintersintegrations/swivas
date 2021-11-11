@@ -242,56 +242,57 @@
                                     <div class="product-wrapper-grid">
                                         <div class="row margin-res">
                                             @foreach($products as $product)
-                                            <div class="col-xl-3 col-6 col-grid-box">
-                                                <div class="product-box product-wrap">
-                                                    <div class="img-wrapper">
-                                                        <div class="front text-center">
+                                                <div class="col-xl-3 col-6 col-grid-box">
+                                                    <div class="product-box product-wrap">
+                                                        <div class="img-wrapper">
+                                                            
+                                                            <div class="lable-block">
+                                                                <span class="lable3">new</span> 
+                                                                <span class="lable4">on sale</span>
+                                                            </div>
+                                                            <div class="front">
+                                                                <a href="{{route('product.view',$product)}}">
+                                                                    <img src="{{$product->images[0]}}" class="img-fluid blur-up lazyload bg-img" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <div class="back">
+                                                                <a href="{{route('product.view',$product)}}">
+                                                                    <img @if(count($product->images) > 1) src="{{$product->images[1]}}" @else src="{{$product->images[0]}}" @endif class="img-fluid blur-up lazyload bg-img" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <div class="cart-box">
+                                                                <button class="add-to-cart" title="Add to cart" data-product="{{$product->id}}product">
+                                                                    <i class="ti-shopping-cart"></i>
+                                                                </button> 
+                                                                <a href="javascript:void(0)" class="add-to-wish" data-product="{{$product->id}}product" title="Add to Wishlist">
+                                                                    <i class="ti-heart" aria-hidden="true"></i>
+                                                                </a>
+                                                                <a href="javascript:void(0)" class="quick-view" data-product="{{$product->id}}product" title="Quick View">
+                                                                    <i class="ti-search" aria-hidden="true"></i>
+                                                                </a> 
+                                                                <a href="compare.html" title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-detail text-center">
+                                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
                                                             <a href="{{route('product.view',$product)}}">
-                                                                @if($product->image)
-                                                                    <img src="{{asset('storage/media/image/'.$product->image->name)}}" class="product-image img-fluid blur-up lazyloaded" alt="">
-                                                                @else
-                                                                    @forelse($product->item->media->where('format','image') as $media)
-                                                                        <img src="{{asset('storage/media/image/'.$media->name)}}" class="product-image img-fluid blur-up lazyloaded" alt="">
-                                                                    @break
-                                                                    @empty 
-                                                                        <img src="{{asset('assets/images/flower/product/7.jpg')}}" class="product-image img-fluid blur-up lazyloaded" alt="">
-                                                                    @endforelse 
-                                                                @endif  
+                                                                <h6>{{$product->name}}</h6>
                                                             </a>
-                                                        </div>
-                                                        <div class="cart-box">
-                                                            <button class="add-to-cart" title="Add to cart" data-product="{{$product->id}}product">
-                                                                <i class="ti-shopping-cart"></i>
-                                                            </button> 
-                                                            <a href="javascript:void(0)" class="add-to-wish" data-product="{{$product->id}}product" title="Add to Wishlist">
-                                                                <i class="ti-heart" aria-hidden="true"></i>
-                                                            </a>
-                                                            <a href="javascript:void(0)" class="quick-view" data-product="{{$product->id}}product" title="Quick View">
-                                                                <i class="ti-search" aria-hidden="true"></i>
-                                                            </a> 
-                                                            <a href="compare.html" title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                                                            <h4>{{$product->shop->country->currency_symbol.$product->price}}</h4>
+                                                            {{-- <ul class="color-variant">
+                                                                @php $oldcolor = [] @endphp
+                                                                @foreach ($product->item->products->where('amount',$product->amount) as $variant)
+                                                                    @if(in_array($variant->attributes->where('slug','color')->first()->pivot->result,$oldcolor))
+                                                                        @continue
+                                                                    @endif
+                                                                    @php $oldcolor[] = $variant->attributes->where('slug','color')->first()->pivot->result @endphp
+                                                                    <li class="color-options" style="background-color: {{$variant->attributes->where('slug','color')->first()->pivot->result}}" data-image="{{asset('storage/media/image/'.$variant->image->name)}}"></li>
+                                                                @endforeach
+                                                            </ul> --}}
                                                         </div>
                                                     </div>
-                                                    <div class="product-detail text-center">
-                                                        <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                                                        <a href="{{route('product.view',$product)}}">
-                                                            <h6>{{$product->item->name}}</h6>
-                                                        </a>
-                                                        <h4>{{$product->item->currency->symbol.$product->amount}}</h4>
-                                                        <ul class="color-variant">
-                                                            @php $oldcolor = [] @endphp
-                                                            @foreach ($product->item->products->where('amount',$product->amount) as $variant)
-                                                                @if(in_array($variant->attributes->where('slug','color')->first()->pivot->result,$oldcolor))
-                                                                    @continue
-                                                                @endif
-                                                                @php $oldcolor[] = $variant->attributes->where('slug','color')->first()->pivot->result @endphp
-                                                                <li class="color-options" style="background-color: {{$variant->attributes->where('slug','color')->first()->pivot->result}}" data-image="{{asset('storage/media/image/'.$variant->image->name)}}"></li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
+                                                    
                                                 </div>
-                                                
-                                            </div>
                                             @endforeach
                                             
                                         </div>

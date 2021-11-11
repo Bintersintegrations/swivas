@@ -41,7 +41,6 @@ class ProductController extends Controller
             if(Str::contains(json_encode($templt->categories),$shop->categories))
                 $templates->push($templt);
         }
-        // dd($templates);
         $attributes = Attribute::all();
         return view('frontend.inside.shop.product.create',compact('shop','categories','attributes','templates'));
     }
@@ -121,43 +120,37 @@ class ProductController extends Controller
     }
 
     public function edit(Shop $shop,Product $product){
-        // dd($product->category->attributes->pluck('slug')->toArray());
+        // dd($product->permalink);
         $categories = Category::all();
-        $colors = Color::all();
         $attributes = Attribute::all();
-        // dd($product->media->where('format','video')[0]);
-        return view('frontend.inside.shop.product.edit',compact('shop','categories','colors','attributes','product'));
+        return view('frontend.inside.shop.product.edit',compact('shop','categories','attributes','product'));
     }
 
     public function update(Shop $shop,Product $product,Request $request){
         // dd($request->all());
-        if($request->title) $product->name = $request->title;
+        $product->shop_id = $shop->id;
+        if($request->name) $product->name = $request->name;
         if($request->description) $product->description = $request->description;
-        if($request->category_id) $product->category_id = $request->category_id;
+        if($request->images) $product->images = $request->images;
+        if($request->categories) $product->categories = $request->categories;
+        if($request->group)
+            $product->grouped_products = $request->group_items;
+        if($request->bought_together)
+            $product->bought_together = $request->bought_together;
+        if($request->related)
+            $product->related = $request->related;
+        if($request->price) $product->price = $request->price;
+        if($request->quantity) $product->quantity = $request->quantity;
+        if($request->offer){
+            $product->sale_price = $request->sale_price;
+            $product->sale_from = Carbon::createFromFormat('m/d/Y',$request->start_date);
+            $product->sale_to = Carbon::createFromFormat('m/d/Y',$request->end_date);
+        }   
+        if($request->save == 'draft')
+            $product->status = $request->save;
         $product->save();
-        $product->media()->detach();
-        foreach($request->product_media as $media){
-            if($media) $product->media()->attach($media);
-        }
-        foreach($product->products as $prod){
-            $prod->attributes()->detach();
-        }
-        foreach($product->products as $prod){
-            $prod->delete();
-        }
-        for($i = 0; $i < count($request->price); $i++){
-            $product = new Product;
-            $product->product_id = $product->id;
-            $product->image_id = $request->product_image[$i];
-            $product->quantity = $request->quantity[$i];
-            $product->available = $request->quantity[$i];
-            $product->amount = $request->price[$i];
-            $product->save();
-            foreach(Attribute::wherein('slug',$product->category->attributes->pluck('slug')->toArray())->get() as $slug){
-                if($request->input($slug->slug)[$i]) $product->attributes()->attach($slug->id,['result'=> $request->input($slug->slug)[$i]]);
-            }
-        }
-        return redirect()->route('shop.products',$shop);
+
+        return redirect()->route('shop.products',$shop)->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=> 'Product updated successfully']);
     }
 
     public function delete(Shop $shop,Request $request){

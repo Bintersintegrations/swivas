@@ -11,7 +11,7 @@ class Attribute extends Model
     use Sluggable;
 
     protected $fillable = [
-        'name','label','description','element',
+        'name','status','description','element',
     ];
 
     public function sluggable()

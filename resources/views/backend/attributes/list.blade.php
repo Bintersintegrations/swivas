@@ -38,7 +38,7 @@
                     <h5>Products Attribute</h5>
                 </div>
                 <div class="card-body">
-                    <div class="btn-popup pull-right">
+                    <div class="btn-popup">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Add Attribute</button>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -52,22 +52,35 @@
                                             <div class="form">
                                                 <div class="form-group mb-2">
                                                     <label for="attribute_name" class="mb-1">Attribute Name :</label>
-                                                    <input class="form-control" id="attribute_name" type="text" name="attribute_name">
+                                                    <input class="form-control" id="attribute_name" type="text" name="attribute_name" required>
                                                 </div>
                                                 <div class="form-group mb-2">
-                                                    <label for="label" class="mb-1">Attribute Label :</label>
-                                                    <input class="form-control" id="label" type="text" name="label">
+                                                    <label for="label" class="mb-1">Element :</label>
+                                                    <select class="form-control" id="element" name="element" required>
+                                                        <option value="textbox"  >Textbox</option>
+                                                        <option value="textarea"  >Textarea</option>
+                                                        <option value="select"  >Select</option>
+                                                        <option value="checkbox"  >Checkbox</option>
+            
+                                                    </select>
                                                 </div>
                                                 <div class="form-group mb-2">
                                                     <label for="description" class="mb-1">Attribute Description</label>
-                                                    <textarea class="form-control" id="description" name="description"></textarea>
+                                                    <textarea class="form-control" id="description" name="description" placeholder=""></textarea>
                                                 </div>
                                                 
                                                 <div class="form-group mb-2">
                                                     <label for="options" class="mb-1">Attribute Options</label>
-                                                    <textarea class="form-control" id="options" name="options" placeholder="separate options by comma.."></textarea>
+                                                    <textarea class="form-control" id="options" name="options" placeholder="LABEL:VALUE, LABEL:VALUE.. E.g M: Medium,S:Small,"></textarea>
                                                 </div>
-                                                
+                                                <div class="form-group mb-2">
+                                                    <label for="label" class="mb-1">Status :</label>
+                                                    <select class="form-control" id="status" name="status" required>
+                                                        <option value="1">ON</option>
+                                                        <option value="0">OFF</option>
+                                                       
+                                                    </select>
+                                                </div>
                                                 
                                                 
                                             </div>
@@ -81,91 +94,112 @@
                             </div>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        {{-- <div id="basicScenario" class="product-physical"></div> --}}
-                        <div id="basicScenario" class="product-physical jsgrid" style="position: relative; height: auto; width: 100%;">
-                            <div class="jsgrid-grid-header jsgrid-header-scrollbar">
-                                <table class="jsgrid-table">
-                                    <tr class="jsgrid-header-row">
-                                        <th class="jsgrid-header-cell jsgrid-align-center" style="width:10px;"><input type="checkbox"></th>
-                                        <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">Name</th>
-                                        <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">Label</th>
-                                        <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 100px;">Description</th>
-                                        <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 100px;">Options</th>
+                    <div class="card-body order-datatable">
+                        <table class="display table" id="basic-1">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Element</th>
+                                <th>Description</th>
+                                <th>Options</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($attributes as $attribute)
+                                <tr>
+                                    <td>{{$attribute->name}}</td>
+                                    <td>{{$attribute->element}}</td>
+                                    <td>{{$attribute->description}}</td>
+                                    <td>
+                                        @forelse ($attribute->options as $option)
+                                            <span class="badge badge-secondary">{{$option->name}}</span>
+                                        @empty
+                                            No options
+                                        @endforelse
                                         
-                                        
-                                        <th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">
-                                            <input class="jsgrid-button jsgrid-mode-button jsgrid-insert-mode-button" type="button" title="Switch to inserting">
-                                        </th>
-                                    </tr>
-                                    <tbody>
-                                    @foreach ($attributes as $attribute)
-                                        <tr class="jsgrid-row">
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width:10px"><input type="checkbox"></td>
-                                            <td class="jsgrid-cell text-left pl-3">{{$attribute->name}}</td>
-                                            <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;">{{$attribute->label}}</td>
-                                            <td class="jsgrid-cell" style="width: 50px;">
-                                                {{$attribute->description}}
-                                            </td>
-                                            <td class="jsgrid-cell" style="width: 100px;">
-                                                @if($attribute->options) {{implode(',',$attribute->options)}} @endif
-                                            </td>
+                                    </td>
+                                    
+                                    <td>
+                                        @if($attribute->status)
+                                        <span class="badge badge-success">ON</span>
                                             
-                                            <td class="jsgrid-cell" style="width: 50px;">
-                                                <button class="jsgrid-button jsgrid-edit-button categoryedit" type="button" title="Edit" id="{{$attribute->id}}" data-name="{{$attribute->name}}" data-parent-id="{{$attribute->parent_id}}"></button>
-                                                <button class="jsgrid-button jsgrid-delete-button" type="button" title="Delete" data-toggle="modal" data-target="#deleteAttribute{{$attribute->id}}"></button>
-                                        
-                                                <div class="modal fade" id="deleteAttribute{{$attribute->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteAttribute{{$attribute->id}}" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title f-w-600" id="exampleModalLabel">Delete Attribute</h5>
-                                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                                            </div>
-                                                            <form class="needs-validation" action="{{route('admin.attributes.delete')}}" method="POST" enctype="multipart/form-data">@csrf
-                                                                <div class="modal-body">
-                                                                    <h5>Are you sure you want to delete {{$attribute->name}} attribute</h5>
-                                                                    <input type="hidden" name="attribute_id" value="{{$attribute->id}}">
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button class="btn btn-primary" type="submit">Yes, Delete</button>
-                                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
+                                        @else   
+                                        <span class="badge badge-danger">OFF</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-xs btn-info" title="edit" data-toggle="modal" data-target="#attribute-edit{{$attribute->id}}"><i class="fa fa-pencil"></i></button>
+                                        <button class="btn btn-xs btn-primary" title="delete"><i class="fa fa-trash"></i></button>
+                                        <div class="modal fade" id="attribute-edit{{$attribute->id}}" tabindex="-1" role="dialog" aria-labelledby="attribute-edit{{$attribute->id}}" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title f-w-600" id="exampleModalLabel">Edit Attribute</h5>
+                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                     </div>
+                                                    <form class="needs-validation" action="{{route('admin.attributes.save')}}" method="POST">@csrf
+                                                        <div class="modal-body">
+                                                            <div class="form">
+                                                                <div class="form-group mb-2">
+                                                                    <label for="attribute_name" class="mb-1">Attribute Name :</label>
+                                                                    <input class="form-control" id="attribute_name" type="text" value="{{$attribute->name}}" name="attribute_name" required>
+                                                                </div>
+                                                                <div class="form-group mb-2">
+                                                                    <label for="label" class="mb-1">Element :</label>
+                                                                    <select class="form-control" id="element" name="element" required>
+                                                                        <option value="textbox" @if($attribute->element == 'textbox') selected @endif >Textbox</option>
+                                                                        <option value="textarea" @if($attribute->element == 'textarea') selected @endif >Textarea</option>
+                                                                        <option value="select" @if($attribute->element == 'select') selected @endif >Select</option>
+                                                                        <option value="checkbox" @if($attribute->element == 'checkbox') selected @endif >Checkbox</option>
+                                            
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group mb-2">
+                                                                    <label for="description" class="mb-1">Attribute Description</label>
+                                                                    <textarea class="form-control" id="description" name="description" placeholder="">{{$attribute->description}}</textarea>
+                                                                </div>
+                                                                
+                                                                <div class="form-group mb-2">
+                                                                    <label for="options" class="mb-1">Attribute Options</label>
+                                                                    <textarea class="form-control" id="options" name="options" placeholder="LABEL:VALUE, LABEL:VALUE.. E.g M: Medium,S:Small,">
+                                                                        @forelse ($attribute->options as $option)
+                                                                            {{$option->name}}:{{$option->description}},
+                                                                        @empty
+                                                                            
+                                                                        @endforelse
+                                                                    </textarea>
+                                                                </div>
+                                                                <div class="form-group mb-2">
+                                                                    <label for="label" class="mb-1">Status :</label>
+                                                                    <select class="form-control" id="status" name="status" required>
+                                                                        <option value="1">ON</option>
+                                                                        <option value="0">OFF</option>
+                                                                       
+                                                                    </select>
+                                                                </div>
+                                                                
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-primary" type="submit">Save</button>
+                                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                        
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <div class="jsgrid-pager-container" style="">
-                                <div class="jsgrid-pager">Pages: 
-                                    <span class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button">
-                                        <a href="javascript:void(0);">First</a>
-                                    </span>
-                                    <span class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button">
-                                        <a href="javascript:void(0);">Prev</a>
-                                    </span> 
-                                    <span class="jsgrid-pager-page jsgrid-pager-current-page">1</span>
-                                    <span class="jsgrid-pager-page">
-                                        <a href="javascript:void(0);">2</a>
-                                    </span>
-                                    <span class="jsgrid-pager-nav-button">
-                                        <a href="javascript:void(0);">Next</a>
-                                    </span> 
-                                    <span class="jsgrid-pager-nav-button">
-                                        <a href="javascript:void(0);">Last</a>
-                                    </span> &nbsp;&nbsp; 1 of 2 
-                                </div>
-                            </div>
-                            <div class="jsgrid-load-shader" style="display: none; position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; z-index: 1000;"></div>
-                            <div class="jsgrid-load-panel" style="display: none; position: absolute; top: 50%; left: 50%; z-index: 1000;">Please, wait...</div>
-                        </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    
+                                </tr>
+                                @endforeach
+                                
+                                
+                              
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
