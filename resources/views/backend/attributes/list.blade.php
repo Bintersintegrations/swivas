@@ -47,12 +47,12 @@
                                         <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Attribute</h5>
                                         <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                     </div>
-                                    <form class="needs-validation" action="{{route('admin.attributes.save')}}" method="POST">@csrf
+                                    <form class="needs-validation" action="{{route('admin.atributes.save')}}" method="POST">@csrf
                                         <div class="modal-body">
                                             <div class="form">
                                                 <div class="form-group mb-2">
-                                                    <label for="attribute_name" class="mb-1">Attribute Name :</label>
-                                                    <input class="form-control" id="attribute_name" type="text" name="attribute_name" required>
+                                                    <label for="atribute_name" class="mb-1">Attribute Name :</label>
+                                                    <input class="form-control" id="atribute_name" type="text" name="atribute_name" required>
                                                 </div>
                                                 <div class="form-group mb-2">
                                                     <label for="label" class="mb-1">Element :</label>
@@ -107,13 +107,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($attributes as $attribute)
+                                @foreach ($atributes as $atribute)
                                 <tr>
-                                    <td>{{$attribute->name}}</td>
-                                    <td>{{$attribute->element}}</td>
-                                    <td>{{$attribute->description}}</td>
+                                    <td>{{$atribute->name}}</td>
+                                    <td>{{$atribute->element}}</td>
+                                    <td>{{$atribute->description}}</td>
                                     <td>
-                                        @forelse ($attribute->options as $option)
+                                        @forelse ($atribute->options as $option)
                                             <span class="badge badge-secondary">{{$option->name}}</span>
                                         @empty
                                             No options
@@ -122,7 +122,7 @@
                                     </td>
                                     
                                     <td>
-                                        @if($attribute->status)
+                                        @if($atribute->status)
                                         <span class="badge badge-success">ON</span>
                                             
                                         @else   
@@ -130,41 +130,41 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-xs btn-info" title="edit" data-toggle="modal" data-target="#attribute-edit{{$attribute->id}}"><i class="fa fa-pencil"></i></button>
+                                        <button type="button" class="btn btn-xs btn-info" title="edit" data-toggle="modal" data-target="#atribute-edit{{$atribute->id}}"><i class="fa fa-pencil"></i></button>
                                         <button class="btn btn-xs btn-primary" title="delete"><i class="fa fa-trash"></i></button>
-                                        <div class="modal fade" id="attribute-edit{{$attribute->id}}" tabindex="-1" role="dialog" aria-labelledby="attribute-edit{{$attribute->id}}" aria-hidden="true">
+                                        <div class="modal fade" id="atribute-edit{{$atribute->id}}" tabindex="-1" role="dialog" aria-labelledby="atribute-edit{{$atribute->id}}" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title f-w-600" id="exampleModalLabel">Edit Attribute</h5>
                                                         <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                     </div>
-                                                    <form class="needs-validation" action="{{route('admin.attributes.save')}}" method="POST">@csrf
+                                                    <form class="needs-validation" action="{{route('admin.atributes.save')}}" method="POST">@csrf
                                                         <div class="modal-body">
                                                             <div class="form">
                                                                 <div class="form-group mb-2">
-                                                                    <label for="attribute_name" class="mb-1">Attribute Name :</label>
-                                                                    <input class="form-control" id="attribute_name" type="text" value="{{$attribute->name}}" name="attribute_name" required>
+                                                                    <label for="atribute_name" class="mb-1">Attribute Name :</label>
+                                                                    <input class="form-control" id="atribute_name" type="text" value="{{$atribute->name}}" name="atribute_name" required>
                                                                 </div>
                                                                 <div class="form-group mb-2">
                                                                     <label for="label" class="mb-1">Element :</label>
                                                                     <select class="form-control" id="element" name="element" required>
-                                                                        <option value="textbox" @if($attribute->element == 'textbox') selected @endif >Textbox</option>
-                                                                        <option value="textarea" @if($attribute->element == 'textarea') selected @endif >Textarea</option>
-                                                                        <option value="select" @if($attribute->element == 'select') selected @endif >Select</option>
-                                                                        <option value="checkbox" @if($attribute->element == 'checkbox') selected @endif >Checkbox</option>
+                                                                        <option value="textbox" @if($atribute->element == 'textbox') selected @endif >Textbox</option>
+                                                                        <option value="textarea" @if($atribute->element == 'textarea') selected @endif >Textarea</option>
+                                                                        <option value="select" @if($atribute->element == 'select') selected @endif >Select</option>
+                                                                        <option value="checkbox" @if($atribute->element == 'checkbox') selected @endif >Checkbox</option>
                                             
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group mb-2">
                                                                     <label for="description" class="mb-1">Attribute Description</label>
-                                                                    <textarea class="form-control" id="description" name="description" placeholder="">{{$attribute->description}}</textarea>
+                                                                    <textarea class="form-control" id="description" name="description" placeholder="">{{$atribute->description}}</textarea>
                                                                 </div>
                                                                 
                                                                 <div class="form-group mb-2">
                                                                     <label for="options" class="mb-1">Attribute Options</label>
                                                                     <textarea class="form-control" id="options" name="options" placeholder="LABEL:VALUE, LABEL:VALUE.. E.g M: Medium,S:Small,">
-                                                                        @forelse ($attribute->options as $option)
+                                                                        @forelse ($atribute->options as $option)
                                                                             {{$option->name}}:{{$option->description}},
                                                                         @empty
                                                                             
@@ -174,8 +174,8 @@
                                                                 <div class="form-group mb-2">
                                                                     <label for="label" class="mb-1">Status :</label>
                                                                     <select class="form-control" id="status" name="status" required>
-                                                                        <option value="1">ON</option>
-                                                                        <option value="0">OFF</option>
+                                                                        <option value="1" @if($atribute->status) selected @endif>ON</option>
+                                                                        <option value="0" @if(!$atribute->status) selected @endif>OFF</option>
                                                                        
                                                                     </select>
                                                                 </div>

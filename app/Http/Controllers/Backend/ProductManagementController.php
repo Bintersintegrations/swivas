@@ -5,7 +5,7 @@ use App\Item;
 use App\Product;
 use App\Category;
 use App\Color;
-use App\Attribute;
+use App\Atribute;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +32,7 @@ class ProductManagementController extends Controller
         //save item first
         $item = Item::create(['user_id'=> $user->id,'name'=> $request->title,'description'=> $request->description,'category_id'=> $request->category_id]);
         //dd($request->all());
-        $attributes = Attribute::all();
+        $atributes = Atribute::all();
         for($i = 0; $i < count($request->price); $i++){
             $product = new Product;
             $product->item_id = $item->id;
@@ -40,7 +40,7 @@ class ProductManagementController extends Controller
             $product->available = $request->quantity[$i];
             $product->amount = $request->price[$i];
             $product->currency_id = $user->currency_id;
-            foreach($attributes->pluck('slug') as $slug){
+            foreach($atributes->pluck('slug') as $slug){
                 if($request->input($slug)) $product->$slug = $request->input($slug)[$i];
             }
             $product->save();

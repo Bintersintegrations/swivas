@@ -15,10 +15,10 @@ Route::group(['prefix'=>'admin','as'=>'admin.','namespace'=>'Backend','middlewar
     Route::post('categories/update','CategoryManagementController@updatecategories')->name('categories.update');
     Route::post('categories/delete','CategoryManagementController@deletecategories')->name('categories.delete');
 
-    Route::get('attributes','CategoryManagementController@listattributes')->name('attributes');
-    Route::post('attributes/save','CategoryManagementController@saveattributes')->name('attributes.save');
-    Route::post('attributes/update','CategoryManagementController@updateattributes')->name('attributes.update');
-    Route::post('attributes/delete','CategoryManagementController@deleteattributes')->name('attributes.delete');
+    Route::get('attributes','CategoryManagementController@listatributes')->name('atributes');
+    Route::post('attributes/save','CategoryManagementController@saveatributes')->name('atributes.save');
+    Route::post('attributes/update','CategoryManagementController@updateatributes')->name('atributes.update');
+    Route::post('attributes/delete','CategoryManagementController@deleteatributes')->name('atributes.delete');
 
     Route::get('orders','OrderManagementController@listorders')->name('orders.list');
     Route::get('refunds','OrderManagementController@refunds')->name('orders.refunded');

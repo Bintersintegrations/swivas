@@ -47,12 +47,12 @@
                                         <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Attribute</h5>
                                         <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                     </div>
-                                    <form class="needs-validation" action="{{route('admin.attributes.save')}}" method="POST">@csrf
+                                    <form class="needs-validation" action="{{route('admin.atributes.save')}}" method="POST">@csrf
                                         <div class="modal-body">
                                             <div class="form">
                                                 <div class="form-group mb-2">
-                                                    <label for="attribute_name" class="mb-1">Attribute Name :</label>
-                                                    <input class="form-control" id="attribute_name" type="text" name="attribute_name">
+                                                    <label for="atribute_name" class="mb-1">Attribute Name :</label>
+                                                    <input class="form-control" id="atribute_name" type="text" name="atribute_name">
                                                 </div>
                                                 <div class="form-group mb-2">
                                                     <label for="label" class="mb-1">Attribute Label :</label>
@@ -99,33 +99,33 @@
                                         </th>
                                     </tr>
                                     <tbody>
-                                    @foreach ($attributes as $attribute)
+                                    @foreach ($atributes as $atribute)
                                         <tr class="jsgrid-row">
                                             <td class="jsgrid-cell jsgrid-align-center" style="width:10px"><input type="checkbox"></td>
-                                            <td class="jsgrid-cell text-left pl-3">{{$attribute->name}}</td>
-                                            <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;">{{$attribute->label}}</td>
+                                            <td class="jsgrid-cell text-left pl-3">{{$atribute->name}}</td>
+                                            <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;">{{$atribute->label}}</td>
                                             <td class="jsgrid-cell" style="width: 50px;">
-                                                {{$attribute->description}}
+                                                {{$atribute->description}}
                                             </td>
                                             <td class="jsgrid-cell" style="width: 100px;">
-                                                @if($attribute->options) {{implode(',',$attribute->options)}} @endif
+                                                @if($atribute->options) {{implode(',',$atribute->options)}} @endif
                                             </td>
                                             
                                             <td class="jsgrid-cell" style="width: 50px;">
-                                                <button class="jsgrid-button jsgrid-edit-button categoryedit" type="button" title="Edit" id="{{$attribute->id}}" data-name="{{$attribute->name}}" data-parent-id="{{$attribute->parent_id}}"></button>
-                                                <button class="jsgrid-button jsgrid-delete-button" type="button" title="Delete" data-toggle="modal" data-target="#deleteAttribute{{$attribute->id}}"></button>
+                                                <button class="jsgrid-button jsgrid-edit-button categoryedit" type="button" title="Edit" id="{{$atribute->id}}" data-name="{{$atribute->name}}" data-parent-id="{{$atribute->parent_id}}"></button>
+                                                <button class="jsgrid-button jsgrid-delete-button" type="button" title="Delete" data-toggle="modal" data-target="#deleteAttribute{{$atribute->id}}"></button>
                                         
-                                                <div class="modal fade" id="deleteAttribute{{$attribute->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteAttribute{{$attribute->id}}" aria-hidden="true">
+                                                <div class="modal fade" id="deleteAttribute{{$atribute->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteAttribute{{$atribute->id}}" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title f-w-600" id="exampleModalLabel">Delete Attribute</h5>
                                                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                             </div>
-                                                            <form class="needs-validation" action="{{route('admin.attributes.delete')}}" method="POST" enctype="multipart/form-data">@csrf
+                                                            <form class="needs-validation" action="{{route('admin.atributes.delete')}}" method="POST" enctype="multipart/form-data">@csrf
                                                                 <div class="modal-body">
-                                                                    <h5>Are you sure you want to delete {{$attribute->name}} attribute</h5>
-                                                                    <input type="hidden" name="attribute_id" value="{{$attribute->id}}">
+                                                                    <h5>Are you sure you want to delete {{$atribute->name}} atribute</h5>
+                                                                    <input type="hidden" name="atribute_id" value="{{$atribute->id}}">
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button class="btn btn-primary" type="submit">Yes, Delete</button>

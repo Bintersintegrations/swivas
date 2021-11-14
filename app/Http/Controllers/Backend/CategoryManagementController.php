@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Category;
-use App\Attribute;
+use App\Atribute;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +17,9 @@ class CategoryManagementController extends Controller
 
     public function listcategories(){
         $categories = Category::all();
-        //dd(implode(',',$categories[0]->attributes->pluck('name')->toArray()));
-        $attributes = Attribute::all();
-        return view('backend.categories.list',compact('categories','attributes'));
+        //dd(implode(',',$categories[0]->atributes->pluck('name')->toArray()));
+        $atributes = Atribute::all();
+        return view('backend.categories.list',compact('categories','atributes'));
     }
     public function savecategories(Request $request){
         //dd($request->all());
@@ -47,8 +47,8 @@ class CategoryManagementController extends Controller
             $request->file('image')->storeAs('public/categories',$fileName);
         }
         $category = Category::create(['name'=> $request->category_name,'image'=> $fileName,'grand_id'=> $grand_id,'parent_id'=> $parent_id]);
-        $attributes = $request->input('attributes');
-        $category->attributes()->attach($attributes);
+        $atributes = $request->input('atributes');
+        $category->atributes()->attach($atributes);
         return redirect()->back();
     }
     public function updatecategories(Request $request){
@@ -66,36 +66,35 @@ class CategoryManagementController extends Controller
         if($request->filled('category_name')) $category->name = $request->category_name;
         $category->parent_id = $request->input('parent_id') == 'null' ? null: $request->input('parent_id') ;
         $category->save();
-        $attributes = $request->input('attributes');
-        $category->attributes()->sync($attributes);
+        $atributes = $request->input('atributes');
+        $category->atributes()->sync($atributes);
         return redirect()->back();
     }
 
-    public function listattributes(){
-        $attributes = Attribute::all();
-        return view('backend.attributes.list',compact('attributes'));
+    public function listatributes(){
+        $atributes = Atribute::all();
+        return view('backend.atributes.list',compact('atributes'));
     }
-    public function saveattributes(Request $request){
+    public function saveatributes(Request $request){
         // dd($request->all());
-        $attribute = Attribute::updateOrCreate(['name'=> $request->attribute_name,
+        $atribute = Atribute::updateOrCreate(['name'=> $request->atribute_name,
             'element'=> $request->element],['description'=> $request->description,'status' => $request->status]);
         if($request->options) {
             foreach(explode(',',$request->options) as $option){
-                $attribute->options()->sync([
+                $atribute->options()->sync([
                     'name' => explode(':',option)[0],
                     'description' => explode(':',option)[1]
                 ]);
             }
         } 
-        
         return redirect()->back();
     }
 
-    public function deleteattributes(Request $request){
-        $attribute = Attribute::find($request->attribute_id);
-        $attribute->categories()->detach();
-        //remove all product variants of this attribute
-        $attribute->delete();
+    public function deleteatributes(Request $request){
+        $atribute = Atribute::find($request->atribute_id);
+        $atribute->categories()->detach();
+        //remove all product variants of this atribute
+        $atribute->delete();
         return redirect()->back();
     }
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use App\Shop;
 use App\Order;
-use App\Attribute;
+use App\Atribute;
 use App\Category;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -12,7 +12,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Product extends Model
 {   
     use Sluggable;
-    protected $casts = ['images'=> 'array','categories'=> 'array', 'grouped_products'=> 'array','bought_together'=> 'array','related'=> 'array'];
+    protected $casts = ['images'=> 'array','categories'=> 'array', 'atributes'=> 'array', 'grouped_products'=> 'array','bought_together'=> 'array','related'=> 'array'];
     protected $fillable = [
         'shop_id','quantity','images','price','slug'
     ];
@@ -36,9 +36,6 @@ class Product extends Model
         return 'slug';
     }
     
-    public function attributes(){
-        return $this->hasMany(Attribute::class)->withPivot('result');
-    }
     public function shop(){
         return $this->belongsTo(Shop::class);
     }
@@ -53,6 +50,15 @@ class Product extends Model
             $categories->push(Category::find($category_id));
         }
         return $categories;
+    }
+    public function getAtributez(){
+        $atributes = collect([]);
+        // dd($this->atributes);
+        foreach($this->atributes as $atribute_id){
+            dd($atribute_id);
+            $atributes->push(Atribute::where('slug',$atribute_id)->get());
+        }
+        return $atributes;
     }
 
 }

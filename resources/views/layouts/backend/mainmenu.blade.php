@@ -21,7 +21,7 @@
                 </ul>
             </li>
             <li><a class="sidebar-header" href="{{route('admin.categories')}}"><i data-feather="bar-chart"></i>Categories</a></li>
-            <li><a class="sidebar-header" href="{{route('admin.attributes')}}"><i data-feather="bar-chart"></i>Attributes</a></li>
+            <li><a class="sidebar-header" href="{{route('admin.atributes')}}"><i data-feather="bar-chart"></i>Attributes</a></li>
             <li><a class="sidebar-header" href="{{route('admin.media.list')}}"><i data-feather="camera"></i><span>Media</span></a></li>
             <li><a class="sidebar-header" href=""><i data-feather="tag"></i><span>Coupons</span><i class="fa fa-angle-right pull-right"></i></a>
                 <ul class="sidebar-submenu">

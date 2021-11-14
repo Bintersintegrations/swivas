@@ -5,12 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class AttributeOption extends Model
+class AtributeOption extends Model
 {
     use Sluggable;
 
     protected $fillable = [
-        'attribute_id','name','description'
+        'atribute_id','name','description'
     ];
     
     public function sluggable()

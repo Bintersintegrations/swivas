@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->text('images')->nullable();
             $table->text('categories')->nullable();
+            $table->text('atributes')->nullable();
             $table->text('tags')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->boolean('is_variable')->default(0); 

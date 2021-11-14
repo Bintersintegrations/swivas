@@ -294,13 +294,13 @@
             $(this).closest('.dropdown').find('.color_value').val($(this).attr('data-color'));
         });
 
-        {{-- attribute change by category --}}
+        {{-- atribute change by category --}}
         $(document).on('change','#category',function(){
-            changeAttributes($('option:selected', this).attr('data-attrib'));
+            changeAtributes($('option:selected', this).attr('data-attrib'));
         });
-        function changeAttributes(attributes){
+        function changeAtributes(atributes){
             $('.attrib-options').hide();
-            $('.'+attributes).show();
+            $('.'+atributes).show();
         }
         $('.select2').select2();
         

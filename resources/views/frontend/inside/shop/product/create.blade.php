@@ -3,6 +3,8 @@
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/custom.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/datepicker.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/netflix-slider.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap-tagsinput.css')}}">
+
 @endpush
 @section('main')
 <!--  dashboard section start -->
@@ -90,8 +92,12 @@
                                                 <div class="form-group">
                                                     <label for="categories" class="form-label">Select Category :</label>
                                                     <select class="form-control select2" id="category" name="categories[]" multiple required>
-                                                        @foreach ($categories->where('parent_id','!=',null) as $child)
-                                                            <option value="{{$child->id}}" data-attrib="">{{$child->name}}</option>
+                                                        @foreach ($categories->where('parent_id',null) as $parent)
+                                                            <optgroup label="{{$parent->name}}">
+                                                                @foreach ($parent->children()->get() as $child)
+                                                                    <option value="{{$child->id}}" data-attrib="{{$child->atributes->pluck('slug')}}">{{$child->name}}</option>    
+                                                                @endforeach
+                                                            </optgroup>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -155,7 +161,7 @@
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-check pl-0">
-                                                            <input class="radio_animated form-check-input mt-1 " type="checkbox" name="group" id="group" value="1">
+                                                            <input class="radio_animated form-check-input mt-1 " type="checkbox" name="group" id="group" value="1" checked>
                                                             <label class="form-check-label" for="group">
                                                                 Allow Customers to buy this product alone
                                                             </label>
@@ -237,12 +243,45 @@
                                                             
                                                         </div>
                                                     </div>
-                                                    
-                                                    <div class="col-12">
-                                                        <h4 class="my-5">Attributes</h4>
+                                                </div>    
+                                                <h4 class="my-3">Attributes</h4>
+                                                <div class="form-group">
+                                                    <label class="mb-0 mr-1">Add Attributes:</label>
+                                                    <select class="form-control select2" name="attributes[]" id="atributes" multiple>
                                                         
-                                                    </div>
+                                                        @forelse ($atributes as $atribute)
+                                                            <option value="{{$atribute->slug}}">{{$atribute->name}}</option>
+                                                        @empty
+                                                            <option disabled>No Attribute</option>
+                                                        @endforelse
+                                                    </select>
                                                 </div>
+                                                
+                                                    @forelse ($atributes as $atribute)
+                                                        @if ($atribute->element == 'textbox')
+                                                            <div class="form-group atributes {{$atribute->slug}}" style="display:none">
+                                                                <label class="mb-0 mr-1">{{$atribute->description}}:</label>
+                                                                <input class="form-control" type="text" data-role="tagsinput" name="atributes[{{$atribute->slug}}]" id="{{$atribute->slug}}" placeholder="Seperate options with comma">
+                                                            </div>
+                                                        @endif
+                                                        @if ($atribute->element == 'select')
+                                                            <div class="form-group atributes {{$atribute->slug}}" style="display:none;width:100%" >
+                                                                <label class="mb-0 mr-1">{{$atribute->description}}:</label>
+                                                                <select class="form-control select2" name="atributes[{{$atribute->slug}}][]" id="{{$atribute->slug}}" multiple style="width:100%">
+                                                                    @forelse ($atribute->options as $option)
+                                                                        <option value="{{$option->name}}">{{$option->name}}</option>
+                                                                    @empty
+                                                                        <option disabled>No Options</option>
+                                                                    @endforelse
+                                                                </select>
+                                                            </div>
+                                                        @endif
+                                                    @empty
+                                                        
+                                                    @endforelse
+                                                    
+                                               
+                                                
                                             </div>
                                             
                                         </div>
@@ -250,7 +289,6 @@
                                             <div class="col-12">
                                                 <button type="submit" class="btn btn-sm btn-solid btn-dark" name="save" value="draft">Save product</button>
                                                 <button type="submit" class="btn btn-sm btn-solid" name="save" value="publish">Publish product</button>
-                                                <button type="submit" class="btn btn-sm btn-solid" name="save" value="variant">Publish & Add Variant</button>
                                             </div>
                                         </div>
                                     </form>
@@ -270,6 +308,7 @@
 @push('scripts')
     
     <script src="{{asset('assets/js/date-picker.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap-tagsinput.js')}}"></script>
     <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
 
     
@@ -295,10 +334,10 @@
         })
         $('#group').change(function(){
             if($(this).is(':checked')){
+                $('#group-block').hide();
+            }else{
                 $('#group_items').select2();
                 $('#group-block').show();
-            }else{
-                $('#group-block').hide();
             }
         })
         {{-- offer  --}}
@@ -313,14 +352,32 @@
             $(this).closest('.dropdown').find('.color_selected').css('background-color', $(this).css('background-color'));;
             $(this).closest('.dropdown').find('.color_value').val($(this).attr('data-color'));
         });
-
-        {{-- attribute change by category --}}
-        $(document).on('change','#category',function(){
-            changeAttributes($('option:selected', this).attr('data-attrib'));
+        
+        
+        {{-- atribute change by category --}}
+        $(document).on('change','#atributes',function(){
+            $('.atributes').hide();
+            $('option:selected', this).each(function(){
+                // console.log($(this).val())
+                $('.select2').select2();
+                $('.'+$(this).val()).show();
+                // let attrib_array = JSON.parse($(this).val())
+                // if(attrib_array.length){
+                //     attrib_array.forEach(function(value){
+                //         $('.'+value).show();
+                //     })
+                // }
+            })
+            // attr('data-attrib'))
+            // changeAttributes($('option:selected', this).attr('data-attrib'));
         });
-        function changeAttributes(attributes){
-            $('.attrib-options').hide();
-            $('.'+attributes).show();
+        function changeAttributes(atributes){
+            // let attribArray = atributes
+            console.log(atributes)
+            // JSON.parse(atributes).forEach(function(value){
+            //     $('.'+value).show();
+            // })
+                
         }
         $('.select2').select2();
         

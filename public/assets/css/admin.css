@@ -15369,13 +15369,13 @@ footer.blockquote-footer {
 .tab-coupon {
   margin-bottom: 30px; }
 
-.needs-validation .permission-block .attribute-blocks {
+.needs-validation .permission-block .atribute-blocks {
   padding-left: 15px; }
-  .needs-validation .permission-block .attribute-blocks .row {
+  .needs-validation .permission-block .atribute-blocks .row {
     padding-left: 20px; }
-  .needs-validation .permission-block .attribute-blocks + .attribute-blocks h5 {
+  .needs-validation .permission-block .atribute-blocks + .atribute-blocks h5 {
     margin-top: 30px; }
-  .needs-validation .permission-block .attribute-blocks h6 {
+  .needs-validation .permission-block .atribute-blocks h6 {
     border-bottom: 1px solid #eff0f1;
     margin-bottom: 15px;
     padding-bottom: 5px; }
@@ -19678,15 +19678,15 @@ table tbody .border-bottom-warning td {
       margin-top: 15px; }
   .sm-label-radio {
     margin-bottom: 4px !important; }
-  .permission-block .attribute-blocks .form-group {
+  .permission-block .atribute-blocks .form-group {
     padding-bottom: 15px; }
   .needs-validation textarea {
     margin: 0 10px; }
   .needs-validation h4 {
     margin-bottom: 15px; }
-  .needs-validation .permission-block .attribute-blocks .row {
+  .needs-validation .permission-block .atribute-blocks .row {
     padding-left: 15px; }
-  .needs-validation .permission-block .attribute-blocks + .attribute-blocks h5 {
+  .needs-validation .permission-block .atribute-blocks + .atribute-blocks h5 {
     margin-top: 20px; }
   .needs-validation .radio_animated {
     margin: 0 6px 0 0; }
@@ -19833,11 +19833,11 @@ body.rtl .needs-validation .form-group {
     padding-right: 0;
     padding-left: unset; }
 
-body.rtl .needs-validation .permission-block .attribute-blocks {
+body.rtl .needs-validation .permission-block .atribute-blocks {
   padding-right: 15px;
   padding-left: unset;
   text-align: right; }
-  body.rtl .needs-validation .permission-block .attribute-blocks .row {
+  body.rtl .needs-validation .permission-block .atribute-blocks .row {
     padding-right: 20px;
     padding-left: unset; }
 

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
-use App\Giving;
-use App\Category;
 use App\Product;
-use App\Currency;
+use App\Category;
+use App\Atribute;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -27,17 +26,12 @@ class ProductThreadController extends Controller
     }
 
     public function view(Product $product){
-        // dd($product->amount);
-        // foreach($products->where('price',$product->price) as $productz){
-        //     foreach($productz->attributes as $attrib){
-        //         $options[$productz->id][] = $attrib->pivot->result;
-        //         $attributes[$attrib->slug][] = $attrib->pivot->result;
-        //     }
-        // }
+        // dd($product);
+        $atributes = Atribute::all();
         // dd($options);
-        // dd(array_unique($attributes['color']));
+        // dd(array_unique($atributes['color']));
         // $item['productid']= ['color','size']
-        return view('frontend.outside.product.view',compact('product','attributes','options'));
+        return view('frontend.outside.product.view',compact('product','atributes'));
     }
 
     public function addtocart(Request $request){

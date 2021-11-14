@@ -71,10 +71,10 @@
                                                     <input class="form-control" id="category_image" type="file" name="image">
                                                 </div>
                                                 <div class="form-group mb-2">
-                                                    <label for="attributes" class="mb-1">Associate Attributes</label>
-                                                    <select class="form-control select2" style="width:100%" id="attributes" name="attributes[]" multiple>
-                                                        @foreach ($attributes as $attribute)
-                                                        <option value="{{$attribute->id}}">{{$attribute->name}}</option>
+                                                    <label for="atributes" class="mb-1">Associate Attributes</label>
+                                                    <select class="form-control select2" style="width:100%" id="atributes" name="atributes[]" multiple>
+                                                        @foreach ($atributes as $atribute)
+                                                        <option value="{{$atribute->id}}">{{$atribute->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -121,7 +121,7 @@
                                             <td class="jsgrid-cell text-left pl-3">{{$grandparent->name}}</td>
                                             <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;">{{$grandparent->items->count()}}</td>
                                             <td class="jsgrid-cell" style="width: 50px;">
-                                                {{implode(',',$grandparent->attributes->pluck('name')->toArray())}}
+                                                {{implode(',',$grandparent->atributes->pluck('name')->toArray())}}
                                             </td>
                                             <td class="jsgrid-cell" style="width: 50px;">
                                                 <button class="jsgrid-button jsgrid-edit-button categoryedit" type="button" title="Edit" id="{{$grandparent->id}}" data-name="{{$grandparent->name}}" data-parent-id="{{$grandparent->parent_id}}"></button>
@@ -137,7 +137,7 @@
                                                 <td class="jsgrid-cell text-left pl-4">&nbsp;&nbsp;&nbsp;&nbsp; -{{$parent->name}}</td>
                                                 <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;">{{$parent->items->count()}}</td>
                                                 <td class="jsgrid-cell" style="width: 50px;">
-                                                    {{implode(',',$parent->attributes->pluck('name')->toArray())}}
+                                                    {{implode(',',$parent->atributes->pluck('name')->toArray())}}
                                                 </td>
                                                 
                                                 <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">
@@ -154,7 +154,7 @@
                                                     <td class="jsgrid-cell text-left pl-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --{{$child->name}}</td>
                                                     <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;">{{$child->items->count()}}</td>
                                                     <td class="jsgrid-cell" style="width: 50px;">
-                                                        {{implode(',',$child->attributes->pluck('name')->toArray())}}
+                                                        {{implode(',',$child->atributes->pluck('name')->toArray())}}
                                                     </td>
                                                     
                                                     <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">
@@ -231,10 +231,10 @@
                                 <input class="form-control" id="category_image" name="image" type="file" name="category_image">
                             </div>
                             <div class="form-group mb-2">
-                                <label for="attributes" class="mb-1">Associate Attributes</label>
-                                <select class="form-control select2" style="width:100%" id="attributes" name="attributes[]" multiple>
-                                    @foreach ($attributes as $attribute)
-                                    <option value="{{$attribute->id}}">{{$attribute->name}}</option>
+                                <label for="atributes" class="mb-1">Associate Attributes</label>
+                                <select class="form-control select2" style="width:100%" id="atributes" name="atributes[]" multiple>
+                                    @foreach ($atributes as $atribute)
+                                    <option value="{{$atribute->id}}">{{$atribute->name}}</option>
                                     @endforeach
                                 </select>
                             </div>

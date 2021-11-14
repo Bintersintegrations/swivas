@@ -50,8 +50,8 @@ class CreateTemplatesTable extends Migration
             $table->text('categories')->nullable();
             $table->text('tags')->nullable();
             $table->text('images')->nullable();
-            $table->text('attributes')->nullable();
-            $table->text('default_attributes')->nullable();
+            $table->text('atributes')->nullable();
+            $table->text('default_atributes')->nullable();
             $table->text('variations')->nullable();
             $table->text('grouped_products')->nullable();
             $table->boolean('status')->default(1);

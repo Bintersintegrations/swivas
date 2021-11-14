@@ -243,53 +243,24 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="product-slick">
-                                    @if($product->image)
+                                    @if(count($product->images))
                                         <div>
-                                            <img src="{{asset('storage/media/image/'.$product->image->name)}}" alt=""
-                                            class="img-fluid blur-up lazyload image_zoom_cls-0">
+                                            <img src="{{$product->images[0]}}" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0">
                                         </div>
-                                    @endif
-                                    @forelse($product->item->media->where('format','image') as $media)
-                                        <div>
-                                            <img src="{{asset('storage/media/image/'.$media->name)}}" alt=""
-                                            class="img-fluid blur-up lazyload image_zoom_cls-0">
-                                        </div>
-                                    @empty 
+                                    @else 
                                         <div>
                                             <img src="{{asset('assets/images/pro3/1.jpg')}}" alt=""
                                                 class="img-fluid blur-up lazyload image_zoom_cls-0">
                                         </div>
-                                    @endforelse
+                                    @endif
                                     
-                                    {{-- <div>
-                                        <img src="{{asset('assets/images/pro3/1.jpg')}}" alt=""
-                                            class="img-fluid blur-up lazyload image_zoom_cls-0">
-                                    </div>
-                                    <div>
-                                        <img src="{{asset('assets/images/pro3/2.jpg')}}" alt=""
-                                            class="img-fluid blur-up lazyload image_zoom_cls-1">
-                                    </div>
-                                    <div>
-                                        <img src="{{asset('assets/images/pro3/27.jpg')}}" alt=""
-                                            class="img-fluid blur-up lazyload image_zoom_cls-2">
-                                    </div>
-                                    <div>
-                                        <img src="{{asset('assets/images/pro3/27.jpg')}}" alt=""
-                                            class="img-fluid blur-up lazyload image_zoom_cls-3">
-                                    </div> --}}
                                 </div>
                                 <div class="row">
                                     <div class="col-12 p-0">
                                         <div class="slider-nav">
-                                            @if($product->image)
+                                            @forelse($product->images as $media)
                                                 <div>
-                                                    <img src="{{asset('storage/media/image/'.$product->image->name)}}" alt=""
-                                                    class="img-fluid blur-up lazyload">
-                                                </div>
-                                            @endif
-                                            @forelse($product->item->media->where('format','image') as $media)
-                                                <div>
-                                                    <img src="{{asset('storage/media/image/'.$media->name)}}" alt=""
+                                                    <img src="{{$media}}" alt=""
                                                     class="img-fluid blur-up lazyload">
                                                 </div>
                                             @empty 
@@ -304,25 +275,25 @@
                             </div>
                             <div class="col-lg-6 rtl-text">
                                 <div class="product-right">
-                                    <h2>{{$product->item->name}}</h2>
+                                    <h2>{{$product->name}}</h2>
                                     {{-- <h4><del>$459.00</del><span>55% off</span></h4> --}}
-                                    <h3>{{$product->item->currency->symbol.''.$product->amount}}</h3>
+                                    <h3>{{$product->shop->country->currency_symbol.''.$product->price}}</h3>
                                     <div class="color-selector">
                                         <ul class="color-variant">
-                                            @if(array_key_exists('color',$attributes))
-                                                @foreach (array_unique($attributes['color']) as $color)
-                                                    <li class="color-options @if($product->attributes->where('slug','color')->first()->pivot->result == $color) active @endif" style="background-color: {{$color}}"
+                                            {{-- @if(array_key_exists('color',$atributes))
+                                                @foreach (array_unique($atributes['color']) as $color)
+                                                    <li class="color-options @if($product->atributes->where('slug','color')->first()->pivot->result == $color) active @endif" style="background-color: {{$color}}"
                                                         data-color="{{$color}}"  
-                                                        @foreach ($product->item->products as $variant)
-                                                            @if($variant->attributes->where('slug','color')->first()->pivot->result == $color)
-                                                            data-image="{{asset('storage/media/image/'.$variant->image->name)}}"
+                                                        @foreach ($product->parents() as $variant)
+                                                            @if($variant->atributes->where('slug','color')->first()->pivot->result == $color)
+                                                            data-image="{{asset('storage/media/image/'.$variant->images[0])}}"
                                                             @break;
                                                             @endif
                                                         @endforeach
                                                         >
                                                     </li>
                                                 @endforeach
-                                            @endif 
+                                            @endif  --}}
                                         </ul>
                                     </div>
                                     <div class="product-description border-product">
@@ -353,29 +324,29 @@
                                         </div> --}}
                                         <div class="size-box">
                                             <ul>
-                                                @if(array_key_exists('labelled_size',$attributes))
-                                                    @foreach (array_unique($attributes['labelled_size']) as $labelled_size)
-                                                        <li class="labelled_size @if($product->attributes->where('slug','labelled_size')->first()->pivot->result == $labelled_size) active @endif"
+                                                {{-- @if(array_key_exists('labelled_size',$atributes))
+                                                    @foreach (array_unique($atributes['labelled_size']) as $labelled_size)
+                                                        <li class="labelled_size @if($product->atributes->where('slug','labelled_size')->first()->pivot->result == $labelled_size) active @endif"
                                                             data-size="{{$labelled_size}}"  >
                                                             <a>
                                                                 {{$labelled_size}}
                                                             </a>
                                                         </li>
                                                     @endforeach
-                                                @endif 
+                                                @endif  --}}
                                             </ul>
                                         </div>
                                         <div class="size-box">
                                             <ul>
-                                                @if(array_key_exists('numbered_size',$attributes))
-                                                    @foreach (array_unique($attributes['numbered_size']) as $numbered_size)
-                                                        <li class="numbered_size @if($product->attributes->where('slug','numbered_size')->first()->pivot->result == $numbered_size) active @endif" data-size="{{$numbered_size}}" >
+                                                {{-- @if(array_key_exists('numbered_size',$atributes))
+                                                    @foreach (array_unique($atributes['numbered_size']) as $numbered_size)
+                                                        <li class="numbered_size @if($product->atributes->where('slug','numbered_size')->first()->pivot->result == $numbered_size) active @endif" data-size="{{$numbered_size}}" >
                                                             <a>
                                                                 {{$numbered_size}}
                                                             </a>
                                                         </li>
                                                     @endforeach
-                                                @endif 
+                                                @endif  --}}
                                             </ul>
                                         </div>
                                         <h6 class="product-title">quantity</h6>
@@ -406,7 +377,7 @@
                                     </div>
                                     <div class="border-product">
                                         <h6 class="product-title">product details</h6>
-                                        <p>{{$product->item->description}}</p>
+                                        <p>{{$product->description}}</p>
                                     </div>
                                     <div class="border-product">
                                         <h6 class="product-title">share it</h6>
@@ -482,7 +453,7 @@
                                 <div class="tab-content nav-material" id="top-tabContent">
                                     <div class="tab-pane fade show active" id="top-home" role="tabpanel"
                                         aria-labelledby="top-home-tab">
-                                        <p>{{$product->item->description}}</p>
+                                        <p>{{$product->description}}</p>
                                     </div>
                                     <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
                                         
@@ -811,7 +782,7 @@
 @push('scripts')
     <script>
         var clicked_color,clicked_size,product_id,quantity;
-        var options = @JSON($options);
+        
         $(document).ready(function(){
             clicked_color = $('.color-options').is(':visible') ? $('.color-options.active').attr('data-color') : '';
             clicked_size = $('.numbered_size').is(':visible') ? $('.numbered_size.active').attr('data-size') : '';

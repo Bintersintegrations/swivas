@@ -2,7 +2,10 @@
 2 .product page
 3. public shop product list
 4. add variant page
-5. 
+5. add attributes to product database.. delete product_attributes'
+if you delete attributes, remove the attributes from product
+if you delete categories, delete the cat from products
+
 
 
 

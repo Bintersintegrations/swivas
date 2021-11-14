@@ -796,12 +796,12 @@ footer{
 }
 .needs-validation {
   .permission-block {
-    .attribute-blocks {
+    .atribute-blocks {
       padding-left: 15px;
       .row {
         padding-left: 20px;
       }
-      + .attribute-blocks {
+      + .atribute-blocks {
         h5 {
           margin-top: 30px;
         }
@@ -4948,7 +4948,7 @@ $i:1;
     margin-bottom:  4px !important;
   }
   .permission-block {
-    .attribute-blocks {
+    .atribute-blocks {
       .form-group {
         padding-bottom: 15px;
       }
@@ -4962,11 +4962,11 @@ $i:1;
       margin-bottom: 15px;
     }
     .permission-block {
-      .attribute-blocks {
+      .atribute-blocks {
         .row {
           padding-left: 15px;
         }
-        + .attribute-blocks {
+        + .atribute-blocks {
           h5 {
             margin-top: 20px;
           }

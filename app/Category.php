@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Product;
-use App\Attribute;
+use App\Atribute;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use App\Http\Traits\RecursiveRelationships;
@@ -29,8 +29,8 @@ class Category extends Model
         return 'slug';
     }
 
-    public function attributes(){
-        return $this->belongsToMany(Attribute::class,'attribute_categories');
+    public function atributes(){
+        return $this->belongsToMany(Atribute::class,'atribute_categories');
     }
     public function products(){
         return $this->hasMany(Product::class,'categories');
@@ -43,5 +43,12 @@ class Category extends Model
     }
     public function getChildren(){
         return \App\Category::where('parent_id',$this->id)->get();
+    }
+
+    public function firstDescendant(){
+        return \App\Category::where('parent_id',$this->id)->get();
+    }
+    public function secondDescendant(){
+        
     }
 }

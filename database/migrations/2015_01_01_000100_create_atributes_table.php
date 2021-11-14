@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAttributesTable extends Migration
+class CreateAtributesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreateAttributesTable extends Migration
      */
     public function up()
     {
-        Schema::create('attributes', function (Blueprint $table) {
+        Schema::create('atributes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('slug');
@@ -24,7 +24,7 @@ class CreateAttributesTable extends Migration
             $table->SoftDeletes();
             $table->timestamps();
         });
-        DB::table('attributes')->insert(array(
+        DB::table('atributes')->insert(array(
             array('id' =>1, 'name'=> 'Color', 'slug'=> "color",'description'=>'hexagonal color','element'=> 'select'),
             array('id' =>2, 'name'=> 'Size', 'slug'=> "size",'description'=> 'Medium Large Small','element'=> 'select'),
             array('id' =>3, 'name'=> 'Size', 'slug'=> "size_inch",'description'=> 'Size in inches','element'=> 'textbox'),
@@ -43,6 +43,6 @@ class CreateAttributesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attributes');
+        Schema::dropIfExists('atributes');
     }
 }

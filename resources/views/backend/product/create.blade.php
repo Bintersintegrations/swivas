@@ -93,7 +93,7 @@
                                         <select class="form-control col-xl-8 col-sm-7" id="category" name="category_id" required>
                                             <option selected disabled>Select Category</option>
                                             @foreach ($categories->where('grand_id','!=',null)->where('parent_id','!=',null) as $child)
-                                            <option value="{{$child->id}}" data-attr="{{implode(',.',$child->attributes->pluck('slug')->toArray())}}">{{$child->name}} -> {{$child->getParent()->name }} @if($child->getGrand()) -> {{$child->getGrand()->name}} @endif</option>
+                                            <option value="{{$child->id}}" data-attr="{{implode(',.',$child->atributes->pluck('slug')->toArray())}}">{{$child->name}} -> {{$child->getParent()->name }} @if($child->getGrand()) -> {{$child->getGrand()->name}} @endif</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -254,9 +254,9 @@
     });
 
     $(document).on('change','#category',function(){
-        var attributes = $(this).find("option:selected").attr('data-attr');
+        var atributes = $(this).find("option:selected").attr('data-attr');
         $(".attrib-options").addClass('attrib-hide');
-        $("."+attributes).removeClass('attrib-hide');
+        $("."+atributes).removeClass('attrib-hide');
         
     });
 

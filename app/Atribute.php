@@ -2,11 +2,11 @@
 
 namespace App;
 
-use App\AttributeOption;
+use App\AtributeOption;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Attribute extends Model
+class Atribute extends Model
 {
     use Sluggable;
 
@@ -25,7 +25,7 @@ class Attribute extends Model
     }
 
     public function options(){
-        return $this->hasMany(AttributeOption::class);
+        return $this->hasMany(AtributeOption::class);
     }
     public function getRouteKeyName(){
         return 'slug';

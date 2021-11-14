@@ -69,7 +69,7 @@
                             <form class="needs-validation user-add">
                                 <h4>Permission</h4>
                                 <div class="permission-block">
-                                    <div class="attribute-blocks">
+                                    <div class="atribute-blocks">
                                         <h5 class="f-w-600 mb-3">Product Related permition </h5>
                                         <div class="row">
                                             <div class="col-xl-3 col-sm-4">
@@ -140,7 +140,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="attribute-blocks">
+                                    <div class="atribute-blocks">
                                         <h5 class="f-w-600 mb-3">Category Related permition </h5>
                                         <div class="row">
                                             <div class="col-xl-3 col-sm-4">

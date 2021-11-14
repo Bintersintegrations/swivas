@@ -258,11 +258,11 @@
                                                         {{-- <ul class="color-variant">
                                                             @php $oldcolor = [] @endphp
                                                             @foreach ($product->item->products->where('amount',$product->amount) as $variant)
-                                                                @if(in_array($variant->attributes->where('slug','color')->first()->pivot->result,$oldcolor))
+                                                                @if(in_array($variant->atributes->where('slug','color')->first()->pivot->result,$oldcolor))
                                                                     @continue
                                                                 @endif
-                                                                @php $oldcolor[] = $variant->attributes->where('slug','color')->first()->pivot->result @endphp
-                                                                <li class="color-options" style="background-color: {{$variant->attributes->where('slug','color')->first()->pivot->result}}" data-image="{{asset('storage/media/image/'.$variant->image->name)}}"></li>
+                                                                @php $oldcolor[] = $variant->atributes->where('slug','color')->first()->pivot->result @endphp
+                                                                <li class="color-options" style="background-color: {{$variant->atributes->where('slug','color')->first()->pivot->result}}" data-image="{{asset('storage/media/image/'.$variant->image->name)}}"></li>
                                                             @endforeach
                                                         </ul> --}}
                                                     </div>
