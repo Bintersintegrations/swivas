@@ -2,6 +2,7 @@
 @push('styles')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/custom.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/datepicker.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap-tagsinput.css')}}">
 @endpush
 @section('main')
 <!--  dashboard section start -->
@@ -98,7 +99,7 @@
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-check pl-0">
-                                                            <input class="radio_animated form-check-input mt-1 " type="checkbox" name="group" id="group" value="1">
+                                                            <input class="radio_animated form-check-input mt-1 " type="checkbox" name="group" id="group" value="1" checked>
                                                             <label class="form-check-label" for="group">
                                                                 Allow Customers to buy this product alone
                                                             </label>
@@ -217,12 +218,43 @@
                                                             
                                                         </div>
                                                     </div>
-                                                    
-                                                    <div class="col-12">
-                                                        <h4 class="my-5">Attributes</h4>
+                                                </div>    
+                                                <h4 class="my-3">Attributes</h4>
+                                                <div class="form-group">
+                                                    <label class="mb-0 mr-1">Add Attributes:</label>
+                                                    <select class="form-control select2" name="attributes[]" id="atributes" multiple>
                                                         
-                                                    </div>
+                                                        @forelse ($atributes as $atribute)
+                                                            <option value="{{$atribute->slug}}">{{$atribute->name}}</option>
+                                                        @empty
+                                                            <option disabled>No Attribute</option>
+                                                        @endforelse
+                                                    </select>
                                                 </div>
+                                                
+                                                @forelse ($atributes as $atribute)
+                                                    @if ($atribute->element == 'textbox')
+                                                        <div class="form-group atributes {{$atribute->slug}}" style="display:none">
+                                                            <label class="mb-0 mr-1">{{$atribute->description}}:</label>
+                                                            <input class="form-control" type="text" data-role="tagsinput" name="atributes[{{$atribute->slug}}]" id="{{$atribute->slug}}" placeholder="Seperate options with comma">
+                                                        </div>
+                                                    @endif
+                                                    @if ($atribute->element == 'select')
+                                                        <div class="form-group atributes {{$atribute->slug}}" style="display:none;width:100%" >
+                                                            <label class="mb-0 mr-1">{{$atribute->description}}:</label>
+                                                            <select class="form-control select2" name="atributes[{{$atribute->slug}}][]" id="{{$atribute->slug}}" multiple style="width:100%">
+                                                                @forelse ($atribute->options as $option)
+                                                                    <option value="{{$option->name}}">{{$option->name}}</option>
+                                                                @empty
+                                                                    <option disabled>No Options</option>
+                                                                @endforelse
+                                                            </select>
+                                                        </div>
+                                                    @endif
+                                                @empty
+                                                    
+                                                @endforelse
+                                                
                                             </div>
                                             
                                         </div>
@@ -250,6 +282,7 @@
 @push('scripts')
     
     <script src="{{asset('assets/js/date-picker.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap-tagsinput.js')}}"></script>
     <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
 
     
@@ -295,13 +328,13 @@
         });
 
         {{-- atribute change by category --}}
-        $(document).on('change','#category',function(){
-            changeAtributes($('option:selected', this).attr('data-attrib'));
+        $(document).on('change','#atributes',function(){
+            $('.atributes').hide();
+            $('option:selected', this).each(function(){
+                $('.select2').select2();
+                $('.'+$(this).val()).show();
+            })
         });
-        function changeAtributes(atributes){
-            $('.attrib-options').hide();
-            $('.'+atributes).show();
-        }
         $('.select2').select2();
         
     </script>

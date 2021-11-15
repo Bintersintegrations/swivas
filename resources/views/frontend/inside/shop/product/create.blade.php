@@ -95,7 +95,7 @@
                                                         @foreach ($categories->where('parent_id',null) as $parent)
                                                             <optgroup label="{{$parent->name}}">
                                                                 @foreach ($parent->children()->get() as $child)
-                                                                    <option value="{{$child->id}}" data-attrib="{{$child->atributes->pluck('slug')}}">{{$child->name}}</option>    
+                                                                    <option value="{{$child->id}}">{{$child->name}}</option>    
                                                                 @endforeach
                                                             </optgroup>
                                                         @endforeach
@@ -257,28 +257,28 @@
                                                     </select>
                                                 </div>
                                                 
-                                                    @forelse ($atributes as $atribute)
-                                                        @if ($atribute->element == 'textbox')
-                                                            <div class="form-group atributes {{$atribute->slug}}" style="display:none">
-                                                                <label class="mb-0 mr-1">{{$atribute->description}}:</label>
-                                                                <input class="form-control" type="text" data-role="tagsinput" name="atributes[{{$atribute->slug}}]" id="{{$atribute->slug}}" placeholder="Seperate options with comma">
-                                                            </div>
-                                                        @endif
-                                                        @if ($atribute->element == 'select')
-                                                            <div class="form-group atributes {{$atribute->slug}}" style="display:none;width:100%" >
-                                                                <label class="mb-0 mr-1">{{$atribute->description}}:</label>
-                                                                <select class="form-control select2" name="atributes[{{$atribute->slug}}][]" id="{{$atribute->slug}}" multiple style="width:100%">
-                                                                    @forelse ($atribute->options as $option)
-                                                                        <option value="{{$option->name}}">{{$option->name}}</option>
-                                                                    @empty
-                                                                        <option disabled>No Options</option>
-                                                                    @endforelse
-                                                                </select>
-                                                            </div>
-                                                        @endif
-                                                    @empty
-                                                        
-                                                    @endforelse
+                                                @forelse ($atributes as $atribute)
+                                                    @if ($atribute->element == 'textbox')
+                                                        <div class="form-group atributes {{$atribute->slug}}" style="display:none">
+                                                            <label class="mb-0 mr-1">{{$atribute->description}}:</label>
+                                                            <input class="form-control" type="text" data-role="tagsinput" name="atributes[{{$atribute->slug}}]" id="{{$atribute->slug}}" placeholder="Seperate options with comma">
+                                                        </div>
+                                                    @endif
+                                                    @if ($atribute->element == 'select')
+                                                        <div class="form-group atributes {{$atribute->slug}}" style="display:none;width:100%" >
+                                                            <label class="mb-0 mr-1">{{$atribute->description}}:</label>
+                                                            <select class="form-control select2" name="atributes[{{$atribute->slug}}][]" id="{{$atribute->slug}}" multiple style="width:100%">
+                                                                @forelse ($atribute->options as $option)
+                                                                    <option value="{{$option->name}}">{{$option->name}}</option>
+                                                                @empty
+                                                                    <option disabled>No Options</option>
+                                                                @endforelse
+                                                            </select>
+                                                        </div>
+                                                    @endif
+                                                @empty
+                                                    
+                                                @endforelse
                                                     
                                                
                                                 
@@ -347,38 +347,17 @@
         $('#end_date').datepicker({
             uiLibrary: 'bootstrap4'
         });
-        {{-- color --}}
-        $(document).on('click','.color-palette',function(){
-            $(this).closest('.dropdown').find('.color_selected').css('background-color', $(this).css('background-color'));;
-            $(this).closest('.dropdown').find('.color_value').val($(this).attr('data-color'));
-        });
+        
         
         
         {{-- atribute change by category --}}
         $(document).on('change','#atributes',function(){
             $('.atributes').hide();
             $('option:selected', this).each(function(){
-                // console.log($(this).val())
                 $('.select2').select2();
                 $('.'+$(this).val()).show();
-                // let attrib_array = JSON.parse($(this).val())
-                // if(attrib_array.length){
-                //     attrib_array.forEach(function(value){
-                //         $('.'+value).show();
-                //     })
-                // }
             })
-            // attr('data-attrib'))
-            // changeAttributes($('option:selected', this).attr('data-attrib'));
         });
-        function changeAttributes(atributes){
-            // let attribArray = atributes
-            console.log(atributes)
-            // JSON.parse(atributes).forEach(function(value){
-            //     $('.'+value).show();
-            // })
-                
-        }
         $('.select2').select2();
         
     </script>

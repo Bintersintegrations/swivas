@@ -51,14 +51,13 @@ class Product extends Model
         }
         return $categories;
     }
-    public function getAtributez(){
-        $atributes = collect([]);
-        // dd($this->atributes);
-        foreach($this->atributes as $atribute_id){
-            dd($atribute_id);
-            $atributes->push(Atribute::where('slug',$atribute_id)->get());
-        }
-        return $atributes;
-    }
+    // public function atributes(){
+    //     $atributes = collect([]);
+    //     dd($this->atributes);
+    //     foreach($this->atributes as $atribute){
+    //         $atributes->push(Atribute::where('slug',$atribute_id)->get());
+    //     }
+    //     return $atributes;
+    // }
 
 }

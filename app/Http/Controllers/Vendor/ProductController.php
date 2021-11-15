@@ -53,7 +53,6 @@ class ProductController extends Controller
 
     public function save(Shop $shop,Request $request){
         // $categories = $this->getCategories($request->input('categories'));
-        dd($request->all());
         $product = new Product;
         $product->shop_id = $shop->id;
         $product->name = $request->name;
@@ -76,27 +75,9 @@ class ProductController extends Controller
             $product->sale_from = Carbon::createFromFormat('m/d/Y',$request->start_date);
             $product->sale_to = Carbon::createFromFormat('m/d/Y',$request->end_date);
         }   
-        if($request->save == 'draft')
+        if($request->save == 'publish')
             $product->status = $request->save;
         $product->save();
-
-        
-        // //dd($product->category->atributes->pluck('slug')->toArray());
-        // foreach($request->product_media as $key => $media){
-        //     if($media) $product->media()->attach($media);
-        // }
-        // for($i = 0; $i < count($request->price); $i++){
-        //     $product = new Product;
-        //     $product->product_id = $product->id;
-        //     $product->image_id = $request->product_image[$i];
-        //     $product->quantity = $request->quantity[$i];
-        //     $product->available = $request->quantity[$i];
-        //     $product->amount = $request->price[$i];
-        //     $product->save();
-        //     foreach(Atribute::wherein('slug',$product->category->atributes->pluck('slug')->toArray())->get() as $attrib){
-        //         if($request->input($attrib->slug)[$i]) $product->atributes()->attach($attrib->id,['result'=> $request->input($attrib->slug)[$i]]);
-        //     }
-        // }
         return redirect()->route('shop.products',$shop)->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=> 'Product created successfully']);
     }
 
@@ -127,20 +108,19 @@ class ProductController extends Controller
     }
 
     public function edit(Shop $shop,Product $product){
-        // dd($product->permalink);
+        // dd(in_array('size_inch',array_keys(array_filter($product->atributes))));
         $categories = Category::all();
         $atributes = Atribute::all();
         return view('frontend.inside.shop.product.edit',compact('shop','categories','atributes','product'));
     }
 
     public function update(Shop $shop,Product $product,Request $request){
-        // dd($request->all());
         
-        $product->shop_id = $shop->id;
         if($request->name) $product->name = $request->name;
         if($request->description) $product->description = $request->description;
         if($request->images) $product->images = $request->images;
         if($request->categories) $product->categories = $request->categories;
+        $product->atributes = $request->input('atributes');
         if($request->group)
             $product->grouped_products = $request->group_items;
         if($request->bought_together)

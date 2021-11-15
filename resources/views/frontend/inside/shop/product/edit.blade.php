@@ -2,6 +2,7 @@
 @push('styles')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/custom.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/datepicker.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap-tagsinput.css')}}">
 @endpush
 @section('main')
 <!--  dashboard section start -->
@@ -36,7 +37,7 @@
                                                         @foreach ($categories->where('parent_id',null) as $parent)
                                                             <optgroup label="{{$parent->name}}">
                                                                 @foreach ($parent->children()->get() as $child)
-                                                                    <option value="{{$child->id}}"  @if(in_array($child->id,$product->categories)) selected @endif data-attrib="{{$child->atributes->pluck('slug')}}">{{$child->name}}</option>    
+                                                                    <option value="{{$child->id}}"  @if(in_array($child->id,$product->categories)) selected @endif >{{$child->name}}</option>    
                                                                 @endforeach
                                                             </optgroup>
                                                         @endforeach
@@ -61,26 +62,26 @@
                                                 <div class="row">
                                                     <div class="form-group col-6">
                                                         <label class="mb-0 mr-1">Min Purchase Quantity:</label>
-                                                        <input class="form-control" type="number" value="1" name="min_qty">
+                                                        <input class="form-control" type="number" @if($product->min_qty) value="{{$product->min_qty}}" @endif name="min_qty">
                                                         <small>Leave empty if no maximum</small>
                                                     </div>
                                                     <div class="form-group col-6">
                                                         <label class="mb-0 mr-1">Max Purchase Quantity:</label>
-                                                        <input class="form-control" type="number" value="" name="max_qty">
+                                                        <input class="form-control" type="number" @if($product->max_qty) value="{{$product->max_qty}}" @endif name="max_qty">
                                                         <small>Leave empty if no maximum</small>
                                                     </div> 
                                                 </div>
                                                 <div class="row no-gutters">
                                                     <div class="col-12">
                                                         <div class="form-check pl-0">
-                                                            <input class="radio_animated form-check-input mt-1 " type="checkbox" name="offer" id="offer" value="1">
+                                                            <input class="radio_animated form-check-input mt-1 " @if($product->sale_price) checked @endif type="checkbox" name="offer" id="offer" value="1">
                                                             <label class="form-check-label" for="offer">
                                                                 Add Offers / Promo Price
                                                             </label>
                                                         </div>
                                                     </div>   
                                                 </div>
-                                                <div id="offer-block" class="row no-gutters mt-3" style="display: none">
+                                                <div id="offer-block" class="row no-gutters mt-3"  @if(!$product->sale_price) style="display: none;" @endif>
                                                     <div class=" mb-3 col-4">
                                                         <label for="offer_price" class="mb-0 mr-1">Price :</label>
                                                         <div class="input-group mb-3 px-0">
@@ -102,14 +103,14 @@
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-check pl-0">
-                                                            <input class="radio_animated form-check-input mt-1 " type="checkbox" name="group" id="group" value="1">
+                                                            <input class="radio_animated form-check-input mt-1 " @if($product->grouped_products) checked @endif type="checkbox" name="group" id="group" value="1">
                                                             <label class="form-check-label" for="group">
                                                                 Allow Customers to buy this product alone
                                                             </label>
                                                         </div>
                                                     </div> 
                                                 </div>
-                                                <div class="row" id="group-block" style="display: none;">
+                                                <div class="row" id="group-block" @if(!isset($product->grouped_products) || !count($product->grouped_products)) style="display: none;" @endif >
                                                     <div class="col-12 mt-3">
                                                         <label class="form-label" for="group">Select Grouped Items</label>
                                                         <select class="form-control select2 w-100" name="group_items[]" id="group_items" multiple style="width: 100%">
@@ -126,7 +127,7 @@
                                                         <label class="form-label" for="related">Related Products</label>
                                                         <select class="form-control select2" name="related[]" id="related" multiple>
                                                             @forelse ($shop->products as $item)
-                                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                                                <option value="{{$item->id}}" @if(isset($product->related) && in_array($item->id,$product->related)) selected @endif>{{$item->name}}</option>
                                                             @empty
                                                                 
                                                             @endforelse
@@ -138,7 +139,7 @@
                                                         <label class="form-label" for="boughtTogether">Frequently Bought Together</label>
                                                         <select class="form-control select2" name="bought_together[]" id="boughtTogether" multiple>
                                                             @forelse ($shop->products as $item)
-                                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                                                <option value="{{$item->id}}" @if(isset($product->bought_together) && in_array($item->id,$product->bought_together)) selected @endif>{{$item->name}}</option>
                                                             @empty
                                                                 
                                                             @endforelse
@@ -221,12 +222,42 @@
                                                             
                                                         </div>
                                                     </div>
-                                                    
-                                                    <div class="col-12">
-                                                        <h4 class="my-5">Attributes</h4>
-                                                        
-                                                    </div>
                                                 </div>
+                                                <h4 class="my-3">Attributes</h4>
+                                                    <div class="form-group">
+                                                        <label class="mb-0 mr-1">Add Attributes:</label>
+                                                        <select class="form-control select2" name="attributes[]" id="atributes" multiple>
+                                                            
+                                                            @forelse ($atributes as $atribute)
+                                                                <option value="{{$atribute->slug}}" @if(in_array($atribute->slug,array_keys(array_filter($product->atributes)) )) selected @endif>{{$atribute->name}}</option>
+                                                            @empty
+                                                                <option disabled>No Attribute</option>
+                                                            @endforelse
+                                                        </select>
+                                                    </div>
+                                                    
+                                                    @forelse ($atributes as $atribute)
+                                                        @if ($atribute->element == 'textbox')
+                                                            <div class="form-group atributes {{$atribute->slug}}" @if(!in_array($atribute->slug,array_keys(array_filter($product->atributes)) )) style="display:none" @endif >
+                                                                <label class="mb-0 mr-1">{{$atribute->description}}:</label>
+                                                                <input class="form-control" type="text" data-role="tagsinput" name="atributes[{{$atribute->slug}}]" id="{{$atribute->slug}}" placeholder="Seperate options with comma">
+                                                            </div>
+                                                        @endif
+                                                        @if ($atribute->element == 'select')
+                                                            <div class="form-group atributes {{$atribute->slug}}" @if(!in_array($atribute->slug,array_keys(array_filter($product->atributes)) )) style="display:none;width:100%;" @endif >
+                                                                <label class="mb-0 mr-1">{{$atribute->description}}:</label>
+                                                                <select class="form-control select2" name="atributes[{{$atribute->slug}}][]" id="{{$atribute->slug}}" multiple style="width:100%">
+                                                                    @forelse ($atribute->options as $option)
+                                                                        <option value="{{$option->name}}">{{$option->name}}</option>
+                                                                    @empty
+                                                                        <option disabled>No Options</option>
+                                                                    @endforelse
+                                                                </select>
+                                                            </div>
+                                                        @endif
+                                                    @empty
+                                                        
+                                                    @endforelse
                                             </div>
                                             
                                         </div>
@@ -234,7 +265,6 @@
                                             <div class="col-12">
                                                 <button type="submit" class="btn btn-sm btn-solid btn-dark" name="save" value="draft">Save product</button>
                                                 <button type="submit" class="btn btn-sm btn-solid" name="save" value="publish">Publish product</button>
-                                                <button type="submit" class="btn btn-sm btn-solid" name="save" value="variant">Publish & Add Variant</button>
                                             </div>
                                         </div>
                                     </form>
@@ -254,6 +284,7 @@
 @push('scripts')
     
     <script src="{{asset('assets/js/date-picker.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap-tagsinput.js')}}"></script>
     <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
 
     
@@ -292,20 +323,15 @@
         $('#end_date').datepicker({
             uiLibrary: 'bootstrap4'
         });
-        {{-- color --}}
-        $(document).on('click','.color-palette',function(){
-            $(this).closest('.dropdown').find('.color_selected').css('background-color', $(this).css('background-color'));;
-            $(this).closest('.dropdown').find('.color_value').val($(this).attr('data-color'));
-        });
-
+        
         {{-- atribute change by category --}}
-        $(document).on('change','#category',function(){
-            changeAtributes($('option:selected', this).attr('data-attrib'));
+        $(document).on('change','#atributes',function(){
+            $('.atributes').hide();
+            $('option:selected', this).each(function(){
+                $('.select2').select2();
+                $('.'+$(this).val()).show();
+            })
         });
-        function changeAtributes(atributes){
-            $('.attrib-options').hide();
-            $('.'+atributes).show();
-        }
         $('.select2').select2();
         
     </script>

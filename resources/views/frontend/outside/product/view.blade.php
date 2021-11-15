@@ -276,8 +276,29 @@
                             <div class="col-lg-6 rtl-text">
                                 <div class="product-right">
                                     <h2>{{$product->name}}</h2>
-                                    {{-- <h4><del>$459.00</del><span>55% off</span></h4> --}}
+                                    <h4><del>$459.00</del><span>55% off</span></h4>
+                                    
                                     <h3>{{$product->shop->country->currency_symbol.''.$product->price}}</h3>
+                                    <h6 class="product-title">Offer Expires in</h6>
+                                    <div class="timer mt-0 pl-4 py-1">
+                                        <p id="demo">
+                                            <span>25 
+                                                <span class="padding-l">:</span> 
+                                                <span class="timer-cal">Days</span> 
+                                            </span>
+                                            <span>22 
+                                                <span class="padding-l">:</span> 
+                                                <span class="timer-cal">Hrs</span> 
+                                            </span>
+                                            <span>13 
+                                                <span class="padding-l">:</span> 
+                                                <span class="timer-cal">Min</span> 
+                                            </span>
+                                            <span>57 
+                                                <span class="timer-cal">Sec</span>
+                                            </span>
+                                        </p>
+                                    </div>
                                     <div class="color-selector">
                                         <ul class="color-variant">
                                             {{-- @if(array_key_exists('color',$atributes))
@@ -324,29 +345,31 @@
                                         </div> --}}
                                         <div class="size-box">
                                             <ul>
-                                                {{-- @if(array_key_exists('labelled_size',$atributes))
-                                                    @foreach (array_unique($atributes['labelled_size']) as $labelled_size)
-                                                        <li class="labelled_size @if($product->atributes->where('slug','labelled_size')->first()->pivot->result == $labelled_size) active @endif"
-                                                            data-size="{{$labelled_size}}"  >
+                                                @if(array_key_exists('labelled_size',array_filter($product->atributes)))
+                                                    @foreach (explode(',',$product->atributes['labelled_size']) as $labelled_size)
+                                                        <li class="labelled_size" data-size="{{$labelled_size}}"  >
                                                             <a>
                                                                 {{$labelled_size}}
                                                             </a>
                                                         </li>
                                                     @endforeach
-                                                @endif  --}}
+                                                @endif
+
+                                                
                                             </ul>
                                         </div>
                                         <div class="size-box">
                                             <ul>
-                                                {{-- @if(array_key_exists('numbered_size',$atributes))
-                                                    @foreach (array_unique($atributes['numbered_size']) as $numbered_size)
-                                                        <li class="numbered_size @if($product->atributes->where('slug','numbered_size')->first()->pivot->result == $numbered_size) active @endif" data-size="{{$numbered_size}}" >
+                                                @if(array_key_exists('numbered_size',array_filter($product->atributes)))
+                                                    @foreach (explode(',',$product->atributes['numbered_size']) as $numbered_size)
+                                                        <li class="numbered_size" data-size="{{$numbered_size}}"  >
                                                             <a>
                                                                 {{$numbered_size}}
                                                             </a>
                                                         </li>
                                                     @endforeach
-                                                @endif  --}}
+                                                @endif
+                                                
                                             </ul>
                                         </div>
                                         <h6 class="product-title">quantity</h6>
@@ -376,8 +399,23 @@
                                         
                                     </div>
                                     <div class="border-product">
-                                        <h6 class="product-title">product details</h6>
-                                        <p>{{$product->description}}</p>
+                                        <h6 class="product-title">Categories</h6>
+                                        <p class="text-muted">
+                                            @foreach ($product->categories() as $category)
+                                                {{$category->name}},
+                                            @endforeach
+                                        </p>
+                                        <h6 class="product-title">Attributes</h6>
+                                        <p>
+                                            @foreach (array_filter($product->atributes) as $key => $atribute)
+                                                {{\Illuminate\Support\Str::plural($key)}}: 
+                                                    @if(is_array($atribute))
+                                                        {{implode(',',$atribute)}}
+                                                    @else {{$atribute}}
+                                                    @endif
+                                                    <br>
+                                            @endforeach
+                                        </p>
                                     </div>
                                     <div class="border-product">
                                         <h6 class="product-title">share it</h6>
@@ -395,28 +433,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="border-product">
-                                        <h6 class="product-title">Time Reminder</h6>
-                                        <div class="timer">
-                                            <p id="demo">
-                                                <span>25 
-                                                    <span class="padding-l">:</span> 
-                                                    <span class="timer-cal">Days</span> 
-                                                </span>
-                                                <span>22 
-                                                    <span class="padding-l">:</span> 
-                                                    <span class="timer-cal">Hrs</span> 
-                                                </span>
-                                                <span>13 
-                                                    <span class="padding-l">:</span> 
-                                                    <span class="timer-cal">Min</span> 
-                                                </span>
-                                                <span>57 
-                                                    <span class="timer-cal">Sec</span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

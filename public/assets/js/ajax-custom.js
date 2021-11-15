@@ -27,6 +27,7 @@ var states = new Bloodhound({
             {'name':'Gaming Laptop', 'image': '../assets/images/fashion/product/21.jpg', 'price':'$250'},
             {'name':'headphone', 'image': '../assets/images/fashion/product/25.jpg', 'price':'$250'},
             {'name':'iphone', 'image': '../assets/images/fashion/product/13.jpg', 'price':'$250'},
+            {'name':'ipad', 'image': '../assets/images/fashion/product/13.jpg', 'price':'$250'},
             ]
     });
 

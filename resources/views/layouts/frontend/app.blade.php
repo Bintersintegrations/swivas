@@ -105,14 +105,8 @@
                                 </div>
                                 <div>
                                     <form class="form_search ajax-search the-basics" role="form">
-                                        <span class="twitter-typeahead" style="position: relative; display: inline-block;">
-                                            <input type="search" class="nav-search nav-search-field typeahead tt-hint" aria-expanded="true" readonly="" autocomplete="off" spellcheck="false" tabindex="-1" dir="ltr" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);"><input type="search" placeholder="Search any Device or Gadgets..." class="nav-search nav-search-field typeahead tt-input" aria-expanded="true" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;">
-                                            <pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Lato, sans-serif; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;">
-                                            </pre>
-                                            <div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
-                                                <div class="tt-dataset tt-dataset-states"></div>
-                                            </div>
-                                        </span>
+                                        <input type="search" placeholder="Search & Shop"
+                                            class="nav-search nav-search-field typeahead" aria-expanded="true">
                                         <button type="submit" name="nav-submit-button" class="btn-search">
                                             <i class="ti-search"></i>
                                         </button>
@@ -468,10 +462,10 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                     ut labore</p>
                                 <ul class="contact-list">
-                                    <li><i class="fa fa-map-marker"></i>17, Dele Aiyedun Close, Ogba Lagos
+                                    <li><i class="fa fa-map-marker"></i>17, Dele Aiyedun Close, Ogba , Lagos
                                     </li>
                                     <li><i class="fa fa-phone"></i>Call Us: +234-817-933-3448</li>
-                                    <li><i class="fa fa-envelope-o"></i>Email Us: <a href="#">business@swivas.com</a></li>
+                                    <li><i class="fa fa-envelope-o"></i>Email Us: <a href="#" style="text-transform: none">business@swivas.com</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -482,11 +476,11 @@
                                 </div>
                                 <div class="footer-contant">
                                     <ul>
-                                        <li><a href="#">mens</a></li>
-                                        <li><a href="#">womens</a></li>
-                                        <li><a href="#">clothing</a></li>
-                                        <li><a href="#">accessories</a></li>
-                                        <li><a href="#">featured</a></li>
+                                        <li><a href="{{route('register')}}">Create Account</a></li>
+                                        <li><a href="{{route('login')}}">Login</a></li>
+                                        <li><a href="{{route('shop.list')}}">Shops</a></li>
+                                        <li><a href="{{route('sell')}}">Sell</a></li>
+                                        <li><a href="{{route('network')}}">Network</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -498,11 +492,11 @@
                                 </div>
                                 <div class="footer-contant">
                                     <ul>
-                                        <li><a href="#">shipping &amp; return</a></li>
-                                        <li><a href="#">secure shopping</a></li>
-                                        <li><a href="#">gallary</a></li>
-                                        <li><a href="#">affiliates</a></li>
-                                        <li><a href="#">contacts</a></li>
+                                        <li><a href="#">Terms &amp; Condition</a></li>
+                                        <li><a href="#">Return & Refund Policy</a></li>
+                                        <li><a href="#">Privacy & Cookie Policy</a></li>
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">FAQs</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -513,9 +507,7 @@
                                     <h4>follow us</h4>
                                 </div>
                                 <div class="footer-contant">
-                                    <p class="mb-cls-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                        do eiusmod tempor incididunt
-                                        ut labore</p>
+                                    <p class="mb-cls-content">We like to stay in touch with you</p>
                                     <form class="form-inline">
                                         <div class="form-group me-sm-3 mb-2">
                                             <label for="inputPassword2" class="sr-only">Password</label>
@@ -543,10 +535,10 @@
                     <div class="row">
                         <div class="col-xl-6 col-md-6 col-sm-12">
                             <div class="footer-end">
-                                <p><i class="fa fa-copyright" aria-hidden="true"></i> 2021 Swivas PLC</p>
+                                <p><i class="fa fa-copyright" aria-hidden="true"></i> 2021 Swivas Multishops</p>
                             </div>
                         </div>
-                        <div class="col-xl-6 col-md-6 col-sm-12">
+                        {{-- <div class="col-xl-6 col-md-6 col-sm-12">
                             <div class="payment-card-bottom">
                                 <ul>
                                     <li>
@@ -566,7 +558,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -613,6 +605,10 @@
         <!-- menu js-->
         <script src="{{asset('assets/js/menu.js')}}"></script>
         <script src="{{asset('assets/js/sticky-menu.js')}}"></script>
+
+        <script src="{{asset('assets/js/typeahead.bundle.min.js')}}"></script>
+        <script src="{{asset('assets/js/typeahead.jquery.min.js')}}"></script>
+        <script src="{{asset('assets/js/ajax-custom.js')}}"></script>
         <!-- lazyload js-->
         <script src="{{asset('assets/js/lazysizes.min.js')}}"></script>
 

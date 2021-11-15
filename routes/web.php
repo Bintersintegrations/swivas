@@ -16,6 +16,7 @@ Route::view('contact','frontend.outside.general.contact')->name('contact');
 Route::view('orphanages','frontend.outside.general.orphanages')->name('orphanages');
 Route::view('charity-organizations','frontend.outside.general.charity')->name('charity');
 Route::view('start-selling','frontend.outside.shop.intro')->name('sell');
+Route::view('multilevel-network','frontend.outside.network')->name('network');
 
 Route::get('blog','BlogController@list')->name('blogroll');
 Route::get('blog/post/{post}','BlogController@post')->name('blogpost');
