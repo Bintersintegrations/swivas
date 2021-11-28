@@ -26,6 +26,7 @@ class ProductManagementController extends Controller
         $colors = Color::all();
         return view('backend.items.product.create',compact('categories','colors'));
     }
+
     public function save(Request $request){
         
         $user = Auth::user();
@@ -47,6 +48,17 @@ class ProductManagementController extends Controller
         }
         return redirect()->route('admin.items.products');
         
+    }
+
+    public function status(Request $request){
+        // dd($request->all());
+        $product = Product::find($request->product_id);
+        if($product->approved)
+        $product->approved = false;
+        else 
+        $product->approved = true;
+        $product->save();
+        return redirect()->back();
     }
     
     

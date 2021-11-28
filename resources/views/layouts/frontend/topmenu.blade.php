@@ -68,9 +68,11 @@
                         <div class="top-header d-block">
                             <ul class="header-dropdown">
                                 <li class="mobile-wishlist">
-                                    <a href="#">
-                                        <img src="{{asset('assets/images/icon/heart-1.png')}}" alt=""> 
+                                    <a href="{{route('user.wishlist')}}">
+                                        <img src="{{asset('assets/images/icon/heart-1.png')}}" class="img-fluid blur-up lazyloaded" alt="">
+                                        <span id="wish_counter" class="badge badge-pill badge-warning pull-right" @if(!Session('wish')) style="display:none;" @endif>{{count((array) session('wish'))}}</span> 
                                     </a>
+                                    
                                 </li>
                                 <li class="onhover-dropdown mobile-account">
                                     <a href="{{route('user.dashboard')}}">
@@ -127,41 +129,58 @@
                                         </div>
                                     </li>
                                     <li class="onhover-div mobile-cart">
-                                        <div><img src="{{asset('assets/images/icon/shopping-cart.png')}}" class="img-fluid blur-up lazyloaded" alt=""> <i class="ti-shopping-cart"></i></div>
-                                        <span class="cart_qty_cls">2</span>
-                                        <ul class="show-div shopping-cart">
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#"><img alt="" class="me-3" src="{{asset('assets/images/fashion/product/1.jpg')}}"></a>
-                                                    <div class="media-body">
-                                                        <a href="#">
-                                                            <h4>item name</h4>
-                                                        </a>
-                                                        <h4><span>1 x ₦ 299.00</span></h4>
-                                                    </div>
-                                                </div>
-                                                <div class="close-circle"><a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#"><img alt="" class="me-3" src="{{asset('assets/images/fashion/product/2.jpg')}}"></a>
-                                                    <div class="media-body">
-                                                        <a href="#">
-                                                            <h4>item name</h4>
-                                                        </a>
-                                                        <h4><span>1 x ₦ 299.00</span></h4>
-                                                    </div>
-                                                </div>
-                                                <div class="close-circle"><a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></div>
-                                            </li>
+                                        <div>
+                                            <img src="{{asset('assets/images/icon/shopping-cart.png')}}" class="img-fluid blur-up lazyloaded" alt=""> 
+                                            {{-- <span id="cart-notification" class="badge badge-pill badge-primary pull-right" @if(!Session('cart')) style="display:none;" @endif>{{count((array) session('cart'))}}</span> --}}   
+                                        </div>
+                                        <span class="cart_qty_cls" @if(!Session('cart') || count((array) session('cart')) == 0) style="display:none;" @endif>{{count((array) session('cart'))}}</span>
+                                        <ul class="show-div shopping-cart" @if(!Session('cart')) style="display:none;" @endif>
+                                            <div id="shopping_list">
+                                                @forelse((array)Session('cart') as $key=>$cart)
+                                                    <li id="cartlist{{$key}}">
+                                                        <div class="media">
+                                                            <a href="#">
+                                                                <img alt="" class="mr-3"
+                                                                    src="{{$cart['image']}}">
+                                                            </a>
+                                                            <div class="media-body">
+                                                                <a href="#">
+                                                                    <h4>{{$cart['name']}}</h4>
+                                                                </a>
+                                                                <h4><span>{{$cart['quantity']}} x $ {{$cart['amount']}}</span></h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class="close-circle">
+                                                            <a href="javascript:void(0)" class="remove-from-cart" data-product="{{$key}}product"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                                        </div>
+                                                    </li>
+                                                @empty
+                                                @endforelse
+                                            </div>   
                                             <li>
                                                 <div class="total">
-                                                    <h5>subtotal : <span>₦299.00</span></h5>
+                                                    @php $total = 0 @endphp
+                                                    @forelse((array) session('cart') as $id => $details)
+                                                        @php $total += $details['amount'] * $details['quantity'] @endphp
+                                                    @empty
+                                                    @endforelse
+                                                    <h5>subtotal : <span id="cart_total">${{$total}}</span></h5>
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="buttons"><a href="cart.html" class="view-cart">view
-                                                        cart</a> <a href="#" class="checkout">checkout</a></div>
+                                                <div class="buttons">
+                                                    <a href="{{route('cart')}}" class="view-cart">view cart</a>
+                                                    <form action="{{route('checkout')}}" class="d-inline" method="POST">
+                                                        @csrf
+                                                        @if(session('cart'))
+                                                            @foreach (session('cart') as $id => $cart)
+                                                                <input type="hidden" name="variant[]" value="{{$id}}">
+                                                                <input type="hidden" name="quantity[]" value="{{$cart['quantity']}}">
+                                                            @endforeach
+                                                        @endif
+                                                        <button type="submit" class="checkout btn btn-danger">checkout</button>
+                                                    </form>
+                                                </div>
                                             </li>
                                         </ul>
                                     </li>

@@ -10,8 +10,8 @@ $(document).on('click','.remove-from-cart',function(){
             'product_id': product_id
         },
         success:function(data) {
-            $('#cart-notification').html(data.cart_count);
-            $('#cart-notification,.shopping-cart').show();
+            $('.cart_qty_cls').html(data.cart_count);
+            $('.cart_qty_cls,.shopping-cart').show();
             var cart_total = 0;
             var listing;
             $('#shopping_list').html('');
@@ -20,7 +20,7 @@ $(document).on('click','.remove-from-cart',function(){
                                 <div class="media">
                                     <a href="#">
                                         <img alt="" class="mr-3"
-                                            src="/storage/media/image/`+value['image']+`">
+                                            src="`+value['image']+`">
                                     </a>
                                     <div class="media-body">
                                         <a href="#">
@@ -30,7 +30,7 @@ $(document).on('click','.remove-from-cart',function(){
                                     </div>
                                 </div>
                                 <div class="close-circle">
-                                    <a href="javascript:void(0)" class="remove-from-cart"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                    <a href="javascript:void(0)" class="remove-from-cart" data-product="`+key+`product"><i class="fa fa-times" aria-hidden="true"></i></a>
                                 </div>
                             </li>`;
                 cart_total += parseInt(value['quantity']) * parseInt(value['amount']);

@@ -51,6 +51,11 @@ class Product extends Model
         }
         return $categories;
     }
+    public function onSale(){
+        if($this->sale_price && $this->sale_from < now() && $this->sale_to > now())
+        return true;
+        else return false;
+    }
     // public function atributes(){
     //     $atributes = collect([]);
     //     dd($this->atributes);

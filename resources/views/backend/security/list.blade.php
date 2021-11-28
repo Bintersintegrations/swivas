@@ -68,13 +68,9 @@
                                 <td>
                                     <div class="d-flex">
                                         {{-- @if($giving->image)
-                                            <img src="{{asset('storage/media/image/'.$giving->image->name)}}" class="img-fluid img-30 mr-2 blur-up lazyloaded" alt="">
+                                            <img src="{{$giving->image->name}}" class="img-fluid img-30 mr-2 blur-up lazyloaded" alt="">
                                         @endif --}}
-                                        @forelse($giving->item->media->where('format','image') as $media)
-                                            <img src="{{asset('storage/media/image/'.$media->name)}}" class="img-fluid img-30 mr-2 blur-up lazyloaded" alt="">
-                                        @empty 
-                                            <img src="{{asset('assets/images/electronics/product/25.jpg')}}" alt="" class="img-fluid img-30 mr-2 blur-up lazyloaded">
-                                        @endforelse 
+                                         
                                     </div>
                                 </td>
                                 <td><span class="badge badge-secondary">{{$giving->item->category->name}}</span></td>

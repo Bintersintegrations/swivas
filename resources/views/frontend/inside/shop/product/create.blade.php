@@ -212,8 +212,6 @@
                                                         <div class="col-12">
                                                             <p class="mb-1">Add Image</p>
                                                             <label class="d-block">Image</label>
-                                                            
-                                                            
                                                             <ul class="file-upload-product">
                                                                 <li>
                                                                     <input id="thumbnail1" class="form-control" type="hidden" name="images[]">
@@ -240,7 +238,8 @@
                                                                     </div>
                                                                 </li>      
                                                             </ul>
-                                                            
+                                                            <label class="d-block">Video Url <span class="small text-muted">(optional)</span></label>
+                                                            <input class="form-control" type="text" placeholder="https://" name="video">
                                                         </div>
                                                     </div>
                                                 </div>    

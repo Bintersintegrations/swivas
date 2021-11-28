@@ -4,8 +4,10 @@ Route::group(['prefix'=>'admin','as'=>'admin.','namespace'=>'Backend','middlewar
     Route::get('dashboard','HomeController@dashboard')->name('dashboard');
     Route::get('profile','HomeController@profile')->name('profile');
     //product
-    Route::group(['prefix'=> 'products','as'=>'items.'],function(){
-        Route::get('/','ProductManagementController@list')->name('products');
+    Route::group(['prefix'=> 'products','as'=>'product.'],function(){
+        Route::get('/','ProductManagementController@list')->name('lists');
+        Route::post('status','ProductManagementController@status')->name('status');
+        Route::post('delete','ProductManagementController@delete')->name('delete');
        
     });
     
@@ -36,40 +38,21 @@ Route::group(['prefix'=>'admin','as'=>'admin.','namespace'=>'Backend','middlewar
     Route::post('coupons/update/{coupon}','CouponManagementController@update')->name('coupons.update');
 
     Route::get('users','UserManagementController@listusers')->name('users.list');
-    Route::get('user/edit','UserManagementController@edituser')->name('users.edit');
-    Route::post('user/save','UserManagementController@saveuser')->name('users.save');
+    Route::post('user/delete','UserManagementController@deleteuser')->name('users.delete');
 
-    Route::get('roles','RoleManagementController@listroles')->name('roles.list');
-    Route::get('role/edit','RoleManagementController@editrole')->name('roles.edit');
-    Route::post('role/save','RoleManagementController@saverole')->name('roles.save');
+    // Route::get('roles','RoleManagementController@listroles')->name('roles.list');
+    // Route::get('role/edit','RoleManagementController@editrole')->name('roles.edit');
+    // Route::post('role/save','RoleManagementController@saverole')->name('roles.save');
 
     Route::get('vendors','VendorManagementController@listvendors')->name('vendors.list');
-    Route::get('vendor/edit','VendorManagementController@editvendor')->name('vendors.edit');
-    Route::post('vendor/save','VendorManagementController@savevendor')->name('vendors.save');
-    Route::get('vendor/applications','VendorManagementController@applications')->name('vendors.applications');    
-    Route::get('vendor/application/view','VendorManagementController@applicationview')->name('shop.application.view');   
+    Route::get('vendor/{shop}/manage','VendorManagementController@manage')->name('vendor.manage');    
+    Route::post('vendor/update','VendorManagementController@updatevendor')->name('vendor.update');
     
-    Route::get('plans','MembershipManagementController@listplans')->name('plans.list');
-    Route::get('plan/create','MembershipManagementController@createplan')->name('plans.create');
-    Route::get('plan/edit','MembershipManagementController@editplan')->name('plans.edit');
-    Route::post('plan/save','MembershipManagementController@saveplan')->name('plans.save');
-
-    Route::get('features','MembershipManagementController@features')->name('features.list');
-
-    Route::get('subscriptions','MembershipManagementController@listsubscriptions')->name('subscriptions.list');
-    Route::get('subscription/create','MembershipManagementController@createsubscription')->name('subscriptions.create');
-    Route::get('subscription/edit','MembershipManagementController@editsubscription')->name('subscriptions.edit');
-    Route::post('subscription/save','MembershipManagementController@savesubscription')->name('subscriptions.save');
-
-    Route::get('addons','MembershipManagementController@listaddons')->name('addons.list');
-    Route::get('addons/create','MembershipManagementController@createaddon')->name('addons.create');
-    Route::get('addons/edit','MembershipManagementController@editaddon')->name('addons.edit');
-    Route::post('addons/save','MembershipManagementController@saveaddon')->name('addons.save');
     
-    Route::get('media','MediaManagementController@listmedia')->name('media.list');
-    Route::post('media/delete','MediaManagementController@deletemedia')->name('media.delete');
-    Route::post('media/summernote','MediaManagementController@summernote_media')->name('media.summernote');
-    Route::post('media/dropzone','MediaManagementController@dropzone_media')->name('media.dropzone');
+    // Route::get('media','MediaManagementController@listmedia')->name('media.list');
+    // Route::post('media/delete','MediaManagementController@deletemedia')->name('media.delete');
+    // Route::post('media/summernote','MediaManagementController@summernote_media')->name('media.summernote');
+    // Route::post('media/dropzone','MediaManagementController@dropzone_media')->name('media.dropzone');
 
     Route::group(['prefix'=>'post','as'=>'posts.'],function(){
         Route::get('/','BlogManagementController@list')->name('list');
@@ -93,6 +76,6 @@ Route::group(['prefix'=>'admin','as'=>'admin.','namespace'=>'Backend','middlewar
     Route::get('settings','SettingsManagementController@settings')->name('settings');
     Route::post('settings','SettingsManagementController@savesettings')->name('settings.save');
 
-    Route::get('reports','ReportManagementController@analysis')->name('reports.analysis');
-    Route::post('reports/generate','ReportManagementController@generate')->name('reports.generate');
+    // Route::get('reports','ReportManagementController@analysis')->name('reports.analysis');
+    // Route::post('reports/generate','ReportManagementController@generate')->name('reports.generate');
 });

@@ -219,6 +219,8 @@
                                                                     </li>
                                                                 @endif    
                                                             </ul>
+                                                            <label class="d-block">Video Url <span class="small text-muted">(optional)</span></label>
+                                                            <input class="form-control" type="text" placeholder="https://" value="{{$product->video}}" name="video">
                                                             
                                                         </div>
                                                     </div>

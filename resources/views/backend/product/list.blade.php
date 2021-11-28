@@ -76,10 +76,58 @@
                                 <td>Remaining: {{$product->quantity}}</td>
                                 {{-- <td>{{$product->shop->name}}</td> --}}
                 
-                                <td><span class="badge badge-success">Approved</span></td>
                                 <td>
-                                    <button class="btn btn-xs btn-success" title="approve"><i class="fa fa-check"></i></button>
-                                    <button class="btn btn-xs btn-primary" title="delete"><i class="fa fa-trash"></i></button>
+                                    @if($product->approved) 
+                                        <span class="badge badge-success">Approved</span> 
+                                    @else 
+                                        <span class="badge badge-danger">Disapproved</span>  
+                                    @endif
+                                </td>
+                                <td>
+                                    <button @if($product->approved) class="btn btn-xs btn-danger" title="disapprove"  @else class="btn btn-xs btn-success" title="approve" @endif" data-toggle="modal" data-target="#status{{$product->id}}">
+                                        @if($product->approved) <i class="fa fa-times"></i> @else <i class="fa fa-check"></i> @endif
+                                    </button>
+                                    <div class="modal fade" id="status{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="status{{$product->id}}" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title f-w-600" id="exampleModalLabel"> @if($product->approved) Disapprove @else Approve  @endif Product</h5>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                </div>
+                                                <form class="needs-validation" action="{{route('admin.product.status')}}" method="POST" enctype="multipart/form-data">@csrf
+                                                    <div class="modal-body">
+                                                        <h5>Are you sure you want to @if($product->approved) Disapprove @else Approve  @endif product: <br>{{$product->name}} </h5>
+                                                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-danger" type="submit">Yes, @if($product->approved) Disapproved @else Approved @endif</button>
+                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-xs btn-primary" title="Delete" data-toggle="modal" data-target="#product{{$product->id}}"><i class="fa fa-trash"></i></button>
+                                    <div class="modal fade" id="product{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="product{{$product->id}}" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title f-w-600" id="exampleModalLabel">Delete Product</h5>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                </div>
+                                                <form class="needs-validation" action="#" method="POST" enctype="multipart/form-data">@csrf
+                                                    <div class="modal-body">
+                                                        <h5>Are you sure you want to delete product: <br>{{$product->name}} </h5>
+                                                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-danger" type="submit">Yes, Delete</button>
+                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                                 
                             </tr>

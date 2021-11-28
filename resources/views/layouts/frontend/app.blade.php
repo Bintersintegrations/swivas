@@ -176,8 +176,8 @@
                                                 </li>
                                                 <li class="onhover-div mobile-cart">
                                                     <div><img src="{{asset('assets/images/icon/shopping-cart.png')}}" class="img-fluid blur-up lazyloaded" alt=""> <i class="ti-shopping-cart"></i></div>
-                                                    <span class="cart_qty_cls">2</span>
-                                                    <ul class="show-div shopping-cart">
+                                                    {{-- <span class="cart_qty_cls">2</span> --}}
+                                                    {{-- <ul class="show-div shopping-cart">
                                                         <li>
                                                             <div class="media">
                                                                 <a href="#"><img alt="" class="me-3" src="{{asset('assets/images/fashion/product/1.jpg')}}"></a>
@@ -211,7 +211,7 @@
                                                             <div class="buttons"><a href="cart.html" class="view-cart">view
                                                                     cart</a> <a href="#" class="checkout">checkout</a></div>
                                                         </li>
-                                                    </ul>
+                                                    </ul> --}}
                                                 </li>
                                             </ul>
                                         </div>

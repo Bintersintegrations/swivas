@@ -4,22 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\Product;
-use App\Category;
 use App\Atribute;
+use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Traits\CartTrait;
+use App\Http\Traits\WishlistTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Traits\CartSessionTrait;
 use Illuminate\Support\Facades\Cache;
-use App\Http\Traits\CartDatabaseTrait;
-use App\Http\Traits\WishlistSessionTrait;
-use App\Http\Traits\WishlistDatabaseTrait;
 
 class ProductThreadController extends Controller
 {
-    use CartSessionTrait,CartDatabaseTrait,WishlistSessionTrait,WishlistDatabaseTrait;
+    use CartTrait,WishlistTrait;
     
     public function list(){
+        // $cart = request()->session()->get('cart');
+        // dd($cart);
         $products = Product::all();
         $categories = Category::where('parent_id','!=',null)->get();
         return view('frontend.outside.product.list',compact('products','categories'));
@@ -38,9 +38,9 @@ class ProductThreadController extends Controller
         $product = Product::find($request->product_id);
         if(!$product)
         abort(404);
-        $cart = $this->addProductToCartSession($product);
+        $cart = $this->addToCartSession($product);
         if(Auth::check())
-        $this->addProductToCartDb($product);
+        $this->addToCartDb($product);
         return response()->json(['cart_count'=> count((array)$cart),'cart'=> $cart],200);
     }
 
@@ -48,9 +48,9 @@ class ProductThreadController extends Controller
         $product = Product::find($request->product_id);
         if(!$product)
         abort(404);
-        $cart = $this->removeProductFromCartSession($product);
+        $cart = $this->removeFromCartSession($product);
         if(Auth::check())
-        $this->removeProductFromCartDb($product);
+        $this->removeFromCartDb($product);
         return response()->json(['cart_count'=> count((array)$cart),'cart'=> $cart],200);
     }
 
@@ -58,18 +58,8 @@ class ProductThreadController extends Controller
         $product = Product::find($request->product_id);
         if(!$product)
         abort(404);
-        $wish = $this->addProductToWishSession($product);
-        if(Auth::check())
-        $this->addProductToWishDb($product);
+        $wish = $this->addWishlist($product);
         return response()->json(['wish_count'=> count((array)$wish)],200);
-    }
-
-    public function cart(){
-        return view('frontend.outside.sale.cart');
-    }
-
-    public function checkout(){
-        return view('frontend.outside.sale.checkout');
     }
     
 }

@@ -2,24 +2,26 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class VendorManagementController extends Controller
 {
     public function listvendors(){
-        return view('backend.vendors.shops.list');
+        $shops = Shop::all();
+        // dd($shops[1]->bankAccount);
+        return view('backend.shops.list',compact('shops'));
     }
-    public function editvendor(){
-        return view('backend.vendors.shops.edit');
-    }
-    public function savevendor(){
+    
+    public function updatevendor(Request $request){
+        $shop = Shop::find($request->shop_id);
+        $shop->status = $request->action;
+        $shop->save();
         return redirect()->back();
     }
-    public function applications(){
-        return view('backend.vendors.applications.list');
+    public function manage(Shop $shop){
+        return view('backend.shops.application',compact('shop'));
     }
-    public function applicationview(){
-        return view('backend.vendors.applications.view');
-    }
+
 }

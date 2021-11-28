@@ -4,10 +4,12 @@ namespace App;
 
 use App\City;
 use App\User;
+use App\Order;
 use App\State;
 use App\Country;
 use App\Product;
 use App\Category;
+use App\BankAccount;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -57,6 +59,9 @@ class Shop extends Model
     public function products(){
         return $this->hasMany(Product::class);
     }
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
     public function categories(){
         $categories = collect([]);
         foreach($this->categories as $category_id){
@@ -65,5 +70,8 @@ class Shop extends Model
         return $categories;
     }
 
+    public function bankaccount(){
+        return $this->morphOne(BankAccount::class, 'owner');
+    }
     
 }

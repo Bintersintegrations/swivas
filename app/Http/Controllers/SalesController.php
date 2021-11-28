@@ -2,28 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Product;
+use App\State;
+use App\City;
+use Illuminate\Http\Request;
+use App\Http\Traits\CartTrait;
 use App\Http\Controllers\Controller;
 
 class SalesController extends Controller
 {
+    use CartTrait;
+
     public function __construct(){
         $this->middleware('auth')->only(['orders','orderDetails']);
     }
+    
     public function cart(){
-        return view('frontend.outside.sale.cart');
+        $cart = request()->session()->get('cart');
+        return view('frontend.outside.sale.cart',compact('cart'));
     }
+    
     public function checkout(Request $request){
-        //dd($request->all());
-        $total = 0;
-        for($i = 0; $i < count($request->variant) ; $i++){
-            $product = Product::find($request->variant[$i]);
-            $checkout[] = array('product'=> $product,"quantity" => $request->quantity[$i]);
-            $total+= $product->amount * $request->quantity[$i];
-        }
+        // dd($request->all());
+        // $total = 0;
+        // $currency = '';
+        // for($i = 0; $i < count($request->variant) ; $i++){
+        //     $product = Product::find($request->variant[$i]);
+        //     $currency = $product->shop->country->currency_symbol;
+        //     $price = $product->onSale() ? $product->sale_price : $product->price;
+        //     $checkout[] = array('product'=> $product,"quantity" => $request->quantity[$i],'price'=> $price);
+        //     $total+= $price * $request->quantity[$i];
+        // }
         //dd($checkout);
-        return view('frontend.outside.sale.checkout',compact('checkout','total'));
+        $cart = request()->session()->get('cart');
+        $order = $this->getOrder();
+        $deliveries = $this->getDeliveries();
+        $states = State::where('status',true)->get();
+        $cities = City::whereIn('state_id',$states->pluck('id')->toArray())->get();
+        return view('frontend.outside.sale.checkout',compact('cart','order','deliveries','states','cities'));
+        // return view('frontend.outside.sale.checkout',compact('checkout','total','currency'));
     }
 
     public function wishlist(){

@@ -15,6 +15,7 @@ class HomeController extends Controller
     }
 
     public function index(){
+        // dd(session('cart'));
         return view('frontend.outside.welcome2');
     }
     public function dashboards(){

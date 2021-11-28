@@ -476,7 +476,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="account_number">Account Name</label>
-                                                            <input name="account_name" type="text" class="form-control" id="document" readonly >
+                                                            <input name="account_name" type="text" class="form-control" id="account_name" readonly >
                                                         </div>
                                                         
                                                     </div>

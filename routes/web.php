@@ -30,9 +30,9 @@ Route::post('product/remove-from-cart','ProductThreadController@removefromcart')
 Route::post('product/add-to-wish','ProductThreadController@addtowish')->name('product.addtowish');
 Route::post('product/remove-from-wish','ProductThreadController@removefromwish')->name('product.removefromwish');
 
-Route::get('cart','SalesThreadController@cart')->name('cart');
-Route::get('wishlist','SalesThreadController@wishlist')->name('wishlist');
-Route::post('checkout','SalesThreadController@checkout')->name('checkout');
+Route::get('cart','SalesController@cart')->name('cart');
+Route::get('wishlist','SalesController@wishlist')->name('wishlist');
+Route::post('checkout','SalesController@checkout')->name('checkout');
 
 Route::get('support','SupportThreadController@create')->name('support');
 Route::post('support','SupportThreadController@save')->name('support');

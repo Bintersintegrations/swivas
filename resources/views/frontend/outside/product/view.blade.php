@@ -276,11 +276,14 @@
                             <div class="col-lg-6 rtl-text">
                                 <div class="product-right">
                                     <h2>{{$product->name}}</h2>
-                                    <h4><del>$459.00</del><span>55% off</span></h4>
+                                    @if(!$product->onSale())
                                     
                                     <h3>{{$product->shop->country->currency_symbol.''.$product->price}}</h3>
+                                    @else
+                                    <h4><del>{{$product->shop->country->currency_symbol.''.$product->price}}</del><span>{{round((100- ($product->sale_price / $product->price  * 100)))}}% off</span></h4>
+                                    <h3>{{$product->shop->country->currency_symbol.''.$product->sale_price}}</h3>
                                     <h6 class="product-title">Offer Expires in</h6>
-                                    <div class="timer mt-0 pl-4 py-1">
+                                    <div class="timer mt-0 pl-4 py-1 mb-3">
                                         <p id="demo">
                                             <span>25 
                                                 <span class="padding-l">:</span> 
@@ -299,30 +302,27 @@
                                             </span>
                                         </p>
                                     </div>
-                                    <div class="color-selector">
-                                        <ul class="color-variant">
-                                            {{-- @if(array_key_exists('color',$atributes))
-                                                @foreach (array_unique($atributes['color']) as $color)
-                                                    <li class="color-options @if($product->atributes->where('slug','color')->first()->pivot->result == $color) active @endif" style="background-color: {{$color}}"
-                                                        data-color="{{$color}}"  
-                                                        @foreach ($product->parents() as $variant)
-                                                            @if($variant->atributes->where('slug','color')->first()->pivot->result == $color)
-                                                            data-image="{{asset('storage/media/image/'.$variant->images[0])}}"
-                                                            @break;
-                                                            @endif
-                                                        @endforeach
-                                                        >
-                                                    </li>
-                                                @endforeach
-                                            @endif  --}}
-                                        </ul>
-                                    </div>
+                                    @endif
+                                    
                                     <div class="product-description border-product">
-                                         <h6 class="product-title size-text">select size 
-                                            <span>
-                                                <a href="" data-toggle="modal" data-target="#sizemodal">size chart</a>
-                                            </span>
-                                        </h6>
+                                        @if(array_key_exists('color',array_filter($product->atributes)))
+                                            <div class="color-selector">
+                                                <h6 class="product-title size-text">Choose Color</h6>
+                                                <ul class="color-variant">
+                                                    @foreach ($product->atributes['color'] as $color)
+                                                        <li class="color-options" style="background-color: {{$color}}" data-color="{{$color}}"></li>
+                                                    @endforeach
+                                                
+                                                </ul>
+                                            </div>
+                                        @endif
+                                        @if(array_key_exists('labelled_size',array_filter($product->atributes)) || array_key_exists('numbered_size',array_filter($product->atributes)))
+                                            <h6 class="product-title size-text">select size 
+                                                {{-- <span>
+                                                    <a href="" data-toggle="modal" data-target="#sizemodal">size chart</a>
+                                                </span> --}}
+                                            </h6>
+                                        @endif
                                         {{--
                                         <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -405,17 +405,7 @@
                                                 {{$category->name}},
                                             @endforeach
                                         </p>
-                                        <h6 class="product-title">Attributes</h6>
-                                        <p>
-                                            @foreach (array_filter($product->atributes) as $key => $atribute)
-                                                {{\Illuminate\Support\Str::plural($key)}}: 
-                                                    @if(is_array($atribute))
-                                                        {{implode(',',$atribute)}}
-                                                    @else {{$atribute}}
-                                                    @endif
-                                                    <br>
-                                            @endforeach
-                                        </p>
+                                        
                                     </div>
                                     <div class="border-product">
                                         <h6 class="product-title">share it</h6>
@@ -475,23 +465,34 @@
                                     <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
                                         
                                         <div class="single-product-tables">
+                                            {{-- <h6 class="product-title">Attributes</h6>
+                                            <p>
+                                                @foreach (array_filter($product->atributes) as $key => $atribute)
+                                                    {{\Illuminate\Support\Str::plural($key)}}: 
+                                                        @if(is_array($atribute))
+                                                            {{implode(',',$atribute)}}
+                                                        @else {{$atribute}}
+                                                        @endif
+                                                        <br>
+                                                @endforeach
+                                            </p> --}}
                                             <table>
                                                 <tbody>
+                                                    @foreach (array_filter($product->atributes) as $key => $atribute)
                                                     <tr>
-                                                        <td>Febric</td>
-                                                        <td>Chiffon</td>
+                                                        <td>{{ucwords(\Illuminate\Support\Str::plural($key))}}: </td>
+                                                        <td>
+                                                            @if(is_array($atribute))
+                                                            {{implode(',',$atribute)}}
+                                                            @else {{$atribute}}
+                                                            @endif
+                                                        </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>Color</td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Material</td>
-                                                        <td>Crepe printed</td>
-                                                    </tr>
+                                                    @endforeach
+                                                    
                                                 </tbody>
                                             </table>
-                                            <table>
+                                            {{-- <table>
                                                 <tbody>
                                                     <tr>
                                                         <td>Length</td>
@@ -502,16 +503,19 @@
                                                         <td>S, M, L .XXL</td>
                                                     </tr>
                                                 </tbody>
-                                            </table>
+                                            </table> --}}
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="top-contact" role="tabpanel"
                                         aria-labelledby="contact-top-tab">
+                                        @if($product->video)
                                         <div class="mt-3 text-center">
                                             <iframe width="560" height="315"
-                                                src="https://www.youtube.com/embed/BUWzX78Ye_8"
+                                                src="{{$product->video}}"
                                                 allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                         </div>
+                                        @else <p>No Video</p>
+                                        @endif
                                     </div>
                                     <div class="tab-pane fade" id="top-review" role="tabpanel"
                                         aria-labelledby="review-top-tab">
@@ -805,6 +809,7 @@
             clicked_size = $('.numbered_size').is(':visible') ? $('.numbered_size.active').attr('data-size') : '';
             if(clicked_size == '') clicked_size = $('.labelled_size').is(':visible') ? $('.labelled_size.active').attr('data-size') : '';
             product_id = @JSON($product->id); 
+            
         })
         $(document).on('click','.color-options',function(){
             if($(this).hasClass('disabled'))
@@ -819,13 +824,15 @@
             else{
                 clicked_size = $(this).attr('data-size');
             }
+            
         });
         $(document).on('click','.numbered_size',function(e){
-            if(!$(this).hasClass('disabled'))
+            if($(this).hasClass('disabled'))
             e.preventDefault();
             else{
                 clicked_size = $(this).attr('data-size');
             }
+            // console.log(clicked_size)
         });
         $(document).on('click','#addtocart',function(){
             quantity = $('#quantity').val();
@@ -839,8 +846,8 @@
                     'quantity': quantity
                 },
                 success:function(data) {
-                    $('#cart-notification').html(data.cart_count);
-                    $('#cart-notification,.shopping-cart').show();
+                    $('.cart_qty_cls').html(data.cart_count);
+                    $('.cart_qty_cls,.shopping-cart').show();
                     var cart_total = 0;
                     var listing;
                     $('#shopping_list').html('');
@@ -849,7 +856,7 @@
                                         <div class="media">
                                             <a href="#">
                                                 <img alt="" class="mr-3"
-                                                    src="/storage/media/image/`+value['image']+`">
+                                                    src="`+value['image']+`">
                                             </a>
                                             <div class="media-body">
                                                 <a href="#">

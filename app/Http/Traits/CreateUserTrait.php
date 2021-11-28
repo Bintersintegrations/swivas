@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 trait CreateUserTrait
 {
     protected function createUser(Request $request){
+        $role = Role::where('name','user')->first();
         $info = Cache::get(request()->ip());
             $user = User::create([
                     'firstname' => $request->firstname,
@@ -22,9 +23,8 @@ trait CreateUserTrait
                     'country_id' => $info['country_id'], 
                     'state_id' => $info['state_id'], 
                     'city_id' => $info['city_id'], 
+                    'role_id' => $role->id, 
                 ]);
-        $role = Role::where('name','user')->first();
-        $user->roles()->attach($role->id);
         return $user;
     }
 

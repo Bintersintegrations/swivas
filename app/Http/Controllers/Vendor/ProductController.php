@@ -58,6 +58,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->images = $request->images;
+        $product->video = $request->video;
         $product->categories = $request->categories;
         $product->atributes = $request->input('atributes');
         if($request->group)
@@ -82,9 +83,10 @@ class ProductController extends Controller
     }
 
     public function variant(Shop $shop,Product $product){
+        // dd($product->atributes);
+        $categories = Category::all();
         $atributes = Atribute::all();
-        dd($product->getAtributez());
-        return view('frontend.inside.shop.product.variant',compact('shop','product','atributes'));
+        return view('frontend.inside.shop.product.variant',compact('shop','product','categories','atributes'));
     }
     
     public function saveVariant(Shop $shop,Product $product,Request $request){
@@ -119,6 +121,7 @@ class ProductController extends Controller
         if($request->name) $product->name = $request->name;
         if($request->description) $product->description = $request->description;
         if($request->images) $product->images = $request->images;
+        if($request->video) $product->video = $request->video;
         if($request->categories) $product->categories = $request->categories;
         $product->atributes = $request->input('atributes');
         if($request->group)

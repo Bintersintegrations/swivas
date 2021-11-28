@@ -278,7 +278,14 @@
                                                             <a href="{{route('product.view',$product)}}">
                                                                 <h6>{{$product->name}}</h6>
                                                             </a>
-                                                            <h4>{{$product->shop->country->currency_symbol.$product->price}}</h4>
+                                                            @if(!$product->onSale())
+                                    
+                                                            <h4>{{$product->shop->country->currency_symbol.''.$product->price}}</h4>
+                                                            @else
+                                                            <h4><del>{{$product->shop->country->currency_symbol.''.$product->price}}</del>
+                                                            {{$product->shop->country->currency_symbol.''.$product->sale_price}}</h4>
+                                                            @endif
+                                                            {{-- <h4>{{$product->shop->country->currency_symbol.$product->price}}</h4> --}}
                                                             {{-- <ul class="color-variant">
                                                                 @php $oldcolor = [] @endphp
                                                                 @foreach ($product->item->products->where('amount',$product->amount) as $variant)
@@ -286,7 +293,7 @@
                                                                         @continue
                                                                     @endif
                                                                     @php $oldcolor[] = $variant->atributes->where('slug','color')->first()->pivot->result @endphp
-                                                                    <li class="color-options" style="background-color: {{$variant->atributes->where('slug','color')->first()->pivot->result}}" data-image="{{asset('storage/media/image/'.$variant->image->name)}}"></li>
+                                                                    <li class="color-options" style="background-color: {{$variant->atributes->where('slug','color')->first()->pivot->result}}" data-image="{{$variant->image->name}}"></li>
                                                                 @endforeach
                                                             </ul> --}}
                                                         </div>
@@ -415,8 +422,8 @@
                     'product_id': product_id
                 },
                 success:function(data) {
-                    $('#cart-notification').html(data.cart_count);
-                    $('#cart-notification,.shopping-cart').show();
+                    $('.cart_qty_cls').html(data.cart_count);
+                    $('.cart_qty_cls,.shopping-cart').show();
                     var cart_total = 0;
                     var listing;
                     $('#shopping_list').html('');
@@ -425,7 +432,7 @@
                                         <div class="media">
                                             <a href="#">
                                                 <img alt="" class="mr-3"
-                                                    src="/storage/media/image/`+value['image']+`">
+                                                    src="`+value['image']+`">
                                             </a>
                                             <div class="media-body">
                                                 <a href="#">

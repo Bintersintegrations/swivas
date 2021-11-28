@@ -71,26 +71,32 @@
                                     {{-- {{dd($checkout)}} --}}
                                     <ul class="qty">
                                         @foreach($checkout as $variation)
-                                        <li>{{$variation['product']->item->name}} × {{$variation['quantity']}} <span>{{Auth::user()->currency->symbol}}{{$variation['product']->amount * $variation['quantity']}}</span></li>
+                                            <li>{{$variation['product']->name}} × {{$variation['quantity']}} <span>{{$currency}}{{$variation['price'] * $variation['quantity']}}</span></li>
                                         @endforeach
                                     </ul>
                                     <ul class="sub-total">
-                                        <li>Subtotal <span class="count">{{Auth::user()->currency->symbol.''.$total}}</span></li>
-                                        <li>Shipping
-                                            <div class="shipping">
-                                                <div class="shopping-option">
-                                                    <input type="checkbox" name="free-shipping" id="free-shipping">
-                                                    <label for="free-shipping">Free Shipping</label>
+                                        <li>Subtotal <span class="count">{{$currency.''.$total}}</span></li>
+                                        
+                                        <li>
+                                            <h5>Delivery</h5>
+                                            <div class="shopping-option">
+                                                <div class="d-inline">
+                                                    <input type="radio" name="delivery" id="self-pickup">
+                                                    <label for="self-pickup">Self Pickup</label>
                                                 </div>
-                                                <div class="shopping-option">
-                                                    <input type="checkbox" name="local-pickup" id="local-pickup">
-                                                    <label for="local-pickup">Local Pickup</label>
+                                                <span class="count">0</span>
+                                            </div>
+                                            <div class="shopping-option">
+                                                <div class="d-inline">
+                                                    <input type="radio" name="delivery" id="home-delivery">
+                                                    <label for="home-delivery">Home Delivery</label>
                                                 </div>
+                                                <span class="count">0</span>
                                             </div>
                                         </li>
                                     </ul>
                                     <ul class="total">
-                                        <li>Total <span class="count">{{Auth::user()->currency->symbol.''.$total}}</span></li>
+                                        <li>Total <span class="count">{{$currency.''.$total}}</span></li>
                                     </ul>
                                 </div>
                                 <div class="payment-box">
@@ -120,8 +126,7 @@
                                         </div>
                                     </div>
                                     <div class="text-right">
-                                        <a href="#" class="btn-solid btn">Place Order</a>
-                                        <button onclick="connectViaCode()" type="button">Build with short url</button>
+                                        <a href="#" class="btn-solid btn">Place Order</a>  
                                     </div>
                                 </div>
                             </div>
@@ -136,17 +141,6 @@
 @endsection
 @push('scripts')
 <script type='text/javascript'>
-    function connectViaCode(){
-      Okra.buildWithShortUrl({
-        //   short_url: 'nHg1WctYD', 
-        short_url: 'D1u1dci3w', 
-          onSuccess: function(data){
-              console.log('success', data)
-          },
-          onClose: function(){
-              console.log('closed')
-          }
-      })
-    } 
+    
 </script> 
 @endpush

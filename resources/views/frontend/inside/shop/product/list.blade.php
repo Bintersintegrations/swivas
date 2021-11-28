@@ -1,6 +1,10 @@
 @extends('layouts.frontend.app')
 @push('styles')
-    
+    <style>
+        td,th{
+            text-align: left !important;
+        }
+    </style>
 @endpush
 @section('main')
 <!--  dashboard section start -->
@@ -14,7 +18,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card dashboard-table mt-0">
-                            <div class="card-body">
+                            <div class="card-body text-left">
                                 <div class="top-sec">
                                     <h3>all products</h3>
                                     <a href="{{route('shop.product.create',$shop)}}" class="btn btn-sm btn-solid">add product</a>
@@ -41,7 +45,7 @@
                                                 </th>
                                                 <td><a href="{{route('product.view',$product)}}">{{$product->name}}</a></td>
                                                 
-                                                <td>{{$product->shop->country->symbol.' '.$product->amount}}</td>
+                                                <td>{{$product->shop->country->currency_symbol.' '.$product->price}}</td>
                                                 <td>{{$product->quantity}}</td>
                                                 <td>@if($product->status == "publish")
                                                     <span class="badge badge-success ">Published</span>
@@ -50,7 +54,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="{{route('shop.product.variant',[$shop,$product])}}" class="btn btn-sm btn-primary rounded" title="variation">Add Variant</a>
+                                                    {{-- <a href="{{route('shop.product.variant',[$shop,$product])}}" class="btn btn-sm btn-primary rounded" title="variation">Add Variant</a> --}}
                                                     <a href="{{route('shop.product.edit',[$shop,$product])}}" class="btn btn-sm btn-info rounded" title="Edit"><i class="fa fa-pencil"></i>Edit</a>
                                                     <button class="btn btn-sm btn-danger rounded" title="Delete" data-toggle="modal" data-target="#product{{$product->id}}"><i class="fa fa-trash"></i>Delete</button>
                                                     <div class="modal fade" id="product{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="product{{$product->id}}" aria-hidden="true">

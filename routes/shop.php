@@ -12,7 +12,6 @@ Route::group(['prefix'=> 'shop','as'=>'shop.'], function () {
 Route::group(['as'=>'shop.','namespace'=>'Vendor','prefix'=>'shop/{shop}'], function () {
     Route::get('/','ShopController@index')->name('view');
     Route::get('dashboard','ShopController@dashboard')->name('dashboard');
-    
     Route::get('profile','ShopController@profile')->name('profile');
     Route::post('profile','ShopController@saveprofile')->name('profile');
     Route::get('settings','ShopController@settings')->name('settings');

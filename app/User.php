@@ -15,12 +15,13 @@ use App\Payment;
 use App\PasswordHistory;
 use Illuminate\Notifications\Notifiable;
 use App\Http\Traits\RecursiveRelationships;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable, RecursiveRelationships;
+    use Notifiable, SoftDeletes,RecursiveRelationships;
     protected $fillable = [
         'firstname','surname','email','mobile','password','timezone','currency_id','country_id','state_id','city_id'
     ];
@@ -68,24 +69,19 @@ class User extends Authenticatable
         return $this->belongsTo(City::class);
     }
     
-    public function roles(){
-        return $this->belongsToMany(Role::class,'user_roles');
+    public function role(){
+        return $this->belongsTo(Role::class);
     }
-    public function isAdmin(){
-        if(in_array('admin',$this->roles->pluck('name')->toArray()))
-        return true;
+    public function hasAnyRole($values){
+        if(in_array($this->role->name,$values))
+            return true;
         else return false;
     }
     
-    public function hasAnyRole($values){
-        $exist = false;
-        foreach($this->roles->pluck('name')->toArray() as $role){
-            if(in_array($role,$values)){
-                $exist = true;
-                break;
-            } 
-        }
-        return $exist;
+    public function isAdmin(){
+        if($this->role->name == 'admin')
+            return true;
+        else return false;
     }
 
     public function messages(){
