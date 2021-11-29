@@ -23,7 +23,7 @@ class User extends Authenticatable
 {
     use Notifiable, SoftDeletes,RecursiveRelationships;
     protected $fillable = [
-        'firstname','surname','email','mobile','password','timezone','currency_id','country_id','state_id','city_id'
+        'firstname','surname','email','mobile','password','timezone','currency_id','country_id','state_id','city_id','role_id'
     ];
 
     /**

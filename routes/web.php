@@ -34,6 +34,10 @@ Route::get('cart','SalesController@cart')->name('cart');
 Route::get('wishlist','SalesController@wishlist')->name('wishlist');
 Route::post('checkout','SalesController@checkout')->name('checkout');
 
+Route::post('pay','PaymentController@pay')->name('pay');
+Route::get('payment/status','PaymentController@status')->name('payment.status');
+Route::get('transactions','PaymentController@transactions')->name('payment.transactions');
+
 Route::get('support','SupportThreadController@create')->name('support');
 Route::post('support','SupportThreadController@save')->name('support');
 

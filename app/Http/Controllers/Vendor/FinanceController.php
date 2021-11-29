@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Vendor;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class PaymentController extends Controller
+class FinanceController extends Controller
 {
     //
 }
