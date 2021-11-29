@@ -59,7 +59,7 @@ trait OrderTrait
     protected function getSubtotal(Array $cart){
         $subtotal = 0;
         foreach($cart as $item){
-            $subtotal += $item['quantity'] * $item['amount'];
+            $subtotal += $item['quantity'] * $item['product']->amount;
         }
         return $subtotal;
     }

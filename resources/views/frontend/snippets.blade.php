@@ -20,11 +20,11 @@ $(document).on('click','.remove-from-cart',function(){
                                 <div class="media">
                                     <a href="#">
                                         <img alt="" class="mr-3"
-                                            src="`+value['image']+`">
+                                            src="`+value.product.images[0]+`">
                                     </a>
                                     <div class="media-body">
                                         <a href="#">
-                                            <h4>`+value['name']+`</h4>
+                                            <h4>`+value.product.name+`</h4>
                                         </a>
                                         <h4><span>`+value['quantity']+` x `+value['amount']+`</span></h4>
                                     </div>

@@ -285,17 +285,7 @@
                                                             <h4><del>{{$product->shop->country->currency_symbol.''.$product->price}}</del>
                                                             {{$product->shop->country->currency_symbol.''.$product->sale_price}}</h4>
                                                             @endif
-                                                            {{-- <h4>{{$product->shop->country->currency_symbol.$product->price}}</h4> --}}
-                                                            {{-- <ul class="color-variant">
-                                                                @php $oldcolor = [] @endphp
-                                                                @foreach ($product->item->products->where('amount',$product->amount) as $variant)
-                                                                    @if(in_array($variant->atributes->where('slug','color')->first()->pivot->result,$oldcolor))
-                                                                        @continue
-                                                                    @endif
-                                                                    @php $oldcolor[] = $variant->atributes->where('slug','color')->first()->pivot->result @endphp
-                                                                    <li class="color-options" style="background-color: {{$variant->atributes->where('slug','color')->first()->pivot->result}}" data-image="{{$variant->image->name}}"></li>
-                                                                @endforeach
-                                                            </ul> --}}
+                                                            
                                                         </div>
                                                     </div>
                                                     
@@ -422,6 +412,7 @@
                     'product_id': product_id
                 },
                 success:function(data) {
+                    
                     $('.cart_qty_cls').html(data.cart_count);
                     $('.cart_qty_cls,.shopping-cart').show();
                     var cart_total = 0;
@@ -432,13 +423,13 @@
                                         <div class="media">
                                             <a href="#">
                                                 <img alt="" class="mr-3"
-                                                    src="`+value['image']+`">
+                                                    src="`+value.product.images[0] +`">
                                             </a>
                                             <div class="media-body">
                                                 <a href="#">
-                                                    <h4>`+value['name']+`</h4>
+                                                    <h4>`+value.product.name +`</h4>
                                                 </a>
-                                                <h4><span>`+value['quantity']+` x `+value['amount']+`</span></h4>
+                                                <h4><span>`+value['quantity']+` x `+value['amount'] +`</span></h4>
                                             </div>
                                         </div>
                                         <div class="close-circle">

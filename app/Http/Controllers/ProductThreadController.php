@@ -18,9 +18,10 @@ class ProductThreadController extends Controller
     use CartTrait,WishlistTrait;
     
     public function list(){
-        // $cart = request()->session()->get('cart');
+        $cart = request()->session()->get('cart');
         // dd($cart);
         $products = Product::all();
+        // dd($products[0]);
         $categories = Category::where('parent_id','!=',null)->get();
         return view('frontend.outside.product.list',compact('products','categories'));
     }

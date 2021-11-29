@@ -141,13 +141,13 @@
                                                         <div class="media">
                                                             <a href="#">
                                                                 <img alt="" class="mr-3"
-                                                                    src="{{$cart['image']}}">
+                                                                    src="{{$cart['product']->images[0]}}">
                                                             </a>
                                                             <div class="media-body">
                                                                 <a href="#">
-                                                                    <h4>{{$cart['name']}}</h4>
+                                                                    <h4>{{$cart['product']->name}}</h4>
                                                                 </a>
-                                                                <h4><span>{{$cart['quantity']}} x $ {{$cart['amount']}}</span></h4>
+                                                                <h4><span>{{$cart['quantity']}} x {{Cache::get(request()->ip())['currency_symbol']}} {{$cart['product']->amount}}</span></h4>
                                                             </div>
                                                         </div>
                                                         <div class="close-circle">
@@ -161,7 +161,7 @@
                                                 <div class="total">
                                                     @php $total = 0 @endphp
                                                     @forelse((array) session('cart') as $id => $details)
-                                                        @php $total += $details['amount'] * $details['quantity'] @endphp
+                                                        @php $total += $details['product']->amount * $details['quantity'] @endphp
                                                     @empty
                                                     @endforelse
                                                     <h5>subtotal : <span id="cart_total">${{$total}}</span></h5>

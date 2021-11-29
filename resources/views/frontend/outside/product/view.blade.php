@@ -860,16 +860,16 @@
                                             </a>
                                             <div class="media-body">
                                                 <a href="#">
-                                                    <h4>`+value['name']+`</h4>
+                                                    <h4>`+value['product']->name +`</h4>
                                                 </a>
-                                                <h4><span>`+value['quantity']+` x `+value['amount']+`</span></h4>
+                                                <h4><span>`+value['quantity']+` x `+value['product']->amount +`</span></h4>
                                             </div>
                                         </div>
                                         <div class="close-circle">
                                             <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
                                         </div>
                                     </li>`;
-                        cart_total += parseInt(value['quantity']) * parseInt(value['amount']);
+                        cart_total += parseInt(value['quantity']) * parseInt(value['product']->amount);
                         $('#shopping_list').prepend(listing);
                     });
                     $('#cart_total').html(cart_total);

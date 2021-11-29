@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use App\State;
 use App\City;
+use App\State;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Traits\CartTrait;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
+
 
 class SalesController extends Controller
 {
@@ -19,7 +21,9 @@ class SalesController extends Controller
     
     public function cart(){
         $cart = request()->session()->get('cart');
-        return view('frontend.outside.sale.cart',compact('cart'));
+        $order = $this->getOrder();
+        // dd( Cache::get(request()->ip())['currency_symbol']);
+        return view('frontend.outside.sale.cart',compact('cart','order'));
     }
     
     public function checkout(Request $request){

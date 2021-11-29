@@ -16,6 +16,7 @@ class Product extends Model
     protected $fillable = [
         'shop_id','quantity','images','price','slug'
     ];
+    protected $appends = ['amount'];
 
     public static function boot()
     {
@@ -51,18 +52,20 @@ class Product extends Model
         }
         return $categories;
     }
+    public function getAmountAttribute(){
+        if($this->sale_price && $this->sale_from < now() && $this->sale_to > now()){
+            return $this->sale_price;
+        }
+        else{
+            return $this->price;
+        }
+        
+        // return "{$this->first_name} {$this->last_name}";
+    }
     public function onSale(){
         if($this->sale_price && $this->sale_from < now() && $this->sale_to > now())
         return true;
         else return false;
     }
-    // public function atributes(){
-    //     $atributes = collect([]);
-    //     dd($this->atributes);
-    //     foreach($this->atributes as $atribute){
-    //         $atributes->push(Atribute::where('slug',$atribute_id)->get());
-    //     }
-    //     return $atributes;
-    // }
 
 }

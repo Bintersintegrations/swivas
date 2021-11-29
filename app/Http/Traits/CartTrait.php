@@ -16,10 +16,9 @@ trait CartTrait
         if(!$cart) {
             $cart = [
                     $product->id => [
-                        "name" => $product->name,
+                        "product" => $product,
                         "quantity" => request()->quantity ? request()->quantity :1,
-                        "amount" => $product->onSale() ? $product->sale_price : $product->price,
-                        "image" => $product->images[0]
+                        "amount" => $product->amount,
                     ]
             ];
             request()->session()->put('cart', $cart);
@@ -31,10 +30,9 @@ trait CartTrait
             }else{
                 // if item not exist in cart then add to cart with quantity = 1
                 $cart[$product->id] = [
-                    "name" => $product->name,
-                    "quantity" => request()->quantity ? request()->quantity : 1,
-                    "amount" => $product->onSale() ? $product->sale_price : $product->price,
-                    "image" => $product->images[0]
+                    "product" => $product,
+                    "quantity" => request()->quantity ? request()->quantity :1,
+                    "amount" => $product->amount,
                 ];
                 request()->session()->put('cart', $cart);
             }
