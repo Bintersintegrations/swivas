@@ -16,35 +16,30 @@ class SalesController extends Controller
     use CartTrait;
 
     public function __construct(){
-        $this->middleware('auth')->only(['orders','orderDetails']);
+        $this->middleware('auth')->only(['checkout','orders','orderDetails']);
     }
     
     public function cart(){
         $cart = request()->session()->get('cart');
-        $order = $this->getOrder();
-        // dd( Cache::get(request()->ip())['currency_symbol']);
+        $order = $this->getOrder();  //subtotal, vat, vat_percent, grandtotal
+        // dd($order);
         return view('frontend.outside.sale.cart',compact('cart','order'));
     }
     
     public function checkout(Request $request){
         // dd($request->all());
-        // $total = 0;
-        // $currency = '';
-        // for($i = 0; $i < count($request->variant) ; $i++){
-        //     $product = Product::find($request->variant[$i]);
-        //     $currency = $product->shop->country->currency_symbol;
-        //     $price = $product->onSale() ? $product->sale_price : $product->price;
-        //     $checkout[] = array('product'=> $product,"quantity" => $request->quantity[$i],'price'=> $price);
-        //     $total+= $price * $request->quantity[$i];
-        // }
-        //dd($checkout);
-        $cart = request()->session()->get('cart');
-        $order = $this->getOrder();
-        $deliveries = $this->getDeliveries();
+        $subtotal = 0;
+        $currency = Cache::get(request()->ip())['currency_symbol'];
+        for($i = 0; $i < count($request->items) ; $i++){
+            $item = json_decode($request->items[$i]);
+            $product = Product::find($item->id);
+            $checkout[] = array('product'=> $product,"quantity" => $item->quantity,'price'=> $product->amount);
+            $subtotal+= $product->amount * $item->quantity;
+        }
+        $vat = ['value'=> $this->getVat() * $subtotal / 100,'percent'=> $this->getVat()];
         $states = State::where('status',true)->get();
         $cities = City::whereIn('state_id',$states->pluck('id')->toArray())->get();
-        return view('frontend.outside.sale.checkout',compact('cart','order','deliveries','states','cities'));
-        // return view('frontend.outside.sale.checkout',compact('checkout','total','currency'));
+        return view('frontend.outside.sale.checkout',compact('checkout','subtotal','vat','currency','states','cities'));
     }
 
     public function wishlist(){

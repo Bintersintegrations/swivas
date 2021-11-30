@@ -2,16 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\OrderDetail;
 use Illuminate\Http\Request;
+use App\Http\Traits\OrderTrait;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Traits\FlutterWaveTrait;
+use App\Http\Traits\NetworkPointTrait;
 
 class PaymentController extends Controller
 {
-    use FlutterWaveTrait;
+    use FlutterWaveTrait,OrderTrait,NetworkPointTrait;
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function pay(Request $request){
+        // dd($request->all());
+        $coupon_id = '';
+        $user = Auth::user();
+        $items = collect([]);
+        foreach($request->items as $item){
+            $temp = json_decode($item,TRUE);
+            $items->push($temp);
+        } 
+        // dd($items->sum('amount') + $request->vat);
+        $payment = Payment::create(['user_id'=> $user->id,coupon_id => $coupon_id,'description'=> 'payment for orders '.$items->unique('shop_id')->implode('shop_id',','),'discount'=> $request->discount,'currency'=> $user->country->currency_iso,'amount'=> $request->vat + $items->sum('amount')]);
+        foreach($items->groupBy('shop_id') as $key=> $shopOrder){
+            $subtotal = $shopOrder->sum('amount');
+            $vat = $this->getVat() * $subtotal / 100;
+            $total = $subtotal + $vat;
+            $order = Order::create(['user_id'=> $user->id,'shop_id'=> $key,'payment_id'=> $payment->id,'currency'=> $user->country->currency_iso,'subtotal'=> $subtotal,'vat'=> $vat,'total'=> $total ]);
+            foreach($shopOrder as $product){
+                $details = OrderDetail::create(['order_id'=> $order->id,'product_id'=> $product['id'],'quantity'=> $product['quantity'],'unit_price'=> $product['price'],'amount'=> $product['amount'] ]);
+            }
+        }
+        if($request->input('payment-option') == 'online'){
+            $response = $this->initializePayment($payment);
+            return redirect()->to($response->data->link);
+        }
+        else
+        $response = $this->processPayment($payment);
+        return redirect()->route('user.orders');
+        
     }
 
     public function transactions(){
@@ -56,23 +91,7 @@ class PaymentController extends Controller
         return view('user.payment.status');
     }
 
-    public function pay(Request $request){
-        //create order
-        $order = Order::create();
-        // $payment = Payment::create(['user_id'=> Auth::id(),
-        //                             'reference' => uniqid('pin'),
-        //                             'order_id' => $order->id,
-        //                             'coupon_id' => $request->coupon_id,
-        //                             'description'=> "payment for ".$request->description,
-        //                             'currency_id'=> $request->currency,
-        //                             'amount'=> $request->amount,
-        //                             'method' => $request->method,
-        //                             'status'=>'pending',
-                                    
-        //                         ]);
-        $response = $this->initializePayment($payment);
-        return redirect()->to($response->data->link);
-    }
+    
 
 
 }

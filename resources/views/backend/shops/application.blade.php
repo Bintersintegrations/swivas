@@ -21,7 +21,7 @@
                             </div>
                             <div class="box">
                                 <div class="box-title">
-                                    <form action="{{route('admin.vendor.update',$shop)}}" method="POST">@csrf
+                                    <form action="{{route('admin.shop.update',$shop)}}" method="POST">@csrf
                                         <input type="hidden" name="shop_id" value="{{$shop->id}}">
                                         @if($shop->status == 'starter' || $shop->status == 'banned' ) 
                                         <button type="submit" class="btn btn-success" name="action" value="approved">Approve Shop</button>

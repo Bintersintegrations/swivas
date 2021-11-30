@@ -6,15 +6,15 @@ use App\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class VendorManagementController extends Controller
+class ShopManagementController extends Controller
 {
-    public function listvendors(){
+    public function listshops(){
         $shops = Shop::all();
         // dd($shops[1]->bankAccount);
         return view('backend.shops.list',compact('shops'));
     }
     
-    public function updatevendor(Request $request){
+    public function updateshop(Request $request){
         $shop = Shop::find($request->shop_id);
         $shop->status = $request->action;
         $shop->save();

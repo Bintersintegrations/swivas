@@ -173,10 +173,9 @@
                                                     <form action="{{route('checkout')}}" class="d-inline" method="POST">
                                                         @csrf
                                                         @if(session('cart'))
-                                                            @foreach (session('cart') as $id => $cart)
-                                                                <input type="hidden" name="variant[]" value="{{$id}}">
-                                                                <input type="hidden" name="quantity[]" value="{{$cart['quantity']}}">
-                                                            @endforeach
+                                                            @foreach (session('cart') as $id => $item)
+                                                                <input type="hidden" name="items[]" id="product{{$item['product']->id}}" value="{{ json_encode( $array = ['id' => $id,'quantity'=> $item['quantity'] ]  ) }}" >
+                                                            @endforeach  
                                                         @endif
                                                         <button type="submit" class="checkout btn btn-danger">checkout</button>
                                                     </form>

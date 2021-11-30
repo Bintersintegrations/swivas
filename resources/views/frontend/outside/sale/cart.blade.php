@@ -93,9 +93,10 @@
                     <input type="hidden" name="grandtotal" id="grandtotal" value="{{$order['grandtotal']}}">
                     <input type="hidden" name="subtotal" id="subtotal" value="{{$order['subtotal']}}">
                     <input type="hidden" name="vat" id="vat" value="{{$order['vat']}}">
+                    <input type="hidden" name="vat_percent" id="vat_percent" value="{{$order['vat_percent']}}">
                     @if($cart)
                         @foreach($cart as $id => $item)
-                            <input type="hidden" name="item[]" id="product{{$item['product']->id}}" value="{{ json_encode( $array = ['id' => $id,'quantity'=> $item['quantity'] ]  ) }}" >
+                            <input type="hidden" name="items[]" id="product{{$item['product']->id}}" value="{{ json_encode( $array = ['id' => $id,'quantity'=> $item['quantity'] ]  ) }}" >
                         @endforeach
                         <button type="submit" class="btn btn-solid">checkout</button>
                     @endif
@@ -110,11 +111,11 @@
 <script>
     function grandtotal(){
         var subtotal = $('#subtotal').val();
-        var delivery = $('#delivery').val();
         var vat = $('#vat').val();
-        var discount = $('#discount').val();
+        // var discount = $('#discount').val();
         var grandtotal = 0;
-        grandtotal = parseInt(subtotal) + parseInt(delivery) + parseInt(vat) + parseInt(discount);
+        // grandtotal = parseInt(subtotal) + parseInt(vat) + parseInt(discount);
+        grandtotal = parseInt(subtotal) + parseInt(vat);
         $('.grandtotal').html(grandtotal);
         $('#grandtotal').val(grandtotal);
     }
@@ -129,18 +130,11 @@
         $('#subtotal').val(subtotal);
         $('.cart_count').html(cart_count);
     }
-    function deliveries(){
-        var deliveries = [];
-        var delivery_text = '';
-        $('.item').each(function(index){
-            if(!deliveries.includes($(this).attr('data-delivery') ) )
-            deliveries.push($(this).attr('data-delivery'));
-        });
-        $('#deliveries').html(deliveries.length);
-        deliveries.forEach(function(value, index, array){
-            delivery_text += 'You have 1 delivery on '+ value+'<br>';
-        });
-        $('.delivery_text').html(delivery_text);
+    function vat(){
+        var subtotal = $('#subtotal').val();
+        var vat_percent = $('#vat_percent').val();
+        var vat = vat_percent/100 *subtotal;
+        $('#vat').val(vat)
     }
     
     $(document).on('input','.quantity',function(){
@@ -156,6 +150,7 @@
         $(this).closest('tr').attr('data-amount',amount); //place the amount on the item row attribute
         $('.total[data-slug="'+slug+'"]').html(amount); //place the amount on the item row
         subtotal();
+        vat();
         grandtotal();
     })
 
@@ -201,13 +196,13 @@
                     $('#shopping_list').prepend(listing);
                 });
                 $('#cart_total').html(cart_total);
-            //remove product from html
+                //remove product from html
                 clicked.remove();
-            //remove product from input
+                //remove product from input
                 $('input[id="'+slug+'"]').remove();
                 subtotal();
-            // grandtotal();
-            // deliveries();
+                vat();
+                grandtotal();
             },
             error: function (data, textStatus, errorThrown) {
             console.log(data);

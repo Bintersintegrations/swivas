@@ -54,7 +54,7 @@
                 </ul>
             </li> --}}
             <li><a class="sidebar-header" href="{{route('admin.users.list')}}"><i data-feather="user-plus"></i>Users</a></li>
-            <li><a class="sidebar-header" href="{{route('admin.vendors.list')}}"><i data-feather="users"></i>Vendors</a></li>
+            <li><a class="sidebar-header" href="{{route('admin.shops.list')}}"><i data-feather="users"></i>Vendors</a></li>
 
             {{-- <li>
                 <a class="sidebar-header" href="#"><i data-feather="clipboard"></i><span>Membership</span><i class="fa fa-angle-right pull-right"></i></a>

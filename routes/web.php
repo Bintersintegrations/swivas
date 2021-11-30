@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/','HomeController@index')->name('index');
-Route::get('shops','Vendor\ShopController@list')->name('shop.list');
+Route::get('shops','Vendors\ShopController@list')->name('shop.list');
 
 // Route::get('woocommerce/products','HomeController@woocommerce');
 // Route::get('test','HomeController@test');

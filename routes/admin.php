@@ -44,9 +44,9 @@ Route::group(['prefix'=>'admin','as'=>'admin.','namespace'=>'Backend','middlewar
     // Route::get('role/edit','RoleManagementController@editrole')->name('roles.edit');
     // Route::post('role/save','RoleManagementController@saverole')->name('roles.save');
 
-    Route::get('vendors','VendorManagementController@listvendors')->name('vendors.list');
-    Route::get('vendor/{shop}/manage','VendorManagementController@manage')->name('vendor.manage');    
-    Route::post('vendor/update','VendorManagementController@updatevendor')->name('vendor.update');
+    Route::get('shops','ShopManagementController@listshops')->name('shops.list');
+    Route::get('shop/{shop}/manage','ShopManagementController@manage')->name('shop.manage');    
+    Route::post('shop/update','ShopManagementController@updateshop')->name('shop.update');
     
     
     // Route::get('media','MediaManagementController@listmedia')->name('media.list');

@@ -23,7 +23,6 @@ class CreateRolesTable extends Migration
         DB::table('roles')->insert(array(
             array('id' => 1, 'name'=> 'admin', 'description'=>'super admin of system'),
             array('id' => 2, 'name'=> 'user', 'description'=>'customer'),
-            array('id' => 3, 'name'=> 'vendor', 'description'=>'vendor'),
         ));
     }
 

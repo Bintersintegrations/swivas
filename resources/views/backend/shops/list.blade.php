@@ -64,7 +64,7 @@
                     <td>{{ucwords($shop->status)}}</td>
                     <td>
                         <div>
-                            <a href="{{route('admin.vendor.manage',$shop)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                            <a href="{{route('admin.shop.manage',$shop)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
                             <button class="btn btn-primary"><i class="fa fa-trash"></i></button>
                         </div>
                     </td>

@@ -1,7 +1,8 @@
 <?php
 
-Route::get('shop/setup','Vendor\ShopController@create')->name('shop.create');
-Route::post('shop/setup','Vendor\ShopController@setup')->name('shop.setup');
+Route::get('shop/setup','Vendors\ShopController@create')->name('shop.create');
+Route::post('shop/setup','Vendors\ShopController@setup')->name('shop.setup');
+
 Route::group(['prefix'=> 'shop','as'=>'shop.'], function () {
     Route::get('/','MediaController@list')->name('media');
     Route::post('dropzone','MediaController@dropzone_media')->name('media.dropzone');
@@ -9,7 +10,7 @@ Route::group(['prefix'=> 'shop','as'=>'shop.'], function () {
     Route::post('delete','MediaController@delete')->name('media.delete');
 });
 
-Route::group(['as'=>'shop.','namespace'=>'Vendor','prefix'=>'shop/{shop}'], function () {
+Route::group(['as'=>'shop.','namespace'=>'Vendors','prefix'=>'shop/{shop}'], function () {
     Route::get('/','ShopController@index')->name('view');
     Route::get('dashboard','ShopController@dashboard')->name('dashboard');
     Route::get('profile','ShopController@profile')->name('profile');

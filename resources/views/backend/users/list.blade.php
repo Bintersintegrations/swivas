@@ -52,9 +52,17 @@
                                 {{-- <th>last login</th> --}}
                                 <th>
                                     @if($user->role->name == 'user')
-                                        No of shops: {{$user->shops->count()}}
+                                        @if($user->shops->count()) 
+                                            No of shops: {{$user->shops->count()}}
+                                        @else
+                                            Customer
+                                        @endif
                                     @elseif($user->role->name == 'admin')
                                         Admin Staff
+                                    @elseif($user->role->name == 'account')
+                                        Account
+                                    @elseif($user->role->name == 'experience')
+                                        Experience Personnel
                                     @endif
                                 </th>
                                 <th>{{$user->wallet}}</th>

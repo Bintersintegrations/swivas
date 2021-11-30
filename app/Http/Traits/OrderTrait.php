@@ -18,38 +18,38 @@ trait OrderTrait
     protected function getOrder(){
         $cart = request()->session()->get('cart');
         if(!$cart)
-        $order = ['subtotal'=> 0,'delivery'=> $this->getDeliveryCharge(),'vat'=> 0,'vat_percent'=>$this->getVat()];
+        $order = ['subtotal'=> 0,'vat'=> 0,'vat_percent'=>$this->getVat()];
         else
-        $order = ['subtotal'=> $this->getSubtotal($cart),'delivery'=> $this->getDeliveryCharge(),'vat'=> $this->getVat()/100 *$this->getSubtotal($cart),'vat_percent'=>$this->getVat()];
-        $grandtotal = $order['subtotal'] + $order['delivery'] + $order['vat'];
+        $order = ['subtotal'=> $this->getSubtotal($cart),'vat'=> $this->getVat()/100 *$this->getSubtotal($cart),'vat_percent'=>$this->getVat()];
+        $grandtotal = $order['subtotal'] + $order['vat'];
         $order['grandtotal'] = $grandtotal;
         return $order;
     }
 
-    protected function getDeliveries(){
-        $deliveries = [];
-        $cart = request()->session()->get('cart');
-        return $deliveries;
-    }
+    // protected function getDeliveries(){
+    //     $deliveries = [];
+    //     $cart = request()->session()->get('cart');
+    //     return $deliveries;
+    // }
 
-    protected function getDeliveryCharge(){
-        $state = State::all();
-        $city = City::all();
-        $delivery = 0;
-        if(Auth::check() && $address = Auth::user()->addresses->where('status',true)->first()){
-            //check if customer lives in same state with us
-            if(in_array($address->state_id,$state->where('status',true)->pluck('id')->toArray())){
-                 //check if he lives in same city with us
-                if(in_array($address->city_id,$city->where('status',true)->pluck('id')->toArray()))
-                    $delivery = Setting::where('name','same_city_delivery_charge')->first()->value;
-                elseif(in_array($address->city_id,$city->where('deliver_to',true)->pluck('id')->toArray()))
-                    $delivery = Setting::where('name','same_state_delivery_charge')->first()->value;
-            }
-            elseif(in_array($address->state_id,$state->where('deliver_to',true)->pluck('id')->toArray()))
-            $delivery = Setting::where('name','same_country_delivery_charge')->first()->value;
-        }
-        return $delivery * count($this->getDeliveries());
-    }
+    // protected function getDeliveryCharge(){
+    //     $state = State::all();
+    //     $city = City::all();
+    //     $delivery = 0;
+    //     if(Auth::check() && $address = Auth::user()->addresses->where('status',true)->first()){
+    //         //check if customer lives in same state with us
+    //         if(in_array($address->state_id,$state->where('status',true)->pluck('id')->toArray())){
+    //              //check if he lives in same city with us
+    //             if(in_array($address->city_id,$city->where('status',true)->pluck('id')->toArray()))
+    //                 $delivery = Setting::where('name','same_city_delivery_charge')->first()->value;
+    //             elseif(in_array($address->city_id,$city->where('deliver_to',true)->pluck('id')->toArray()))
+    //                 $delivery = Setting::where('name','same_state_delivery_charge')->first()->value;
+    //         }
+    //         elseif(in_array($address->state_id,$state->where('deliver_to',true)->pluck('id')->toArray()))
+    //         $delivery = Setting::where('name','same_country_delivery_charge')->first()->value;
+    //     }
+    //     return $delivery * count($this->getDeliveries());
+    // }
 
     protected function getVat(){
         $vat = Setting::where('name','vat')->first()->value;
