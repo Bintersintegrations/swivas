@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Payment;
 use App\OrderDetail;
 use Illuminate\Http\Request;
 use App\Http\Traits\OrderTrait;
@@ -21,7 +22,7 @@ class PaymentController extends Controller
 
     public function pay(Request $request){
         // dd($request->all());
-        $coupon_id = '';
+        $coupon_id = null;
         $user = Auth::user();
         $items = collect([]);
         foreach($request->items as $item){
@@ -29,7 +30,7 @@ class PaymentController extends Controller
             $items->push($temp);
         } 
         // dd($items->sum('amount') + $request->vat);
-        $payment = Payment::create(['user_id'=> $user->id,coupon_id => $coupon_id,'description'=> 'payment for orders '.$items->unique('shop_id')->implode('shop_id',','),'discount'=> $request->discount,'currency'=> $user->country->currency_iso,'amount'=> $request->vat + $items->sum('amount')]);
+        $payment = Payment::create(['user_id'=> $user->id,'coupon_id' => $coupon_id,'reference'=> 'abcdefgh','description'=> 'payment for orders '.$items->unique('shop_id')->implode('shop_id',','),'discount'=> $request->discount,'currency'=> $user->country->currency_iso,'amount'=> $request->vat + $items->sum('amount')]);
         foreach($items->groupBy('shop_id') as $key=> $shopOrder){
             $subtotal = $shopOrder->sum('amount');
             $vat = $this->getVat() * $subtotal / 100;

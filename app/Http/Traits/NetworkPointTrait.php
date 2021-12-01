@@ -3,9 +3,9 @@ namespace App\Http\Traits;
 use App\Payment;
 use Ixudra\Curl\Facades\Curl;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Traits\FlutterWaveTrait;
+use App\Http\Traits\NetworkPointTrait;
 
-trait FlutterWaveTrait
+trait NetworkPointTrait
 {
 
     protected function processPayment(Payment $payment){
@@ -38,7 +38,7 @@ trait FlutterWaveTrait
     //     }
     //   }
 
-    protected function verifyPayment($value){
+    protected function verifyPayments($value){
         $paymentDetails = Curl::to('https://api.flutterwave.com/v3/transactions/'.$value.'/verify/')
          ->withHeader('Authorization: Bearer'.config('services.flutter_secret_key'))
          ->asJson()

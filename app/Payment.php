@@ -8,17 +8,12 @@ class Payment extends Model
 {
     protected $fillable = [
         'reference',
-        'beneficiary_id',
-        'value',
-        'charges',
-        'paymentable_id',
-        'paymentable_type',
-        'status',
-        'user_id',
+        'discount',
+        'currency',
+        'user_id','coupon_id',
+        'description',
         'amount',
-        'currency_id',
-        'type',
-        'description'];
+        ];
     
     public function currency(){
         return $this->belongsTo(Currency::class);
