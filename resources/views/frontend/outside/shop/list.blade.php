@@ -18,36 +18,25 @@
                         <h3 class="collapse-block-title">vendor category</h3>
                         <div class="collection-collapse-block-content">
                             <div class="collection-brand-filter">
-                                <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="zara">
-                                    <label class="custom-control-label" for="zara">zara</label>
-                                </div>
-                                <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="vera-moda">
-                                    <label class="custom-control-label" for="vera-moda">clothes</label>
-                                </div>
-                                <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="forever-21">
-                                    <label class="custom-control-label" for="forever-21">shoes</label>
-                                </div>
-                                <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="roadster">
-                                    <label class="custom-control-label" for="roadster">accessories</label>
-                                </div>
-                                <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="only">
-                                    <label class="custom-control-label" for="only">beauty products</label>
-                                </div>
+                                @forelse ($categories as $category)
+                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="zara">
+                                        <label class="custom-control-label" for="zara">{{$category->name}}</label>
+                                    </div>
+                                @empty
+                                    
+                                @endforelse
+                                
                             </div>
                         </div>
                     </div>
                     
                     
                 </div>
-                <div class="collection-sidebar-banner">
+                {{-- <div class="collection-sidebar-banner">
                     <a href="#"><img src="{{asset('assets/images/side-banner.png')}}" class="img-fluid blur-up lazyload"
                             alt=""></a>
-                </div>
+                </div> --}}
                 <!-- silde-bar colleps block end here -->
             </div>
             <div class="col">
@@ -60,7 +49,7 @@
                                         <img src="{{asset('storage/media/'.$shop->logo)}}" class="img-fluid blur-up lazyload" alt="">
                                     </div>
                                     <div class="collection-content mb-3">
-                                        <h5>(20 products)</h5>
+                                        <h5>({{$shop->products->count()}} products)</h5>
                                         <h4 class="font-weight-bold">{{$shop->name}}</h4>
                                         <p>{!! \Illuminate\Support\Str::words($shop->description, 5,'....')  !!}</p><a
                                             href="{{route('shop.view',$shop)}}" class="btn btn-outline">shop here !</a>

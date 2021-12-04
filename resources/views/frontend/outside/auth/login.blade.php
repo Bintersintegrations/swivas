@@ -43,11 +43,13 @@
                 </div>
             </div>
             <div class="col-lg-6 right-login">
-                <h3>New Customer</h3>
+                <h3>New Member</h3>
                 <div class="theme-card authentication-right">
-                    <h6 class="title-font">Create A Account</h6>
-                    <p>Sign up for a free account at our store. Registration is quick and easy. It allows you to be
-                        able to order from our shop. To start shopping click register.</p>
+                    <h6 class="title-font">Create An Account</h6>
+                    <p>Sign up for a free account at Swivas.  
+                        As a member, you earn points each time you shop here. 
+                        You earn additional points when you refer friends and family to shop with us. 
+                        To become a member, create an account.</p>
                         <a href="{{route('register')}}" class="btn btn-solid">Create an Account</a>
                 </div>
             </div>

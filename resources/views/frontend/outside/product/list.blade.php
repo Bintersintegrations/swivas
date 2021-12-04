@@ -245,11 +245,12 @@
                                                 <div class="col-xl-3 col-6 col-grid-box">
                                                     <div class="product-box product-wrap">
                                                         <div class="img-wrapper">
-                                                            
+                                                            @if($product->onSale())
                                                             <div class="lable-block">
                                                                 <span class="lable3">new</span> 
                                                                 <span class="lable4">on sale</span>
                                                             </div>
+                                                            @endif
                                                             <div class="front">
                                                                 <a href="{{route('product.view',$product)}}">
                                                                     <img src="{{$product->images[0]}}" class="img-fluid blur-up lazyload bg-img" alt="">
@@ -396,7 +397,7 @@
 @push('scripts')
     <!-- price range js -->
     <script src="{{asset('assets/js/price-range.js')}}"></script>
-    @include('frontend.snippets')
+        @include('frontend.snippets')
     <script>
         $(document).on('click','.color-options',function(){
             $(this).closest('.product-box').find('.product-image').attr('src',$(this).attr('data-image'));

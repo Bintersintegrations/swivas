@@ -34,20 +34,12 @@
                     </div>
                     <div class="profile-detail">
                         <div>
-                            <p>Based in United States, Fashion store has been an Multikart member since May 15, 2017.
-                                Fashion Store are engaged in all kinds of western clothing. In garment field we have
-                                maintained 3 years exporting experience. company insist in the principle of "Customer
-                                first, Quality uppermost".Based in United States, Fashion store has been an </p>
-                            <p>Based in United States, Fashion store has been an Multikart member since May 15, 2017.
-                                Fashion Store are engaged in all kinds of western clothing. In garment field we have
-                                maintained 3 years exporting experience. company insist in the principle of "Customer
-                                first, Quality uppermost"
-                            </p>
+                            <p>{{$shop->description}}</p>
                         </div>
                     </div>
                     <div class="vendor-contact">
                         <div>
-                            <h6>follow us:</h6>
+                            <h6>Contact Shop:</h6>
                             <div class="footer-social">
                                 <ul>
                                     <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -222,10 +214,12 @@
                                                 <div class="product-box product-wrap">
                                                     <div class="img-wrapper">
                                                         
-                                                        <div class="lable-block">
-                                                            <span class="lable3">new</span> 
-                                                            <span class="lable4">on sale</span>
-                                                        </div>
+                                                        @if($product->onSale())
+                                                            <div class="lable-block">
+                                                                <span class="lable3">new</span> 
+                                                                <span class="lable4">on sale</span>
+                                                            </div>
+                                                        @endif
                                                         <div class="front">
                                                             <a href="{{route('product.view',$product)}}">
                                                                 <img src="{{$product->images[0]}}" class="img-fluid blur-up lazyload bg-img" alt="">
@@ -254,17 +248,14 @@
                                                         <a href="{{route('product.view',$product)}}">
                                                             <h6>{{$product->name}}</h6>
                                                         </a>
-                                                        <h4>{{$product->shop->country->currency_symbol.$product->price}}</h4>
-                                                        {{-- <ul class="color-variant">
-                                                            @php $oldcolor = [] @endphp
-                                                            @foreach ($product->item->products->where('amount',$product->amount) as $variant)
-                                                                @if(in_array($variant->atributes->where('slug','color')->first()->pivot->result,$oldcolor))
-                                                                    @continue
-                                                                @endif
-                                                                @php $oldcolor[] = $variant->atributes->where('slug','color')->first()->pivot->result @endphp
-                                                                <li class="color-options" style="background-color: {{$variant->atributes->where('slug','color')->first()->pivot->result}}" data-image="{{asset('storage/media/image/'.$variant->image->name)}}"></li>
-                                                            @endforeach
-                                                        </ul> --}}
+                                                        @if(!$product->onSale())
+                                    
+                                                            <h4>{{$product->shop->country->currency_symbol.''.$product->price}}</h4>
+                                                        @else
+                                                            <h4><del>{{$product->shop->country->currency_symbol.''.$product->price}}</del>
+                                                            {{$product->shop->country->currency_symbol.''.$product->sale_price}}</h4>
+                                                        @endif
+                                                        
                                                     </div>
                                                 </div>
                                                 
@@ -317,5 +308,81 @@
 
 @endsection
 @push('scripts')
-    
+    <!-- price range js -->
+    <script src="{{asset('assets/js/price-range.js')}}"></script>
+        @include('frontend.snippets')
+    <script>
+        $(document).on('click','.color-options',function(){
+            $(this).closest('.product-box').find('.product-image').attr('src',$(this).attr('data-image'));
+        });
+        $(document).on('click','.add-to-cart',function(){
+            var product_id = parseInt($(this).attr('data-product'));
+            $.ajax({
+                type:'POST',
+                dataType: 'json',
+                url: "{{route('product.addtocart')}}",
+                data:{
+                    '_token' : $('meta[name="csrf-token"]').attr('content'),
+                    'product_id': product_id
+                },
+                success:function(data) {
+                    
+                    $('.cart_qty_cls').html(data.cart_count);
+                    $('.cart_qty_cls,.shopping-cart').show();
+                    var cart_total = 0;
+                    var listing;
+                    $('#shopping_list').html('');
+                    $.each( data.cart, function( key, value ) {
+                        listing =  `<li  id="cartlist`+key+`">
+                                        <div class="media">
+                                            <a href="#">
+                                                <img alt="" class="mr-3"
+                                                    src="`+value.product.images[0] +`">
+                                            </a>
+                                            <div class="media-body">
+                                                <a href="#">
+                                                    <h4>`+value.product.name +`</h4>
+                                                </a>
+                                                <h4><span>`+value['quantity']+` x `+value['amount'] +`</span></h4>
+                                            </div>
+                                        </div>
+                                        <div class="close-circle">
+                                            <a href="javascript:void(0)" class="remove-from-cart" data-product="`+key+`product"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                        </div>
+                                    </li>`;
+                        cart_total += parseInt(value['quantity']) * parseInt(value['amount']);
+                        $('#shopping_list').prepend(listing);
+                    });
+                    $('#cart_total').html(cart_total);
+                },
+                error: function (data, textStatus, errorThrown) {
+                console.log(data);
+                },
+            });
+        });   
+        $(document).on('click','.add-to-wish',function(){
+            var product_id = parseInt($(this).attr('data-product'));
+            $.ajax({
+                type:'POST',
+                dataType: 'json',
+                url: "{{route('product.addtowish')}}",
+                data:{
+                    '_token' : $('meta[name="csrf-token"]').attr('content'),
+                    'product_id': product_id
+                },
+                success:function(data) {
+                    $('#wish_counter').html(data.wish_count);
+                    $('#wish_counter').show();
+                },
+                error: function (data, textStatus, errorThrown) {
+                console.log(data);
+                },
+            });
+        });
+        $(document).on('click','.quick-view',function(){
+
+            $("#quick-view").modal();
+        });
+
+    </script>
 @endpush

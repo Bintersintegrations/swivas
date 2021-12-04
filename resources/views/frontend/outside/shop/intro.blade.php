@@ -18,19 +18,15 @@
                         class="img-fluid blur-up lazyload" alt=""></div>
             </div>
             <div class="col-sm-12">
-                <h4>Start your business with Multikart & reach customers across the World...</h4>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,</p>
-                <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and
-                    demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee
-                    the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their
-                    duty through weakness of will, which is the same as saying through shrinking from toil and pain.
-                    These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice
-                    is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is
-                    to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty
-                    or the obligations of business it will frequently occur that pleasures have to be repudiated and
-                    annoyances accepted. The wise man therefore always holds in these matters to this principle of
-                    selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid
-                    worse pains.</p>
+                <h4>Sell On Swivas, Increase Your Number Of Customers; All Swivasians In Your Area Shop With You...</h4>
+                
+                <h5>We reposition your supermarket to boost/increase sales with additional regular customers.</h5>
+                        <h5>We give your outlet 100% visibility as a partner supermarket through Swivas</h5>
+                        <h5>You no more spend on expensive adverts as we give you countrywide visibility.</h5>
+                        <h5>The system redirects all Swivasians in your area to your supermarket.</h5>
+                    
+                
+                
             </div>
         </div>
     </div>
@@ -57,8 +53,8 @@
                     <path
                         d="m168.203125 84v-36c0-4.417969-3.582031-8-8-8s-8 3.582031-8 8v36c0 4.417969 3.582031 8 8 8s8-3.582031 8-8zm0 0" />
                 </svg>
-                <h4>lowest cost</h4>
-                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. </p>
+                <h4>increased sales</h4>
+                {{-- <p>Contrary to popular belief, Lorem Ipsum is not simply random text. </p> --}}
             </div>
             <div class="col-lg-3 col-md-6 service-block1 ">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
@@ -75,7 +71,7 @@
                     </g>
                 </svg>
                 <h4>high growth rate</h4>
-                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. </p>
+                {{-- <p>Contrary to popular belief, Lorem Ipsum is not simply random text. </p> --}}
             </div>
             <div class="col-lg-3 col-md-6 service-block1 border border-0">
                 <svg viewBox="0 -31 480 479" xmlns="http://www.w3.org/2000/svg">
@@ -97,8 +93,8 @@
                     <path
                         d="m136 168.5c13.253906 0 24-10.746094 24-24s-10.746094-24-24-24-24 10.746094-24 24 10.746094 24 24 24zm0-32c4.417969 0 8 3.582031 8 8s-3.582031 8-8 8-8-3.582031-8-8 3.582031-8 8-8zm0 0" />
                 </svg>
-                <h4>dedicated pickup</h4>
-                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. </p>
+                <h4>wider visibility</h4>
+                {{-- <p>Contrary to popular belief, Lorem Ipsum is not simply random text. </p> --}}
             </div>
             <div class="col-lg-3 col-md-6 service-block1 border border-0">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -178,7 +174,7 @@
                     </g>
                 </svg>
                 <h4>most approachable</h4>
-                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. </p>
+                {{-- <p>Contrary to popular belief, Lorem Ipsum is not simply random text. </p> --}}
             </div>
         </div>
     </section>
@@ -189,17 +185,17 @@
 <!-- how to start section start -->
 <section class="section-b-space become-vendor">
     <div class="container">
-        <h4>doing business on multikart is really easy</h4>
+        <h4>doing business with Swivas is Easy</h4>
         <div class="step-bg">
             <div class="row">
                 <div class="col-lg-4">
                     <div class="step-box">
                         <div>
                             <div class="steps">1</div>
-                            <h4>List your products & Get support service provider</h4>
-                            <p>Register your business for free and create a product catalogue. Sell under your own
+                            <h4>Register For Free, List Your Products, Get Approved</h4>
+                            {{-- <p>Register your business for free and create a product catalogue. Sell under your own
                                 private label or sell an existing brand. Get your documentation & cataloging done with
-                                ease from our Professional Services network.</p>
+                                ease from our Professional Services network.</p> --}}
                         </div>
                     </div>
                 </div>
@@ -207,9 +203,9 @@
                     <div class="step-box">
                         <div>
                             <div class="steps">2</div>
-                            <h4>Receive orders & Schedule a pickup</h4>
-                            <p>Once listed, your products will be available to millions of users.Get orders and manage
-                                your online business via our Seller Panel and Seller Zone Mobile App.</p>
+                            <h4>Be Seen By Thousands Of Customers Everyday, Receive Orders, Package & Deliver</h4>
+                            {{-- <p>Once listed, your products will be available to millions of users.Get orders and manage
+                                your online business via our Seller Panel and Seller Zone Mobile App.</p> --}}
                         </div>
                     </div>
                 </div>
@@ -217,9 +213,9 @@
                     <div class="step-box">
                         <div>
                             <div class="steps">3</div>
-                            <h4> Receive quick payment & grow your business</h4>
-                            <p>Receive quick and hassle-free payments in your account once your orders are fulfilled.
-                                Expand your business with low interest & collateral-free loans.</p>
+                            <h4> Receive Bulk Payment & Grow Your Business</h4>
+                            {{-- <p>Receive quick and hassle-free payments in your account once your orders are fulfilled.
+                                Expand your business with low interest & collateral-free loans.</p> --}}
                         </div>
                     </div>
                 </div>
@@ -235,14 +231,14 @@
     <div class="container">
         <div class="col">
             <div>
-                <h4>start selling</h4>
-                <p>Multikart marketplace is India’s leading platform for selling online. Be it a manufacturer, vendor or
+                {{-- <h4>start selling</h4> --}}
+                {{-- <p>Multikart marketplace is India’s leading platform for selling online. Be it a manufacturer, vendor or
                     supplier, simply sell your products online on Multikart and become a top ecommerce player with
                     minimum investment. Through a team of experts offering exclusive seller workshops, training, seller
                     support and convenient seller portal, Multikart focuses on educating and empowering sellers across
                     India.
                     Selling on Multikart.com is easy and absolutely free. All you need is to register, list your
-                    catalogue and start selling your products.</p>
+                    catalogue and start selling your products.</p> --}}
                 @if (Auth::check() && Auth::user()->shops->isNotEmpty())
                     <div class="row">
                         @foreach (Auth::user()->shops as $shop)

@@ -25,8 +25,18 @@ class ShopController extends Controller
     }
 
     public function list(){
-        $shops = Shop::all();
-        return view('frontend.outside.shop.list',compact('shops'));
+        if(Auth::check()){
+            $state_id = Auth::user()->state_id;
+            
+        }else{
+            $info = Cache::get(request()->ip());
+            $state_id = $info['state_id'];
+        } 
+        $shops = Shop::where('state_id',$state_id)->get();
+        $category_ids = $shops->pluck('categories')->collapse()->unique()->toArray();
+        $categories = Category::whereIn('id',$category_ids)->get();
+        
+        return view('frontend.outside.shop.list',compact('shops','categories'));
     }
     //public view of shop
     public function index(Shop $shop){ 
@@ -92,24 +102,6 @@ class ShopController extends Controller
             $request->file('contact_document')->storeAs('public/media',$imageName);//save the file to public folder
         }
         $shop->save();
-        
-        for($i = 0; $i < count($request->delivery_id); $i++){
-            $logistic = new Logistic;
-            $logistic->shop_id = $shop->id;
-            $logistic->company_name = $request->delivery_company_name[$i];
-            $logistic->username = $request->delivery_username[$i];
-            $logistic->phone = $request->delivery_phone[$i];
-            $logistic->document = $request->delivery_id[$i];
-            if($request->hasFile("delivery_id.$i")){
-                $ext = $request->file("delivery_id.$i")->getClientOriginalExtension();
-                $imageName = $user->id.rand().time().'.'.$ext;
-                $shop->logo =  $imageName;
-                $request->file("delivery_id.$i")->storeAs('public/media',$imageName);//save the file to public folder
-            }
-            $logistic->save();
-        }
-        
-
         $bankAccount = new BankAccount;
         $bankAccount->owner_id = $shop->id;
         $bankAccount->owner_type = 'App\Shop';

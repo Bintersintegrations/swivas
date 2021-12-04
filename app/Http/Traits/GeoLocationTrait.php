@@ -4,7 +4,6 @@ namespace App\Http\Traits;
 use App\City;
 use App\State;
 use App\Country;
-use App\Currency;
 use Ixudra\Curl\Facades\Curl;
 use Illuminate\Support\Facades\Cache;
 
@@ -64,7 +63,6 @@ trait GeoLocationTrait
                     
             return $userinfo;
         });
-       
         return $userLocation;
     }
     protected function saveLocation(Array $info){

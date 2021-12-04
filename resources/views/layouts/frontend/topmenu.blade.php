@@ -114,18 +114,13 @@
                                             <i class="ti-settings"></i>
                                         </div>
                                         <div class="show-div setting">
-                                            <h6>language</h6>
+                                            <h6>Location</h6>
                                             <ul>
-                                                <li><a href="#">english</a></li>
-                                                <li><a href="#">french</a></li>
+                                                <li><a href="#">Lagos</a></li>
+                                                <li><a href="#">Abuja</a></li>
+                                                <li><a href="#">PortHarcourt</a></li>
                                             </ul>
-                                            <h6>currency</h6>
-                                            <ul class="list-inline">
-                                                <li><a href="#">euro</a></li>
-                                                <li><a href="#">rupees</a></li>
-                                                <li><a href="#">pound</a></li>
-                                                <li><a href="#">doller</a></li>
-                                            </ul>
+                                            
                                         </div>
                                     </li>
                                     <li class="onhover-div mobile-cart">
@@ -335,20 +330,20 @@
                 <div class="col-xxl-6 col-xl-9 position-unset">
                     <div class="main-nav-center">
                         <nav class="text-left">
-                            <!-- Sample menu definition -->
+                            <!-- Sample menu main definition -->
                             <ul id="main-menu" class="sm pixelstrap sm-horizontal">
                                 <li>
                                     <div class="mobile-back text-right">Back<i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                                 </li>
-                                <li><a href="{{route('index')}}">Home</a></li>
+                                <li><a href="{{route('index')}}" @if(Route::is('index')) class="current" @endif>Homes</a></li>
                                 <li>
-                                    <a href="{{route('products')}}">Products</a>
+                                    <a href="{{route('products')}}" @if(Route::is('products')) class="current" @endif>Products</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('shop.list')}}">shops</a>
+                                    <a href="{{route('shop.list')}}" @if(Route::is('shop.list')) class="current" @endif>shops</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('sell')}}">sell</a>
+                                    <a href="{{route('sell')}}" @if(Route::is('sell')) class="current" @endif>sell</a>
                                     
                                 </li>
                                 <li>
@@ -358,7 +353,7 @@
                                     <a href="#">Track Order</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('user.dashboard')}}">Account</a>
+                                    <a href="{{route('user.dashboard')}}" @if(Route::is('user.dashboard')) class="current" @endif>Account</a>
                                 </li>
                                 
                               

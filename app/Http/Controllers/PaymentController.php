@@ -30,7 +30,7 @@ class PaymentController extends Controller
             $items->push($temp);
         } 
         // dd($items->sum('amount') + $request->vat);
-        $payment = Payment::create(['user_id'=> $user->id,'coupon_id' => $coupon_id,'reference'=> 'abcdefgh','description'=> 'payment for orders '.$items->unique('shop_id')->implode('shop_id',','),'discount'=> $request->discount,'currency'=> $user->country->currency_iso,'amount'=> $request->vat + $items->sum('amount')]);
+        $payment = Payment::create(['user_id'=> $user->id,'coupon_id' => $coupon_id,'reference'=> 'abcdefgh','description'=> 'payment for orders','discount'=> $request->discount,'currency'=> $user->country->currency_iso,'amount'=> $request->vat + $items->sum('amount')]);
         foreach($items->groupBy('shop_id') as $key=> $shopOrder){
             $subtotal = $shopOrder->sum('amount');
             $vat = $this->getVat() * $subtotal / 100;
@@ -42,7 +42,9 @@ class PaymentController extends Controller
         }
         if($request->input('payment-option') == 'online'){
             $response = $this->initializePayment($payment);
-            return redirect()->to($response->data->link);
+            if($response->status == 'success')
+                return redirect()->to($response->data->link);
+            else return redirect()->back();
         }
         else
         $response = $this->processPayment($payment);
@@ -83,13 +85,15 @@ class PaymentController extends Controller
     }
 
     public function status(){
+        
         $trans_id = 'query_from url';
         $payment = Payment::where('reference',$trans_id)->first();
         $response = $this->verifyPayment($trans_id);
+        dd($response);
         // if($response->status == 'success' && currency is && amount is )
         // mark payment successful
         // else mark payment failed
-        return view('user.payment.status');
+        return view('frontend.outside.sale.ordersuccess');
     }
 
     

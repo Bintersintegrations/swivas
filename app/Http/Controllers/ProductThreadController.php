@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart;
 use App\Product;
 use App\Atribute;
 use App\Category;
@@ -18,11 +17,18 @@ class ProductThreadController extends Controller
     use CartTrait,WishlistTrait;
     
     public function list(){
-        $cart = request()->session()->get('cart');
-        // dd($cart);
-        $products = Product::all();
-        // dd($products[0]);
-        $categories = Category::where('parent_id','!=',null)->get();
+        if(Auth::check()){
+            $state_id = Auth::user()->state_id;
+            
+        }else{
+            $info = Cache::get(request()->ip());
+            $state_id = $info['state_id'];
+        } 
+        $products = Product::whereHas('shop', function ($query) use($state_id) {
+            $query->where('state_id', $state_id);
+        })->get();
+        $category_ids = $products->pluck('categories')->collapse()->unique()->toArray();
+        $categories = Category::whereIn('id',$category_ids)->get();
         return view('frontend.outside.product.list',compact('products','categories'));
     }
 

@@ -1332,7 +1332,7 @@
                         </g>
                     </svg>
                     <h4>24 X 7 service</h4>
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. </p>
+                    <p>Smart People Shop At Swivas. Shop & Earn With Us.. </p>
                 </div>
                 <div class="col-lg-3 col-md-6 service-block1 border border-0">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -14 512.00001 512">
@@ -1363,7 +1363,7 @@
                         </g>
                     </svg>
                     <h4>online payment</h4>
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. </p>
+                    <p>Secure, Fast & Efficient Online Payment With A Click. </p>
                 </div>
             </div>
         </div>
@@ -1925,7 +1925,7 @@
 
 
     <!-- banner section -->
-    <section class="pt-0 section-b-space">
+    {{-- <section class="pt-0 section-b-space">
         <div class="container">
             <div class="full-banner custom-space p-right text-end bg-size blur-up lazyload" style="background-image: url({{asset('assets/images/marketplace/banner/15.jpg')}}); background-size: cover; background-position: center center; display: block;">
                 <img src="{{asset('assets/images/marketplace/banner/15.jpg')}}" alt="" class="bg-img blur-up lazyload" style="display: none;">
@@ -1942,7 +1942,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- banner section end -->
 
 

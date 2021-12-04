@@ -8793,6 +8793,9 @@ header.stickycls {
     color: #ff3522;
     font-size: 14px;
     text-shadow: none; }
+    .pixelstrap a.current {
+      font-weight: bold;
+    }
   .pixelstrap ul a.current {
     background: #ff4c3b;
     color: #fff; }

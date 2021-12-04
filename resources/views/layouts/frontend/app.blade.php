@@ -458,13 +458,12 @@
                             </div>
                             <div class="footer-contant">
                                 <div class="footer-logo">
-                                    <img src="{{asset('assets/images/icon/logo/f11.png')}}" alt=""></div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut labore</p>
+                                    <img src="{{asset('assets/images/icon/swivas.jpg')}}" alt=""></div>
+                                <p>An e-commerce company with multilevel memberships and a reusable credit reward scheme</p>
                                 <ul class="contact-list">
-                                    <li><i class="fa fa-map-marker"></i>17, Dele Aiyedun Close, Ogba , Lagos
+                                    <li><i class="fa fa-map-marker"></i>17, Dele Aiyedun Close, Ogba, Lagos
                                     </li>
-                                    <li><i class="fa fa-phone"></i>Call Us: +234-817-933-3448</li>
+                                    <li><i class="fa fa-phone"></i>WhatsApp: +234-817-9333-448</li>
                                     <li><i class="fa fa-envelope-o"></i>Email Us: <a href="#" style="text-transform: none">business@swivas.com</a></li>
                                 </ul>
                             </div>
@@ -507,17 +506,17 @@
                                     <h4>follow us</h4>
                                 </div>
                                 <div class="footer-contant">
-                                    <p class="mb-cls-content">We like to stay in touch with you</p>
+                                    <p class="mb-cls-content">We like to stay in touch because we value you</p>
                                     <form class="form-inline">
                                         <div class="form-group me-sm-3 mb-2">
                                             <label for="inputPassword2" class="sr-only">Password</label>
-                                            <input type="password" class="form-control" id="inputPassword2" placeholder="Enter Your Email">
+                                            <input type="email" class="form-control" id="inputPassword2" placeholder="Enter Your Email">
                                         </div>
                                         <button type="submit" class="btn btn-solid mb-2">subscribe</button>
                                     </form>
                                     <div class="footer-social">
                                         <ul>
-                                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="https://www.facebook.com/Swivas-Multishops-102192025358673/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                             <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
                                             <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                                             <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>

@@ -11,7 +11,7 @@ trait FlutterWaveTrait
     protected function initializePayment(Payment $payment){
         $user = Auth::user();
         $response = Curl::to('https://api.flutterwave.com/v3/payments')
-        ->withHeader('Authorization: Bearer '.config('services.flutter_secret_key'))
+        ->withHeader('Authorization: Bearer '.config('services.flutter_test_secret_key'))
         ->withData( array('customer' => ['email'=> $user->email,'phonenumber'=> $user->mobile,'name'=> $user->name],
                         'tx_ref'=> $payment->reference,
                         "currency" => $user->country->currency_iso,
@@ -40,7 +40,7 @@ trait FlutterWaveTrait
 
     protected function verifyPayment($value){
         $paymentDetails = Curl::to('https://api.flutterwave.com/v3/transactions/'.$value.'/verify/')
-         ->withHeader('Authorization: Bearer'.config('services.flutter_secret_key'))
+         ->withHeader('Authorization: Bearer '.config('services.flutter_test_secret_key'))
          ->asJson()
          ->get();
         return $paymentDetails;
