@@ -35,7 +35,8 @@ Route::group(['as'=>'shop.','namespace'=>'Vendors','prefix'=>'shop/{shop}'], fun
 
     Route::group(['prefix'=> 'orders'],function() {
         Route::get('/','OrderController@list')->name('orders');
-        // Route::get('/','OrderController@list')->name('orders');
+        Route::get('{order}','OrderController@view')->name('order.view');
+        Route::post('{order}/status','OrderController@status')->name('order.status');
     });
 
     Route::group(['prefix'=> 'payments'], function () {

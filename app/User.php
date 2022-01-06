@@ -7,6 +7,7 @@ use App\City;
 use App\Post;
 use App\Role;
 use App\Shop;
+use App\Order;
 use App\State;
 use App\Address;
 use App\Country;
@@ -43,6 +44,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime','dob' => 'datetime', 'documents'=> 'array'
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+        parent::observe(new \App\Observers\UserObserver);
+    }
 
     public function routeNotificationForNexmo($notification)
     {
@@ -101,6 +108,9 @@ class User extends Authenticatable
     }
     public function shops(){
         return $this->hasMany(Shop::class);
+    }
+    public function orders(){
+        return $this->hasMany(Order::class);
     }
     
 }

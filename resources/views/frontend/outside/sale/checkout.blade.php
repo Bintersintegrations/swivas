@@ -73,8 +73,8 @@
                                 </div>
                                 {{-- {{dd($checkout)}} --}}
                                 <ul class="qty">
-                                    @foreach($checkout as $item)
-                                        <li>{{$item['product']->name}} × {{$item['quantity']}} <span>{{$currency}}{{number_format($item['price'] * $item['quantity'])}}</span></li>
+                                    @foreach($cart as $item)
+                                        <li>{{$item['product']->name}} × {{$item['quantity']}} <span>{{$currency}}{{number_format($item['amount'] * $item['quantity'])}}</span></li>
                                     @endforeach
                                 </ul>
                                 <ul class="sub-total">
@@ -109,10 +109,10 @@
                                         <div class="payment-options">
                                             <ul>
                                                 <li><h3>Payment Options</h3></li>
-                                                @if(Auth::user()->wallet < $subtotal)
+                                                @if(Auth::user()->wallet >= ($subtotal + $vat['value']))
                                                 <li>
                                                     <div class="radio-option">
-                                                        <input type="radio" name="payment-option" value="points" id="payment-1" @if(Auth::user()->wallet >= $subtotal) checked @endif>
+                                                        <input type="radio" name="payment-option" value="points" id="payment-1" @if(Auth::user()->wallet >= ($subtotal + $vat['value'])) checked @else disabled @endif>
                                                         <label for="payment-1">Pay with Point
                                                             <span class="small d-block">Balance:  {{Auth::user()->wallet}}  </span>
                                                         </label>
@@ -131,7 +131,7 @@
                                         </div>
                                     </div>
                                     
-                                    @foreach($checkout as $item)
+                                    @foreach($cart as $item)
                                         <input type="hidden" name="items[]" id="product{{$item['product']->id}}" value="{{ json_encode( $array = ['id' => $item['product']->id,'quantity'=> $item['quantity'],'price'=> $item['product']->amount,'amount'=> $item['quantity'] * $item['product']->amount,'shop_id'=> $item['product']->shop->id ] ) }}" >
                                     @endforeach
                                         <input type="hidden" name="discount" value="0">

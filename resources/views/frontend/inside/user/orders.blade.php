@@ -28,86 +28,31 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Date</th>
-                                            <th scope="col">order id</th>
-                                            <th scope="col">product details</th>
+                                            <th scope="col">Order details</th>
+                                            <th scope="col">Shop details</th>
                                             <th scope="col">amount</th>
                                             <th scope="col">status</th>
                                             
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">12-Dec-2015</th>
-                                            <th scope="row">#125021</th>
-                                            <td>neck velvet dress</td>
-                                            
-                                            <td>$205</td>
-                                            <td>shipped</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#521214</th>
-                                            <th scope="row">#521214</th>
-                                            <td>belted trench coat</td>
-                                            
-                                            <td>$350</td>
-                                            <td>shipped</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#521021</th>
-                                            <th scope="row">#521021</th>
-                                            <td>men print tee</td>
-                                            
-                                            <td>$150</td>
-                                            <td>pending</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#245021</th>
-                                            <th scope="row">#245021</th>
-                                            <td>woman print tee</td>
-                                            
-                                            <td>$150</td>
-                                            <td>shipped</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#122141</th>
-                                            <th scope="row">#122141</th>
-                                            <td>men print tee</td>
-                                            
-                                            <td>$150</td>
-                                            <td>canceled</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#125015</th>
-                                            <th scope="row">#125015</th>
-                                            <td>men print tee</td>
-                                            
-                                            <td>$150</td>
-                                            <td>pending</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#245021</th>
-                                            <th scope="row">#245021</th>
-                                            <td>woman print tee</td>
-                                            
-                                            <td>$150</td>
-                                            <td>shipped</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#122141</th>
-                                            <th scope="row">#122141</th>
-                                            <td>men print tee</td>
-                                            
-                                            <td>$150</td>
-                                            <td>canceled</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#125015</th>
-                                            <th scope="row">#125015</th>
-                                            <td>men print tee</td>
-                                            
-                                            <td>$150</td>
-                                            <td>pending</td>
-                                        </tr>
+                                        @foreach ($orders as $order)
+                                            <tr>
+                                                <td scope="row">{{$order->created_at->format('d-M-Y')}}</td>
+                                                <th scope="row">
+                                                    <a href="{{route('user.order.details',$order)}}">
+                                                        #{{$order->id.' - '.$order->details->count().' '.\Illuminate\Support\Str::plural('item',$order->details->count())}}
+                                                    </a>
+                                                </th>
+                                                    
+                                                <td>{{$order->shop->name}}</td>
+                                                
+                                                <td>{{Auth::user()->country->currency_symbol.number_format($order->total)}}</td>
+                                                <td>{{\Illuminate\Support\Str::replaceFirst('_',' ',$order->status)}}</td>
+                                            </tr>
+                                        @endforeach
+                                        
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -122,43 +67,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{asset('assets/js/date-picker.js')}}"></script>
-    <script>
-        
-        $('#birthday').datepicker({
-            uiLibrary: 'bootstrap4'
-        });
-        $('#issue_date').datepicker({
-            uiLibrary: 'bootstrap4'
-        });
-        $('#expiry_date').datepicker({
-            uiLibrary: 'bootstrap4'
-        });
-    </script>
-    <script>
-        $('#upload-photo').click(function(){
-            $('#photo').trigger('click');
-        });
-        $("#photo").change(function() {
-            readURL(this,'photo-upload');
-            $('#remove_image').show();
-        });
-        function readURL(input,output) {
-            console.log(input.id);
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                $('#'+output).attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        $('#goto-accesspin').on('click',function(){
-            // $('.tab-pane').removeClass('active show');
-            $('#accesspin').addClass('active show').siblings().removeClass('active show');
-        });
-        $('#goto-address').on('click',function(){
-            $('#address').addClass('active show').siblings().removeClass('active show');
-        });
-    </script>
+
 @endpush

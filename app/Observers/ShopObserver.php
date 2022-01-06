@@ -3,8 +3,7 @@
 namespace App\Observers;
 
 use App\Shop;
-use App\Logistic;
-use App\BankAccount;
+use App\Notifications\ShopEarningNotification;
 
 class ShopObserver
 {
@@ -25,6 +24,13 @@ class ShopObserver
      * @param  \App\Shop  $shop
      * @return void
      */
+    public function updating(Shop $shop)
+    {
+        if($shop->isDirty('wallet') && $shop->wallet > $shop->getOriginal('wallet')){
+            $shop->notify(new ShopEarningNotification($shop->wallet,$user->getOriginal('wallet')));
+        }
+
+    }
     public function updated(Shop $shop)
     {
         //

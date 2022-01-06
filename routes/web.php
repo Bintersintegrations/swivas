@@ -4,7 +4,7 @@ Route::get('/','HomeController@index')->name('index');
 Route::get('shops','Vendors\ShopController@list')->name('shop.list');
 
 // Route::get('woocommerce/products','HomeController@woocommerce');
-// Route::get('test','HomeController@test');
+
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
@@ -35,7 +35,8 @@ Route::get('wishlist','SalesController@wishlist')->name('wishlist');
 Route::post('checkout','SalesController@checkout')->name('checkout');
 
 Route::post('pay','PaymentController@pay')->name('pay');
-Route::get('payment/status','PaymentController@status')->name('payment.status');
+Route::get('payment/verification','PaymentController@verification')->name('payment.verification');
+Route::get('payment/status/{payment}','PaymentController@status')->name('payment.status');
 Route::get('transactions','PaymentController@transactions')->name('payment.transactions');
 
 Route::get('support','SupportThreadController@create')->name('support');
@@ -62,10 +63,12 @@ Route::group(['as'=>'user.','middleware'=> 'role:user'], function () {
     Route::post('user/change-password','UserController@changePassword')->name('changePassword');
     
     Route::get('orders','SalesController@orders')->name('orders');
-    Route::get('order/details','SalesController@orderDetails')->name('order.details');
+    Route::get('order/{order}/details','SalesController@orderDetails')->name('order.details');
+    Route::post('order/{order}/status','SalesController@status')->name('order.status');
+    Route::post('order/{order}/review','SalesController@review')->name('order.review');
     Route::get('wishlist','SalesController@wishlist')->name('wishlist');
 
-    // Route::get('network','')
+    Route::get('user/network','NetworkController@dashboard')->name('network');
 
     Route::group(['prefix'=> 'messages','as'=> 'messages.'],function(){
         Route::get('inbox','MessageController@inbox')->name('inbox');

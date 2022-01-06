@@ -11,11 +11,14 @@ if you delete categories, delete the cat from products
 you can only buy in your local country
 
 
+ON CHECKOUT PAGE
+Put: confirm pickup details..
+show the details of the buyer.
 
+payment status page.. if payment is successful, show:
+order date, pickup date and time, pick up address, 
+if delivery is required, show rates and vendors in that location 
 
-add to address book.. delete function and modal (are you sure you want to delete)
-
-checkout
 
 retain timeline in product page for promos
 sidebar on product page
@@ -27,37 +30,12 @@ settlement to bank
 emails
 
 
-profiles {prevent changing of vendor type}
-orphanage application
-charity organization application
+
 followership
 subscriptions
 blog admin, blog vendor, blog user
 
-giveaway automatic selection
-take reasons for request of giveaway
-add quantity available & quantity per person to giveaway
-giveaway view page
-prevent edit/delete of giving when there's a request
 
-
-auction instant take off price
-auction automatic selection
-bid winners are given timeline to pay, failure to do so will offer it to the next person and with the same timeline
-do not show bidders multiple times, pick their highest bid and show
-checkout instant bid for buy now
-prevent edit/delete of offer when there's a request
-auctions view page
-
-
-
-
-advert for product/giveaway/external/vendor profiles
-admin page to manage advert, 
-vendors to have a link to create the advert
-
-akeraino.aki@gmail.com
-Actionpointer@2021
 
 
 bring message list
@@ -65,13 +43,6 @@ click to display conversations
 reply to message
 notification
 
-
-
-color : 1
-
-
-
-size: 2
 
 array:10 [
   0 => {1233 

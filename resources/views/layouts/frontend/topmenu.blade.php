@@ -347,7 +347,7 @@
                                     
                                 </li>
                                 <li>
-                                    <a href="#">network</a>
+                                    <a href="{{route('network')}}">network</a>
                                 </li>
                                 <li>
                                     <a href="#">Track Order</a>

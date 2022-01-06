@@ -25,7 +25,7 @@ class CreateOrdersTable extends Migration
             $table->double('vat')->default(0);
             $table->double('shipping_fee')->default(0);
             $table->double('total')->default(0);
-            $table->string('status')->nullable(); //pending, processing, on-hold, completed, cancelled, refunded, failed and trash, delivered. Default is pending.
+            $table->string('status')->nullable(); //processing, on-hold, ready, completed, cancelled, refunded, failed and trash, delivered. Default is processing.
             $table->text('customer_note')->nullable(); 
             $table->unsignedBigInteger('user_id'); //buyer
             $table->string('user_address');

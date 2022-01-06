@@ -23,66 +23,24 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">order id</th>
-                                            <th scope="col">product details</th>
+                                            <th scope="col">order date</th>
+                                            <th scope="col">no of items</th>
+                                            <th scope="col">amount</th>
                                             <th scope="col">status</th>
-                                            <th scope="col">price</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($shop->orders->where('status','!=','pending_payment') as $order)
                                         <tr>
-                                            <th scope="row">#125021</th>
-                                            <td>neck velvet dress</td>
-                                            <td>shipped</td>
-                                            <td>$205</td>
+                                            <th scope="row"><a href="{{route('shop.order.view',[$shop,$order])}}">#{{$order->id}}</a></th>
+                                            <td>{{$order->created_at->format('d M')}}</td>
+                                            <td>{{$order->details->count()}}</td>
+                                            <td>{{$order->subtotal}}</td>
+                                            <td>{{$order->status}}</td>
+                                           
+                                            
                                         </tr>
-                                        <tr>
-                                            <th scope="row">#521214</th>
-                                            <td>belted trench coat</td>
-                                            <td>shipped</td>
-                                            <td>$350</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#521021</th>
-                                            <td>men print tee</td>
-                                            <td>pending</td>
-                                            <td>$150</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#245021</th>
-                                            <td>woman print tee</td>
-                                            <td>shipped</td>
-                                            <td>$150</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#122141</th>
-                                            <td>men print tee</td>
-                                            <td>canceled</td>
-                                            <td>$150</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#125015</th>
-                                            <td>men print tee</td>
-                                            <td>pending</td>
-                                            <td>$150</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#245021</th>
-                                            <td>woman print tee</td>
-                                            <td>shipped</td>
-                                            <td>$150</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#122141</th>
-                                            <td>men print tee</td>
-                                            <td>canceled</td>
-                                            <td>$150</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">#125015</th>
-                                            <td>men print tee</td>
-                                            <td>pending</td>
-                                            <td>$150</td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

@@ -16,9 +16,9 @@ trait FlutterWaveTrait
                         'tx_ref'=> $payment->reference,
                         "currency" => $user->country->currency_iso,
                         "payment_options"=>"card,account,ussd",
-                        "redirect_url"=> route('payment.status'),
+                        "redirect_url"=> route('payment.verification'),
                         'amount'=> $payment->amount,
-                        'metadata' => ['order_id'=> $payment->order_id ],
+                        'metadata' => ['order_ids'=> $payment->orders->pluck('id')->toArray()],
                         "customizations"=> [
                             "title"=>"Swivas MultiShops",
                             "description"=>"Middleout isn't free. Pay the price",
@@ -28,15 +28,7 @@ trait FlutterWaveTrait
         ->post();
         return $response;
     }
-    // {
-    //     "status": true,
-    //     "message": "Authorization URL created",
-    //     "data": {
-    //       "authorization_url": "https://checkout.paystack.com/0peioxfhpn",
-    //       "access_code": "0peioxfhpn",
-    //       "reference": "7PVGX8MEk85tgeEpVDtD"
-    //     }
-    //   }
+    
 
     protected function verifyPayment($value){
         $paymentDetails = Curl::to('https://api.flutterwave.com/v3/transactions/'.$value.'/verify/')

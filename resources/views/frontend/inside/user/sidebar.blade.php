@@ -8,7 +8,7 @@
             <li @if(Route::is('user.address')) class="active" @endif><a href="{{route('user.address')}}">Address Book</a></li>
             <li @if(Route::is('user.orders')) class="active" @endif><a href="{{route('user.orders')}}">My Orders</a></li>
             {{-- <li @if(Route::is('user.dashboard')) class="active" @endif><a href="#">Newsletter</a></li> --}}
-            <li @if(Route::is('user.network')) class="active" @endif><a href="#">My Network</a></li>
+            <li @if(Route::is('user.network')) class="active" @endif><a href="{{route('user.network')}}">My Network</a></li>
             <li @if(Route::is('user.profile')) class="active" @endif><a href="{{route('user.profile')}}">Edit Profile</a></li>
             <li @if(Route::is('user.password')) class="active" @endif><a href="{{route('user.password')}}">Change Password</a></li>
             <li class="last"><a href="#" data-toggle="modal" data-target="#logout">Log Out</a></li>

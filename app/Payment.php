@@ -2,31 +2,29 @@
 
 namespace App;
 
+use App\User;
+use App\Order;
 use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
-    protected $fillable = [
-        'reference',
-        'discount',
-        'currency',
-        'user_id','coupon_id',
-        'description',
-        'amount',
-        ];
+    protected $fillable = ['reference','discount','currency','user_id','coupon_id','description','amount'];
     
-    public function currency(){
-        return $this->belongsTo(Currency::class);
+    public static function boot()
+    {
+        parent::boot();
+        parent::observe(new \App\Observers\PaymentObserver);
+    }
+
+    public function getRouteKeyName(){
+        return 'reference';
     }
 
     public function user(){
         return $this->belongsTo(User::class);
     }
-    public function beneficiary(){
-        return $this->belongsTo(User::class,'beneficiary_id');
-    }
 
-    public function paymentable(){
-        return $this->morphTo();
+    public function orders(){
+        return $this->hasMany(Order::class);
     }
 }
