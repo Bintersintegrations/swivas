@@ -23,8 +23,9 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    public function showRegistrationForm()
+    public function showRegistrationForm($slug = null)
     {
+        if($slug) session(['referrer' => $slug]);
         return view('frontend.outside.auth.register');
     }
 
@@ -47,7 +48,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // dd($data);
+        $referrer = null;
+        if($request->session()->has('referrer')){
+            $referrer = User::where('slug',session('referrer'))->first()->id;
+        }
+            
         $role = Role::where('name','user')->first();
         $info = $this->getLocation();
         $user = User::create([
@@ -61,6 +66,7 @@ class RegisterController extends Controller
             'state_id' => $info['state_id'], 
             'city_id' => $info['city_id'], 
             'role_id' => $role->id, 
+            'parent_id' => $referrer, 
         ]);
         return $user;
     }

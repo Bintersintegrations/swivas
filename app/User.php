@@ -17,14 +17,15 @@ use App\PasswordHistory;
 use Illuminate\Notifications\Notifiable;
 use App\Http\Traits\RecursiveRelationships;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes,RecursiveRelationships;
+    use Notifiable, SoftDeletes,RecursiveRelationships,Sluggable;
     protected $fillable = [
-        'firstname','surname','email','mobile','password','timezone','currency_id','country_id','state_id','city_id','role_id'
+        'firstname','surname','email','mobile','password','timezone','currency_id','country_id','state_id','city_id','role_id','parent_id'
     ];
 
     /**
@@ -49,6 +50,16 @@ class User extends Authenticatable
     {
         parent::boot();
         parent::observe(new \App\Observers\UserObserver);
+    }
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => ['surname','firstname'],
+                'separator' => '_'
+            ]
+        ];
     }
 
     public function routeNotificationForNexmo($notification)

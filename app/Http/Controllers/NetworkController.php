@@ -12,6 +12,8 @@ class NetworkController extends Controller
     public function dashboard()
     {
         $user = Auth::user();
+        // $user = \App\User::find(3);
+        // dd($user->nestedChildren()->get());
         return view('frontend.inside.user.network',compact('user'));
     }
 

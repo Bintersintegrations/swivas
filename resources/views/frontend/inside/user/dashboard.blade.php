@@ -38,8 +38,8 @@
                                 </div>
                                 <div class="media-body">
                                     <span class="m-0">Earnings</span>
-                                    <h3 class="mb-0">$ <span class="counter">6659</span>
-                                        <small class="small"> This Month</small>
+                                    <h3 class="mb-0">{{$user->country->currency_symbol}} <span class="counter">{{$user->wallet}}</span>
+                                        
                                     </h3>
                                 </div>
                             </div>

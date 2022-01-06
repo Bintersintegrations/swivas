@@ -111,72 +111,127 @@ div,ul,li {margin: 0; padding: 0;}
                                     <h3>My Downlines   </h3>
                                     {{-- <a href="#" class="btn btn-sm btn-solid">add product</a> --}}
                                 </div>
-                                <div class="tree">
-                                    <ul>
-                                        <li>
-                                            <a href="#">Shafayat Sabbat</a>
+                                <p>Copy and share link for people to register and become your downlines</p>
+                                <div class="input-group mb-3">
+                                    <input type="text" name="link" id="link" class="form-control" value="{{route('register')}}/{{$user->slug}}">
+                                    <button class="btn btn-danger" onclick="document.getElementById('link').select(); document.execCommand('copy');" >Copy</button>
+                                </div>
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Downlines</a>
+                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Notifications</a>
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                        <div class="tree">
                                             <ul>
                                                 <li>
-                                                    <a href="#">Shafayat Hossain</a>
+                                                    <a href="#">ME</a>
+                                                    
                                                     <ul>
+                                                        @forelse($user->children()->get() as $child)
                                                         <li>
-                                                            <a href="#">A1</a>
+                                                            <a href="#">{{$child->name}}</a>
+                                                            
                                                             <ul>
+                                                                @forelse($child->children()->get() as $grandChild)
                                                                 <li>
-                                                                    <a href="#">A11</a>
+                                                                    <a href="#">{{$grandChild->name}}</a>
+                                                                    <ul>
+                                                                        @forelse($grandChild->children()->get() as $greatGrandChild)
+                                                                        <li>
+                                                                            <a href="#">{{$greatGrandChild->name}}</a>
+                                                                            <ul>
+                                                                                @forelse($greatGrandChild->children()->get() as $descendant)
+                                                                                <li>
+                                                                                    <a href="#">{{$descendant->name}}</a>   
+                                                                                </li>
+                                                                                @empty
+                                                                                @endforelse
+                                                                                
+                                                                            </ul>
+                                                                        </li>
+                                                                        @empty
+                                                                        @endforelse
+                                                                        
+                                                                    </ul>
                                                                 </li>
-                                                                <li>
-                                                                    <a href="#">A12</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">A13</a>
-                                                                </li>
+                                                                @empty
+                                                                @endforelse
                                                             </ul>
                                                         </li>
-                                                        <li>
-                                                            <a href="#">A2</a>
+                                                        @empty 
+                                                        No downlines
+                                                        @endforelse
+                                                        {{-- <li>
+                                                            <a href="#">Shafayat Hossain</a>
                                                             <ul>
                                                                 <li>
-                                                                    <a href="#">A21</a>
+                                                                    <a href="#">B1</a>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <a href="#">B11</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#">B12</a>
+                                                                        </li>
+                                                                    </ul>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#">A22</a>
+                                                                    <a href="#">B2</a>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <a href="#">B21</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#">B22</a>
+                                                                        </li>
+                                                                    </ul>
                                                                 </li>
                                                             </ul>
-                                                        </li>
+                                                        </li> --}}
                                                     </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Shafayat Hossain</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">B1</a>
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="#">B11</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">B12</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">B2</a>
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="#">B21</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">B22</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
+                                                    
                                                 </li>
                                             </ul>
-                                        </li>
-                                    </ul>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                        <div class="card dashboard-table">
+                                            <div class="card-body">
+                                                <h3>trending products</h3>
+                                                <table class="table mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Date</th>
+                                                            <th scope="col">Description</th>
+                                                            <th scope="col">Balance</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">24-Dec-2020</th>
+                                                            <td>neck velvet dress</td>
+                                                            <td>1000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">25-Dec-2021</th>
+                                                            <td>belted trench coat</td>
+                                                            <td>800</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">25-Dec-2022</th>
+                                                            <td>man print tee</td>
+                                                            <td>750</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                
                                 
                             </div>
                         </div>
