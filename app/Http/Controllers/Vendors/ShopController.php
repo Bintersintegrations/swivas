@@ -8,13 +8,13 @@ use App\Shop;
 use App\State;
 use App\Country;
 use App\Category;
-use App\Logistic;
 use App\BankAccount;
 use Illuminate\Http\Request;
 use App\Http\Requests\ShopRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\CreateUserTrait;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class ShopController extends Controller
 {

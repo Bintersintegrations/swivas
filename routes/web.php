@@ -2,7 +2,7 @@
 
 Route::get('/','HomeController@index')->name('index');
 Route::get('shops','Vendors\ShopController@list')->name('shop.list');
-Route::get('register/{slug?}','RegisterController@showRegistrationForm');
+Route::get('referer/{slug?}','Auth\RegisterController@showRegistrationForm')->name('referer');
 // Route::get('woocommerce/products','HomeController@woocommerce');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

@@ -113,7 +113,7 @@ div,ul,li {margin: 0; padding: 0;}
                                 </div>
                                 <p>Copy and share link for people to register and become your downlines</p>
                                 <div class="input-group mb-3">
-                                    <input type="text" name="link" id="link" class="form-control" value="{{route('register')}}/?referer='{{$user->slug}}'">
+                                    <input type="text" name="link" id="link" class="form-control" value="{{route('referer',$user->slug)}}">
                                     <button class="btn btn-danger" onclick="document.getElementById('link').select(); document.execCommand('copy');" >Copy</button>
                                 </div>
                                 <nav>
