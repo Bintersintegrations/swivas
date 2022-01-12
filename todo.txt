@@ -10,6 +10,7 @@ if you delete attributes, remove the attributes from product
 if you delete categories, delete the cat from products
 you can only buy in your local country
 
+remove items from wishlist after purchase
 
 ON CHECKOUT PAGE
 Put: confirm pickup details..

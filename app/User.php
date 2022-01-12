@@ -11,6 +11,7 @@ use App\Order;
 use App\State;
 use App\Address;
 use App\Country;
+use App\Wishlist;
 use App\Message;
 use App\Payment;
 use App\PasswordHistory;
@@ -116,6 +117,9 @@ class User extends Authenticatable
  
     public function posts(){
         return $this->hasMany(Post::class);
+    }
+    public function wishlists(){
+        return $this->hasMany(Wishlist::class);
     }
     public function shops(){
         return $this->hasMany(Shop::class);

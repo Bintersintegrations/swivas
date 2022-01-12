@@ -28,7 +28,7 @@
                             <li class="w-100 owner"><a href="#owner" data-toggle="tab">Owner</a></li>
                             <li class="w-100 details"><a href="#details" data-toggle="tab">Details</a></li>
                             <li class="w-100 address"><a href="#address" data-toggle="tab">Location</a></li>
-                            <li class="w-100 identification"><a href="#identification" data-toggle="tab">Logistics</a></li>
+                            {{-- <li class="w-100 identification"><a href="#identification" data-toggle="tab">Logistics</a></li> --}}
                             <li class="w-100 bankaccount"><a href="#bankaccount" data-toggle="tab">Bank Account</a></li>
                         </ul>
                     </div>
@@ -66,8 +66,12 @@
                                     </div>
                                     <div class="welcome-msg">
                                         
-                                        <p>Your are about to start making lots of money from sales. Let's help you get started with a few setup functionalities to jumpstart your experience on Swivas-Marketplace.
-                                            This setup process includes your profile completion, accesspin, bank acccount, identity verification.</p>
+                                        <p>
+                                            You are about to increase your sales and customer base through Swivas. 
+                                            To jumpstart your experience, the setup process includes completion of your 
+                                            profile, identity verification and bank account details. 
+                                            To continue, please read and accept the shop agreement.
+                                        </p>
                                     </div>
                                     <div class="box-account box-info">
                                         {{-- <div class="box-head">
@@ -118,11 +122,11 @@
                             <div class="dashboard-right tab-content">
                                 <div class="dashboard">
                                     <div class="page-title">
-                                        <h2>Owner Details</h2>
+                                        <h2>Details of Shop Owner</h2>
                                     </div>
-                                    <div class="welcome-msg">
+                                    {{-- <div class="welcome-msg">
                                         <p>With an something your transactions and operations are authenticated to confirm its really you that is performing those actions. Please choose an accesspin that is hard to guess and do not share it with anyone, including us.</p>
-                                    </div>
+                                    </div> --}}
                                     <div class="box-account box-info my-3">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -172,9 +176,9 @@
                                     <div class="page-title">
                                         <h2>Contact Person</h2>
                                     </div>
-                                    <div class="welcome-msg">
+                                    {{-- <div class="welcome-msg">
                                         <p>With an something your transactions and operations are authenticated to confirm its really you that is performing those actions. Please choose an accesspin that is hard to guess and do not share it with anyone, including us.</p>
-                                    </div>
+                                    </div> --}}
                                     <div class="box-account box-info my-3">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -359,81 +363,7 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="tab-pane fade" id="identification" role="tabpanel">
-                            <div class="dashboard-right tab-content">
-                                <div class="dashboard">
-                                    <div class="page-title">
-                                        <h2>Delivery Details</h2>
-                                    </div>
-                                    <div class="welcome-msg">
-                                        <p>With an something your transactions and operations are authenticated to confirm its really you that is performing those actions. Please choose an accesspin that is hard to guess and do not share it with anyone, including us.</p>
-                                    </div>
-                                    <div class="box-account box-info my-3">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="delivery_company_name_1" class="form-label">Logistic Company Name</label>
-                                                    <input type="text" name="delivery_company_name[]" class="form-control" id="delivery_company_name_1" placeholder="Delivery Company">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="delivery_man_name_1" class="form-label">Delivery Personnel Name</label>
-                                                    <input type="text" name="delivery_username[]" class="form-control" id="delivery_man_name_1" placeholder="Delivery Personnel" >
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="delivery_man_phone_1" class="form-label">Delivery Personnel Phone</label>
-                                                    <input type="text" name="delivery_phone[]"  class="form-control" id="delivery_man_phone_1" placeholder="Delivery Person Mobile number" >
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="delivery_man_id_1">Upload Delivery Person's ID</label>
-                                                    <input type="file" name="delivery_id[]" class="form-control" id="delivery_man_id_1" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="delivery_company_name_2" class="form-label">Logistic Company Name</label>
-                                                    <input type="text" name="delivery_company_name[]" class="form-control" id="delivery_company_name_2" placeholder="Delivery Company">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="delivery_man_name_2" class="form-label">Delivery Personnel Name</label>
-                                                    <input type="text" name="delivery_username[]" class="form-control" id="delivery_man_name_2" placeholder="Delivery Personnel" >
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="delivery_man_phone_2" class="form-label">Delivery Personnel Phone</label>
-                                                    <input type="text" name="delivery_phone[]" class="form-control" id="delivery_man_phone_2" placeholder="Delivery Person Mobile number" >
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="delivery_man_id_2">Upload Delivery Person's ID</label>
-                                                    <input type="file" name="delivery_id[]" class="form-control" id="delivery_man_id_2" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <button type="button" class="btn btn-primary previous" id="goto-welcome">previous</button>
-                                        <button type="button" class="btn btn-dark next float-right" id="goto-details">next</button>
-                                            
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+ 
                         <div class="tab-pane fade" id="bankaccount" role="tabpanel">
                             <div class="dashboard-right tab-content">
                                 <div class="dashboard">

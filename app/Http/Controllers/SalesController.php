@@ -57,21 +57,26 @@ class SalesController extends Controller
     }
 
     public function wishlist(){
-        return view('frontend.outside.sale.wishlist');
+        $user = Auth::user();
+        $wishlists = $user->wishlists;
+        return view('frontend.outside.sale.wishlist',compact('wishlists'));
     }
     public function orders(){
         $user = Auth::user();
         $orders = $user->orders;
         return view('frontend.inside.user.orders',compact('orders'));
     }
+
     public function orderDetails(Order $order){
         return view('frontend.inside.user.orderDetails',compact('order'));
     }
+
     public function orderStatus(Order $order,Request $request){
         $order->status = $request->status;
         $order->save();
         return redirect()->back();
     }
+
     public function review(Order $order,Request $request){
         if($request->product_id == 'all'){
             foreach($order->details as $detail){
@@ -82,6 +87,7 @@ class SalesController extends Controller
         }
         return redirect()->back();
     }
+    
     public function createReview($user,$body,$rating,$product,$order){
         $review = Review::create(['user_id'=> $user,'body'=> $body,'product_id'=> $product,'order_id'=> $order]);
     }

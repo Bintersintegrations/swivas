@@ -46,8 +46,7 @@
                 <h3>New Member</h3>
                 <div class="theme-card authentication-right">
                     <h6 class="title-font">Create An Account</h6>
-                    <p>Sign up for a free account at Swivas.  
-                        As a member, you earn points each time you shop here. 
+                    <p>Smart people shop at Swivas! Sign up for a free account.  As a member, you earn points each time you shop here. 
                         You earn additional points when you refer friends and family to shop with us. 
                         To become a member, create an account.</p>
                         <a href="{{route('register')}}" class="btn btn-solid">Create an Account</a>

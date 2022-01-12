@@ -17,16 +17,17 @@ class ProductThreadController extends Controller
     use CartTrait,WishlistTrait;
     
     public function list(){
-        if(Auth::check()){
-            $state_id = Auth::user()->state_id;
+        // if(Auth::check()){
+        //     $state_id = Auth::user()->state_id;
             
-        }else{
-            $info = Cache::get(request()->ip());
-            $state_id = $info['state_id'];
-        } 
-        $products = Product::whereHas('shop', function ($query) use($state_id) {
-            $query->where('state_id', $state_id);
-        })->get();
+        // }else{
+        //     $info = Cache::get(request()->ip());
+        //     $state_id = $info['state_id'];
+        // } 
+        // $products = Product::whereHas('shop', function ($query) use($state_id) {
+        //     $query->where('state_id', $state_id);
+        // })->get();
+        $products = Product::all();
         $category_ids = $products->pluck('categories')->collapse()->unique()->toArray();
         $categories = Category::whereIn('id',$category_ids)->get();
         return view('frontend.outside.product.list',compact('products','categories'));
@@ -66,7 +67,15 @@ class ProductThreadController extends Controller
         if(!$product)
         abort(404);
         $wish = $this->addWishlist($product);
-        return response()->json(['wish_count'=> count((array)$wish)],200);
+        return response()->json(['wish_count'=> $wish],200);
+    }
+
+    public function removefromwish(Request $request){
+        $product = Product::find($request->product_id);
+        if(!$product)
+        abort(404);
+        $wish = $this->removeWishlist($product);
+        return response()->json(['wish_count'=> $wish],200);
     }
     
 }

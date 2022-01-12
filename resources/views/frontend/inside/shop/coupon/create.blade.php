@@ -27,11 +27,11 @@
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="form-group row">
-                                                            <label for="title" class="col-xl-3 col-md-4"><span>*</span> Coupan Title</label>
+                                                            <label for="title" class="col-xl-3 col-md-4"><span>*</span> Coupon Title</label>
                                                             <input class="form-control col-md-7" id="title" name="name" type="text" required="">
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="code" class="col-xl-3 col-md-4"><span>*</span>Coupan Code</label>
+                                                            <label for="code" class="col-xl-3 col-md-4"><span>*</span>Coupon Code</label>
                                                             <input class="form-control col-md-7" id="code" name="code" type="text" required="" >
                                                             <div class="valid-feedback">Please Provide a Valid Coupon Code.</div>
                                                         </div>
