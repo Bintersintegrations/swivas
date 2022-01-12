@@ -113,7 +113,7 @@ div,ul,li {margin: 0; padding: 0;}
                                 </div>
                                 <p>Copy and share link for people to register and become your downlines</p>
                                 <div class="input-group mb-3">
-                                    <input type="text" name="link" id="link" class="form-control" value="{{route('register')}}/{{$user->slug}}">
+                                    <input type="text" name="link" id="link" class="form-control" value="{{route('register')}}/?referer='{{$user->slug}}'">
                                     <button class="btn btn-danger" onclick="document.getElementById('link').select(); document.execCommand('copy');" >Copy</button>
                                 </div>
                                 <nav>
@@ -200,7 +200,7 @@ div,ul,li {margin: 0; padding: 0;}
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                         <div class="card dashboard-table">
                                             <div class="card-body">
-                                                <h3>trending products</h3>
+                                                
                                                 <table class="table mb-0">
                                                     <thead>
                                                         <tr>
