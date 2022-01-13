@@ -111,7 +111,7 @@
                                     <li class="onhover-div mobile-setting">
                                         <div>
                                             <img src="{{asset('assets/images/icon/setting-1.png')}}" class="img-fluid blur-up lazyloaded" alt=""> 
-                                            <i class="ti-settings"></i>
+                                            <i class="ti-location-pin"></i>
                                         </div>
                                         <div class="show-div setting">
                                             <h6>Location</h6>

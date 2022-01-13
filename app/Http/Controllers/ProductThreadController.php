@@ -17,20 +17,21 @@ class ProductThreadController extends Controller
     use CartTrait,WishlistTrait;
     
     public function list(){
-        // if(Auth::check()){
-        //     $state_id = Auth::user()->state_id;
+        if(Auth::check()){
+            $state_id = Auth::user()->state_id;
             
-        // }else{
-        //     $info = Cache::get(request()->ip());
-        //     $state_id = $info['state_id'];
-        // } 
-        // $products = Product::whereHas('shop', function ($query) use($state_id) {
-        //     $query->where('state_id', $state_id);
-        // })->get();
-        $products = Product::all();
+        }else{
+            $info = Cache::get(request()->ip());
+            $state_id = $info['state_id'];
+        } 
+        $products = Product::whereHas('shop', function ($query) use($state_id) {
+            $query->where('state_id', $state_id);
+        })->get();
+        $attributes = array_filter($products->pluck('atributes')->collapse()->unique()->toArray());
         $category_ids = $products->pluck('categories')->collapse()->unique()->toArray();
         $categories = Category::whereIn('id',$category_ids)->get();
-        return view('frontend.outside.product.list',compact('products','categories'));
+        // dd($attributes);
+        return view('frontend.outside.product.list',compact('products','categories','attributes'));
     }
 
     public function view(Product $product){

@@ -1,5 +1,7 @@
 @extends('layouts.frontend.app')
 @push('styles')
+    
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/custom.css')}}">
     <!-- Price range icon -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/price-range.css')}}">
     <style>
@@ -19,39 +21,28 @@
                     <!-- side-bar colleps block stat -->
                     <div class="collection-filter-block">
                         <!-- brand filter start -->
-                        <div class="collection-mobile-back"><span class="filter-back"><i class="fa fa-angle-left"
-                                    aria-hidden="true"></i> back</span></div>
+                        <div class="collection-mobile-back">
+                            <span class="filter-back"><i class="fa fa-angle-left" aria-hidden="true"></i> back </span>
+                        </div>
                         <div class="collection-collapse-block open">
                             <h3 class="collapse-block-title">Categories</h3>
                             <div class="collection-collapse-block-content">
                                 <div class="collection-brand-filter">
-                                    @foreach ($categories as $category)
+                                    @forelse ($categories as $category)
                                         <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="{{$category->slug}}" name="{{$category->slug}}" >
+                                            <input type="checkbox" class="custom-control-input" id="{{$category->slug}}" name="categories[]" >
                                             <label class="custom-control-label" for="{{$category->slug}}">{{$category->name}}</label>
                                         </div>
-                                    @endforeach
+                                    @empty
+                                
+                                    @endforelse
                                     
-                                    {{-- <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="vera-moda">
-                                        <label class="custom-control-label" for="vera-moda">vera-moda</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="forever-21">
-                                        <label class="custom-control-label" for="forever-21">forever-21</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="roadster">
-                                        <label class="custom-control-label" for="roadster">roadster</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="only">
-                                        <label class="custom-control-label" for="only">only</label>
-                                    </div> --}}
+                                    
                                 </div>
                             </div>
                         </div>
                         <!-- color filter start here -->
+                        @if(array_key_exists('color',$attributes))
                         <div class="collection-collapse-block open">
                             <h3 class="collapse-block-title">colors</h3>
                             <div class="collection-collapse-block-content">
@@ -68,6 +59,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         <!-- size filter start here -->
                         <div class="collection-collapse-block border-0 open">
                             <h3 class="collapse-block-title">size</h3>
