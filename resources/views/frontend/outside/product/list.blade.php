@@ -48,13 +48,12 @@
                             <div class="collection-collapse-block-content">
                                 <div class="color-selector">
                                     <ul>
-                                        <li class="color-1 active"></li>
-                                        <li class="color-2"></li>
-                                        <li class="color-3"></li>
-                                        <li class="color-4"></li>
-                                        <li class="color-5"></li>
-                                        <li class="color-6"></li>
-                                        <li class="color-7"></li>
+                                        @foreach ($attributes['color'] as $color)
+                                            <li class="" style="background-color:{{$color}}" title="{{$color}}">
+                                                <input type="hidden" name="attributes['color']" value="{{$color}}">
+                                            </li>
+                                        @endforeach
+                                        
                                     </ul>
                                 </div>
                             </div>
