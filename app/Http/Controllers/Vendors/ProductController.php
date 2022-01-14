@@ -71,15 +71,42 @@ class ProductController extends Controller
         $product->quantity = $request->quantity;
         $product->min_qty = $request->min_qty;
         $product->max_qty = $request->max_qty;
-        if($request->offer){
+        if($request->offer & $request->start_date & $request->end_date){
             $product->sale_price = $request->sale_price;
             $product->sale_from = Carbon::createFromFormat('m/d/Y',$request->start_date);
             $product->sale_to = Carbon::createFromFormat('m/d/Y',$request->end_date);
         }   
-        if($request->save == 'publish')
-            $product->status = $request->save;
+        
+        $product->status = $request->save;
         $product->save();
         return redirect()->route('shop.products',$shop)->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=> 'Product created successfully']);
+    }
+
+    public function update(Shop $shop,Product $product,Request $request){
+        // dd($request->all());
+        if($request->name) $product->name = $request->name;
+        if($request->description) $product->description = $request->description;
+        if($request->images) $product->images = $request->images;
+        if($request->video) $product->video = $request->video;
+        if($request->categories) $product->categories = $request->categories;
+        $product->atributes = $request->input('atributes');
+        if($request->group)
+            $product->grouped_products = $request->group_items;
+        if($request->bought_together)
+            $product->bought_together = $request->bought_together;
+        if($request->related)
+            $product->related = $request->related;
+        if($request->price) $product->price = $request->price;
+        if($request->quantity) $product->quantity = $request->quantity;
+        if($request->offer & $request->start_date & $request->end_date){
+            $product->sale_price = $request->sale_price;
+            $product->sale_from = Carbon::createFromFormat('m/d/Y',$request->start_date);
+            $product->sale_to = Carbon::createFromFormat('m/d/Y',$request->end_date);
+        }   
+        $product->status = $request->save;
+        $product->save();
+
+        return redirect()->route('shop.products',$shop)->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=> 'Product updated successfully']);
     }
 
     public function variant(Shop $shop,Product $product){
@@ -114,34 +141,6 @@ class ProductController extends Controller
         $categories = Category::all();
         $atributes = Atribute::all();
         return view('frontend.inside.shop.product.edit',compact('shop','categories','atributes','product'));
-    }
-
-    public function update(Shop $shop,Product $product,Request $request){
-        
-        if($request->name) $product->name = $request->name;
-        if($request->description) $product->description = $request->description;
-        if($request->images) $product->images = $request->images;
-        if($request->video) $product->video = $request->video;
-        if($request->categories) $product->categories = $request->categories;
-        $product->atributes = $request->input('atributes');
-        if($request->group)
-            $product->grouped_products = $request->group_items;
-        if($request->bought_together)
-            $product->bought_together = $request->bought_together;
-        if($request->related)
-            $product->related = $request->related;
-        if($request->price) $product->price = $request->price;
-        if($request->quantity) $product->quantity = $request->quantity;
-        if($request->offer){
-            $product->sale_price = $request->sale_price;
-            $product->sale_from = Carbon::createFromFormat('m/d/Y',$request->start_date);
-            $product->sale_to = Carbon::createFromFormat('m/d/Y',$request->end_date);
-        }   
-        if($request->save == 'draft')
-            $product->status = $request->save;
-        $product->save();
-
-        return redirect()->route('shop.products',$shop)->with(['flash_type' => 'success','flash_title' => 'Success','flash_msg'=> 'Product updated successfully']);
     }
 
     public function delete(Shop $shop,Product $product,Request $request){

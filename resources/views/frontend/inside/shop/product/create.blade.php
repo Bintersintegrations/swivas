@@ -132,7 +132,7 @@
                                                 <div class="row no-gutters">
                                                     <div class="col-12">
                                                         <div class="form-check pl-0">
-                                                            <input class="radio_animated form-check-input mt-1 " type="checkbox" name="offer" id="offer" value="1">
+                                                            <input class="radio_animated form-check-input mt-1" type="checkbox" name="offer" id="offer" value="1">
                                                             <label class="form-check-label" for="offer">
                                                                 Add Offers / Promo Price
                                                             </label>

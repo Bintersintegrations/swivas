@@ -76,10 +76,10 @@
                         <div class="collection-collapse-block-content">
                             <div class="collection-brand-filter">
                                 @foreach ($shop->categories() as $category)
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="zara">
-                                        <label class="custom-control-label" for="zara">{{$category->name}}</label>
-                                    </div>
+                                <div class="custom-control custom-checkbox collection-filter-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="{{$category->slug}}" name="categories[]" value="{{$category->id}}">
+                                    <label class="custom-control-label" for="{{$category->slug}}">{{$category->name}}</label>
+                                </div>
                                 @endforeach
                                 
                                 {{-- <div class="custom-control custom-checkbox collection-filter-checkbox">

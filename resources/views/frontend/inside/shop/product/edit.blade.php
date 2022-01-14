@@ -85,7 +85,7 @@
                                                     <div class=" mb-3 col-4">
                                                         <label for="offer_price" class="mb-0 mr-1">Price :</label>
                                                         <div class="input-group mb-3 px-0">
-                                                            <input type="number" name="sale_price" value="0" id="offer_price" class="form-control ">
+                                                            <input type="number" name="sale_price" value="{{$product->sale_price}}" id="offer_price" class="form-control ">
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text">{{$shop->country->currency_symbol}}</span>
                                                             </div>
@@ -93,11 +93,11 @@
                                                     </div>
                                                     <div class="form-group col-4 ">
                                                         <label class="mb-0 mr-1">Start Date:</label>
-                                                        <input class="form-control" type="text" value="" name="start_date" id="start_date">
+                                                        <input class="form-control" type="text" value="{{$product->sale_from ? $product->sale_from->format('m/d/Y') :''}}" name="start_date" id="start_date">
                                                     </div>
                                                     <div class="form-group col-4 ">
                                                         <label class="mb-0 mr-1">End Date:</label>
-                                                        <input class="form-control" type="text" value="" name="end_date" id="end_date">
+                                                        <input class="form-control" type="text" value="{{$product->sale_to ?  $product->sale_to->format('m/d/Y') :''}}" name="end_date" id="end_date">
                                                     </div>
                                                 </div>
                                                 <div class="row">

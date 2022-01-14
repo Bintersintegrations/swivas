@@ -12,7 +12,8 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Product extends Model
 {   
     use Sluggable;
-    protected $casts = ['images'=> 'array','categories'=> 'array', 'atributes'=> 'array', 'grouped_products'=> 'array','bought_together'=> 'array','related'=> 'array'];
+    protected $casts = ['images'=> 'array','categories'=> 'array', 'atributes'=> 'array', 
+    'grouped_products'=> 'array','bought_together'=> 'array','related'=> 'array','sale_from'=> 'datetime','sale_to'=> 'datetime'];
     protected $fillable = [
         'shop_id','quantity','images','price','slug'
     ];

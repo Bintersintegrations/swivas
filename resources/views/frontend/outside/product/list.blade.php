@@ -24,83 +24,42 @@
                         <div class="collection-mobile-back">
                             <span class="filter-back"><i class="fa fa-angle-left" aria-hidden="true"></i> back </span>
                         </div>
-                        <div class="collection-collapse-block open">
-                            <h3 class="collapse-block-title">Categories</h3>
-                            <div class="collection-collapse-block-content">
-                                <div class="collection-brand-filter">
-                                    @forelse ($categories as $category)
-                                        <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="{{$category->slug}}" name="categories[]" >
-                                            <label class="custom-control-label" for="{{$category->slug}}">{{$category->name}}</label>
+                        <form id="categories_selection" action="{{route('products')}}" method="GET">
+                            <div class="collection-collapse-block open">
+                                <h3 class="collapse-block-title">Categories</h3>
+                                <div class="collection-collapse-block-content">
+                                    <div class="collection-brand-filter">
+                                        @forelse ($categories as $category)
+                                            <div class="custom-control custom-checkbox collection-filter-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="{{$category->slug}}" name="categories[]" value="{{$category->id}}">
+                                                <label class="custom-control-label" for="{{$category->slug}}">{{$category->name}}</label>
+                                            </div>
+                                        @empty
+                                    
+                                        @endforelse
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- price filter start here -->
+                            <div class="collection-collapse-block border-0 open">
+                                <h3 class="collapse-block-title">price</h3>
+                                <div class="collection-collapse-block-content">
+                                    <div class="wrapper mt-3">
+                                        <div class="range-slider">
+                                            <input type="text" name="price" class="js-range-slider" value="" data-min="0" data-max="{{$price['max']}}" data-from="0" data-to="{{$price['max']}}" data-grid="true"/>
                                         </div>
-                                    @empty
-                                
-                                    @endforelse
-                                    
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <!-- color filter start here -->
-                        @if(array_key_exists('color',$attributes))
-                        <div class="collection-collapse-block open">
-                            <h3 class="collapse-block-title">colors</h3>
-                            <div class="collection-collapse-block-content">
-                                <div class="color-selector">
-                                    <ul>
-                                        @foreach ($attributes['color'] as $color)
-                                            <li class="" style="background-color:{{$color}}" title="{{$color}}">
-                                                <input type="hidden" name="attributes['color']" value="{{$color}}">
-                                            </li>
-                                        @endforeach
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
-                        <!-- size filter start here -->
-                        <div class="collection-collapse-block border-0 open">
-                            <h3 class="collapse-block-title">size</h3>
-                            <div class="collection-collapse-block-content">
-                                <div class="collection-brand-filter">
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="hundred">
-                                        <label class="custom-control-label" for="hundred">s</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="twohundred">
-                                        <label class="custom-control-label" for="twohundred">m</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="threehundred">
-                                        <label class="custom-control-label" for="threehundred">l</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="fourhundred">
-                                        <label class="custom-control-label" for="fourhundred">xl</label>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- price filter start here -->
-                        <div class="collection-collapse-block border-0 open">
-                            <h3 class="collapse-block-title">price</h3>
-                            <div class="collection-collapse-block-content">
-                                <div class="wrapper mt-3">
-                                    <div class="range-slider">
-                                        <input type="text" class="js-range-slider" value="" />
-                                    </div>
-                                </div>
+                            <div class="text-center mb-2">
+                                <button type="submit" class="btn btn-primary">Filter</button>
                             </div>
-                        </div>
-                        <div class="text-center mb-2">
-                            <button class="btn btn-primary">Filter</button>
-                        </div>
+                        </form>
                     </div>
                     <!-- silde-bar colleps block end here -->
                     <!-- side-bar single product slider start -->
-                    <div class="theme-card">
+                    {{-- <div class="theme-card">
                         <h5 class="title-border">new product</h5>
                         <div class="offer-slider slide-1">
                             <div>
@@ -168,12 +127,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- side-bar single product slider end -->
                     <!-- side-bar banner start here -->
-                    <div class="collection-sidebar-banner">
+                    {{-- <div class="collection-sidebar-banner">
                         <a href="#"><img src="../assets/images/side-banner.png" class="img-fluid blur-up lazyload" alt=""></a>
-                    </div>
+                    </div> --}}
                     <!-- side-bar banner end here -->
                 </div>
                 <div class="collection-content col">
@@ -210,20 +169,20 @@
                                                         </ul>
                                                     </div>
                                                     <div class="product-page-per-view">
-                                                        <select>
-                                                            <option value="High to low">24 Products Par Page
+                                                        <select name="perpage" id="perpage">
+                                                            <option value="24">24 Products Par Page
                                                             </option>
-                                                            <option value="Low to High">50 Products Par Page
+                                                            <option value="50">50 Products Par Page
                                                             </option>
-                                                            <option value="Low to High">100 Products Par Page
+                                                            <option value="100">100 Products Par Page
                                                             </option>
                                                         </select>
                                                     </div>
                                                     <div class="product-page-filter">
-                                                        <select>
-                                                            <option value="High to low">Sorting items</option>
-                                                            <option value="Low to High">50 Products</option>
-                                                            <option value="Low to High">100 Products</option>
+                                                        <select name="sort" id="perpage">
+                                                            <option value="sorting" selected disabled>Sorting items</option>
+                                                            <option value="asc">Price: Low to High</option>
+                                                            <option value="desc">Price: High to Low</option>
                                                         </select>
                                                     </div>
                                                 </div>

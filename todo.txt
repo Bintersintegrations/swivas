@@ -1,14 +1,13 @@
 VARIANT {price, quantity, }
 
-
-1. remove attributes after category selection
+1. pagination on product listing pages
 2 .product page
-3. public shop categories list
-4. add variant page
+3. copy product filter for shop view page products 
+4. add duplicate product button
 5. add attributes to product database.. delete product_attributes'
 if you delete attributes, remove the attributes from product
 if you delete categories, delete the cat from products
-you can only buy in your local country
+
 
 remove items from wishlist after purchase
 
@@ -35,8 +34,6 @@ emails
 followership
 subscriptions
 blog admin, blog vendor, blog user
-
-
 
 
 bring message list

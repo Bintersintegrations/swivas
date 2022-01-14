@@ -49,7 +49,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $referrer = null;
-        if($request->session()->has('referrer')){
+        if(request()->session()->has('referrer')){
             $referrer = User::where('slug',session('referrer'))->first()->id;
         }
             
