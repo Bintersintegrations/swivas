@@ -35,7 +35,7 @@
                                                 <label class="custom-control-label" for="{{$category->slug}}">{{$category->name}}</label>
                                             </div>
                                         @empty
-                                    
+                                            
                                         @endforelse
                                     </div>
                                 </div>
@@ -151,9 +151,11 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="product-filter-content">
-                                                    <div class="search-count">
-                                                        <h5>Showing Products 1-24 of 10 Result</h5>
-                                                    </div>
+                                                    @if($products->isNotEmpty())
+                                                        <div class="search-count">
+                                                            <h5>Showing Products {{$products->firstItem()}}-{{$products->lastItem()}} of {{$products->total()}} Result</h5>
+                                                        </div>
+                                                    @endif
                                                     <div class="collection-view">
                                                         <ul>
                                                             <li><i class="fa fa-th grid-layout-view"></i></li>
@@ -191,7 +193,7 @@
                                     </div>
                                     <div class="product-wrapper-grid">
                                         <div class="row margin-res">
-                                            @foreach($products as $product)
+                                            @forelse($products as $product)
                                                 <div class="col-xl-3 col-6 col-grid-box">
                                                     <div class="product-box product-wrap">
                                                         <div class="img-wrapper">
@@ -241,8 +243,9 @@
                                                     </div>
                                                     
                                                 </div>
-                                            @endforeach
-                                            
+                                            @empty
+                                                <div class="col-12"><p class="text-center my-5">No Products to show</p></div>
+                                            @endforelse
                                         </div>
                                     </div>
                                     <div class="product-pagination">
@@ -251,32 +254,43 @@
                                                 <div class="col-xl-6 col-md-6 col-sm-12">
                                                     <nav aria-label="Page navigation">
                                                         <ul class="pagination">
+                                                            @if(!$products->onFirstPage())
                                                             <li class="page-item">
-                                                                <a class="page-link" href="#" aria-label="Previous">
+                                                                <a class="page-link" href="{{$products->previousPageUrl()}}" aria-label="Previous">
                                                                     <span aria-hidden="true">
                                                                         <i class="fa fa-chevron-left" aria-hidden="true"></i>
                                                                     </span>
                                                                     <span class="sr-only">Previous</span>
                                                                 </a>
                                                             </li>
-                                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                            @endif
+                                                            {{-- <li class="page-item "><a class="page-link" href="{{route('products')}}">1</a></li> --}}
+                                                            @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                                                <li class="page-item @if($products->currentPage() == $i) active @endif">
+                                                                    <a class="page-link" href="{{$products->url($i)}}">{{$i}}</a>
+                                                                </li>
+                                                            @endfor
+                                                            {{-- <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                            <li class="page-item"><a class="page-link" href="#">3</a></li> --}}
+                                                            @if($products->currentPage() != $products->lastPage())
                                                             <li class="page-item">
-                                                                <a class="page-link" href="#" aria-label="Next">
+                                                                <a class="page-link" href="{{$products->nextPageUrl()}}" aria-label="Next">
                                                                     <span aria-hidden="true">
                                                                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                                                                     </span> 
                                                                     <span class="sr-only">Next</span>
                                                                 </a>
                                                             </li>
+                                                            @endif
                                                         </ul>
                                                     </nav>
                                                 </div>
                                                 <div class="col-xl-6 col-md-6 col-sm-12">
+                                                    @if($products->isNotEmpty())
                                                     <div class="product-search-count-bottom">
-                                                        <h5>Showing Products 1-24 of 10 Result</h5>
+                                                        <h5>Showing Products {{$products->firstItem()}}-{{$products->lastItem()}} of {{$products->total()}} Result</h5>
                                                     </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
