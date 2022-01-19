@@ -11,11 +11,11 @@
     </div>
     <div class="faq-tab">
         <ul class="nav nav-tabs" id="top-tab" role="tablist">
-            <li class="nav-item"><a data-toggle="tab" class="nav-link active"
-                    href="{{route('shop.dashboard',$shop)}}">dashboard</a>
+            <li class="nav-item">
+                <a data-toggle="tab" class="nav-link @if(Route::is('shop.dashboard')) active @endif" href="{{route('shop.dashboard',$shop)}}">dashboard</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                <a data-toggle="dropdown" class="nav-link dropdown-toggle @if(Route::is('shop.products') || Route::is('shop.product.create')) active @endif" href="#" id="navbardrop" >
                     Products
                 </a>
                 <div class="dropdown-menu">
@@ -27,8 +27,8 @@
             
             
             
-            <li class="nav-item"><a class="nav-link" href="{{route('shop.orders',$shop)}}">Orders</a>
-            <li class="nav-item"><a class="nav-link" href="{{route('shop.coupons',$shop)}}">Coupon</a>
+            <li class="nav-item"><a class="nav-link @if(Route::is('shop.orders')) active @endif" href="{{route('shop.orders',$shop)}}">Orders</a>
+            <li class="nav-item"><a class="nav-link @if(Route::is('shop.coupons')) active @endif" href="{{route('shop.coupons',$shop)}}">Coupon</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -41,9 +41,9 @@
                 </div>
             </li>
             
-            <li class="nav-item"><a class="nav-link" href="{{route('shop.profile',$shop)}}">profile</a>
+            <li class="nav-item"><a class="nav-link @if(Route::is('shop.profile')) active @endif" href="{{route('shop.profile',$shop)}}">profile</a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="{{route('shop.settings',$shop)}}">settings</a>
+            <li class="nav-item"><a class="nav-link @if(Route::is('shop.settings')) active @endif" href="{{route('shop.settings',$shop)}}">settings</a>
             </li>
             <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout"
                     href="">logout</a>

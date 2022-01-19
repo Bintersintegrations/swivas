@@ -89,7 +89,7 @@
                                             <img src="{{asset('assets/images/icon/white-icon/search.png')}}" onclick="openSearch()" class="img-fluid blur-up lazyload" alt=""> 
                                             <i class="ti-search" onclick="openSearch()"></i>
                                         </div>
-                                        <div id="search-overlay" class="search-overlay">
+                                        <div id="search-overlay" class="search-overlay" >
                                             <div> <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
                                                 <div class="overlay-content">
                                                     <div class="container">
@@ -125,7 +125,8 @@
                                     </li>
                                     <li class="onhover-div mobile-cart">
                                         <div>
-                                            <img src="{{asset('assets/images/icon/shopping-cart.png')}}" class="img-fluid blur-up lazyloaded" alt=""> 
+                                            <img src="{{asset('assets/images/icon/shopping-cart.png')}}" class="img-fluid blur-up lazyloaded" alt="">
+                                            <i class="ti-shopping-cart"></i>
                                             {{-- <span id="cart-notification" class="badge badge-pill badge-primary pull-right" @if(!Session('cart')) style="display:none;" @endif>{{count((array) session('cart'))}}</span> --}}   
                                         </div>
                                         <span class="cart_qty_cls" @if(!Session('cart') || count((array) session('cart')) == 0) style="display:none;" @endif>{{count((array) session('cart'))}}</span>

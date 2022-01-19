@@ -47,13 +47,14 @@
                                 <div class="collection-collapse-block-content">
                                     <div class="wrapper mt-3">
                                         <div class="range-slider">
-                                            <input type="text" name="price" class="js-range-slider" value="" data-min="0" data-max="{{$price['max']}}" data-from="0" data-to="{{$price['max']}}" data-grid="true"/>
+                                            <input type="text" name="price" class="js-range-slider" value="" data-min="0" data-max="{{$products->max('price')}}" data-from="0" data-to="{{$products->max('price')}}" data-grid="true"/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mb-2">
                                 <button type="submit" class="btn btn-primary">Filter</button>
+                                @if(\Illuminate\Support\Str::contains(url()->full(),['?','&']))<a href="{{route('products')}}" class="btn btn-danger">Reset</a>@endif
                             </div>
                         </form>
                     </div>
@@ -171,20 +172,19 @@
                                                         </ul>
                                                     </div>
                                                     <div class="product-page-per-view">
-                                                        <select name="perpage" id="perpage">
-                                                            <option value="24">24 Products Par Page
+                                                        <select class="sort" name="perPage" id="perPage">
+                                                            <option value="24" @if(session('perPage') && session('perPage') == 24) selected @endif>24 Products Par Page
                                                             </option>
-                                                            <option value="50">50 Products Par Page
+                                                            <option value="50" @if(session('perPage') && session('perPage') == 50) selected @endif>50 Products Par Page
                                                             </option>
-                                                            <option value="100">100 Products Par Page
+                                                            <option value="100" @if(session('perPage') && session('perPage') == 100) selected @endif>100 Products Par Page
                                                             </option>
                                                         </select>
                                                     </div>
                                                     <div class="product-page-filter">
-                                                        <select name="sort" id="perpage">
-                                                            <option value="sorting" selected disabled>Sorting items</option>
-                                                            <option value="asc">Price: Low to High</option>
-                                                            <option value="desc">Price: High to Low</option>
+                                                        <select class="sort" name="sortPrice" id="sortPrice">
+                                                            <option value="asc" @if(session('sortPrice') && session('sortPrice') == 'abc') selected @endif>Price: Low to High</option>
+                                                            <option value="desc" @if(session('sortPrice') && session('sortPrice') == 'desc') selected @endif>Price: High to Low</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -435,5 +435,29 @@
             $("#quick-view").modal();
         });
 
+    </script>
+    <script>
+        $(document).on('change','.sort',function(){
+            var perPage = $('#perPage').val();
+            var sortPrice = $('#sortPrice').val();
+            // alert(sortPrice);
+            $.ajax({
+                type:'POST',
+                dataType: 'json',
+                url: "{{route('product.sortFilter')}}",
+                data:{
+                    '_token' : $('meta[name="csrf-token"]').attr('content'),
+                    'perPage': perPage,
+                    'sortPrice': sortPrice
+                },
+                success:function(data) {
+                    window.location.reload()
+                },
+                error: function (data, textStatus, errorThrown) {
+                console.log(data);
+                },
+            });
+
+        });
     </script>
 @endpush

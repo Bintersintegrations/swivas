@@ -7,6 +7,7 @@ use App\City;
 use App\Shop;
 use App\State;
 use App\Country;
+use App\Product;
 use App\Category;
 use App\BankAccount;
 use Illuminate\Http\Request;
@@ -40,7 +41,23 @@ class ShopController extends Controller
     }
     //public view of shop
     public function index(Shop $shop){ 
-        return view('frontend.outside.shop.view',compact('shop'));
+        $products = $shop->products;
+        // dd($products);
+        // dd(request()->query('categories'));
+        if(request()->query() && request()->query('categories')){
+            $cats = request()->query('categories');
+            $products = $products->filter(function($value) use($cats){ 
+                return count(array_intersect($value->categories, $cats)); 
+            });
+        }
+        // dd($products);
+        if(request()->query() && request()->query('price')){
+            $products = $products->whereBetween('price', explode(';',request()->query('price')));
+        }
+        $products = Product::whereIn('id',$products->pluck('id')->toArray())->orderBy('price',session('sortPrice', 'asc'))->paginate(session('perPage', '24'));
+        $category_ids = $products->pluck('categories')->collapse()->unique()->toArray();
+        $categories = Category::whereIn('id',$category_ids)->get();
+        return view('frontend.outside.shop.view',compact('shop','products','categories'));
     }
     
     public function create(){

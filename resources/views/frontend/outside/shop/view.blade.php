@@ -1,6 +1,7 @@
 @extends('layouts.frontend.app')
 @push('styles')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/custom.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/price-range.css')}}">
 @endpush
 @section('main')
 <!-- vendor cover start -->
@@ -69,88 +70,46 @@
                 <!-- side-bar colleps block stat -->
                 <div class="collection-filter-block">
                     <!-- brand filter start -->
-                    <div class="collection-mobile-back"><span class="filter-back"><i class="fa fa-angle-left"
-                                aria-hidden="true"></i> back</span></div>
-                    <div class="collection-collapse-block open">
-                        <h3 class="collapse-block-title">vendor category</h3>
-                        <div class="collection-collapse-block-content">
-                            <div class="collection-brand-filter">
-                                @foreach ($shop->categories() as $category)
-                                <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="{{$category->slug}}" name="categories[]" value="{{$category->id}}">
-                                    <label class="custom-control-label" for="{{$category->slug}}">{{$category->name}}</label>
-                                </div>
-                                @endforeach
-                                
-                                {{-- <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="vera-moda">
-                                    <label class="custom-control-label" for="vera-moda">clothes</label>
-                                </div>
-                                <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="forever-21">
-                                    <label class="custom-control-label" for="forever-21">shoes</label>
-                                </div>
-                                <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="roadster">
-                                    <label class="custom-control-label" for="roadster">accessories</label>
-                                </div>
-                                <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="only">
-                                    <label class="custom-control-label" for="only">beauty products</label>
-                                </div> --}}
-                            </div>
-                        </div>
+                    <div class="collection-mobile-back">
+                        <span class="filter-back"><i class="fa fa-angle-left" aria-hidden="true"></i> back</span>
                     </div>
-                    <!-- color filter start here -->
-                    <div class="collection-collapse-block open">
-                        <h3 class="collapse-block-title">colors</h3>
-                        <div class="collection-collapse-block-content">
-                            <div class="color-selector">
-                                <ul>
-                                    <li class="color-1 active"></li>
-                                    <li class="color-2"></li>
-                                    <li class="color-3"></li>
-                                    <li class="color-4"></li>
-                                    <li class="color-5"></li>
-                                    <li class="color-6"></li>
-                                    <li class="color-7"></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- price filter start here -->
-                    <div class="collection-collapse-block border-0 open">
-                        <h3 class="collapse-block-title">price</h3>
-                        <div class="collection-collapse-block-content">
-                            <div class="collection-brand-filter">
-                                <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="hundred">
-                                    <label class="custom-control-label" for="hundred">$10 - $100</label>
-                                </div>
-                                <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="twohundred">
-                                    <label class="custom-control-label" for="twohundred">$100 - $200</label>
-                                </div>
-                                <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="threehundred">
-                                    <label class="custom-control-label" for="threehundred">$200 - $300</label>
-                                </div>
-                                <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="fourhundred">
-                                    <label class="custom-control-label" for="fourhundred">$300 - $400</label>
-                                </div>
-                                <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="fourhundredabove">
-                                    <label class="custom-control-label" for="fourhundredabove">$400 above</label>
+                    <form id="categories_selection" action="{{route('shop.view',$shop)}}" method="GET">
+                        <div class="collection-collapse-block open">
+                            <h3 class="collapse-block-title">Product category</h3>
+                            <div class="collection-collapse-block-content">
+                                <div class="collection-brand-filter">
+                                    @foreach ($categories as $category)
+                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="{{$category->slug}}" name="categories[]" value="{{$category->id}}">
+                                        <label class="custom-control-label" for="{{$category->slug}}">{{$category->name}}</label>
+                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        
+                        <!-- price filter start here -->
+                        <div class="collection-collapse-block border-0 open">
+                            <h3 class="collapse-block-title">price</h3>
+                            <div class="collection-collapse-block-content">
+                                <div class="wrapper mt-3">
+                                    <div class="range-slider">
+                                        <input type="text" name="price" class="js-range-slider" value="" data-min="0" data-max="{{$products->max('price')}}" data-from="0" data-to="{{$products->max('price')}}" data-grid="true"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mb-2">
+                            <button type="submit" class="btn btn-primary">Filter</button>
+                            @if(\Illuminate\Support\Str::contains(url()->full(),['?','&']))<a href="{{route('shop.view',$shop)}}" class="btn btn-danger">Reset</a>@endif
+                        </div>
+                    </form>
                 </div>
-                <div class="collection-sidebar-banner">
-                    <a href="#"><img src="{{asset('assets/images/side-banner.png')}}" class="img-fluid blur-up lazyload"
-                            alt=""></a>
-                </div>
+                {{-- <div class="collection-sidebar-banner">
+                    <a href="#">
+                        <img src="{{asset('assets/images/side-banner.png')}}" class="img-fluid blur-up lazyload" alt="">
+                    </a>
+                </div> --}}
                 <!-- silde-bar colleps block end here -->
             </div>
             <div class="col">
@@ -159,8 +118,11 @@
                         <div class="page-main-content">
                             <div class="row">
                                 <div class="col-xl-12">
-                                    <div class="filter-main-btn"><span class="filter-btn btn btn-theme"><i
-                                                class="fa fa-filter" aria-hidden="true"></i> Filter</span></div>
+                                    <div class="filter-main-btn">
+                                        <span class="filter-btn btn btn-theme">
+                                            <i class="fa fa-filter" aria-hidden="true"></i> Filter
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="collection-product-wrapper">
@@ -168,9 +130,11 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="product-filter-content">
-                                                <div class="search-count">
-                                                    <h5>Showing Products 1-24 of 10 Result</h5>
-                                                </div>
+                                                @if($products->isNotEmpty())
+                                                    <div class="search-count">
+                                                        <h5>Showing Products {{$products->firstItem()}}-{{$products->lastItem()}} of {{$products->total()}} Result</h5>
+                                                    </div>
+                                                @endif
                                                 <div class="collection-view">
                                                     <ul>
                                                         <li><i class="fa fa-th grid-layout-view"></i></li>
@@ -190,17 +154,19 @@
                                                     </ul>
                                                 </div>
                                                 <div class="product-page-per-view">
-                                                    <select>
-                                                        <option value="High to low">24 Products Par Page</option>
-                                                        <option value="Low to High">50 Products Par Page</option>
-                                                        <option value="Low to High">100 Products Par Page</option>
+                                                    <select class="sort" name="perPage" id="perPage">
+                                                        <option value="24" @if(session('perPage') && session('perPage') == 24) selected @endif>24 Products Par Page
+                                                        </option>
+                                                        <option value="50" @if(session('perPage') && session('perPage') == 50) selected @endif>50 Products Par Page
+                                                        </option>
+                                                        <option value="100" @if(session('perPage') && session('perPage') == 100) selected @endif>100 Products Par Page
+                                                        </option>
                                                     </select>
                                                 </div>
                                                 <div class="product-page-filter">
-                                                    <select>
-                                                        <option value="High to low">Sorting items</option>
-                                                        <option value="Low to High">50 Products</option>
-                                                        <option value="Low to High">100 Products</option>
+                                                    <select class="sort" name="sortPrice" id="sortPrice">
+                                                        <option value="asc" @if(session('sortPrice') && session('sortPrice') == 'abc') selected @endif>Price: Low to High</option>
+                                                        <option value="desc" @if(session('sortPrice') && session('sortPrice') == 'desc') selected @endif>Price: High to Low</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -209,7 +175,7 @@
                                 </div>
                                 <div class="product-wrapper-grid">
                                     <div class="row">
-                                        @foreach($shop->products as $product)
+                                        @foreach($products as $product)
                                             <div class="col-xl-3 col-6 col-grid-box">
                                                 <div class="product-box product-wrap">
                                                     <div class="img-wrapper">
@@ -264,33 +230,49 @@
                                         
                                     </div>
                                 </div>
-                                <div class="product-pagination mb-0">
+                                <div class="product-pagination">
                                     <div class="theme-paggination-block">
                                         <div class="row">
                                             <div class="col-xl-6 col-md-6 col-sm-12">
                                                 <nav aria-label="Page navigation">
                                                     <ul class="pagination">
-                                                        <li class="page-item"><a class="page-link" href="#"
-                                                                aria-label="Previous"><span aria-hidden="true"><i
-                                                                        class="fa fa-chevron-left"
-                                                                        aria-hidden="true"></i></span> <span
-                                                                    class="sr-only">Previous</span></a></li>
-                                                        <li class="page-item active"><a class="page-link" href="#">1</a>
+                                                        @if(!$products->onFirstPage())
+                                                        <li class="page-item">
+                                                            <a class="page-link" href="{{$products->previousPageUrl()}}" aria-label="Previous">
+                                                                <span aria-hidden="true">
+                                                                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                                                                </span>
+                                                                <span class="sr-only">Previous</span>
+                                                            </a>
                                                         </li>
-                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#"
-                                                                aria-label="Next"><span aria-hidden="true"><i
-                                                                        class="fa fa-chevron-right"
-                                                                        aria-hidden="true"></i></span> <span
-                                                                    class="sr-only">Next</span></a></li>
+                                                        @endif
+                                                        {{-- <li class="page-item "><a class="page-link" href="{{route('products')}}">1</a></li> --}}
+                                                        @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                                            <li class="page-item @if($products->currentPage() == $i) active @endif">
+                                                                <a class="page-link" href="{{$products->url($i)}}">{{$i}}</a>
+                                                            </li>
+                                                        @endfor
+                                                        {{-- <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                        <li class="page-item"><a class="page-link" href="#">3</a></li> --}}
+                                                        @if($products->currentPage() != $products->lastPage())
+                                                        <li class="page-item">
+                                                            <a class="page-link" href="{{$products->nextPageUrl()}}" aria-label="Next">
+                                                                <span aria-hidden="true">
+                                                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                                                </span> 
+                                                                <span class="sr-only">Next</span>
+                                                            </a>
+                                                        </li>
+                                                        @endif
                                                     </ul>
                                                 </nav>
                                             </div>
                                             <div class="col-xl-6 col-md-6 col-sm-12">
+                                                @if($products->isNotEmpty())
                                                 <div class="product-search-count-bottom">
-                                                    <h5>Showing Products 1-24 of 10 Result</h5>
+                                                    <h5>Showing Products {{$products->firstItem()}}-{{$products->lastItem()}} of {{$products->total()}} Result</h5>
                                                 </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -383,6 +365,29 @@
 
             $("#quick-view").modal();
         });
+    </script>
+    <script>
+        $(document).on('change','.sort',function(){
+            var perPage = $('#perPage').val();
+            var sortPrice = $('#sortPrice').val();
+            // alert(sortPrice);
+            $.ajax({
+                type:'POST',
+                dataType: 'json',
+                url: "{{route('product.sortFilter')}}",
+                data:{
+                    '_token' : $('meta[name="csrf-token"]').attr('content'),
+                    'perPage': perPage,
+                    'sortPrice': sortPrice
+                },
+                success:function(data) {
+                    window.location.reload()
+                },
+                error: function (data, textStatus, errorThrown) {
+                console.log(data);
+                },
+            });
 
+        });
     </script>
 @endpush

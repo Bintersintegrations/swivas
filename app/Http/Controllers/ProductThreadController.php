@@ -25,7 +25,6 @@ class ProductThreadController extends Controller
             $info = Cache::get(request()->ip());
             $state_id = $info['state_id'];
         }
-        $per_page = request()->query('per_page') ?? 2;
         $products = Product::whereHas('shop', function ($query) use($state_id) {
             $query->where('state_id', $state_id);
         })->get();
@@ -40,13 +39,10 @@ class ProductThreadController extends Controller
         if(request()->query() && request()->query('price')){
             $products = $products->whereBetween('price', explode(';',request()->query('price')));
         }
-        $price['max'] = $products->max('price');
-        $price['min'] = $products->min('price');
-        $products = Product::whereIn('id',$products->pluck('id')->toArray())->paginate($per_page);
+        $products = Product::whereIn('id',$products->pluck('id')->toArray())->orderBy('price',session('sortPrice', 'asc'))->paginate(session('perPage', '24'));
         $category_ids = $products->pluck('categories')->collapse()->unique()->toArray();
         $categories = Category::whereIn('id',$category_ids)->get();
-        // dd($products);
-        return view('frontend.outside.product.list',compact('products','categories','price'));
+        return view('frontend.outside.product.list',compact('products','categories'));
     }
 
     public function view(Product $product){
@@ -92,6 +88,12 @@ class ProductThreadController extends Controller
         abort(404);
         $wish = $this->removeWishlist($product);
         return response()->json(['wish_count'=> $wish],200);
+    }
+
+    public function sortFilter(Request $request){
+        session(['sortPrice' => $request->sortPrice]);
+        session(['perPage' => $request->perPage]);
+        return response()->json(200); 
     }
     
 }

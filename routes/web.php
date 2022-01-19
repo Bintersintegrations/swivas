@@ -29,6 +29,7 @@ Route::post('product/add-to-cart','ProductThreadController@addtocart')->name('pr
 Route::post('product/remove-from-cart','ProductThreadController@removefromcart')->name('product.removefromcart');
 Route::post('product/add-to-wish','ProductThreadController@addtowish')->name('product.addtowish');
 Route::post('product/remove-from-wish','ProductThreadController@removefromwish')->name('product.removefromwish');
+Route::post('product/sortFilter','ProductThreadController@sortFilter')->name('product.sortFilter');
 
 Route::get('cart','SalesController@cart')->name('cart');
 Route::get('wishlist','SalesController@wishlist')->name('wishlist');
