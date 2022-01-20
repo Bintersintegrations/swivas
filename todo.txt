@@ -2,11 +2,12 @@ VARIANT {price, quantity, }
 
 1. messages on shop sidebar & user sidebar
 2 .product page
+3. vendor category filter on shops page
 4. add duplicate product button
 5. add attributes to product database.. delete product_attributes'
 if you delete attributes, remove the attributes from product
 if you delete categories, delete the cat from products
-
+edit address & delete address 
 
 remove items from wishlist after purchase
 

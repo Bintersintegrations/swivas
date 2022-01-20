@@ -73,7 +73,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                     <label for="dob">Birthday</label>
-                                    <input type="text" class="form-control" id="birthday" name="dob" value="{{$user->dob ? $user->dob->toDateString() : old('dob')}}" required="">
+                                    <input type="text" class="form-control" id="birthday" name="dob" value="{{$user->dob ? $user->dob->format('m/d/Y') : old('dob')}}" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="state">Region/State *</label>
+                                        <label for="state">State *</label>
                                         <select class="form-control select2" id="state" name="state_id">
                                             @foreach ($user->country->states as $state)
                                                 <option value="{{$state->id}}" @if($user->state_id == $state->id) selected @endif>{{$state->name}}</option>
@@ -107,7 +107,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="city">City *</label>
+                                        <label for="city">City/Town *</label>
                                         <select class="form-control select2" id="city" name="city_id">
                                             @foreach ($user->country->cities as $city)
                                                 <option value="{{$city->id}}">{{$city->name}}</option>
@@ -171,6 +171,48 @@
                                 </div> --}}
                                 <div class="col-md-12">
                                     <button class="btn btn-sm btn-solid" type="submit">Save setting</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Change Password</h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="theme-form" action="{{route('user.changePassword')}}" method="POST">@csrf
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="oldpassword">Old Password</label>
+                                        <input type="password" class="form-control" id="oldpassword" name="oldpassword" placeholder="Your current Password" required="">
+                                        @error('oldpassword')
+                                            <span class="invalid-feedback d-inline ml-2" role="alert">
+                                                <strong>- {{$message}}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="newpassword">New Password</label>
+                                        <input type="password" class="form-control" id="newpassword" name="password" required>
+                                        @error('password')
+                                            <span class="invalid-feedback d-inline ml-2" role="alert">
+                                                <strong>- {{$message}}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="password_repeat">Repeat New Password</label>
+                                        <input type="password" class="form-control" id="password_repeat" name="password_confirmation" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="btn btn-sm btn-solid" type="submit">Change Password</button>
                                 </div>
                             </div>
                         </form>

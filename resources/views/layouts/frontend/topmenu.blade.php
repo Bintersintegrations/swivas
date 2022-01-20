@@ -16,7 +16,7 @@
                         <ul class="">
                             <li><a href="{{route('sell')}}" class="text-white"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Sell</a></li>
                             <li><a href="#" class="text-white"><i class="fa fa-sitemap" aria-hidden="true"></i>Multi-Level Network</a></li>
-                            <li><a href="#" class="text-white"><i class="fa fa-truck" aria-hidden="true"></i>Track Order</a></li>
+                            
                             @guest
                                 <li class="pr-0">
                                     <a href="{{route('login')}}" class="text-white"><i class="fa fa-user"></i>Account</a>
@@ -350,9 +350,7 @@
                                 <li>
                                     <a href="{{route('network')}}">network</a>
                                 </li>
-                                <li>
-                                    <a href="#">Track Order</a>
-                                </li>
+                                
                                 <li>
                                     <a href="{{route('user.dashboard')}}" @if(Route::is('user.dashboard')) class="current" @endif>Account</a>
                                 </li>

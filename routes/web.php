@@ -60,7 +60,7 @@ Route::group(['as'=>'user.','middleware'=> 'role:user'], function () {
     Route::post('user/profile','UserController@saveprofile')->name('profile');
     Route::get('user/addresses','UserController@address')->name('address');
     Route::post('user/addresses','UserController@manageAddress')->name('address');
-    Route::get('user/change-password','UserController@password')->name('password');
+    // Route::get('user/change-password','UserController@password')->name('password');
     Route::post('user/change-password','UserController@changePassword')->name('changePassword');
     
     Route::get('orders','SalesController@orders')->name('orders');

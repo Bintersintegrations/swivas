@@ -50,10 +50,6 @@ class UserController extends Controller
         return redirect()->back()->with(['flash_type' => 'success','flash_msg'=>'Profile Saved successfully']); //with success
     }
 
-    public function password(){
-        return view('frontend.inside.user.password');
-    }
-
     public function changePassword(Request $request){
         //dd($request->all());
         $user = Auth::user();
@@ -86,9 +82,19 @@ class UserController extends Controller
     public function manageAddress(Request $request){
         // dd($request->all());
         $user = Auth::user();
-        $address = Address::updateOrCreate(['user_id'=> $user->id ,'description'=> $request->description],
-                    ['country_id'=> $request->country_id,'state_id'=> $request->state_id,'city_id'=> $request->city_id,'street'=> $request->street,'contact_name'=> $request->contact,'contact_number'=> $request->mobile]);
-        return redirect()->back()->with(['flash_type' => 'success','flash_msg'=>'Address Saved successfully']); //with success
+        if($request->action == 'create'){
+            Address::create(['user_id'=> $user->id ,'description'=> $request->description,'country_id'=> $request->country_id,'state_id'=> $request->state_id,'city_id'=> $request->city_id,'street'=> $request->street,'contact_name'=> $request->contact_name,'contact_number'=> $request->contact_number,'contact_email'=> $request->contact_email ]);
+            return redirect()->back()->with(['flash_type' => 'success','flash_msg'=>'Address created successfully']); //with success
+        }
+        elseif($request->action == 'delete'){
+            $address = Address::where('id',$request->address_id)->delete();
+            return redirect()->back()->with(['flash_type' => 'success','flash_msg'=>'Address Deleted']); //with success
+        }
+        else{
+            $address = Address::where('id',$request->address_id)->update(['description'=> $request->description,'country_id'=> $request->country_id,'state_id'=> $request->state_id,'city_id'=> $request->city_id,'street'=> $request->street,'contact_name'=> $request->contact_name,'contact_number'=> $request->contact_number,'contact_email'=> $request->contact_email]);
+            return redirect()->back()->with(['flash_type' => 'success','flash_msg'=>'Address Saved successfully']); //with success
+        }
+        
     }
 
     

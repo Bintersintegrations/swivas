@@ -18,7 +18,6 @@
                             <ul>
                                 <li><a href="{{route('sell')}}" class="text-white"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Sell</a></li>
                                 <li><a href="#" class="text-white"><i class="fa fa-sitemap" aria-hidden="true"></i>Multi-Level Network</a></li>
-                                <li><a href="#" class="text-white"><i class="fa fa-truck" aria-hidden="true"></i>Track Order</a></li>
                                 
                                 @guest
                                 <li class="pr-0">
@@ -333,9 +332,7 @@
                                     <li>
                                         <a href="#">network</a>
                                     </li>
-                                    <li>
-                                        <a href="#">Track Order</a>
-                                    </li>
+                                    
                                     <li>
                                         <a href="{{route('user.dashboard')}}">Account</a>
                                     </li>

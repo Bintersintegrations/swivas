@@ -6,11 +6,13 @@
         <ul>
             <li @if(Route::is('user.dashboard')) class="active" @endif><a href="{{route('user.dashboard')}}">Account Info</a></li>
             <li @if(Route::is('user.address')) class="active" @endif><a href="{{route('user.address')}}">Address Book</a></li>
-            <li @if(Route::is('user.orders')) class="active" @endif><a href="{{route('user.orders')}}">My Orders</a></li>
-            {{-- <li @if(Route::is('user.dashboard')) class="active" @endif><a href="#">Newsletter</a></li> --}}
-            <li @if(Route::is('user.network')) class="active" @endif><a href="{{route('user.network')}}">My Network</a></li>
             <li @if(Route::is('user.profile')) class="active" @endif><a href="{{route('user.profile')}}">Edit Profile</a></li>
-            <li @if(Route::is('user.password')) class="active" @endif><a href="{{route('user.password')}}">Change Password</a></li>
+            <li @if(Route::is('user.orders')) class="active" @endif><a href="{{route('user.orders')}}">My Orders</a></li>
+            <li><a href="#">Messages</a></li>
+            <li @if(Route::is('user.network')) class="active" @endif><a href="{{route('user.network')}}">My Network</a></li>
+            <li><a href="{{route('user.orders')}}">Withdrawals</a></li>
+            <li><a href="{{route('user.orders')}}">Transactions</a></li>
+            
             <li class="last"><a href="#" data-toggle="modal" data-target="#logout">Log Out</a></li>
         </ul>
     </div>

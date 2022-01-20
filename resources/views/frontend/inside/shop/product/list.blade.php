@@ -32,7 +32,7 @@
                                             <th scope="col">price</th>
                                             <th scope="col">stock</th>
                                             <th scope="col">status</th>
-                                            <th scope="col">edit/delete</th>
+                                            <th scope="col">duplicate/edit/delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,6 +55,7 @@
                                                 </td>
                                                 <td>
                                                     {{-- <a href="{{route('shop.product.variant',[$shop,$product])}}" class="btn btn-sm btn-primary rounded" title="variation">Add Variant</a> --}}
+                                                    <a href="{{route('shop.product.edit',[$shop,$product])}}" class="btn btn-sm btn-secondary rounded" title="Edit"><i class="fa fa-copy"></i>Copy</a>
                                                     <a href="{{route('shop.product.edit',[$shop,$product])}}" class="btn btn-sm btn-info rounded" title="Edit"><i class="fa fa-pencil"></i>Edit</a>
                                                     <button class="btn btn-sm btn-danger rounded" title="Delete" data-toggle="modal" data-target="#product{{$product->id}}"><i class="fa fa-trash"></i>Delete</button>
                                                     <div class="modal fade" id="product{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="product{{$product->id}}" aria-hidden="true">

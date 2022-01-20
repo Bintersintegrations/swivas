@@ -26,7 +26,10 @@
                             
                             <div class="welcome-msg">
                                 
-                                <p>Where would you like items you purchased and gifts you received to be delivered to ? . Specifying your address now helps you streamline the logistics procedures after. You can edit this later.</p>
+                                <h5>Where would you like your items to be delivered to? 
+                                    Specifying your address now helps you streamline the logistics procedures after. 
+                                    You can edit this later.
+                                </h3>
                             </div>
                             <div class="box-account box-info my-4">
                                 <a href="javascript:void(0)" id="newAddress" class="mb-3 text-white btn btn-warning">Add New Address</a>
@@ -44,6 +47,14 @@
                                                         <h6>{{$address->contact_number}}</h6>
                                                         
                                                     </div>
+                                                    {{-- <div class="text-right"> --}}
+                                                        <form id="addressDelete" class="addressDelete text-right" action="{{route('user.address')}}" method="POST">@csrf
+                                                            <input type="hidden" name="action" value="delete">
+                                                            <input type="hidden" name="address_id" value="{{$address->id}}">
+                                                            <button class="border-0 bg-transparent p-0 text-danger">Delete</a>
+                                                        </form>
+                                                    {{-- </div> --}}
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -53,6 +64,7 @@
                                 </div>
                                 <form id="addressNew" class="addressEdit" style="display:none;" action="{{route('user.address')}}" method="POST">@csrf 
                                     <h3>Add New Address</h3>
+                                    <input type="hidden" name="action" value="create">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -77,7 +89,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="mobile">Contact Email</label>
-                                                <input type="text" name="contact_email" class="form-control" id="mobile" placeholder="080....">
+                                                <input type="text" name="contact_email" class="form-control" id="mobile" placeholder="abc@email.com">
                                             </div>
                                         </div>
                                         
@@ -98,7 +110,7 @@
                                         </div>
                                     </div>
                                     <div class="form-row"> 
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-6">
                                             <label for="state">State</label>
                                             <select id="state" name="state_id" class="states form-control select2">
                                                 @foreach ($states as $state)
@@ -106,27 +118,22 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="city">City</label>
+                                        <div class="form-group col-md-6">
+                                            <label for="city">City/Town</label>
                                             <select id="city" name="city_id" class="cities form-control select2">
-                                                <option>Long</option>
-                                                <option>Lat</option>
+                                                <option>Select State First</option>
+                                                
                                             </select>
                                         </div> 
-                                        <div class="form-group col-md-4">
-                                            <label for="town">Town</label>
-                                            <select id="town_id" class="form-control">
-                                                <option>Long</option>
-                                                <option>Lat</option>
-                                            </select>
-                                        </div> 
-                                    </div>
-                                    
+                                        
+                                    </div> 
                                     <button type="button" class="btn btn-dark float-left backToAddresses">Back to All Addresses</button>
                                     <button type="submit" class="btn btn-warning float-right">Save & Close</button>
                                 </form>
                                 @forelse ($user->addresses as $address)
                                     <form id="addressEdit{{$address->id}}" class="addressEdit" style="display:none;" action="{{route('user.address')}}" method="POST">@csrf 
+                                        <input type="hidden" name="action" value="edit">
+                                        <input type="hidden" name="address_id" value="{{$address->id}}">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -172,7 +179,7 @@
                                             </div>
                                         </div>
                                         <div class="form-row"> 
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-6">
                                                 <label for="state">State</label>
                                                 <select id="state" name="state_id" class="states form-control select2">
                                                     @foreach ($states as $state)
@@ -180,7 +187,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-6">
                                                 <label for="city">City</label>
                                                 <select id="city" name="city_id" class="cities form-control select2">
                                                     @foreach ($cities as $city)
@@ -188,13 +195,7 @@
                                                     @endforeach
                                                 </select>
                                             </div> 
-                                            <div class="form-group col-md-4">
-                                                <label for="town">Town</label>
-                                                <select id="town_id" class="form-control">
-                                                    <option>Long</option>
-                                                    <option>Lat</option>
-                                                </select>
-                                            </div> 
+                                            
                                         </div>
                                         <button type="button" class="btn btn-dark float-left backToAddresses">Back to All Addresses</button>
                                         <button type="submit" class="btn btn-warning float-right">Save & Close</button>

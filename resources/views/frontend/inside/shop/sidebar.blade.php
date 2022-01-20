@@ -43,8 +43,9 @@
             
             <li class="nav-item"><a class="nav-link @if(Route::is('shop.profile')) active @endif" href="{{route('shop.profile',$shop)}}">profile</a>
             </li>
-            <li class="nav-item"><a class="nav-link @if(Route::is('shop.settings')) active @endif" href="{{route('shop.settings',$shop)}}">settings</a>
-            </li>
+            <li class="nav-item"><a class="nav-link @if(Route::is('shop.settings')) active @endif" href="{{route('shop.settings',$shop)}}">settings</a></li>
+            <li class="nav-item"><a class="nav-link @if(Route::is('shop.settings')) active @endif" href="{{route('shop.settings',$shop)}}">Withdrawals</a></li>
+            <li class="nav-item"><a class="nav-link @if(Route::is('shop.settings')) active @endif" href="{{route('shop.settings',$shop)}}">Transactions</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout"
                     href="">logout</a>
             </li>
