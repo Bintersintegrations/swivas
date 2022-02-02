@@ -28,18 +28,8 @@
             
             
             <li class="nav-item"><a class="nav-link @if(Route::is('shop.orders')) active @endif" href="{{route('shop.orders',$shop)}}">Orders</a>
-            <li class="nav-item"><a class="nav-link @if(Route::is('shop.coupons')) active @endif" href="{{route('shop.coupons',$shop)}}">Coupon</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    Messages
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Inbox</a>
-                    <a class="dropdown-item" href="#">Draft</a>
-                    <a class="dropdown-item" href="#">Sent</a>
-                </div>
-            </li>
+            <li class="nav-item"><a class="nav-link @if(Route::is('shop.coupons')) active @endif" href="{{route('shop.coupons',$shop)}}">Coupon</a></li>
+            <li class="nav-item"><a class="nav-link @if(Route::is('shop.messages.list')) active @endif" href="{{route('shop.messages.list',$shop)}}">Messages</a></li>
             
             <li class="nav-item"><a class="nav-link @if(Route::is('shop.profile')) active @endif" href="{{route('shop.profile',$shop)}}">profile</a>
             </li>

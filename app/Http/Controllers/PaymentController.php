@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Payment;
+use App\Withdrawal;
 use App\OrderDetail;
 use Illuminate\Http\Request;
 use App\Http\Traits\OrderTrait;
@@ -82,37 +83,19 @@ class PaymentController extends Controller
         return view('frontend.outside.sale.paymentstatus',compact('payment'));
     }
 
-    // public function transactions(){
-    //     $user = Auth::user();
-    //     $user->unreadNotifications->where('type','App\Notifications\PaymentTransactionNotification')->markAsRead();
-    //     $user->unreadNotifications->where('type','App\Notifications\PenaltyChargeNotification')->markAsRead();
-    //     $payments = Payment::where('user_id',$user->id);
-    //     if(request()->query()){
-    //         if(request()->query('currency'))
-    //         $payments = $payments->where('currency_id',request()->query('currency'));
-    //         if(request()->query('type')  != null)
-    //         $payments = $payments->where('type','=',request()->query('type'));
-    //         if(request()->query('status')  != null)
-    //         $payments = $payments->where('status',request()->query('status'));
-    //         if(request()->query('order')  != null)
-    //         $payments = $payments->orderBy('created_at',request()->query('order'));
-    //     }
-    //     $transactions = $payments->get();
-    //     //dd($transactions);
-    //     return view('user.payment.transactions',compact('transactions'));
-    // }
+    public function transactions(){
+        $user = Auth::user();
+        $user->unreadNotifications->where('type','App\Notifications\PaymentTransactionNotification')->markAsRead();
+        $user->unreadNotifications->where('type','App\Notifications\PenaltyChargeNotification')->markAsRead();
+        $payments = Payment::where('user_id',$user->id)->get();
+        //dd($transactions);
+        return view('frontend.inside.user.transactions',compact('payments'));
+    }
 
-    // public function wallet(){
-    //     $user = Auth::user();
-    //     $user->unreadNotifications->where('type','App\Notifications\FreezeWalletsNotification')->markAsRead();
-    //     $user->unreadNotifications->where('type','App\Notifications\LockedWalletNotification')->markAsRead();
-    //     $user->unreadNotifications->where('type','App\Notifications\SettlementNotification')->markAsRead();
-    //     $charge_set = Setting::where('name','charge_type')->first()->value;
-    //     $currencies = Currency::all();
-    //     $wallets = Wallet::where('user_id',$user->id)->get();
-    //     $enable_withdrawal = Setting::where('name','enable_wallet_withdrawal')->first()->value;
-    //     $enable_upload = Setting::where('name','enable_wallet_deposit')->first()->value;
-    //     return view('user.payment.wallet',compact('charge_set','currencies','wallets','enable_withdrawal','enable_upload'));
-    // }
+    public function withdrawals(){
+        $user = Auth::user();
+        $withdrawals = $user->withdrawals;
+        return view('frontend.inside.user.withdrawals',compact('withdrawals'));
+    }
 
 }

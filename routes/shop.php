@@ -40,15 +40,11 @@ Route::group(['as'=>'shop.','namespace'=>'Vendors','prefix'=>'shop/{shop}'], fun
     });
 
     Route::group(['prefix'=> 'payments'], function () {
-        Route::get('/','PaymentController@list')->name('payments');
-        Route::get('add','PaymentController@create')->name('payments.create');
-        Route::post('save','PaymentController@save')->name('payments.save');
-        Route::get('edit/{item}','PaymentController@edit')->name('payments.edit');
-        Route::post('update/{item}','PaymentController@update')->name('payments.update');
-        Route::post('delete','PaymentController@delete')->name('payments.delete');
-        Route::post('status','PaymentController@status')->name('payments.status');
-        Route::get('comments','PaymentController@comments')->name('payments.comments');
-        Route::post('comments/moderate','PaymentController@commentModerate')->name('payments.comments.moderate');
+        Route::get('/','EarningController@list')->name('payments');
+        Route::get('add','EarningController@create')->name('payments.create');
+        Route::post('save','EarningController@save')->name('payments.save');
+        Route::get('edit/{item}','EarningController@edit')->name('payments.edit');
+        Route::post('update/{item}','EarningController@update')->name('payments.update');
         
     });
 
@@ -60,6 +56,11 @@ Route::group(['as'=>'shop.','namespace'=>'Vendors','prefix'=>'shop/{shop}'], fun
         Route::post('update/{coupon}','CouponController@update')->name('coupon.update');
         Route::post('delete','CouponController@delete')->name('coupon.delete');
     });
-  
-    
+    Route::group(['as'=>'messages.','prefix'=> 'messages'],function(){
+        Route::get('/','MessageController@index')->name('list');
+        Route::get('new','MessageController@new')->name('new');
+        Route::post('send','MessageController@send')->name('send');
+        Route::post('chat','MessageController@chat')->name('chat');
+    });
 });
+

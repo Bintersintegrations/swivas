@@ -12,6 +12,7 @@ use App\State;
 use App\Address;
 use App\Country;
 use App\Wishlist;
+use App\Withdrawal;
 use App\Message;
 use App\Payment;
 use App\PasswordHistory;
@@ -127,5 +128,9 @@ class User extends Authenticatable
     public function orders(){
         return $this->hasMany(Order::class);
     }
+    public function withdrawals(){
+        return $this->morphMany(Withdrawal, 'withdrawable');
+    }
+    
     
 }

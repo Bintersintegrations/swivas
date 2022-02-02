@@ -33,10 +33,12 @@
                             <h6>750 followers | 10 review</h6>
                         </div>
                     </div>
-                    <div class="profile-detail">
-                        <div>
-                            <p>{{$shop->description}}</p>
-                        </div>
+                    <div class="profile-detail flex-column">
+                        
+                        <h5 class="d-block">{{$shop->description}}</h5>
+                        <p><i class="ti-location-pin"></i>{{$shop->city->name}}, {{$shop->state->name}}, {{$shop->country->name}}</p>
+                        <p><i class="ti-email"></i> {{$shop->email}} </p>
+                        <p><i class="ti-mobile"></i> {{$shop->mobile}}</p>
                     </div>
                     <div class="vendor-contact">
                         <div>
@@ -50,7 +52,7 @@
                                 </ul>
                             </div>
                             <h6>if you have any query:</h6>
-                            <a href="#" class="btn btn-solid btn-sm">contact seller</a>
+                            <a href="javascript:void(0)" class="btn btn-solid btn-sm" data-toggle="modal" data-target="#contact-seller">contact seller</a>
                         </div>
                     </div>
                 </div>
@@ -286,7 +288,94 @@
     </div>
 </section>
 <!-- collection section end -->
+<div class="modal fade bd-example-modal-lg theme-modal" id="quick-view" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content quick-view-modal">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <div class="row">
+                    <div class="col-lg-6 col-xs-12">
+                        <div class="quick-view-img"><img src="../assets/images/pro3/1.jpg" alt="" class="img-fluid blur-up lazyload"></div>
+                    </div>
+                    <div class="col-lg-6 rtl-text">
+                        <div class="product-right">
+                            <h2 id="product_title">Women Pink Shirt</h2>
+                            <h3 id="product_price">$32.96</h3>
+                            <ul class="color-variant">
+                                <li class="bg-light0"></li>
+                                <li class="bg-light1"></li>
+                                <li class="bg-light2"></li>
+                            </ul>
+                            <div class="border-product">
+                                <h6 class="product-title">product details</h6>
+                                <p id="product_description">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
+                            </div>
+                            <div class="product-description border-product">
+                                <div class="size-box">
+                                    <ul>
+                                        <li class="active"><a href="#">s</a></li>
+                                        <li><a href="#">m</a></li>
+                                        <li><a href="#">l</a></li>
+                                        <li><a href="#">xl</a></li>
+                                    </ul>
+                                </div>
+                                <h6 class="product-title">quantity</h6>
+                                <div class="qty-box">
+                                    <div class="input-group"><span class="input-group-prepend"><button type="button"
+                                                class="btn quantity-left-minus" data-type="minus" data-field=""><i
+                                                    class="ti-angle-left"></i></button> </span>
+                                        <input type="text" name="quantity" class="form-control input-number" value="1"> <span class="input-group-prepend"><button type="button"
+                                                class="btn quantity-right-plus" data-type="plus" data-field=""><i
+                                                    class="ti-angle-right"></i></button></span></div>
+                                </div>
+                            </div>
+                            <div class="product-buttons"><a href="#" class="btn btn-solid">add to cart</a> <a href="#" class="btn btn-solid">view detail</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="modal fade" id="contact-seller" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('user.messages.send')}}" method="POST">@csrf
+                    <input type="hidden" name="shop_id" value="{{$shop->id}}">
+                    <input type="hidden" name="order_id" value="0">
+                    <input type="hidden" name="customer" value="1">
+                    <div class="form-group">
+                        <label for="product_ids" class="col-form-label">Products:</label>
+                        <select id="product_ids" name="products[]" multiple class="select2" style="width:100%">
+                            @foreach ($products as $product)
+                                <option value="{{$product->id}}">{{$product->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea name="body" class="form-control" id="message-text" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send message</button>
+                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button>
+                    
+                </form>
+            </div>
+            {{-- <div class="modal-footer">
+                
+            </div> --}}
+        </div>
+    </div>
+</div>
 
 @endsection
 @push('scripts')
@@ -362,7 +451,6 @@
             });
         });
         $(document).on('click','.quick-view',function(){
-
             $("#quick-view").modal();
         });
     </script>
@@ -389,5 +477,8 @@
             });
 
         });
+    </script>
+    <script>
+        $('.select2').select2();
     </script>
 @endpush

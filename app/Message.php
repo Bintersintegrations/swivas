@@ -3,10 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Message extends Model
 {
-    use SoftDeletes;
-    protected $fillable = ['user_id','subject','category'];
+    protected $fillable = ['user_id','shop_id','order_id','products'];
+    protected $casts = ['products'=> 'array'];
 }

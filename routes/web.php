@@ -38,7 +38,7 @@ Route::post('checkout','SalesController@checkout')->name('checkout');
 Route::post('pay','PaymentController@pay')->name('pay');
 Route::get('payment/verification','PaymentController@verification')->name('payment.verification');
 Route::get('payment/status/{payment}','PaymentController@status')->name('payment.status');
-Route::get('transactions','PaymentController@transactions')->name('payment.transactions');
+
 
 Route::get('support','SupportThreadController@create')->name('support');
 Route::post('support','SupportThreadController@save')->name('support');
@@ -60,6 +60,7 @@ Route::group(['as'=>'user.','middleware'=> 'role:user'], function () {
     Route::post('user/profile','UserController@saveprofile')->name('profile');
     Route::get('user/addresses','UserController@address')->name('address');
     Route::post('user/addresses','UserController@manageAddress')->name('address');
+
     // Route::get('user/change-password','UserController@password')->name('password');
     Route::post('user/change-password','UserController@changePassword')->name('changePassword');
     
@@ -68,14 +69,16 @@ Route::group(['as'=>'user.','middleware'=> 'role:user'], function () {
     Route::post('order/{order}/status','SalesController@status')->name('order.status');
     Route::post('order/{order}/review','SalesController@review')->name('order.review');
     Route::get('wishlist','SalesController@wishlist')->name('wishlist');
-
+    Route::get('transactions','PaymentController@transactions')->name('payment.transactions');
+    Route::get('withdrawals','PaymentController@withdrawals')->name('payment.withdrawals');
+    Route::post('withdrawals','PaymentController@withdrawalRequest')->name('payment.withdrawals');
     Route::get('user/network','NetworkController@dashboard')->name('network');
 
     Route::group(['prefix'=> 'messages','as'=> 'messages.'],function(){
-        Route::get('inbox','MessageController@inbox')->name('inbox');
-        Route::get('draft','MessageController@draft')->name('draft');
-        Route::get('sent','MessageController@sent')->name('sent');
-        Route::post('/','MessageController@create')->name('create');
+        Route::get('/','MessageController@index')->name('list');
+        Route::get('new','MessageController@new')->name('new');
+        Route::post('send','MessageController@send')->name('send');
+        Route::post('chat','MessageController@chat')->name('chat');
     });
     
     

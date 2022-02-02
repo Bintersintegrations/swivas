@@ -9,6 +9,7 @@ use App\State;
 use App\Country;
 use App\Product;
 use App\Category;
+use App\Withdrawal;
 use App\BankAccount;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -72,6 +73,9 @@ class Shop extends Model
 
     public function bankaccount(){
         return $this->morphOne(BankAccount::class, 'owner');
+    }
+    public function withdrawals(){
+        return $this->morphMany(Withdrawal, 'withdrawable');
     }
     
 }
