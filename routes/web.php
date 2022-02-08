@@ -80,6 +80,8 @@ Route::group(['as'=>'user.','middleware'=> 'role:user'], function () {
         Route::post('send','MessageController@send')->name('send');
         Route::post('chat','MessageController@chat')->name('chat');
     });
+
+    Route::view('apitest','api');
     
     
 });

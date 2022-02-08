@@ -129,7 +129,7 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
     public function withdrawals(){
-        return $this->morphMany(Withdrawal, 'withdrawable');
+        return $this->morphMany(Withdrawal::class, 'withdrawable');
     }
     
     
