@@ -1,4 +1,3 @@
-use App\Shop;
 @extends('layouts.frontend.app')
 @push('styles')
     

@@ -336,7 +336,7 @@
                                 <li>
                                     <div class="mobile-back text-right">Back<i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                                 </li>
-                                <li><a href="{{route('index')}}" @if(Route::is('index')) class="current" @endif>Homes</a></li>
+                                <li><a href="{{route('index')}}" @if(Route::is('index')) class="current" @endif>Home</a></li>
                                 <li>
                                     <a href="{{route('products')}}" @if(Route::is('products')) class="current" @endif>Products</a>
                                 </li>

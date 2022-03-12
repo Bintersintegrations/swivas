@@ -32,9 +32,9 @@ class OrderObserver
     }
 
     
-    public function deleted(Order $order)
+    public function deleting(Order $order)
     {
-        //
+        $order->details->delete();
     }
 
     

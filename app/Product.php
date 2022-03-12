@@ -53,6 +53,7 @@ class Product extends Model
         }
         return $categories;
     }
+
     public function getAmountAttribute(){
         if($this->sale_price && $this->sale_from < now() && $this->sale_to > now()){
             return $this->sale_price;
@@ -60,8 +61,6 @@ class Product extends Model
         else{
             return $this->price;
         }
-        
-        // return "{$this->first_name} {$this->last_name}";
     }
     public function onSale(){
         if($this->sale_price && $this->sale_from < now() && $this->sale_to > now())

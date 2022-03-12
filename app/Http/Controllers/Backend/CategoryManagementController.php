@@ -73,7 +73,7 @@ class CategoryManagementController extends Controller
 
     public function listatributes(){
         $atributes = Atribute::all();
-        return view('backend.atributes.list',compact('atributes'));
+        return view('backend.attributes.list',compact('atributes'));
     }
     public function saveatributes(Request $request){
         // dd($request->all());

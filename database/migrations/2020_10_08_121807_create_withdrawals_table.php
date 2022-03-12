@@ -19,7 +19,7 @@ class CreateWithdrawalsTable extends Migration
             $table->string('withdrawable_type'); //the person type (user or vendor)
             $table->string('currency'); //the 
             $table->double('amount'); //the 
-            $table->string('status')->default('waiting'); //waiting, held, cancelled, released
+            $table->string('status')->default('waiting'); //waiting, held, cancelled, paid
             $table->timestamps();
         });
     }

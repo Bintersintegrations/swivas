@@ -35,9 +35,9 @@ class ProductObserver
      * @param  \App\Product  $product
      * @return void
      */
-    public function deleted(Product $product)
+    public function deleting(Product $product)
     {
-        //
+        $product->orders->delete();
     }
 
     /**

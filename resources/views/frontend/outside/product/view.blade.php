@@ -390,7 +390,7 @@
                                         </div>
                                     </div>
                                     <div class="product-buttons">
-                                        <button id="addtocart" class="btn btn-solid">add to cart</button> 
+                                        <button id="addtocartin" class="btn btn-solid">add to cart</button> 
                                         <form class="d-inline-block" action="{{route('checkout')}}" method="POST" id="buynowform">@csrf
                                             <input type="hidden" name="variant[]" id="variant_id">
                                             <input type="hidden" name="quantity[]" id="variant_quantity">
@@ -595,7 +595,7 @@
                                     class="img-fluid blur-up lazyload bg-img" alt=""></a>
                         </div>
                         <div class="cart-info cart-wrap">
-                            <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i
+                            <button title="Add to cart"><i
                                     class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
                                 title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
                                 data-toggle="modal" data-target="#quick-view" title="Quick View"><i
@@ -629,7 +629,7 @@
                                     class="img-fluid blur-up lazyload bg-img" alt=""></a>
                         </div>
                         <div class="cart-info cart-wrap">
-                            <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i
+                            <button data-toggle="modal" data-target="#addtomess" title="Add to cart"><i
                                     class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
                                 title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
                                 data-toggle="modal" data-target="#quick-view" title="Quick View"><i
@@ -664,7 +664,7 @@
                                     class="img-fluid blur-up lazyload bg-img" alt=""></a>
                         </div>
                         <div class="cart-info cart-wrap">
-                            <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i
+                            <button data-toggle="modal" data-target="#addtomess" title="Add to cart"><i
                                     class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
                                 title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
                                 data-toggle="modal" data-target="#quick-view" title="Quick View"><i
@@ -698,7 +698,7 @@
                                     class="img-fluid blur-up lazyload bg-img" alt=""></a>
                         </div>
                         <div class="cart-info cart-wrap">
-                            <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i
+                            <button data-toggle="modal" data-target="#addtomess" title="Add to cart"><i
                                     class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
                                 title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
                                 data-toggle="modal" data-target="#quick-view" title="Quick View"><i
@@ -732,7 +732,7 @@
                                     class="img-fluid blur-up lazyload bg-img" alt=""></a>
                         </div>
                         <div class="cart-info cart-wrap">
-                            <button data-toggle="modal" data-target="#addtocart" title="Add to cart">
+                            <button data-toggle="modal" data-target="#addtomess" title="Add to cart">
                                 <i class="ti-shopping-cart"></i>
                             </button> 
                             <a href="javascript:void(0)" title="Add to Wishlist">
@@ -773,7 +773,7 @@
                                     class="img-fluid blur-up lazyload bg-img" alt=""></a>
                         </div>
                         <div class="cart-info cart-wrap">
-                            <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i
+                            <button data-toggle="modal" data-target="#addtomess" title="Add to cart"><i
                                     class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
                                 title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
                                 data-toggle="modal" data-target="#quick-view" title="Quick View"><i
@@ -834,8 +834,10 @@
             }
             // console.log(clicked_size)
         });
-        $(document).on('click','#addtocart',function(){
+        $(document).on('click','#addtocartin',function(){
+            alert('hi')
             quantity = $('#quantity').val();
+            alert(quantity)
             $.ajax({
                 type:'POST',
                 dataType: 'json',

@@ -10,7 +10,7 @@
             <div class="col">
                 <div class="page-header-left">
                     <h3>Create Vendor
-                        <small>Multikart Admin panel</small>
+                        <small>Swivas Admin Panel</small>
                     </h3>
                 </div>
             </div>

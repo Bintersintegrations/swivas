@@ -21,7 +21,7 @@
             <div class="col-lg-6">
                 <div class="page-header-left">
                     <h3>Products
-                        <small>Multikart Admin panel</small>
+                        <small>Swivas Admin Panel</small>
                     </h3>
                 </div>
             </div>
@@ -48,16 +48,16 @@
                 <div class="card-body order-datatable">
                     <table class="display table" id="basic-1">
                         <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Shop</th>
-                            <th>Image</th>
-                            <th>Category</th>
-                            <th>Price</th>
-                            <th>Available</th>
-                            <th>Status</th>
-                            <th>Approve/Delete</th>
-                        </tr>
+                            <tr>
+                                <th>Id</th>
+                                <th>Shop</th>
+                                <th>Image</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Available</th>
+                                <th>Status</th>
+                                <th>Approve/Delete</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach ($products as $product)
@@ -115,7 +115,7 @@
                                                     <h5 class="modal-title f-w-600" id="exampleModalLabel">Delete Product</h5>
                                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 </div>
-                                                <form class="needs-validation" action="#" method="POST" enctype="multipart/form-data">@csrf
+                                                <form class="needs-validation" action="{{route('admin.product.delete')}}" method="POST" enctype="multipart/form-data">@csrf
                                                     <div class="modal-body">
                                                         <h5>Are you sure you want to delete product: <br>{{$product->name}} </h5>
                                                         <input type="hidden" name="product_id" value="{{$product->id}}">

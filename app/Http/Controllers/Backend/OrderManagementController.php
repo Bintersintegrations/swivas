@@ -3,18 +3,23 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
+use App\Order;
 use App\Http\Controllers\Controller;
 
 class OrderManagementController extends Controller
 {
     public function listorders(){
-        return view('backend.market.orders.list');
+        $orders = Order::orderBy('created_at','desc')->get();
+        return view('backend.orders.list',compact('orders'));
     }
-    public function vieworder(){
-        return view('backend.market.orders.view');
+
+    public function vieworder(Order $order){
+        $shop = $order->shop;
+        return view('frontend.inside.shop.order.details',compact('order','shop'));
     }
+
     public function refunds(){
-        return view('backend.market.orders.refund');
+        return view('backend.orders.refund');
     }
     
 }

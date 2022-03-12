@@ -22,7 +22,7 @@
             <div class="col-lg-6">
                 <div class="page-header-left">
                     <h3>Add Products
-                        <small>Multikart Admin panel</small>
+                        <small>Swivas Admin Panel</small>
                     </h3>
                 </div>
             </div>

@@ -3,6 +3,15 @@ Route::group(['prefix'=>'admin','as'=>'admin.','namespace'=>'Backend','middlewar
 
     Route::get('dashboard','HomeController@dashboard')->name('dashboard');
     Route::get('profile','HomeController@profile')->name('profile');
+    Route::get('categories','CategoryManagementController@listcategories')->name('categories');
+    Route::post('categories/save','CategoryManagementController@savecategories')->name('categories.save');
+    Route::post('categories/update','CategoryManagementController@updatecategories')->name('categories.update');
+    Route::post('categories/delete','CategoryManagementController@deletecategories')->name('categories.delete');
+    
+    Route::get('attributes','CategoryManagementController@listatributes')->name('atributes');
+    Route::post('attributes/save','CategoryManagementController@saveatributes')->name('atributes.save');
+    Route::post('attributes/update','CategoryManagementController@updateatributes')->name('atributes.update');
+    Route::post('attributes/delete','CategoryManagementController@deleteatributes')->name('atributes.delete');
     //product
     Route::group(['prefix'=> 'products','as'=>'product.'],function(){
         Route::get('/','ProductManagementController@list')->name('lists');
@@ -10,27 +19,16 @@ Route::group(['prefix'=>'admin','as'=>'admin.','namespace'=>'Backend','middlewar
         Route::post('delete','ProductManagementController@delete')->name('delete');
        
     });
-    
-    
-    Route::get('categories','CategoryManagementController@listcategories')->name('categories');
-    Route::post('categories/save','CategoryManagementController@savecategories')->name('categories.save');
-    Route::post('categories/update','CategoryManagementController@updatecategories')->name('categories.update');
-    Route::post('categories/delete','CategoryManagementController@deletecategories')->name('categories.delete');
-
-    Route::get('attributes','CategoryManagementController@listatributes')->name('atributes');
-    Route::post('attributes/save','CategoryManagementController@saveatributes')->name('atributes.save');
-    Route::post('attributes/update','CategoryManagementController@updateatributes')->name('atributes.update');
-    Route::post('attributes/delete','CategoryManagementController@deleteatributes')->name('atributes.delete');
-
     Route::get('orders','OrderManagementController@listorders')->name('orders.list');
-    Route::get('refunds','OrderManagementController@refunds')->name('orders.refunded');
-    Route::get('orders/view','OrderManagementController@vieworder')->name('orders.view');
+    Route::post('order/delete','OrderManagementController@listorders')->name('order.delete');
+    Route::get('order/{order}/view','OrderManagementController@vieworder')->name('order.view');
+    
 
     Route::get('transactions','PaymentManagementController@transactions')->name('transactions');
     Route::get('withdrawals','PaymentManagementController@withdrawals')->name('withdrawals');
-    Route::get('withdrawal/requests','PaymentManagementController@withdrawal_request')->name('withdrawal.request');
     Route::post('withdrawal/response','PaymentManagementController@withdrawal_response')->name('withdrawal.response');
-
+    Route::get('settlements','PaymentManagementController@settlements')->name('settlements');
+    
     Route::get('coupons','CouponManagementController@list')->name('coupons.list');
     Route::get('coupons/create','CouponManagementController@create')->name('coupons.create');
     Route::post('coupons','CouponManagementController@save')->name('coupons.save');

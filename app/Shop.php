@@ -19,6 +19,7 @@ class Shop extends Model
 {
     use Notifiable,Sluggable;
     
+    protected $fillable = ['name'];
     protected $casts = ['categories'=> 'array'];
 
     // public static function boot()

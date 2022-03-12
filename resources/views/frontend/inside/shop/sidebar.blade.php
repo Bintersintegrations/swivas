@@ -29,7 +29,7 @@
             
             <li class="nav-item"><a class="nav-link @if(Route::is('shop.orders')) active @endif" href="{{route('shop.orders',$shop)}}">Orders</a>
             <li class="nav-item"><a class="nav-link @if(Route::is('shop.coupons')) active @endif" href="{{route('shop.coupons',$shop)}}">Coupon</a></li>
-            <li class="nav-item"><a class="nav-link @if(Route::is('shop.messages.list')) active @endif" href="{{route('shop.messages.list',$shop)}}">Messages</a></li>
+            {{-- <li class="nav-item"><a class="nav-link @if(Route::is('shop.messages.list')) active @endif" href="{{route('shop.messages.list',$shop)}}">Messages</a></li> --}}
             
             <li class="nav-item"><a class="nav-link @if(Route::is('shop.profile')) active @endif" href="{{route('shop.profile',$shop)}}">profile</a>
             </li>

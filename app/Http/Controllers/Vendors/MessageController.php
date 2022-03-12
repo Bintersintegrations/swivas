@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Vendors;
 
 use App\Message;
+use App\Shop;
 use App\Conversation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,7 +14,7 @@ class MessageController extends Controller
     public function index(Shop $shop){
         // $messages = Message::where('receiver_id',Auth::id())->orderBy('created_at','desc')->get();
         $messages = 'messages';
-        return view('frontend.inside.shop.messages',compact('messages'));
+        return view('frontend.inside.shop.messages',compact('shop','messages'));
     }
     
     public function send(Shop $shop,Request $request){

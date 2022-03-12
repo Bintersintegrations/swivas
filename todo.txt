@@ -1,6 +1,9 @@
+ADMIN: profile edit, settings
+
+
 VARIANT {price, quantity, }
 
-1. messages on shop sidebar & user sidebar
+
 2 .product page
 3. vendor category filter on shops page
 3. templates page category filter
@@ -42,96 +45,3 @@ click to display conversations
 reply to message
 notification
 
-
-array:10 [
-  0 => {1233 
-    "id": 352,
-    "name": "10kg",
-    "slug": "10kg",
-    "description": ""
-    
-    "count": 1
-     {1167 ▶}
-  }
-  1 => {225 
-    "id": 350
-    "name": "2kg"
-    "slug": "2kg"
-    "description": ""
-    
-    "count": 1
-     {1376 ▶}
-  }
-  2 => {1378 
-    "id": 351
-    "name": "5kg"
-    "slug": "5kg"
-    "description": ""
-    
-    "count": 1
-     {1380 ▶}
-  }
-  3 => {1382 
-    "id": 149
-    "name": "L"
-    "slug": "l"
-    "description": ""
-    
-    
-     {1384 ▶}
-  }
-  4 => {1386 
-    "id": 465
-    "name": "L"
-    "slug": "large"
-    "description": ""
-    
-    
-     {1388 ▶}
-  }
-  5 => {1390 
-    "id": 151
-    "name": "M"
-    "slug": "m"
-    "description": ""
-    
-    
-     {1392 ▶}
-  }
-  6 => {1394 
-    "id": 158
-    "name": "S"
-    "slug": "s"
-    "description": ""
-    
-    
-     {1396 ▶}
-  }
-  7 => {1398 
-    "id": 468
-    "name": "S"
-    "slug": "small"
-    "description": ""
-    
-    
-     {1400 ▶}
-  }
-  8 => {1402 
-    "id": 186
-    "name": "XL"
-    "slug": "xl"
-    "description": ""
-    
-    
-     {1404 ▶}
-  }
-  9 => {1406 
-    "id": 474
-    "name": "XL"
-    "slug": "big"
-    "description": ""
-    
-    
-     {1408 ▶}
-  }
-]
