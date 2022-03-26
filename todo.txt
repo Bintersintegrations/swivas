@@ -3,17 +3,17 @@ ADMIN: profile edit, settings
 
 VARIANT {price, quantity, }
 
-
 2 .product page
 3. vendor category filter on shops page
 3. templates page category filter
 4. add duplicate product button
+
 5. add attributes to product database.. delete product_attributes'
+
 if you delete attributes, remove the attributes from product
 if you delete categories, delete the cat from products
 edit address & delete address 
 
-remove items from wishlist after purchase
 
 ON CHECKOUT PAGE
 Put: confirm pickup details..
@@ -24,7 +24,6 @@ order date, pickup date and time, pick up address,
 if delivery is required, show rates and vendors in that location 
 
 
-retain timeline in product page for promos
 sidebar on product page
 
 
@@ -33,15 +32,5 @@ settlement to bank
 
 emails
 
-
-
-followership
-subscriptions
-blog admin, blog vendor, blog user
-
-
-bring message list
-click to display conversations
-reply to message
 notification
 

@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Events\ShopPaymentEvent;
 use App\Notifications\OrderReadyNotification;
 use App\Notifications\OrderReportedNotification;
+use App\Wishlist;
 
 class OrderObserver
 {
@@ -18,6 +19,9 @@ class OrderObserver
     {
         if($order->isDirty('status') && $order->status == 'processing'){
             $order->shop->notify(new NewOrderNotification($order));
+            foreach($order->details as $detail){
+                $wishlist = Wishlist::where('user_id',$order->user_id)->where('product_id',$detail->product_id)->delete();
+            }
         }
         if($order->isDirty('status') && $order->status == 'ready'){
             $order->user->notify(new OrderReadyNotification($order));

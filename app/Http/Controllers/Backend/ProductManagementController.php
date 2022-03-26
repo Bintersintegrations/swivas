@@ -21,6 +21,7 @@ class ProductManagementController extends Controller
         $products = Product::all();
         return view('backend.product.list',compact('products'));
     }
+
     public function status(Request $request){
         // dd($request->all());
         $product = Product::find($request->product_id);
@@ -31,6 +32,7 @@ class ProductManagementController extends Controller
         $product->save();
         return redirect()->back();
     }
+    
     public function delete(Request $request){
         $product = Product::find($request->product_id);
         $product->delete();

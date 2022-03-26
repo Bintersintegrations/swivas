@@ -167,7 +167,7 @@ class ShopController extends Controller
     }
 
     public function settings(Shop $shop){
-        return 'I dont exist';
+        return view('frontend.inside.shop.settings',compact('shop'));
     }
 
     public function createUser(){

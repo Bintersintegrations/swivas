@@ -39,14 +39,9 @@ Route::group(['as'=>'shop.','namespace'=>'Vendors','prefix'=>'shop/{shop}'], fun
         Route::post('{order}/status','OrderController@status')->name('order.status');
     });
 
-    Route::group(['prefix'=> 'payments'], function () {
-        Route::get('/','EarningController@list')->name('payments');
-        Route::get('add','EarningController@create')->name('payments.create');
-        Route::post('save','EarningController@save')->name('payments.save');
-        Route::get('edit/{item}','EarningController@edit')->name('payments.edit');
-        Route::post('update/{item}','EarningController@update')->name('payments.update');
-        
-    });
+    Route::get('transactions','EarningController@transactions')->name('transactions');
+    Route::get('withdrawals','EarningController@withdrawals')->name('withdrawals');
+    Route::post('withdrawal/request','PaymentManagementController@withdrawal_request')->name('withdrawal.request');
 
     Route::group(['prefix'=>'coupon'],function(){
         Route::get('/','CouponController@list')->name('coupons');

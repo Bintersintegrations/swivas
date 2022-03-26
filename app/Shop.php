@@ -76,7 +76,7 @@ class Shop extends Model
         return $this->morphOne(BankAccount::class, 'owner');
     }
     public function withdrawals(){
-        return $this->morphMany(Withdrawal, 'withdrawable');
+        return $this->morphMany(Withdrawal::class, 'withdrawable');
     }
     
 }

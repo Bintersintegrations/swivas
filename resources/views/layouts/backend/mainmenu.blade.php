@@ -44,49 +44,9 @@
                 </ul>
             </li>
             
-            {{-- <li>
-                <a class="sidebar-header" href="#"><i data-feather="align-left"></i><span>Blog</span><i class="fa fa-angle-right pull-right"></i></a>
-                <ul class="sidebar-submenu">
-                    <li>
-                        <a href="#"><i class="fa fa-circle"></i>
-                            <span>Post</span> <i class="fa fa-angle-right pull-right"></i>
-                        </a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="{{route('admin.posts.create')}}"><i class="fa fa-circle"></i>New</a></li>
-                            <li><a href="{{route('admin.posts.list')}}"><i class="fa fa-circle"></i>List Post</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{route('admin.posts.comments.list')}}"><i class="fa fa-circle"></i>List Comments</a></li>
-                </ul>
-            </li> --}}
+            
             <li><a class="sidebar-header" href="{{route('admin.users.list')}}"><i data-feather="user-plus"></i>Users</a></li>
             <li><a class="sidebar-header" href="{{route('admin.shops.list')}}"><i data-feather="users"></i>Vendors</a></li>
-
-            {{-- <li>
-                <a class="sidebar-header" href="#"><i data-feather="clipboard"></i><span>Membership</span><i class="fa fa-angle-right pull-right"></i></a>
-                <ul class="sidebar-submenu">
-                    <li>
-                        <a href="#"><i class="fa fa-circle"></i>
-                            <span>Plans</span> <i class="fa fa-angle-right pull-right"></i>
-                        </a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="{{route('admin.plans.create')}}"><i class="fa fa-circle"></i>New</a></li>
-                            <li><a href="{{route('admin.plans.list')}}"><i class="fa fa-circle"></i>List </a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-circle"></i>
-                            <span>Subscriptions</span> <i class="fa fa-angle-right pull-right"></i>
-                        </a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="{{route('admin.subscriptions.create')}}"><i class="fa fa-circle"></i>New</a></li>
-                            <li><a href="{{route('admin.subscriptions.list')}}"><i class="fa fa-circle"></i>List</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{route('admin.addons.list')}}"><i class="fa fa-circle"></i>Addons</a></li>
-                    <li><a href="{{route('admin.features.list')}}"><i class="fa fa-circle"></i>Features</a></li>
-                </ul>
-            </li> --}}
             
             <li>
                 <a class="sidebar-header" href=""><i data-feather="settings" ></i><span>Settings</span><i class="fa fa-angle-right pull-right"></i></a>
@@ -96,8 +56,6 @@
                     <li><a href="profile.html"><i class="fa fa-circle"></i>Countries</a></li>
                 </ul>
             </li>
-            {{-- <li><a class="sidebar-header" href="reports.html"><i data-feather="bar-chart"></i><span>Reports</span></a></li> --}}
-            {{-- <li><a class="sidebar-header" href="invoice.html"><i data-feather="archive"></i><span>Review</span></a> --}}
             <li><a class="sidebar-header" href="invoice.html"><i data-feather="archive"></i><span>Support</span></a>
             </li>
             <li><a class="sidebar-header" href="{{ route('logout') }}" onclick="event.preventDefault();
