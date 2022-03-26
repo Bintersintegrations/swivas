@@ -61,7 +61,7 @@
                 <h5 class="modal-title f-w-600" id="exampleModalLabel">Request Withdrawal</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
-            <form class="needs-validation" action="{{route('admin.atributes.save')}}" method="POST">@csrf
+            <form class="needs-validation" action="{{route('shop.withdrawal.request',$shop)}}" method="POST">@csrf
                 <div class="modal-body">
                     <div class="form">
                         <div class="form-group mb-2">
@@ -70,7 +70,7 @@
                         </div>
                         <div class="form-group mb-2">
                             <label for="label" class="mb-1">Bank :</label>
-                            <select class="form-control" id="element" name="bank" required>
+                            <select class="form-control" id="element" name="bank_id" required>
                                 @foreach ($banks as $bank)
                                     <option value="{{$bank->id}}">{{$bank->name}}</option>
                                 @endforeach

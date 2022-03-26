@@ -41,7 +41,7 @@ Route::group(['as'=>'shop.','namespace'=>'Vendors','prefix'=>'shop/{shop}'], fun
 
     Route::get('transactions','EarningController@transactions')->name('transactions');
     Route::get('withdrawals','EarningController@withdrawals')->name('withdrawals');
-    Route::post('withdrawal/request','PaymentManagementController@withdrawal_request')->name('withdrawal.request');
+    Route::post('withdrawal/request','EarningController@withdrawal_request')->name('withdrawal.request');
 
     Route::group(['prefix'=>'coupon'],function(){
         Route::get('/','CouponController@list')->name('coupons');

@@ -27,9 +27,6 @@ if delivery is required, show rates and vendors in that location
 sidebar on product page
 
 
-vendor payments and earnings
-settlement to bank
-
 emails
 
 notification
