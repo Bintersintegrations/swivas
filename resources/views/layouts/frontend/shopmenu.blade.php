@@ -137,6 +137,6 @@
         </div>
     </div>
     <div class="brand-logo">
-        <a href="index.html"><img src="{{asset('assets/images/icon/logo.png')}}" class="img-fluid blur-up lazyload" alt=""></a>
+        <a href="{{url('/')}}"><img src="{{asset('assets/images/icon/logo.png')}}" class="img-fluid blur-up lazyload" alt=""></a>
     </div>
 </div>

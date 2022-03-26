@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-lg-6">
                     <ol class="breadcrumb pull-right">
-                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/')}}"><i data-feather="home"></i></a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                 </div>
@@ -42,8 +42,8 @@
                             <div class="icons-widgets col-4">
                                 <div class="align-self-center text-center"><i data-feather="navigation" class="font-warning"></i></div>
                             </div>
-                            <div class="media-body col-8"><span class="m-0">Earnings</span>
-                                <h3 class="mb-0">$ <span class="counter">6659</span><small> This Month</small></h3>
+                            <div class="media-body col-8"><span class="m-0">Transactions</span>
+                                <h3 class="mb-0">₦ <span class="counter">6659</span><small> This Month</small></h3>
                             </div>
                         </div>
                     </div>
@@ -56,8 +56,8 @@
                             <div class="icons-widgets col-4">
                                 <div class="align-self-center text-center"><i data-feather="box" class="font-secondary"></i></div>
                             </div>
-                            <div class="media-body col-8"><span class="m-0">Products</span>
-                                <h3 class="mb-0">$ <span class="counter">9856</span><small> This Month</small></h3>
+                            <div class="media-body col-8"><span class="m-0">Orders</span>
+                                <h3 class="mb-0"><span class="counter">9856</span><br><small> All time</small></h3>
                             </div>
                         </div>
                     </div>
@@ -70,8 +70,8 @@
                             <div class="icons-widgets col-4">
                                 <div class="align-self-center text-center"><i data-feather="message-square" class="font-primary"></i></div>
                             </div>
-                            <div class="media-body col-8"><span class="m-0">Messages</span>
-                                <h3 class="mb-0">$ <span class="counter">893</span><small> This Month</small></h3>
+                            <div class="media-body col-8"><span class="m-0">Products</span>
+                                <h3 class="mb-0"> <span class="counter">893</span><br><small> All Time</small></h3>
                             </div>
                         </div>
                     </div>
@@ -84,8 +84,8 @@
                             <div class="icons-widgets col-4">
                                 <div class="align-self-center text-center"><i data-feather="users" class="font-danger"></i></div>
                             </div>
-                            <div class="media-body col-8"><span class="m-0">New Vendors</span>
-                                <h3 class="mb-0">$ <span class="counter">4561</span><small> This Month</small></h3>
+                            <div class="media-body col-8"><span class="m-0">Vendors</span>
+                                <h3 class="mb-0"><span class="counter">4561</span><br><small> Total</small></h3>
                             </div>
                         </div>
                     </div>

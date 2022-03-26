@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                @include('frontend.inside.sidebar')
+                @include('frontend.inside.shop.sidebar')
             </div>
             <div class="col-lg-9">
                 <div class="row">

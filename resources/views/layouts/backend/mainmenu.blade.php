@@ -1,6 +1,6 @@
 <div class="page-sidebar">
     <div class="main-header-left d-none d-lg-block">
-        <div class="logo-wrapper"><a href="index.html"><img class="blur-up lazyloaded" src="{{asset('assets/images/dashboard/multikart-logo.png')}}" alt=""></a></div>
+        <div class="logo-wrapper"><a href="{{url('/')}}"><img class="blur-up lazyloaded" src="{{asset('assets/images/dashboard/multikart-logo.png')}}" alt=""></a></div>
     </div>
     <div class="sidebar custom-scrollbar">
         <div class="sidebar-user text-center">
@@ -51,9 +51,9 @@
             <li>
                 <a class="sidebar-header" href=""><i data-feather="settings" ></i><span>Settings</span><i class="fa fa-angle-right pull-right"></i></a>
                 <ul class="sidebar-submenu">
-                    <li><a href="profile.html"><i class="fa fa-circle"></i>Site</a></li>
+                    <li><a href="{{route('admin.settings')}}"><i class="fa fa-circle"></i>Site</a></li>
                     
-                    <li><a href="profile.html"><i class="fa fa-circle"></i>Countries</a></li>
+                    {{-- <li><a href="profile.html"><i class="fa fa-circle"></i>Countries</a></li> --}}
                 </ul>
             </li>
             <li><a class="sidebar-header" href="invoice.html"><i data-feather="archive"></i><span>Support</span></a>

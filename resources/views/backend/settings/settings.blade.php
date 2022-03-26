@@ -17,7 +17,7 @@
             </div>
             <div class="col-lg-6">
                 <ol class="breadcrumb pull-right">
-                    <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/')}}"><i data-feather="home"></i></a></li>
                     <li class="breadcrumb-item">Coupons </li>
                     <li class="breadcrumb-item active">Create Coupon</li>
                 </ol>
@@ -36,8 +36,8 @@
         <div class="card-body">
             <ul class="nav nav-tabs tab-coupon" id="myTab" role="tablist">
                 <li class="nav-item"><a class="nav-link active show" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true" data-original-title="" title="">General</a></li>
-                <li class="nav-item"><a class="nav-link" id="restriction-tabs" data-toggle="tab" href="#restriction" role="tab" aria-controls="restriction" aria-selected="false" data-original-title="" title="">Restriction</a></li>
-                <li class="nav-item"><a class="nav-link" id="usage-tab" data-toggle="tab" href="#usage" role="tab" aria-controls="usage" aria-selected="false" data-original-title="" title="">Usage</a></li>
+                <li class="nav-item"><a class="nav-link" id="restriction-tabs" data-toggle="tab" href="#restriction" role="tab" aria-controls="restriction" aria-selected="false" data-original-title="" title="">Multilevel</a></li>
+                {{-- <li class="nav-item"><a class="nav-link" id="usage-tab" data-toggle="tab" href="#usage" role="tab" aria-controls="usage" aria-selected="false" data-original-title="" title="">Notif</a></li> --}}
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade active show" id="general" role="tabpanel" aria-labelledby="general-tab">
@@ -45,24 +45,25 @@
                         <h4>General</h4>
                         <div class="row">
                             <div class="col-sm-12">
+                                
                                 <div class="form-group row">
-                                    <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span> Coupan Title</label>
-                                    <input class="form-control col-md-7" id="validationCustom0" type="text" required="">
+                                    <label for="validationCustom1" class="col-xl-3 col-md-4"><span>*</span>Value Added Service Tax</label>
+                                    <input class="form-control col-md-7" id="validationCustom1" type="number" required="" >
+                                    <div class="valid-feedback">Please Provide vat %</div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="validationCustom1" class="col-xl-3 col-md-4"><span>*</span>Coupan Code</label>
-                                    <input class="form-control col-md-7" id="validationCustom1" type="text" required="" >
-                                    <div class="valid-feedback">Please Provide a Valid Coupon Code.</div>
+                                    <label class="col-xl-3 col-md-4">Seller Percentage after sale</label>
+                                    <input class="form-control col-md-7" type="number" data-language="en">
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-xl-3 col-md-4">Start Date</label>
-                                    <input class="datepicker-here form-control digits col-md-7" type="text" data-language="en">
+                                    <label class="col-xl-3 col-md-4">System Percentage</label>
+                                    <input class="form-control digits col-md-7" type="number" data-language="en">
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-xl-3 col-md-4">End Date</label>
-                                    <input class="datepicker-here form-control digits col-md-7" type="text" data-language="en">
+                                    <label class="col-xl-3 col-md-4">Incentive Percentage</label>
+                                    <input class="form-control digits col-md-7" type="number" data-language="en">
                                 </div>
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label class="col-xl-3 col-md-4">Free Shipping</label>
                                     <div class="checkbox checkbox-primary col-md-7">
                                         <input id="checkbox-primary-1" type="checkbox" data-original-title="" title="">
@@ -80,7 +81,7 @@
                                         <option value="1">Percent</option>
                                         <option value="2">Fixed</option>
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-md-4">Status</label>
                                     <div class="checkbox checkbox-primary col-md-7">

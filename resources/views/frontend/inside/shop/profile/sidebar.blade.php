@@ -75,7 +75,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#" class="btn btn-dark btn-custom" data-dismiss="modal">no</a>
-                <a href="index.html" class="btn btn-solid btn-custom">yes</a>
+                <a href="{{url('/')}}" class="btn btn-solid btn-custom">yes</a>
             </div>
         </div>
     </div>

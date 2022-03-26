@@ -38,10 +38,6 @@ Route::group(['prefix'=>'admin','as'=>'admin.','namespace'=>'Backend','middlewar
     Route::get('users','UserManagementController@listusers')->name('users.list');
     Route::post('user/delete','UserManagementController@deleteuser')->name('users.delete');
 
-    // Route::get('roles','RoleManagementController@listroles')->name('roles.list');
-    // Route::get('role/edit','RoleManagementController@editrole')->name('roles.edit');
-    // Route::post('role/save','RoleManagementController@saverole')->name('roles.save');
-
     Route::get('shops','ShopManagementController@listshops')->name('shops.list');
     Route::get('shop/{shop}/manage','ShopManagementController@manage')->name('shop.manage');    
     Route::post('shop/update','ShopManagementController@updateshop')->name('shop.update');

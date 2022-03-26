@@ -26,7 +26,7 @@
                     <table class="display table" id="basic-1">
                         <thead>
                         <tr>
-                            <th>Avatar</th>
+                            
                             <th>Name</th>
                             <th>Mobile</th>
                             <th>Email</th>
@@ -39,13 +39,7 @@
                         <tbody>
                             @foreach ($users as $user)
                             <tr>
-                                <td>
-                                    <div class="d-flex">
-                                        @if($user->photo)
-                                            <img src="{{$user->photo}}" class="img-fluid img-30 mr-2 blur-up lazyloaded" alt="">
-                                        @endif
-                                    </div>
-                                </td>
+                                
                                 <td>{{$user->firstname.' '.$user->surname}}</td>
                                 <td>{{$user->mobile}}</td>
                                 <td>{{$user->email}}</td>
