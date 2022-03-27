@@ -58,7 +58,7 @@
                                                     <label for="parent" class="mb-1">Parent Name :</label>
                                                     <select class="form-control" id="parent" name="parent_id" required>
                                                         <option value="null">No Parent</option>
-                                                            @foreach ($categories->where('grand_id',null)->where('parent_id',null) as $grandparent)
+                                                            @foreach ($categories->where('parent_id',null) as $grandparent)
                                                                 <option value="{{$grandparent->id}}">{{$grandparent->name}}</option>
                                                                 @foreach ($grandparent->getChildren() as $parent)
                                                                     <option value="{{$parent->id}}">{{$grandparent->name}}->{{$parent->name}}</option>

@@ -24,6 +24,7 @@ Route::post('blog/comment','BlogController@comment')->name('blogcomment');
 
 
 Route::get('products','ProductThreadController@list')->name('products');
+Route::get('products/category/{category}','ProductThreadController@listByCategory')->name('products.category');
 Route::get('product/{product}','ProductThreadController@view')->name('product.view');
 Route::post('product/add-to-cart','ProductThreadController@addtocart')->name('product.addtocart');
 Route::post('product/remove-from-cart','ProductThreadController@removefromcart')->name('product.removefromcart');

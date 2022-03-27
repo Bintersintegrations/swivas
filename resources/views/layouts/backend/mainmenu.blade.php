@@ -47,15 +47,7 @@
             
             <li><a class="sidebar-header" href="{{route('admin.users.list')}}"><i data-feather="user-plus"></i>Users</a></li>
             <li><a class="sidebar-header" href="{{route('admin.shops.list')}}"><i data-feather="users"></i>Vendors</a></li>
-            
-            <li>
-                <a class="sidebar-header" href=""><i data-feather="settings" ></i><span>Settings</span><i class="fa fa-angle-right pull-right"></i></a>
-                <ul class="sidebar-submenu">
-                    <li><a href="{{route('admin.settings')}}"><i class="fa fa-circle"></i>Site</a></li>
-                    
-                    {{-- <li><a href="profile.html"><i class="fa fa-circle"></i>Countries</a></li> --}}
-                </ul>
-            </li>
+            <li><a class="sidebar-header" href="{{route('admin.settings')}}"><i data-feather="settings"></i>Settings</a></li>
             <li><a class="sidebar-header" href="invoice.html"><i data-feather="archive"></i><span>Support</span></a>
             </li>
             <li><a class="sidebar-header" href="{{ route('logout') }}" onclick="event.preventDefault();

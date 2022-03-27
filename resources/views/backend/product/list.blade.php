@@ -51,31 +51,21 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Shop</th>
-                                <th>Image</th>
-                                <th>Category</th>
                                 <th>Price</th>
-                                <th>Available</th>
+                                <th>Orders</th>
                                 <th>Status</th>
-                                <th>Approve/Delete</th>
+                                <th>Action/Delete</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($products as $product)
                             <tr>
-                                <td>#{{$product->id}}|<a href="#">{{$product->name}}</a></td>
+                                <td><a href="#">{{$product->name}}</a></td>
                                 <td>{{$product->shop->name}}</td>
-                                <td>
-                                    <div class="d-flex">
-                                        @if($product->images)
-                                            <img src="{{$product->images[0]}}" class="img-fluid img-30 mr-2 blur-up lazyloaded" alt="">
-                                        @endif
-                                    </div>
-                                </td>
-                                <td><span class="badge badge-secondary">#</span></td>
+                                
+                                
                                 <td>{{$product->shop->country->currency_symbol.' '.$product->price}}</td>
-                                <td>Remaining: {{$product->quantity}}</td>
-                                {{-- <td>{{$product->shop->name}}</td> --}}
-                
+                                <td>{{$product->orders->count()}}</td>
                                 <td>
                                     @if($product->approved) 
                                         <span class="badge badge-success">Approved</span> 
@@ -84,23 +74,29 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <button @if($product->approved) class="btn btn-xs btn-danger" title="disapprove"  @else class="btn btn-xs btn-success" title="approve" @endif" data-toggle="modal" data-target="#status{{$product->id}}">
-                                        @if($product->approved) <i class="fa fa-times"></i> @else <i class="fa fa-check"></i> @endif
+                                    <button class="btn btn-xs btn-success" title="status" data-toggle="modal" data-target="#status{{$product->id}}">
+                                        <i class="fa fa-check"></i>
                                     </button>
                                     <div class="modal fade" id="status{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="status{{$product->id}}" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title f-w-600" id="exampleModalLabel"> @if($product->approved) Disapprove @else Approve  @endif Product</h5>
+                                                    <h5 class="modal-title f-w-600" id="exampleModalLabel"> Change Product Status</h5>
                                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 </div>
                                                 <form class="needs-validation" action="{{route('admin.product.status')}}" method="POST" enctype="multipart/form-data">@csrf
                                                     <div class="modal-body">
-                                                        <h5>Are you sure you want to @if($product->approved) Disapprove @else Approve  @endif product: <br>{{$product->name}} </h5>
+                                                        <h5>Change status of product: {{$product->name}} </h5>
                                                         <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                        <div class="form-group row">
+                                                            <div class="col">Approved <input type="checkbox" name="approved" value="1"></div>
+                                                            <div class="col">Featured <input type="checkbox" name="featured" value="1"></div>
+                                                            
+                                                        </div>
+                                                        
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button class="btn btn-danger" type="submit">Yes, @if($product->approved) Disapproved @else Approved @endif</button>
+                                                        <button class="btn btn-danger" type="submit">Save</button>
                                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                                                     </div>
                                                 </form>

@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Shop;
-use App\Order;
+use App\OrderDetail;
 use App\Atribute;
 use App\Category;
 use Illuminate\Database\Eloquent\Model;
@@ -43,7 +43,7 @@ class Product extends Model
     }
 
     public function orders(){
-        return $this->hasMany(Order::class);
+        return $this->hasMany(OrderDetail::class);
     }
 
     public function categories(){

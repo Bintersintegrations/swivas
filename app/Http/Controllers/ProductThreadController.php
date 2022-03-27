@@ -45,6 +45,13 @@ class ProductThreadController extends Controller
         return view('frontend.outside.product.list',compact('products','categories'));
     }
 
+    public function listByCategory(Category $category){
+        $products = Product::where('id', $category->id)->orderBy('price',session('sortPrice', 'asc'))->paginate(session('perPage', '24'));
+        $category_ids = $products->pluck('categories')->collapse()->unique()->toArray();
+        $categories = Category::whereIn('id',$category_ids)->get();
+        return view('frontend.outside.product.list',compact('products','categories'));
+    }
+
     public function view(Product $product){
         // dd($product);
         $atributes = Atribute::all();
