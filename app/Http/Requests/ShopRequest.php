@@ -42,10 +42,6 @@ class ShopRequest extends FormRequest
             'contact_document'=> 'required',
             'bank_id'=> 'required',
             'account_number'=> 'required',
-            'delivery_company_name'=> 'required',
-            'delivery_username'=> 'required',
-            'delivery_phone'=> 'required',
-            'delivery_id'=> 'required'
         ];
     }
     public function messages()
@@ -70,10 +66,6 @@ class ShopRequest extends FormRequest
             'contact_document.required'=> 'Contact Identification Document is required',
             'bank_id.required'=> 'Bank is required',
             'account_number.required'=> 'Account number is required',
-            'delivery_company_name.required'=> 'Delivery company name is required',
-            'delivery_username.required'=> 'Delivery Personnel is required',
-            'delivery_phone.required'=> 'Delivery Personnel phone number is required',
-            'delivery_id.required'=> 'Delivery Personnel Identification is required'
         ];
     }
 }
