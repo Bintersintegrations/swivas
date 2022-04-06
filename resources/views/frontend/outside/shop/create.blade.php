@@ -132,13 +132,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="firstname" class="form-label">First Name</label>
-                                                    <input type="text" name="firstname" class="form-control" id="firstname" @auth value="{{ Auth::user()->firstname ?? old('firstname') }}" readonly @endauth placeholder="First Name" >
+                                                    <input type="text" name="firstname" class="form-control" id="firstname" value="{{ Auth::check() ? Auth::user()->firstname : old('firstname') }}" @auth readonly @endauth placeholder="First Name" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="surname" class="form-label">Surname</label>
-                                                    <input type="text" name="surname" class="form-control" id="surname" @auth value="{{Auth::user()->surname ?? old('surname')}}" readonly @endauth   placeholder="Last Name" >
+                                                    <input type="text" name="surname" class="form-control" id="surname" value="{{Auth::check() ? Auth::user()->surname : old('surname')}}" @auth readonly @endauth   placeholder="Last Name" >
                                                 </div>
                                             </div>
                                         </div>
@@ -146,13 +146,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="email" class="form-label">Email</label>
-                                                    <input type="email" name="email" class="form-control" id="email" @auth value="{{Auth::user()->email ?? old('email')}}" readonly @endauth   placeholder="Email" >
+                                                    <input type="email" name="email" class="form-control" id="email"  value="{{Auth::check() ? Auth::user()->email : old('email')}}" @auth readonly @endauth   placeholder="Email" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="mobile" class="form-label">Mobile</label>
-                                                    <input type="text" name="mobile" class="form-control" id="mobile" @auth value="{{Auth::user()->mobile ?? old('mobile')}}" readonly @endauth   placeholder="Mobile" >
+                                                    <input type="text" name="mobile" class="form-control" id="mobile"  value="{{Auth::check() ? Auth::user()->mobile : old('mobile')}}" @auth readonly @endauth   placeholder="Mobile" >
                                                 </div>
                                             </div>
                                         </div>
@@ -167,7 +167,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="password-confirmation" class="form-label">Repeat Password</label>
-                                                    <input type="password" name="password-confirmation" class="form-control" id="password-confirmation" placeholder="******">
+                                                    <input type="password" name="password_confirmation" class="form-control" id="password-confirmation" placeholder="******">
                                                 </div>
                                             </div>
                                         </div>
@@ -284,7 +284,7 @@
                                                         
                                                         <div class="form-group">
                                                             <label for="certificate">CAC Document</label>
-                                                            <input type="file" name="business_certificate" class="form-control" id="certificate" >
+                                                            <input type="file" name="business_certificate"  class="form-control" id="certificate" >
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Categories of Products You Sell</label>

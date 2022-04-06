@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 trait CreateUserTrait
 {
-    protected function createUser(Request $request){
+    protected function createTheUser(Request $request){
         $role = Role::where('name','user')->first();
         $info = Cache::get(request()->ip());
             $user = User::create([

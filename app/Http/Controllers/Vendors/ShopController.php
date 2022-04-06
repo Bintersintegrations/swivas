@@ -72,14 +72,15 @@ class ShopController extends Controller
 
     public function setup(ShopRequest $request){
 
-        // dd($request->all());
-        if(Auth::check())
+
+        if(Auth::check()){
             $user = Auth::user();
-        elseif(Auth::attempt($request->only('email', 'password')))
+        }
+        elseif(Auth::attempt($request->only('email', 'password'))){
             $user = User::where('email',$request->email)->first();
-        else{
+        }else{
             $this->validator($request)->validate();
-            $user = $this->createUser($request);
+            $user = $this->createUser();
         } 
         $shop = new Shop;
         $shop->user_id = $user->id;
@@ -169,10 +170,5 @@ class ShopController extends Controller
     public function settings(Shop $shop){
         return view('frontend.inside.shop.settings',compact('shop'));
     }
-
-    public function createUser(){
-
-    }
-
     
 }
