@@ -7,6 +7,14 @@ use App\Http\Traits\FlutterWaveTrait;
 
 trait FlutterWaveTrait
 {
+    protected function resolveBankAccount($account_bank,$account_number){
+        $response = Curl::to('https://api.flutterwave.com/v3/accounts/resolve')
+        ->withHeader('Authorization: Bearer '.config('services.flutter_test_secret_key'))
+        ->withData( array('account_number'=> '0051911523',"account_bank" => '058') )
+        ->asJson()
+        ->post();
+        return $response;  
+    }
 
     protected function initializePayment(Payment $payment){
         $user = Auth::user();

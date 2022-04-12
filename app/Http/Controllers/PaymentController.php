@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Payment;
-use App\Withdrawal;
+use App\Bank;
 use App\OrderDetail;
 use Illuminate\Http\Request;
 use App\Http\Traits\OrderTrait;
@@ -16,6 +16,7 @@ use App\Http\Traits\NetworkPointTrait;
 class PaymentController extends Controller
 {
     use FlutterWaveTrait,OrderTrait,NetworkPointTrait;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -77,6 +78,12 @@ class PaymentController extends Controller
         }
         // else mark payment failed
         return redirect()->route('payment.status',$payment);
+    }
+
+    public function accountNumberResolve(Request $request){
+        $bank = Bank::find($request->bank_id);
+        $response = $this->resolveBankAccount($bank->code,$request->account_number);
+        return response()->json($response,200);
     }
 
     public function status(Payment $payment){

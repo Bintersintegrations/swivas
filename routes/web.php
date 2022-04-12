@@ -39,6 +39,7 @@ Route::post('checkout','SalesController@checkout')->name('checkout');
 Route::post('pay','PaymentController@pay')->name('pay');
 Route::get('payment/verification','PaymentController@verification')->name('payment.verification');
 Route::get('payment/status/{payment}','PaymentController@status')->name('payment.status');
+Route::post('account_number_verification','PaymentController@accountNumberResolve')->name('account_number_verification');
 
 
 Route::get('support','SupportThreadController@create')->name('support');

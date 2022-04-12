@@ -370,11 +370,7 @@
                                     <div class="page-title">
                                         <h2>Bank Accounts</h2>
                                     </div>
-                                    <div class="welcome-msg">
-                                        <p>Hello, MARK JECNO !</p>
-                                        <p>Your registration is successful. Let's help you get started with a few setup functionalities to jumpstart your experience on Swivas-Marketplace.
-                                            This setup process includes your profile completion, accesspin, bank acccount, identity verification.</p>
-                                    </div>
+                                    
                                     <div class="box-account box-info">
                                         {{-- <div class="box-head">
                                             <h2>Account Information</h2>
@@ -383,7 +379,7 @@
                                             <div class="col-sm-6">
                                                 <div class="box">
                                                     <div class="box-title mb-3">
-                                                        <h3>Bank Information</h3>
+                                                        <h3>Bank Account Information</h3>
                                                     </div>
                                                     <div class="box-content">
                                                         <div class="form-group">
@@ -407,6 +403,7 @@
                                                         <div class="form-group">
                                                             <label for="account_number">Account Name</label>
                                                             <input name="account_name" type="text" class="form-control" id="account_name" readonly >
+                                                            <span id="loader" class="d-block" style="display: :none;"></span>
                                                         </div>
                                                         
                                                     </div>
@@ -470,23 +467,6 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        // // function checkinput(){
-        //     var required = $('input,textarea,select').filter('[required]:visible');
-        //     var allRequired = false;
-            
-        //     required.each(function(){
-        //         alert($(this).val())
-        //         // if($(this).val() != ''){
-        //         //     allRequired = true;
-        //         // }
-        //     });
-
-        //     if(allRequired){
-        //         $('.next').attr('disabled',false)
-        //         //DO SOMETHING HERE... POPUP AN ERROR MESSAGE, ALERT , ETC.
-        //     }
-        // // }
-        
         
         $('.next').on('click',function(){
             $('.tab-pane').removeClass('active show');
@@ -506,8 +486,6 @@
             $('ul.setupmenu li').removeClass('active show');
             $(this).addClass('active show');
         })
-
-
         $('.countries').on('change',function(){
             var country_id = $(this).val();
             // alert(state_id)
@@ -545,6 +523,36 @@
                     console.log(data);
                 }
             });
+        })
+        $('#account_number').on('keyup',function(){
+            var acct_num = $('#account_number').val();
+            var bank_id = $('#bank').val();
+            if(acct_num.length === 10 && bank_id !== undefined){
+                $('#loader').show().html('Verifying account number');
+                // alert(state_id)
+                $.ajax({
+                    type:'POST',
+                    dataType: 'html',
+                    url: "{{route('account_number_verification')}}",
+                    data:{
+                        '_token' : $('meta[name="csrf-token"]').attr('content'),
+                        'account_number': acct_num,
+                        'bank_id': bank_id
+                    },
+                    success:function(data) {
+                        if(data.status == "success") {
+                            $('#account_name').val(data.data.account_name);
+                            $('#loader').hide();
+                        }else{
+                            $('#loader').show().html('Could not resolve account information');
+                        }
+                        console.log(data)
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+            }
         })
         
     </script>
