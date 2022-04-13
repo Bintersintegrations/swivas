@@ -62,6 +62,38 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-6">
+                                <label for="email">Country
+                                    @error('country')
+                                    <span class="invalid-feedback d-inline ml-2" role="alert">
+                                        <strong>- {{$message}}</strong>
+                                    </span>
+                                    @enderror
+                                </label>
+                                <select name="country" class="form-control select2 @error('country') is-invalid @enderror" id="country" required="">
+                                    @foreach ($countries as $country)
+                                        <option value="{{$country->id}}">{{$country->name}}</option>
+                                    @endforeach
+                                    
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="mobile">State
+                                    @error('state')
+                                    <span class="invalid-feedback d-inline ml-2" role="alert">
+                                        <strong>- {{$message}}</strong>
+                                    </span>
+                                    @enderror
+                                </label>
+                                <select name="state" class="form-control select2 @error('state') is-invalid @enderror" id="state" required="">
+                                    @foreach ($states as $state)
+                                        <option value="{{$state->id}}">{{$state->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="form-row my-4">
+                            <div class="col-md-6">
                                 <label for="password">Password
                                     @error('password')
                                     <span class="invalid-feedback d-inline ml-2" role="alert">
@@ -88,5 +120,7 @@
 <!--Section ends-->
 @endsection
 @push('scripts')
-    
+<script>
+    $('.select2').select2();
+</script>
 @endpush

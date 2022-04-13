@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Role;
 use App\User;
+use App\Country;
+use App\State;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Traits\GeoLocationTrait;
@@ -26,7 +28,9 @@ class RegisterController extends Controller
     public function showRegistrationForm($slug = null)
     {
         if($slug) session(['referrer' => $slug]);
-        return view('frontend.outside.auth.register');
+        $countries = Country::all();
+        $states = State::all();
+        return view('frontend.outside.auth.register',compact('countries','states'));
     }
 
     protected function validator(array $data)
@@ -36,6 +40,8 @@ class RegisterController extends Controller
             'lname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'mobile' => ['required', 'string', 'max:255', 'unique:users'],
+            'country' => ['required'],
+            'state' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -62,8 +68,8 @@ class RegisterController extends Controller
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
             'timezone' => $info['timezone'], 
-            'country_id' => $info['country_id'], 
-            'state_id' => $info['state_id'], 
+            'country_id' => $data['country'], 
+            'state_id' => $data['state'], 
             'city_id' => $info['city_id'], 
             'role_id' => $role->id, 
             'parent_id' => $referrer, 
