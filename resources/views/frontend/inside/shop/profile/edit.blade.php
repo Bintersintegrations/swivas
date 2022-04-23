@@ -13,42 +13,19 @@
             <div class="col-lg-9">
                 <div class="card tab2-card">
                     <div class="card-body">
-                        <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active show" id="top-profile-tab" data-toggle="tab" href="#top-profile" role="tab" aria-controls="top-profile" aria-selected="false">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user mr-2">
-                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="12" cy="7" r="4"></circle>
-                                    </svg>
-                                    Profile
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " id="contact-top-tab" data-toggle="tab" href="#top-contact" role="tab" aria-controls="top-contact" aria-selected="true">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings mr-2">
-                                        <circle cx="12" cy="12" r="3"></circle>
-                                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                                    </svg>
-                                    Settings
-                                </a>
-                            </li>
-                        </ul>
-
-                        <div class="tab-content p-4" id="top-tabContent">
-                            <div class="tab-pane fade active show" id="top-profile" role="tabpanel" aria-labelledby="top-profile-tab">
-                                <h5 class="f-w-600">Company Details</h5>
+                        <h5 class="f-w-600">Company Details</h5>
                                 <form class="theme-form" action="{{route('shop.profile',$shop)}}" method="POST" enctype="multipart/form-data">@csrf
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="shop_name">Shop Name</label>
-                                                <input type="text" class="form-control" id="shop_name" name="shop_name" value="{{$shop->name ?? old('shop_name')}}" placeholder="Company name" required="">
+                                                <input type="text" class="form-control" id="shop_name" name="shop_name" value="{{$shop->name ?? old('shop_name')}}" placeholder="Company name" required="" disabled>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="type">Categories</label>
-                                                <select class="form-control select2" id="type" name="type" required multiple>
+                                                <select class="form-control select2" id="categories" name="categories[]" required multiple>
                                                     @foreach ($categories as $category)
                                                         <option value="{{$category->id}}" @if(in_array($category->id,$shop->categories()->pluck('id')->toArray())) selected @endif>{{$category->name}}</option>
                                                     @endforeach 
@@ -70,8 +47,8 @@
                                         
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="address">Address</label>
-                                                <input type="text" class="form-control mb-0" name="address" placeholder="Street Address" value="{{$shop->address ?? old('address')}}" id="address">
+                                                <label for="street">Address</label>
+                                                <input type="text" class="form-control mb-0" name="street" placeholder="Street Address" value="{{$shop->street ?? old('street')}}" id="street">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -87,16 +64,6 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="city">City *</label>
-                                                <select class="form-control select2" id="city" name="city_id">
-                                                    @foreach ($shop->country->cities as $city)
-                                                        <option value="{{$city->id}}" @if($shop->city_id == $city->id) selected @endif>{{$city->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
                                                 <label for="state">Region/State *</label>
                                                 <select class="form-control select2" id="state" name="state_id">
                                                     @foreach ($shop->country->states as $state)
@@ -105,9 +72,20 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        
-                                        
                                         <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="city">City *</label>
+                                                <select class="form-control select2" id="city" name="city_id">
+                                                    @foreach ($shop->country->cities as $city)
+                                                        <option value="{{$city->id}}" @if($shop->city_id == $city->id) selected @endif>{{$city->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        {{-- <div class="col-md-6">
                                             <div class="input-group mb-3 px-0">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">F</span>
@@ -138,81 +116,14 @@
                                                 </div>
                                                 <input type="text" name="linkedin" value="{{$shop->linkedin ?? old('linkedin')}}" id="linkedin" placeholder="linkedin.com/" class="form-control ">
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-12">
                                             <button class="btn btn-sm btn-solid" type="submit">Save setting</button>
                                         </div>
                                     </div>
                                 </form>
-                            </div>
 
-                            <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
-                                <div class="account-setting">
-                                    <h5 class="f-w-600">Notifications</h5>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="public" name="eligibility[]" value="public">
-                                                <label class="custom-control-label" for="public">SMS</label>
-                                            </div>
-                                            <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="public" name="eligibility[]" value="public">
-                                                <label class="custom-control-label" for="public">Email</label>
-                                            </div>
-                                            <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="public" name="eligibility[]" value="public">
-                                                <label class="custom-control-label" for="public">Facial Authentication</label>
-                                            </div>
-                                            <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="public" name="eligibility[]" value="public">
-                                                <label class="custom-control-label" for="public">Public</label>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="account-setting deactivate-account my-4">
-                                    <h5 class="f-w-600">Deactivate Account</h5>
-                                    <div class="row">
-                                        <div class="col">
-                                            <label class="d-block" for="edo-ani">
-                                                <input class="radio_animated" id="edo-ani" type="radio" name="rdo-ani" checked="">
-                                                I have a privacy concern
-                                            </label>
-                                            <label class="d-block" for="edo-ani1">
-                                                <input class="radio_animated" id="edo-ani1" type="radio" name="rdo-ani">
-                                                This is temporary
-                                            </label>
-                                            <label class="d-block mb-0" for="edo-ani2">
-                                                <input class="radio_animated" id="edo-ani2" type="radio" name="rdo-ani" checked="">
-                                                Other
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="mt-2 btn btn-primary">Deactivate Account</button>
-                                </div>
-                                <div class="account-setting deactivate-account my-4">
-                                    <h5 class="f-w-600">Delete Account</h5>
-                                    <div class="row">
-                                        <div class="col">
-                                            <label class="d-block" for="edo-ani3">
-                                                <input class="radio_animated" id="edo-ani3" type="radio" name="rdo-ani1" checked="">
-                                                No longer usable
-                                            </label>
-                                            <label class="d-block" for="edo-ani4">
-                                                <input class="radio_animated" id="edo-ani4" type="radio" name="rdo-ani1">
-                                                Want to switch on other account
-                                            </label>
-                                            <label class="d-block mb-0" for="edo-ani5">
-                                                <input class="radio_animated" id="edo-ani5" type="radio" name="rdo-ani1" checked="">
-                                                Other
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="mt-2 btn btn-primary">Delete Account</button>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 
@@ -238,5 +149,43 @@
     </script>
     <script>
         $('.select2').select2();
+        $('#country').on('change',function(){
+            var country_id = $(this).val();
+            // alert(state_id)
+            $.ajax({
+                type:'POST',
+                dataType: 'html',
+                url: "{{route('getStates')}}",
+                data:{
+                    '_token' : $('meta[name="csrf-token"]').attr('content'),
+                    'country_id': country_id
+                },
+                success:function(data) {
+                    $('#state').html(data);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        })
+        $('#state').on('change',function(){
+            var state_id = $(this).val();
+            // alert(state_id)
+            $.ajax({
+                type:'POST',
+                dataType: 'html',
+                url: "{{route('getCities')}}",
+                data:{
+                    '_token' : $('meta[name="csrf-token"]').attr('content'),
+                    'state_id': state_id
+                },
+                success:function(data) {
+                    $('#city').html(data);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        })
     </script>
 @endpush

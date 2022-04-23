@@ -150,21 +150,18 @@ class ShopController extends Controller
     public function saveprofile(Shop $shop,Request $request){
         //dd($request->all());
         $user = Auth::user();
-        $shop = Shop::updateOrCreate(['user_id'=> $user->id],[
-            'name'=> $request->shop_name,
-            'type'=> $request->type,
-            'mobile'=> $request->mobile,
-            'email'=> $request->email,
-            'address'=> $request->address,
-            'country_id'=> $user->country_id,
-            'state_id'=> $request->state_id,
-            'city_id'=> $request->city_id,
-            'facebook'=> $request->facebook ? $request->facebook: null,
-            'twitter'=> $request->twitter ? $request->twitter: null,
-            'instagram'=> $request->instagram ? $request->instagram: null,
-            'linkedin'=> $request->linkedin ? $request->linkedin: null,
-            ]);
-        return redirect()->route('profile',$shop);
+        if($request->filled('categories')) $shop->categories = $request->categories;
+        if($request->filled('mobile')) $shop->mobile = $request->mobile;
+        if($request->filled('email')) $shop->email = $request->email;
+        if($request->filled('street')) $shop->street = $request->street;
+        if($request->filled('state_id')) $shop->state_id = $request->state_id;
+        if($request->filled('city_id')) $shop->city_id = $request->city_id;
+        $shop->save();
+            // 'facebook'=> $request->facebook ? $request->facebook: null,
+            // 'twitter'=> $request->twitter ? $request->twitter: null,
+            // 'instagram'=> $request->instagram ? $request->instagram: null,
+            // 'linkedin'=> $request->linkedin ? $request->linkedin: null,
+        return redirect()->route('shop.profile',$shop);
     }
 
     public function settings(Shop $shop){

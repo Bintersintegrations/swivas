@@ -14,6 +14,7 @@ class Category extends Model
     protected $fillable = [
         'name','parent_id','image','grand_id'
     ];
+    protected $casts = ['categories'=> 'array'];
 
     public function sluggable()
     {
