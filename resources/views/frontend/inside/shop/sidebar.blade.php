@@ -12,7 +12,7 @@
     <div class="faq-tab">
         <ul class="nav nav-tabs" id="top-tab" role="tablist">
             <li class="nav-item">
-                <a data-toggle="tab" class="nav-link @if(Route::is('shop.dashboard')) active @endif" href="{{route('shop.dashboard',$shop)}}">dashboard</a>
+                <a class="nav-link @if(Route::is('shop.dashboard')) active @endif" href="{{route('shop.dashboard',$shop)}}">dashboard</a>
             </li>
             <li class="nav-item dropdown">
                 <a data-toggle="dropdown" class="nav-link dropdown-toggle @if(Route::is('shop.products') || Route::is('shop.product.create')) active @endif" href="#" id="navbardrop" >

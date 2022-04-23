@@ -89,59 +89,7 @@
                                     </div>
                                 </div>
                                 
-                                {{-- <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="language">Language</label>
-                                        <select class="form-control" id="language" name="language_id">
-                                            @foreach ($languages as $language)
-                                                <option value="{{$language->id}}" @if($user->language_id == $language->id) selected @endif>{{$language->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="timezone">Timezone</label>
-                                        <select class="form-control select2" id="timezone" name="timezone">
-                                            <option value="Africa/Lagos">Africa/Lagos</option>
-                                            <option value="England/London">England/London</option>
-                                            <option value="America/Newyork">America/Newyork</option>
-                                            <option value="Canada/Ontario">Canada/Ontario</option>
-                                        </select>
-                                    </div>
-                                </div> --}}
-                                {{-- <div class="col-md-6">
-                                    <div class="input-group mb-3 px-0">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">F</span>
-                                        </div>
-                                        <input type="text" name="facebook" id="facebook" placeholder="facebook.com/" class="form-control ">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="input-group mb-3 px-0">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">I</span>
-                                        </div>
-                                        <input type="text" name="instagram" id="instagram" placeholder="instagram.com/" class="form-control ">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="input-group mb-3 px-0">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">T</span>
-                                        </div>
-                                        <input type="text" name="twitter" id="twitter" placeholder="twitter.com/" class="form-control ">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="input-group mb-3 px-0">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">L</span>
-                                        </div>
-                                        <input type="text" name="linkedin" id="linkedin" placeholder="linkedin.com/" class="form-control ">
-                                    </div>
-                                </div> --}}
+                        
                                 <div class="col-md-12">
                                     <button class="btn btn-sm btn-solid" type="submit">Save setting</button>
                                 </div>
@@ -213,5 +161,43 @@
     </script>
     <script>
         $('.select2').select2();
+        $('#country').on('change',function(){
+            var country_id = $(this).val();
+            // alert(state_id)
+            $.ajax({
+                type:'POST',
+                dataType: 'html',
+                url: "{{route('getStates')}}",
+                data:{
+                    '_token' : $('meta[name="csrf-token"]').attr('content'),
+                    'country_id': country_id
+                },
+                success:function(data) {
+                    $('#state').html(data);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        })
+        $('#state').on('change',function(){
+            var state_id = $(this).val();
+            // alert(state_id)
+            $.ajax({
+                type:'POST',
+                dataType: 'html',
+                url: "{{route('getCities')}}",
+                data:{
+                    '_token' : $('meta[name="csrf-token"]').attr('content'),
+                    'state_id': state_id
+                },
+                success:function(data) {
+                    $('#city').html(data);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        })
     </script>
 @endpush
