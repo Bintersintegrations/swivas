@@ -53,6 +53,7 @@ class ProductController extends Controller
 
     public function save(Shop $shop,Request $request){
         // $categories = $this->getCategories($request->input('categories'));
+        // dd($request->all());
         $product = new Product;
         $product->shop_id = $shop->id;
         $product->name = $request->name;
