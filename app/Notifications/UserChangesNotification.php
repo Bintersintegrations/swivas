@@ -7,7 +7,6 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\NexmoMessage;
-use App\NotificationSetting;
 
 class UserChangesNotification extends Notification implements ShouldQueue 
 {
@@ -32,13 +31,7 @@ class UserChangesNotification extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        $setting = NotificationSetting::where('name','user_changes')->first();
-        $destination = [];
-        if($setting->sms && $notifiable->sms_notify && $notifiable->mobile) $destination[] = 'nexmo';
-        if($setting->email && $notifiable->email_notify)  $destination[] = 'mail';
-        if($setting->app) $destination[] = 'database';
-        $destination[] = 'broadcast';
-        return $destination;
+        return ['mail','database'];
     }
 
     /**

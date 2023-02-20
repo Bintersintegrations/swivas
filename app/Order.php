@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable = ['user_id','shop_id','payment_id','currency','subtotal','vat','total','expected_at'];
+    protected $fillable = ['user_id','shop_id','payment_id','subtotal','vat','total','expected_at'];
     protected $casts = ['expected_at'=> 'datetime'];
     public function payment(){
         return $this->belongsTo(Payment::class);

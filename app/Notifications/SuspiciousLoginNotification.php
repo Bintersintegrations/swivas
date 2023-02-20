@@ -8,7 +8,6 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\NexmoMessage;
-use App\NotificationSetting;
 
 class SuspiciousLoginNotification extends Notification implements ShouldQueue
 {
@@ -32,11 +31,7 @@ class SuspiciousLoginNotification extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        $setting = NotificationSetting::where('name','suspicious_login')->first();
-        $destination = [];
-        if($setting->sms && $notifiable->sms_notify && $notifiable->mobile) $destination[] = 'nexmo';
-        if($setting->email && $notifiable->email_notify)  $destination[] = 'mail';
-        return $destination;
+        return ['mail','database'];
     }
 
     /**

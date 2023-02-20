@@ -4,10 +4,14 @@ namespace App\Observers;
 
 use App\Payment;
 use App\Events\PaymentSuccessful;
+use App\Http\Traits\CartTrait;
+use App\Http\Traits\WishlistTrait;
+use App\Notifications\NewOrderNotification;
 use App\Notifications\PaymentTransactionNotification;
 
 class PaymentObserver
 {
+    use CartTrait,WishlistTrait;
     /**
      * Handle the payment "created" event.
      *
@@ -33,6 +37,13 @@ class PaymentObserver
             foreach($payment->orders as $order){
                 $order->status = 'processing';
                 $order->save();
+                $order->shop->notify(new NewOrderNotification($order));
+                foreach($order->details as $detail){
+                    $this->removeFromCartSession($detail->product);
+                    $this->removeFromCartDb($detail->product);
+                    $this->removeWishlist($detail->product);
+                    
+                }
             }
         }
     }

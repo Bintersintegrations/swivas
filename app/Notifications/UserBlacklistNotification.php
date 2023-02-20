@@ -2,7 +2,6 @@
 
 namespace App\Notifications;
 
-use App\NotificationSetting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -31,11 +30,7 @@ class UserBlacklistNotification extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        $setting = NotificationSetting::where('name','blacklist_user')->first();
-        $destination = [];
-        if($setting->sms && $notifiable->sms_notify && $notifiable->mobile) $destination[] = 'nexmo';
-        if($setting->email && $notifiable->email_notify)  $destination[] = 'mail';
-        return $destination;
+        return ['mail','database'];
     }
 
     /**

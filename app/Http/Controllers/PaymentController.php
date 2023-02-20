@@ -67,10 +67,11 @@ class PaymentController extends Controller
         $trans_status = request()->query('status');
         $response = $this->verifyPayment($trans_id);
         $payment = Payment::where('reference',$trans_ref)->first();
+        
         if($trans_status == 'successful' && $response->status == 'success' && $payment && $response && $payment->reference == $response->data->tx_ref && $response->data->amount >= $payment->amount){
             $payment->method = $response->data->payment_type;
             $payment->status = 'success';
-            $payment->save();
+            $payment->save();  
         }else{
             $payment->status = 'failed';
             $payment->save();

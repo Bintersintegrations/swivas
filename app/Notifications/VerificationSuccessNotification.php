@@ -2,7 +2,6 @@
 
 namespace App\Notifications;
 
-use App\NotificationSetting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -32,13 +31,8 @@ class VerificationSuccessNotification extends Notification implements ShouldQueu
      */
     public function via($notifiable)
     {
-        $setting = NotificationSetting::where('name','verification_success')->first();
-        $destination = [];
-        if($setting->sms && $notifiable->sms_notify && $notifiable->mobile) $destination[] = 'nexmo';
-        if($setting->email && $notifiable->email_notify)  $destination[] = 'mail';
-        if($setting->app) $destination[] = 'database';
-        $destination[] = 'broadcast';
-        return $destination;
+
+        return ['mail','database'];
     }
 
     /**

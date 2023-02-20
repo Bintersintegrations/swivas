@@ -8,7 +8,6 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\NexmoMessage;
-use App\NotificationSetting;
 
 class PenaltyChargeNotification extends Notification implements ShouldQueue
 {
@@ -37,13 +36,7 @@ class PenaltyChargeNotification extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        $setting = NotificationSetting::where('name','penalty_charges')->first();
-        $destination = [];
-        if($setting->sms && $notifiable->sms_notify && $notifiable->mobile) $destination[] = 'nexmo';
-        if($setting->email && $notifiable->email_notify)  $destination[] = 'mail';
-        if($setting->app) $destination[] = 'database';
-        $destination[] = 'broadcast';
-        return $destination;
+        return ['mail','database','broadcast'];
     }
 
     /**

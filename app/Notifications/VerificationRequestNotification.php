@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use App\Setting;
-use App\NotificationSetting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -35,19 +34,7 @@ class VerificationRequestNotification extends Notification implements ShouldQueu
      */
     public function via($notifiable)
     {
-        $setting = NotificationSetting::where('name','verification_request')->first();
-        $destination = [];
-        if($setting->sms && $notifiable->sms_notify && $notifiable->mobile){
-            if($notifiable->unreadNotifications->where('type','App\Notifications\VerificationRequestNotification')->isNotEmpty() && now()->diffInHours($notifiable->unreadNotifications->where('type','App\Notifications\VerificationRequestNotification')->sortBy('created_at')->first()->created_at) > $this->sms_rate_time)
-            $destination[] = 'nexmo';
-        }
-        if($setting->email && $notifiable->email_notify){
-            if($notifiable->unreadNotifications->where('type','App\Notifications\VerificationRequestNotification')->isNotEmpty() && now()->diffInHours($notifiable->unreadNotifications->where('type','App\Notifications\VerificationRequestNotification')->sortBy('created_at')->first()->created_at) > $this->email_rate_time)
-            $destination[] = 'mail';
-        }  
-        if($setting->app) $destination[] = 'database';
-        $destination[] = 'broadcast';
-        return $destination;
+        return ['mail','database'];
     }
 
     /**

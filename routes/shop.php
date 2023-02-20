@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('shop/setup','Vendors\ShopController@create')->name('shop.create');
 Route::post('shop/setup','Vendors\ShopController@setup')->name('shop.setup');
 

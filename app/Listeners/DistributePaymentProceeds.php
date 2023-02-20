@@ -62,7 +62,7 @@ class DistributePaymentProceeds implements ShouldQueue
             $parent->save();
             //if grand parent payment
             if($parent->parent_id){
-                $grand = User::where($parent->parent_id);
+                $grand = User::find($parent->parent_id);
                 $grand->wallet += $grand_parent_payment;
                 $grand->save();
                 // if great grand parent payment
