@@ -4,6 +4,7 @@ namespace App;
 
 use App\User;
 use App\Order;
+use App\Observers\PaymentObserver;
 use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
@@ -13,7 +14,7 @@ class Payment extends Model
     public static function boot()
     {
         parent::boot();
-        parent::observe(new \App\Observers\PaymentObserver);
+        parent::observe(new PaymentObserver);
     }
 
     public function getRouteKeyName(){

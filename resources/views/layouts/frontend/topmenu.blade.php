@@ -160,7 +160,7 @@
                                                         @php $total += $details['product']->amount * $details['quantity'] @endphp
                                                     @empty
                                                     @endforelse
-                                                    <h5>subtotal : <span id="cart_total">${{$total}}</span></h5>
+                                                    <h5>subtotal : <span id="cart_total">₦{{$total}}</span></h5>
                                                 </div>
                                             </li>
                                             <li>

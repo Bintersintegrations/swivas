@@ -1,9 +1,7 @@
 <?php
 namespace App\Http\Traits;
 use App\Payment;
-use Ixudra\Curl\Facades\Curl;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Traits\NetworkPointTrait;
 
 trait NetworkPointTrait
 {

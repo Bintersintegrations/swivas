@@ -9,7 +9,6 @@ use App\Payment;
 use App\Setting;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
-use App\Http\Traits\OrderTrait;
 use Illuminate\Support\Facades\Auth;
 
 trait OrderTrait

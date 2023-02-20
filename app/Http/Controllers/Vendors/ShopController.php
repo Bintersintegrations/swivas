@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Vendors;
 use App\Bank;
 use App\City;
 use App\Shop;
-use App\State;
+use App\User;
 
+use App\State;
 use App\Product;
 use App\Category;
 use App\BankAccount;
@@ -14,8 +15,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ShopRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\CreateUserTrait;
-use App\Http\Traits\GeoLocationTrait;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Traits\GeoLocationTrait;
 use Illuminate\Support\Facades\Cache;
 
 class ShopController extends Controller
@@ -80,7 +81,7 @@ class ShopController extends Controller
             $user = User::where('email',$request->email)->first();
         }else{
             $this->validator($request)->validate();
-            $user = $this->createUser();
+            $user = $this->createUser($request);
         } 
         $shop = new Shop;
         $shop->user_id = $user->id;
@@ -140,9 +141,9 @@ class ShopController extends Controller
     
     public function profile(Shop $shop){
         $user = Auth::user();
-        
+        $states = State::all();
         $categories = Category::all();
-        return view('frontend.inside.shop.profile.edit',compact('shop','user','categories'));
+        return view('frontend.inside.shop.profile.edit',compact('shop','user','states','categories'));
         
     }
 

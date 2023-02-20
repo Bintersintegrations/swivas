@@ -40,8 +40,8 @@ class DistributePaymentProceeds implements ShouldQueue
         $great_grand_parent_percentage = $settings->where('name','great_grand_parent_percentage')->first()->value;
         $ancestor_percentage = $settings->where('name','ancestor_percentage')->first()->value;
 
-        $vat_payment = $vat_percentage * $payment->amount / 100;
-        $subtotal = $payment->amount - $vat_payment;
+        $vat_payment = $vat_percentage * $event->payment->amount / 100;
+        $subtotal = $event->payment->amount - $vat_payment;
         
         $system_payment = $system_percentage * $subtotal / 100;
 
@@ -63,7 +63,7 @@ class DistributePaymentProceeds implements ShouldQueue
             //if grand parent payment
             if($parent->parent_id){
                 $grand = User::where($parent->parent_id);
-                $grand->wallet += $grand_payment;
+                $grand->wallet += $grand_parent_payment;
                 $grand->save();
                 // if great grand parent payment
                 if($grand->parent_id){

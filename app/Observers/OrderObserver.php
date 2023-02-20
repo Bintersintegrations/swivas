@@ -2,13 +2,19 @@
 
 namespace App\Observers;
 
+use App\Order;
+use App\Wishlist;
 use App\Events\ShopPaymentEvent;
+use App\Http\Traits\CartTrait;
+use App\Http\Traits\WishlistTrait;
+use App\Notifications\NewOrderNotification;
 use App\Notifications\OrderReadyNotification;
 use App\Notifications\OrderReportedNotification;
-use App\Wishlist;
 
 class OrderObserver
 {
+    use CartTrait,WishlistTrait;
+
     public function created(Order $order)
     {
         // $order->shop->notify(new OrderNotification($order));
@@ -20,7 +26,9 @@ class OrderObserver
         if($order->isDirty('status') && $order->status == 'processing'){
             $order->shop->notify(new NewOrderNotification($order));
             foreach($order->details as $detail){
-                $wishlist = Wishlist::where('user_id',$order->user_id)->where('product_id',$detail->product_id)->delete();
+                $this->removeFromCartSession($detail->product);
+                $this->removeFromCartDb($detail->product);
+                $this->removeWishlist($detail->product);
             }
         }
         if($order->isDirty('status') && $order->status == 'ready'){
