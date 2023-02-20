@@ -6,7 +6,7 @@ use App\Bank;
 use App\City;
 use App\Shop;
 use App\State;
-use App\Country;
+
 use App\Product;
 use App\Category;
 use App\BankAccount;
@@ -14,12 +14,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ShopRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\CreateUserTrait;
+use App\Http\Traits\GeoLocationTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class ShopController extends Controller
 {
-    use CreateUserTrait;
+    use CreateUserTrait,GeoLocationTrait;
 
     public function __construct(){
         $this->middleware('auth')->except(['create','setup','list','index']);
@@ -27,13 +28,12 @@ class ShopController extends Controller
 
     public function list(){
         if(Auth::check()){
-            $state_id = Auth::user()->state_id;
+            $city = Auth::user()->city;
             
         }else{
-            $info = Cache::get(request()->ip());
-            $state_id = $info['state_id'];
-        } 
-        $shops = Shop::where('state_id',$state_id)->get();
+            $city = $this->getLocation();
+        }
+        $shops = Shop::where('state_id',$city->state_id)->get();
         $category_ids = $shops->pluck('categories')->collapse()->unique()->toArray();
         $categories = Category::whereIn('id',$category_ids)->get();
         
@@ -61,13 +61,13 @@ class ShopController extends Controller
     }
     
     public function create(){
-        $countries = Country::all();
+        
         $categories = Category::where('parent_id',null)->get();
         $states = State::all();
         $cities = City::all();
         $banks = Bank::where('status',true)->orderBy('name','ASC')->get();
         // dd($categories);
-        return view('frontend.outside.shop.create',compact('countries','categories','states','cities','banks'));
+        return view('frontend.outside.shop.create',compact('categories','states','cities','banks'));
     }
 
     public function setup(ShopRequest $request){
@@ -91,7 +91,6 @@ class ShopController extends Controller
         $shop->description = $request->business_description;
         $shop->categories = $request->business_categories;
         $shop->street = $request->address;
-        $shop->country_id = $request->country_id;
         $shop->state_id = $request->state_id;
         $shop->city_id = $request->city_id;
         
@@ -141,9 +140,9 @@ class ShopController extends Controller
     
     public function profile(Shop $shop){
         $user = Auth::user();
-        $countries = Country::all();
+        
         $categories = Category::all();
-        return view('frontend.inside.shop.profile.edit',compact('shop','user','countries','categories'));
+        return view('frontend.inside.shop.profile.edit',compact('shop','user','categories'));
         
     }
 

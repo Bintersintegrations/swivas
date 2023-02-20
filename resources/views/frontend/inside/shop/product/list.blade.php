@@ -45,7 +45,7 @@
                                                 </th>
                                                 <td><a href="{{route('product.view',$product)}}">{{$product->name}}</a></td>
                                                 
-                                                <td>{{$product->shop->country->currency_symbol.' '.$product->price}}</td>
+                                                <td>{{'₦'.$product->price}}</td>
                                                 <td>{{$product->quantity}}</td>
                                                 <td>@if($product->status == "publish")
                                                     <span class="badge badge-success ">Published</span>

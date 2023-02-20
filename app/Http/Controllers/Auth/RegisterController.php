@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Role;
 use App\User;
-use App\Country;
 use App\State;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -28,9 +27,8 @@ class RegisterController extends Controller
     public function showRegistrationForm($slug = null)
     {
         if($slug) session(['referrer' => $slug]);
-        $countries = Country::all();
         $states = State::all();
-        return view('frontend.outside.auth.register',compact('countries','states'));
+        return view('frontend.outside.auth.register',compact('states'));
     }
 
     protected function validator(array $data)
@@ -40,8 +38,8 @@ class RegisterController extends Controller
             'lname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'mobile' => ['required', 'string', 'max:255', 'unique:users'],
-            'country' => ['required'],
             'state' => ['required'],
+            'city' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -58,19 +56,15 @@ class RegisterController extends Controller
         if(request()->session()->has('referrer')){
             $referrer = User::where('slug',session('referrer'))->first()->id;
         }
-            
         $role = Role::where('name','user')->first();
-        $info = $this->getLocation();
         $user = User::create([
             'firstname' => $data['fname'],
             'surname' => $data['lname'],
             'email' => $data['email'],
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
-            'timezone' => $info['timezone'], 
-            'country_id' => $data['country'], 
             'state_id' => $data['state'], 
-            'city_id' => $info['city_id'], 
+            'city_id' => $data['city'], 
             'role_id' => $role->id, 
             'parent_id' => $referrer, 
         ]);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\City;
+use App\State;
 use Illuminate\Http\Request;
 use Ixudra\Curl\Facades\Curl;
 use Illuminate\Support\Facades\Auth;
@@ -32,18 +33,18 @@ class HomeController extends Controller
         return view('layouts.cities',compact('cities'));
     }
     public function getStates(Request $request){
-        $states = State::where('country_id',$request->country_id)->get();
+        $states = State::all();
         return view('layouts.states',compact('states'));
     }
     // public function woocommerce(){
-    //     // $response = Curl::to('https://swivas.com/wp-json/wc/v3/products')
+    //     // $response = Curl::to('https://binters.com/wp-json/wc/v3/products')
     //     //             ->withData( array( 'consumer_key'=>'ck_703be22c84662694bbd1232ef6eab1d7033a298b','consumer_secret'=>'cs_513bbbcd5141aff1fcff5f587d81b77f12ae99c0','per_page'=> 100,'page'=> 9) )
     //     //             ->asJsonResponse()
     //     //             ->get();
     //     // // dd($response);
     //     $products = WoocommerceProduct::all();
     //     foreach($products as $product){
-    //         $text = str_replace("https://swivas.com/","/",$product->permalink); 
+    //         $text = str_replace("https://binters.com/","/",$product->permalink); 
     //         // dd($text);
     //         $product->permalink = $text;
     //         $product->save();

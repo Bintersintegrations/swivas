@@ -18,12 +18,12 @@
                         class="img-fluid blur-up lazyload" alt=""></div>
             </div>
             <div class="col-sm-12">
-                <h4>Sell On Swivas, Increase Your Number Of Customers; All Swivasians In Your Area Shop With You...</h4>
+                <h4>Sell On Binters, Increase Your Number Of Customers; All Bintersians In Your Area Shop With You...</h4>
                 
                 <h5>We reposition your supermarket to boost/increase sales with additional regular customers.</h5>
-                        <h5>We give your outlet 100% visibility as a partner supermarket through Swivas</h5>
+                        <h5>We give your outlet 100% visibility as a partner supermarket through Binters</h5>
                         <h5>You no more spend on expensive adverts as we give you countrywide visibility.</h5>
-                        <h5>The system redirects all Swivasians in your area to your supermarket.</h5>
+                        <h5>The system redirects all shoppers in your area to your supermarket.</h5>
                     
                 
                 
@@ -185,7 +185,7 @@
 <!-- how to start section start -->
 <section class="section-b-space become-vendor">
     <div class="container">
-        <h4>doing business with Swivas is Easy</h4>
+        <h4>doing business with Binters is Easy</h4>
         <div class="step-bg">
             <div class="row">
                 <div class="col-lg-4">

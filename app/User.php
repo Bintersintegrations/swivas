@@ -10,7 +10,6 @@ use App\Shop;
 use App\Order;
 use App\State;
 use App\Address;
-use App\Country;
 use App\Wishlist;
 use App\Withdrawal;
 use App\Message;
@@ -27,7 +26,7 @@ class User extends Authenticatable
 {
     use Notifiable, SoftDeletes,RecursiveRelationships,Sluggable;
     protected $fillable = [
-        'firstname','surname','email','mobile','password','timezone','currency_id','country_id','state_id','city_id','role_id','parent_id'
+        'firstname','surname','email','mobile','password','timezone','currency_id','state_id','city_id','role_id','parent_id'
     ];
 
     /**
@@ -54,7 +53,7 @@ class User extends Authenticatable
         parent::observe(new \App\Observers\UserObserver);
     }
 
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [
@@ -79,9 +78,7 @@ class User extends Authenticatable
     public function addresses(){
         return $this->hasMany(Address::class);
     }
-    public function country(){
-        return $this->belongsTo(Country::class);
-    }
+    
     public function state(){
         return $this->belongsTo(State::class);
     }

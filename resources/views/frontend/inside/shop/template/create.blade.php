@@ -50,7 +50,7 @@
                                                         <div class="input-group mb-3px-0">
                                                             <input type="number" name="price" value="{{$template->price}}" id="price" class="form-control" required>
                                                             <div class="input-group-append">
-                                                                <span class="input-group-text">{{$shop->country->currency_symbol}}</span>
+                                                                <span class="input-group-text">{{'₦'}}</span>
                                                             </div>
                                                         </div> 
                                                     </div> 
@@ -83,7 +83,7 @@
                                                         <div class="input-group mb-3 px-0">
                                                             <input type="number" name="sale_price" value="0" id="offer_price" class="form-control ">
                                                             <div class="input-group-append">
-                                                                <span class="input-group-text">{{$shop->country->currency_symbol}}</span>
+                                                                <span class="input-group-text">{{'₦'}}</span>
                                                             </div>
                                                         </div> 
                                                     </div>

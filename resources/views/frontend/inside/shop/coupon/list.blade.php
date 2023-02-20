@@ -26,7 +26,7 @@
                                                 <th scope="col">Title</th>
                                                 <th scope="col">Code</th>
                                                 <th scope="col">Discount</th>
-                                                <th scope="col">Countries</th>
+                                            
                                                 <th scope="col">Period</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Action</th>

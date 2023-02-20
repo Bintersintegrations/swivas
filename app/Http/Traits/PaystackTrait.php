@@ -91,7 +91,6 @@ trait PaystackTrait
     //         "channel": "card",
     //         "signature": "SIG_idyuhgd87dUYSHO92D",
     //         "reusable": true,
-    //         "country_code": "NG",
     //         "account_name": "BoJack Horseman"
     //       },
     //       "customer": {

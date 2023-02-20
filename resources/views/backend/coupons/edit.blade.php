@@ -16,7 +16,7 @@
             <div class="col-lg-6">
                 <div class="page-header-left">
                     <h3>Edit Coupon
-                        <small>Swivas Admin Panel</small>
+                        <small>Binters Admin Panel</small>
                     </h3>
                 </div>
             </div>
@@ -126,16 +126,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-xl-3 col-md-4" for="countries">Countries</label>
-                                <div class="col-md-7 px-0">
-                                    <select class="custom-select select2" name="countries[]" id="countries" multiple style="width:100%;">
-                                        @foreach ($countries as $country)
-                                            <option value="{{$country->id}}" @if($coupon->country_limit &&  in_array($country->id,$coupon->country_limit)) selected @endif>{{$country->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+                            
                             <div class="form-group row">
                                 <label for="minimum_spend" class="col-xl-3 col-md-4">Minimum Spend</label>
                                 <input class="form-control col-md-7" id="minimum_spend" type="number" name="minimum_spend" value="{{$coupon->minimum_spend}}">

@@ -13,7 +13,7 @@ class AtributeOption extends Model
         'atribute_id','name','description'
     ];
     
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [

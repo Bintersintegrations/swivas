@@ -47,7 +47,7 @@
                                                     
                                                 <td>{{$order->shop->name}}</td>
                                                 
-                                                <td>{{Auth::user()->country->currency_symbol.number_format($order->total)}}</td>
+                                                <td>{{'₦'.number_format($order->total)}}</td>
                                                 <td>{{\Illuminate\Support\Str::replaceFirst('_',' ',$order->status)}}</td>
                                             </tr>
                                         @endforeach

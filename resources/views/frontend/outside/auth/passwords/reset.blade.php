@@ -27,7 +27,7 @@
                             <input type="text" name="email" value="{{ $email ?? old('email') }}" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email" required="" autocomplete="email" autofocus>
                         </div>
                         <div class="form-group">
-                            <label for="password">{{ __('Password') }}
+                            <label for="password">{{ __('New Password') }}
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

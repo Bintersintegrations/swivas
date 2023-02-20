@@ -25,7 +25,6 @@ class CreateUsersTable extends Migration
             $table->string('gender')->nullable();
             $table->string('photo')->nullable();
             $table->string('timezone')->nullable();
-            $table->unsignedBigInteger('country_id')->nullable();
             $table->unsignedBigInteger('state_id')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->unsignedBigInteger('language_id')->nullable();

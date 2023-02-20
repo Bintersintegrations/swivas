@@ -12,7 +12,7 @@ class Template extends Model
     
     protected $casts = ['categories'=> 'array','images'=>'array'];
 
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [

@@ -95,14 +95,7 @@
                                         
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6 form-group">
-                                            <label for="country">Country</label>
-                                            <select id="country" name="country_id" class="form-control">
-                                                @foreach ($countries as $country)
-                                                    <option value="{{$country->id}}" @if($user->country_id == $country->id) selected @endif>{{$country->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                        
                                     
                                         <div class="col-md-6 form-group">
                                             <label for="inputAddress">Address</label>
@@ -164,14 +157,7 @@
                                             
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6 form-group">
-                                                <label for="country">Country</label>
-                                                <select id="country" name="country_id" class="form-control">
-                                                    @foreach ($countries as $country)
-                                                        <option value="{{$country->id}}" @if($address->country_id == $country->id) selected @endif>{{$country->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                            
                                         
                                             <div class="col-md-6 form-group">
                                                 <label for="inputAddress">Address</label>

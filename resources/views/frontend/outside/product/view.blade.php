@@ -278,10 +278,10 @@
                                     <h2>{{$product->name}}</h2>
                                     @if(!$product->onSale())
                                     
-                                    <h3>{{$product->shop->country->currency_symbol.''.$product->price}}</h3>
+                                    <h3>{{'₦'.$product->price}}</h3>
                                     @else
-                                    <h4><del>{{$product->shop->country->currency_symbol.''.$product->price}}</del><span>{{round((100- ($product->sale_price / $product->price  * 100)))}}% off</span></h4>
-                                    <h3>{{$product->shop->country->currency_symbol.''.$product->sale_price}}</h3>
+                                    <h4><del>{{'₦'.$product->price}}</del><span>{{round((100- ($product->sale_price / $product->price  * 100)))}}% off</span></h4>
+                                    <h3>{{'₦'.$product->sale_price}}</h3>
                                     <h6 class="product-title">Offer Expires in</h6>
                                     <div class="timer mt-0 pl-4 py-1 mb-3">
                                         <p id="demo">
@@ -346,8 +346,8 @@
                                         <div class="size-box">
                                             <ul>
                                                 @if(array_key_exists('labelled_size',array_filter($product->atributes)))
-                                                    @foreach (explode(',',$product->atributes['labelled_size']) as $labelled_size)
-                                                        <li class="labelled_size" data-size="{{$labelled_size}}"  >
+                                                    @foreach ($product->atributes['labelled_size'] as $labelled_size)
+                                                        <li class="labelled_size" data-size="{{$labelled_size}}">
                                                             <a>
                                                                 {{$labelled_size}}
                                                             </a>
@@ -862,16 +862,16 @@
                                             </a>
                                             <div class="media-body">
                                                 <a href="#">
-                                                    <h4>`+value['product']->name +`</h4>
+                                                    <h4>`+value['product']['name'] +`</h4>
                                                 </a>
-                                                <h4><span>`+value['quantity']+` x `+value['product']->amount +`</span></h4>
+                                                <h4><span>`+value['quantity']+` x `+value['product']['amount'] +`</span></h4>
                                             </div>
                                         </div>
                                         <div class="close-circle">
                                             <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
                                         </div>
                                     </li>`;
-                        cart_total += parseInt(value['quantity']) * parseInt(value['product']->amount);
+                        cart_total += parseInt(value['quantity']) * parseInt(value['product']['amount']);
                         $('#shopping_list').prepend(listing);
                     });
                     $('#cart_total').html(cart_total);

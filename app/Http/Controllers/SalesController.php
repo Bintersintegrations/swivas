@@ -19,7 +19,7 @@ class SalesController extends Controller
     use CartTrait;
 
     public function __construct(){
-        $this->middleware('auth')->only(['checkout','orders','orderDetails']);
+        $this->middleware('auth')->except(['cart']);
     }
     
     public function cart(){
@@ -52,8 +52,8 @@ class SalesController extends Controller
         $vat = ['value'=> $this->getVat() * $subtotal / 100,'percent'=> $this->getVat()];
         $states = State::where('status',true)->get();
         $cities = City::whereIn('state_id',$states->pluck('id')->toArray())->get();
-        $currency = Cache::get(request()->ip())['currency_symbol'];
-        return view('frontend.outside.sale.checkout',compact('cart','subtotal','vat','currency','states','cities'));
+        
+        return view('frontend.outside.sale.checkout',compact('cart','subtotal','vat','states','cities'));
     }
 
     public function wishlist(){
@@ -61,6 +61,7 @@ class SalesController extends Controller
         $wishlists = $user->wishlists;
         return view('frontend.outside.sale.wishlist',compact('wishlists'));
     }
+
     public function orders(){
         $user = Auth::user();
         $orders = $user->orders;

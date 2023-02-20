@@ -51,22 +51,12 @@
                                                 <input type="text" class="form-control mb-0" name="street" placeholder="Street Address" value="{{$shop->street ?? old('street')}}" id="street">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="country">Country *</label>
-                                                <select class="form-control select2" id="country" name="country_id" disabled>
-                                                    @foreach ($countries as $country)
-                                                        <option value="{{$country->id}}" @if($shop->country_id == $country->id) selected @endif>{{$country->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                                <small class="text-muted text-danger">You cannot change your country. <a href="#">Help</a></small>
-                                            </div>
-                                        </div>
+                                        
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="state">Region/State *</label>
                                                 <select class="form-control select2" id="state" name="state_id">
-                                                    @foreach ($shop->country->states as $state)
+                                                    @foreach ($states as $state)
                                                         <option value="{{$state->id}}" @if($shop->state_id == $state->id) selected @endif>{{$state->name}}</option>
                                                     @endforeach
                                                 </select>
@@ -76,7 +66,7 @@
                                             <div class="form-group">
                                                 <label for="city">City *</label>
                                                 <select class="form-control select2" id="city" name="city_id">
-                                                    @foreach ($shop->country->cities as $city)
+                                                    @foreach ($shop->state->cities as $city)
                                                         <option value="{{$city->id}}" @if($shop->city_id == $city->id) selected @endif>{{$city->name}}</option>
                                                     @endforeach
                                                 </select>
@@ -149,25 +139,7 @@
     </script>
     <script>
         $('.select2').select2();
-        $('#country').on('change',function(){
-            var country_id = $(this).val();
-            // alert(state_id)
-            $.ajax({
-                type:'POST',
-                dataType: 'html',
-                url: "{{route('getStates')}}",
-                data:{
-                    '_token' : $('meta[name="csrf-token"]').attr('content'),
-                    'country_id': country_id
-                },
-                success:function(data) {
-                    $('#state').html(data);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        })
+        
         $('#state').on('change',function(){
             var state_id = $(this).val();
             // alert(state_id)

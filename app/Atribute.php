@@ -14,7 +14,7 @@ class Atribute extends Model
         'name','status','description','element',
     ];
 
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [

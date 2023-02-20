@@ -32,15 +32,7 @@
                                     <div class="field-label">Email Address</div>
                                     <input type="text" name="field-name" value="" placeholder="">
                                 </div>
-                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                    <div class="field-label">Country</div>
-                                    <select>
-                                        <option>India</option>
-                                        <option>South Africa</option>
-                                        <option>United State</option>
-                                        <option>Australia</option>
-                                    </select>
-                                </div>
+                               
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                     <div class="field-label">Address</div>
                                     <input type="text" name="field-name" value="" placeholder="Street address">
@@ -74,12 +66,12 @@
                                 {{-- {{dd($checkout)}} --}}
                                 <ul class="qty">
                                     @foreach($cart as $item)
-                                        <li>{{$item['product']->name}} × {{$item['quantity']}} <span>{{$currency}}{{number_format($item['amount'] * $item['quantity'])}}</span></li>
+                                        <li>{{$item['product']->name}} × {{$item['quantity']}} <span>₦{{number_format($item['amount'] * $item['quantity'])}}</span></li>
                                     @endforeach
                                 </ul>
                                 <ul class="sub-total">
-                                    <li>Subtotal <span class="count">{{$currency.''.number_format($subtotal)}}</span></li>
-                                    <li>Vat: ( {{$vat['percent']}} %) <span class="count">{{$currency.''.number_format($vat['value'])}}</span></li>
+                                    <li>Subtotal <span class="count">{{'₦'.number_format($subtotal)}}</span></li>
+                                    <li>Vat: ( {{$vat['percent']}} %) <span class="count">{{'₦'.number_format($vat['value'])}}</span></li>
                                     
                                     <li>
                                         <h5>Delivery</h5>
@@ -100,7 +92,7 @@
                                     </li>
                                 </ul>
                                 <ul class="total">
-                                    <li>Total <span class="count">{{$currency.''.number_format($subtotal + $vat['value'])}}</span></li>
+                                    <li>Total <span class="count">{{'₦'.number_format($subtotal + $vat['value'])}}</span></li>
                                 </ul>
                             </div>
                             <form action="{{route('pay')}}" method="POST">@csrf

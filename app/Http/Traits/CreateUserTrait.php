@@ -20,7 +20,6 @@ trait CreateUserTrait
                     'mobile' => $request->mobile,
                     'password' => Hash::make($request->firstname),
                     'timezone' => $info['timezone'], 
-                    'country_id' => $info['country_id'], 
                     'state_id' => $info['state_id'], 
                     'city_id' => $info['city_id'], 
                     'role_id' => $role->id, 

@@ -11,7 +11,7 @@
             <div class="col-lg-6">
                 <div class="page-header-left">
                     <h3>Vendor List
-                        <small>Swivas Admin Panel</small>
+                        <small>Binters Admin Panel</small>
                     </h3>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     <td>{{$shop->user->firstname}}</td>
                     <td>{{$shop->products->count()}}</td>
                     <td>{{$shop->orders->count()}}</td>
-                    <td>{{$shop->country->currenry_symbol.''.$shop->wallet}}</td>
+                    <td>{{'₦'.$shop->wallet}}</td>
                     <td>{{ucwords($shop->status)}}</td>
                     <td>
                         <div>

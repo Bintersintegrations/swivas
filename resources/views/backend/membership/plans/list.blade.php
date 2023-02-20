@@ -11,7 +11,7 @@
             <div class="col-lg-6">
                 <div class="page-header-left">
                     <h3>Roles
-                        <small>Swivas Admin Panel</small>
+                        <small>Binters Admin Panel</small>
                     </h3>
                 </div>
             </div>

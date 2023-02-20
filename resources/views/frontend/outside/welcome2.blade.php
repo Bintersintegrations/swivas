@@ -1332,7 +1332,7 @@
                         </g>
                     </svg>
                     <h4>24 X 7 service</h4>
-                    <p>Smart People Shop At Swivas. Shop & Earn With Us.. </p>
+                    <p>Smart People Shop At Binters. Shop & Earn With Us.. </p>
                 </div>
                 <div class="col-lg-3 col-md-6 service-block1 border border-0">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -14 512.00001 512">

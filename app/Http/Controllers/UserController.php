@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\City;
 use App\State;
 use App\Address;
-use App\Country;
+
 use App\Language;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -29,9 +29,9 @@ class UserController extends Controller
     
     public function profile(){
         $user = Auth::user();
-        $countries = Country::all();
+        $states = State::all();
         $languages = Language::all();
-        return view('frontend.inside.user.profile',compact('user','countries','languages'));
+        return view('frontend.inside.user.profile',compact('user','states','languages'));
     }
 
     public function saveprofile(Request $request){
@@ -73,17 +73,16 @@ class UserController extends Controller
 
     public function address(){
         $user = Auth::user();
-        $countries = Country::all();
         $states = State::all();
         $cities = City::all();
-        return view('frontend.inside.user.address',compact('user','countries','states','cities'));
+        return view('frontend.inside.user.address',compact('user','states','cities'));
     }
     
     public function manageAddress(Request $request){
         // dd($request->all());
         $user = Auth::user();
         if($request->action == 'create'){
-            Address::create(['user_id'=> $user->id ,'description'=> $request->description,'country_id'=> $request->country_id,'state_id'=> $request->state_id,'city_id'=> $request->city_id,'street'=> $request->street,'contact_name'=> $request->contact_name,'contact_number'=> $request->contact_number,'contact_email'=> $request->contact_email ]);
+            Address::create(['user_id'=> $user->id ,'description'=> $request->description,'state_id'=> $request->state_id,'city_id'=> $request->city_id,'street'=> $request->street,'contact_name'=> $request->contact_name,'contact_number'=> $request->contact_number,'contact_email'=> $request->contact_email ]);
             return redirect()->back()->with(['flash_type' => 'success','flash_msg'=>'Address created successfully']); //with success
         }
         elseif($request->action == 'delete'){
@@ -91,7 +90,7 @@ class UserController extends Controller
             return redirect()->back()->with(['flash_type' => 'success','flash_msg'=>'Address Deleted']); //with success
         }
         else{
-            $address = Address::where('id',$request->address_id)->update(['description'=> $request->description,'country_id'=> $request->country_id,'state_id'=> $request->state_id,'city_id'=> $request->city_id,'street'=> $request->street,'contact_name'=> $request->contact_name,'contact_number'=> $request->contact_number,'contact_email'=> $request->contact_email]);
+            $address = Address::where('id',$request->address_id)->update(['description'=> $request->description,'state_id'=> $request->state_id,'city_id'=> $request->city_id,'street'=> $request->street,'contact_name'=> $request->contact_name,'contact_number'=> $request->contact_number,'contact_email'=> $request->contact_email]);
             return redirect()->back()->with(['flash_type' => 'success','flash_msg'=>'Address Saved successfully']); //with success
         }
         

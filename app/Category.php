@@ -16,7 +16,7 @@ class Category extends Model
     ];
     protected $casts = ['categories'=> 'array'];
 
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [

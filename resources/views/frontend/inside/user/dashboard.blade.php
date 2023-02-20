@@ -64,7 +64,7 @@
                             <div class="col-lg-6">
                                 <div class="card dashboard-table">
                                     <div class="card-body">
-                                        <h3>Latest Posts</h3>
+                                        <h3>Latest Products</h3>
                                         <table class="table mb-0">
                                             <thead>
                                                 <tr>
@@ -146,9 +146,72 @@
                                     </div>
                                 </div>
                             </div>
-        
                         </div>
-                        
+                        <div class="row mt-5">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3>Unread Messages</h3>
+                                        <table class="table mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">Message</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span class="text-nowrap">12-02-2022 04:18PM</span> 
+                                                    </td>
+                                                    <td> 
+                                                        <span class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit... </span> 
+                                                        
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>12-02-2022 04:18PM</td>
+                                                    <td> 
+                                                        <span class="text-justify"> Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                                        Vel atque natus ducimus </span>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3>Recent Withdrawals</h3>
+                                        <table class="table mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">Amount</th>
+                                                    <th scope="col">status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">04/12/2022</th>
+                                                    <td>N20,000</td>
+                                                    <td>Pending</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">#12/02/2022</th>
+                                                    <td>N15,000</td>
+                                                    <td>Completed</td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                   

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Product;
 use App\Coupon;
-use App\Country;
 use App\Category;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -20,8 +19,7 @@ class CouponManagementController extends Controller
     public function create(){
         $products = Product::all();
         $categories = Category::all();
-        $countries = Country::all();
-        return view('backend.coupons.create',compact('products','categories','countries'));
+        return view('backend.coupons.create',compact('products','categories'));
     }
     public function save(Request $request){
         // dd($request->all());
@@ -41,7 +39,6 @@ class CouponManagementController extends Controller
         $coupon->free_shipping = $request->shipping ? true:false;
         $coupon->category_limit = $request->categories ? $request->categories : null;
         $coupon->product_limit = $request->products ? $request->products :null;
-        $coupon->country_limit = $request->countries ? $request->countries : null;
         $coupon->limit_per_user = $request->per_customer ? $request->per_customer : null;
         $coupon->status = $request->status ? true:false;
         $coupon->is_global = true;
@@ -52,8 +49,7 @@ class CouponManagementController extends Controller
     public function edit(Coupon $coupon){
         $products = Product::all();
         $categories = Category::all();
-        $countries = Country::all();
-        return view('backend.coupons.edit',compact('coupon','products','categories','countries'));
+        return view('backend.coupons.edit',compact('coupon','products','categories'));
     }
 
     public function update(Coupon $coupon,Request $request){
@@ -72,7 +68,6 @@ class CouponManagementController extends Controller
         $coupon->free_shipping= $request->shipping ? true:false;
         $coupon->category_limit= $request->categories ? $request->categories : null;
         $coupon->product_limit= $request->products ? $request->products :null;
-        $coupon->country_limit= $request->countries ? $request->countries : null;
         $coupon->limit_per_user= $request->per_customer ? $request->per_customer : null;
         $coupon->status= $request->status ? true:false;
         $coupon->is_global = true;

@@ -1,7 +1,24 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/','HomeController@index')->name('index');
+
+//AUTH
+Auth::routes();
+//ABOUT PAGES
 Route::get('shops','Vendors\ShopController@list')->name('shop.list');
+Route::view('start-selling','frontend.outside.shop.intro')->name('sell');
+Route::view('multilevel-network','frontend.outside.network')->name('network');
+Route::view('feedback','frontend.outside.general.contact')->name('contact');
+
+Route::view('terms-conditions','frontend.outside.general.terms')->name('terms');
+Route::view('return-refund-policy','frontend.outside.general.refund')->name('refund');
+Route::view('privacy-policy','frontend.outside.general.charity')->name('privacy');
+Route::view('about','frontend.outside.general.about')->name('about');
+Route::view('faq','frontend.outside.general.faq')->name('faq');
+
 Route::get('referer/{slug?}','Auth\RegisterController@showRegistrationForm')->name('referer');
 // Route::get('woocommerce/products','HomeController@woocommerce');
 
@@ -9,19 +26,10 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-//ABOUT PAGES
-Route::view('about','frontend.outside.general.about')->name('about');
-Route::view('faq','frontend.outside.general.faq')->name('faq');
-Route::view('contact','frontend.outside.general.contact')->name('contact');
-Route::view('orphanages','frontend.outside.general.orphanages')->name('orphanages');
-Route::view('charity-organizations','frontend.outside.general.charity')->name('charity');
-Route::view('start-selling','frontend.outside.shop.intro')->name('sell');
-Route::view('multilevel-network','frontend.outside.network')->name('network');
 
 Route::get('blog','BlogController@list')->name('blogroll');
 Route::get('blog/post/{post}','BlogController@post')->name('blogpost');
 Route::post('blog/comment','BlogController@comment')->name('blogcomment');
-
 
 Route::get('products','ProductThreadController@list')->name('products');
 Route::get('products/category/{category}','ProductThreadController@listByCategory')->name('products.category');
@@ -47,12 +55,9 @@ Route::post('support','SupportThreadController@save')->name('support');
 
     
 
-//AUTH
-Auth::routes();
 
 Route::get('dashboards', 'HomeController@dashboards')->name('home');
 Route::post('getCities','HomeController@getCities')->name('getCities');
-Route::post('getStates','HomeController@getStates')->name('getStates');
 Route::post('orphanage/charity/register','HomeController@orphanageCharity')->name('orphanage.charity');
  
 //USER PAGES

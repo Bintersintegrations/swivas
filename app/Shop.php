@@ -6,7 +6,6 @@ use App\City;
 use App\User;
 use App\Order;
 use App\State;
-use App\Country;
 use App\Product;
 use App\Category;
 use App\Withdrawal;
@@ -28,7 +27,7 @@ class Shop extends Model
     //     parent::observe(new \App\Observers\ShopObserver);
     // }
 
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [
@@ -48,9 +47,7 @@ class Shop extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    public function country(){
-        return $this->belongsTo(Country::class);
-    }
+
     public function state(){
         return $this->belongsTo(State::class);
     }

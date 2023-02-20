@@ -19,7 +19,6 @@ class CreateShopsTable extends Migration
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
-            $table->unsignedBigInteger('country_id')->nullable();
             $table->unsignedBigInteger('state_id')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->string('street');

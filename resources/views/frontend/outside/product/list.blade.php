@@ -233,10 +233,10 @@
                                                             </a>
                                                             @if(!$product->onSale())
                                     
-                                                            <h4>{{$product->shop->country->currency_symbol.''.$product->price}}</h4>
+                                                            <h4>{{'₦'.$product->price}}</h4>
                                                             @else
-                                                            <h4><del>{{$product->shop->country->currency_symbol.''.$product->price}}</del>
-                                                            {{$product->shop->country->currency_symbol.''.$product->sale_price}}</h4>
+                                                            <h4><del>{{'₦'.$product->price}}</del>
+                                                            {{'₦'.$product->sale_price}}</h4>
                                                             @endif
                                                             
                                                         </div>

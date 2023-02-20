@@ -17,7 +17,6 @@ class CreateSuspicionsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->ipAddress('ipAddress')->default('0.0.0.0');
-            $table->unsignedBigInteger('country_id');
             $table->unsignedBigInteger('state_id');
             $table->unsignedBigInteger('city_id');
             $table->string('timezone');
@@ -31,7 +30,6 @@ class CreateSuspicionsTable extends Migration
             $table->integer('visit')->default(0);
             $table->SoftDeletes();
             $table->timestamps();
-            $table->foreign('country_id')->references('id')->on('countries');
             $table->foreign('state_id')->references('id')->on('states');
             $table->foreign('city_id')->references('id')->on('cities');
         });

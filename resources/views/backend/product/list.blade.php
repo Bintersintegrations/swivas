@@ -21,7 +21,7 @@
             <div class="col-lg-6">
                 <div class="page-header-left">
                     <h3>Products
-                        <small>Swivas Admin Panel</small>
+                        <small>Binters Admin Panel</small>
                     </h3>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                                 <td>{{$product->shop->name}}</td>
                                 
                                 
-                                <td>{{$product->shop->country->currency_symbol.' '.$product->price}}</td>
+                                <td>{{'₦'.$product->price}}</td>
                                 <td>{{$product->orders->count()}}</td>
                                 <td>
                                     @if($product->approved) 

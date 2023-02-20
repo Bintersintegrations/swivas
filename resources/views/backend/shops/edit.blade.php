@@ -10,7 +10,7 @@
             <div class="col">
                 <div class="page-header-left">
                     <h3>Create Vendor
-                        <small>Swivas Admin Panel</small>
+                        <small>Binters Admin Panel</small>
                     </h3>
                 </div>
             </div>

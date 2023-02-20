@@ -17,7 +17,7 @@
                             <div class="card-body">
                                 <div class="top-sec">
                                     <h3>payments</h3>
-                                    <a href="#" class="btn btn-sm btn-solid">add product</a>
+                                    {{-- <a href="#" class="btn btn-sm btn-solid">add product</a> --}}
                                 </div>
                                 <table class="table table-responsive-sm mb-0">
                                     <thead>

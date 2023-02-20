@@ -5,13 +5,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <meta name="description" content="Swivas MarketPlace is a unique marketplace">
-        <meta name="keywords" content="Swivas MarketPlace ">
-        <meta name="author" content="Multishops">
+        <meta name="description" content="Binters MarketPlace is a unique marketplace">
+        <meta name="keywords" content="Binters MarketPlace ">
+        <meta name="author" content="Integrations">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="icon" href="{{asset('assets/images/favicon/1.png')}}" type="image/x-icon">
         <link rel="shortcut icon" href="{{asset('assets/images/favicon/1.png')}}" type="image/x-icon">
-        <title>Swivas - MarketPlace</title>
+        <title>Binters - MarketPlace</title>
 
         <!--Google font-->
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -64,13 +64,13 @@
                             </div>
                             <div class="footer-contant">
                                 <div class="footer-logo">
-                                    <img src="{{asset('assets/images/icon/swivas.jpg')}}" alt=""></div>
+                                    <img src="{{asset('assets/images/icon/binters.jpg')}}" alt=""></div>
                                 <p>An e-commerce company with multilevel memberships and a reusable credit reward scheme</p>
                                 <ul class="contact-list">
                                     <li><i class="fa fa-map-marker"></i>17, Dele Aiyedun Close, Ogba, Lagos
                                     </li>
                                     <li><i class="fa fa-phone"></i>WhatsApp: +234-817-9333-448</li>
-                                    <li><i class="fa fa-envelope-o"></i>Email Us: <a href="#" style="text-transform: none">business@swivas.com</a></li>
+                                    <li><i class="fa fa-envelope-o"></i>Email Us: <a href="#" style="text-transform: none">business@binters.com</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -86,6 +86,7 @@
                                         <li><a href="{{route('shop.list')}}">Shops</a></li>
                                         <li><a href="{{route('sell')}}">Sell</a></li>
                                         <li><a href="{{route('network')}}">Network</a></li>
+                                        <li><a href="{{route('contact')}}">Feedback</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -97,11 +98,11 @@
                                 </div>
                                 <div class="footer-contant">
                                     <ul>
-                                        <li><a href="#">Terms &amp; Condition</a></li>
+                                        <li><a href="{{route('terms')}}">Terms &amp; Condition</a></li>
                                         <li><a href="#">Return & Refund Policy</a></li>
                                         <li><a href="#">Privacy & Cookie Policy</a></li>
-                                        <li><a href="#">About Us</a></li>
-                                        <li><a href="#">FAQs</a></li>
+                                        <li><a href="{{route('about')}}">About Us</a></li>
+                                        <li><a href="{{route('faq')}}">FAQs</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -140,7 +141,7 @@
                     <div class="row">
                         <div class="col-xl-6 col-md-6 col-sm-12">
                             <div class="footer-end">
-                                <p><i class="fa fa-copyright" aria-hidden="true"></i> 2021 Swivas Multishops</p>
+                                <p><i class="fa fa-copyright" aria-hidden="true"></i> 2021 Binters Integrations</p>
                             </div>
                         </div>
                         {{-- <div class="col-xl-6 col-md-6 col-sm-12">

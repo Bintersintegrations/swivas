@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Setting;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,5 +33,9 @@ class AppServiceProvider extends ServiceProvider
         View::composer('layouts.frontend.shopmenu', function ($view) {
             $view->with('categories', \App\Category::all());
         });
+        $settings = Cache::rememberForever('settings', function () {
+            return Setting::select(['name','value'])->get()->pluck('value','name')->toArray();
+        });
+        
     }
 }

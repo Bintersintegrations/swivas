@@ -67,7 +67,7 @@
                                     <div class="welcome-msg">
                                         
                                         <p>
-                                            You are about to increase your sales and customer base through Swivas. 
+                                            You are about to increase your sales and customer base through Binters. 
                                             To jumpstart your experience, the setup process includes completion of your 
                                             profile, identity verification and bank account details. 
                                             To continue, please read and accept the shop agreement.
@@ -92,7 +92,7 @@
                                                         remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
                                                         sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
                                                         Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                                    <p>Click here to view whole document https://swivas.something.com</p>
+                                                    <p>Click here to view whole document https://binters.something.com</p>
                                                     
                                                 </div>
                                                 <div class="form-group ">
@@ -227,7 +227,7 @@
                                     </div>
                                     <div class="welcome-msg">
                                         
-                                        <p>Your are about to start making lots of money from sales. Let's help you get started with a few setup functionalities to jumpstart your experience on Swivas-Marketplace.
+                                        <p>Your are about to start making lots of money from sales. Let's help you get started with a few setup functionalities to jumpstart your experience on Binters-Marketplace.
                                             This setup process includes your profile completion, accesspin, bank acccount, identity verification.</p>
                                     </div>
                                     <div class="box-account box-info">
@@ -328,14 +328,7 @@
                                             <input type="text" name="address" value="{{ old('address') }}" class="form-control" id="inputAddress" placeholder="1234 Main St" >
                                         </div>
                                         <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <label for="country">Country</label>
-                                                <select id="country" name="country_id" class="countries select2 form-control" >
-                                                    @foreach ($countries as $country)
-                                                        <option value="{{$country->id}}">{{$country->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                            
                                             <div class="form-group col-md-4">
                                                 <label for="inputState">State</label>
                                                 <select id="inputState" name="state_id" class="states form-control select2" >
@@ -486,25 +479,7 @@
             $('ul.setupmenu li').removeClass('active show');
             $(this).addClass('active show');
         })
-        $('.countries').on('change',function(){
-            var country_id = $(this).val();
-            // alert(state_id)
-            $.ajax({
-                type:'POST',
-                dataType: 'html',
-                url: "{{route('getStates')}}",
-                data:{
-                    '_token' : $('meta[name="csrf-token"]').attr('content'),
-                    'country_id': country_id
-                },
-                success:function(data) {
-                    $('.cities').html(data);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        })
+        
         $('.states').on('change',function(){
             var state_id = $(this).val();
             // alert(state_id)

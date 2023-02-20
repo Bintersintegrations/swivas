@@ -15,7 +15,7 @@ class Post extends Model
     use Sluggable,SoftDeletes;
 
     
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [

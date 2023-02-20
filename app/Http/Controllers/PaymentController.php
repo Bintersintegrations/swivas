@@ -35,12 +35,12 @@ class PaymentController extends Controller
             $payment = Payment::find($request->payment_id);
         }
         else{
-            $payment = Payment::create(['user_id'=> $user->id,'coupon_id' => $coupon_id,'reference'=> uniqid('swivas'.Auth::id()),'description'=> 'payment for orders','discount'=> $request->discount,'currency'=> $user->country->currency_iso,'amount'=> $request->vat + $items->sum('amount')]);
+            $payment = Payment::create(['user_id'=> $user->id,'coupon_id' => $coupon_id,'reference'=> uniqid('swivas'.Auth::id()),'description'=> 'payment for orders','discount'=> $request->discount,'amount'=> $request->vat + $items->sum('amount')]);
             foreach($items->groupBy('shop_id') as $key => $shopOrder){
                 $subtotal = $shopOrder->sum('amount');
                 $vat = $this->getVat() * $subtotal / 100;
                 $total = $subtotal + $vat;
-                $order = Order::create(['user_id'=> $user->id,'shop_id'=> $key,'payment_id'=> $payment->id,'currency'=> $user->country->currency_iso,'subtotal'=> $subtotal,'vat'=> $vat,'total'=> $total ]);
+                $order = Order::create(['user_id'=> $user->id,'shop_id'=> $key,'payment_id'=> $payment->id,'subtotal'=> $subtotal,'vat'=> $vat,'total'=> $total ]);
                 foreach($shopOrder as $product){
                     $details = OrderDetail::create(['order_id'=> $order->id,'product_id'=> $product['id'],'quantity'=> $product['quantity'],'unit_price'=> $product['price'],'amount'=> $product['amount'] ]);
                 }

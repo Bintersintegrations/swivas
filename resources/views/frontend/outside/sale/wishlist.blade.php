@@ -30,7 +30,7 @@
                                             <p>@if($wishlist->product->quantity) in stock @else out of stock @endif</p>
                                         </div>
                                         <div class="col-xs-3">
-                                            <h2 class="td-color">{{Cache::get(request()->ip())['currency_symbol']}}{{$wishlist->product->amount}}</h2>
+                                            <h2 class="td-color">₦{{$wishlist->product->amount}}</h2>
                                         </div>
                                         <div class="col-xs-3">
                                             <h2 class="td-color"><a href="#" class="icon mr-1"><i class="ti-close"></i>
@@ -39,7 +39,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h2>{{Cache::get(request()->ip())['currency_symbol']}}{{$wishlist->product->amount}}</h2>
+                                    <h2>₦{{$wishlist->product->amount}}</h2>
                                 </td>
                                 <td>
                                     <p>@if($wishlist->product->quantity) in stock @else out of stock @endif</p>

@@ -9,24 +9,24 @@ use Illuminate\Http\Request;
 use App\Http\Traits\CartTrait;
 use App\Http\Traits\WishlistTrait;
 use App\Http\Controllers\Controller;
+use App\Http\Traits\GeoLocationTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class ProductThreadController extends Controller
 {
-    use CartTrait,WishlistTrait;
+    use CartTrait,WishlistTrait,GeoLocationTrait;
     
     public function list(){
         // dd(request()->query());
         if(Auth::check()){
-            $state_id = Auth::user()->state_id;
+            $city = Auth::user()->city;
             
         }else{
-            $info = Cache::get(request()->ip());
-            $state_id = $info['state_id'];
+            $city = $this->getLocation();
         }
-        $products = Product::whereHas('shop', function ($query) use($state_id) {
-            $query->where('state_id', $state_id);
+        $products = Product::whereHas('shop', function ($query) use($city) {
+            $query->where('state_id', $city->state_id);
         })->get();
 
         if(request()->query() && request()->query('categories')){

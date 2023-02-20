@@ -21,7 +21,6 @@ class EarningController extends Controller
         $withdrawal = new Withdrawal;
         $withdrawal->withdrawable_id = $shop->id;
         $withdrawal->withdrawable_type = "App\Shop";
-        $withdrawal->currency = $shop->country->currency_iso;
         $withdrawal->amount = $request->amount;
         $withdrawal->bank_id = $request->bank_id;
         $withdrawal->account_number = $request->account_number;

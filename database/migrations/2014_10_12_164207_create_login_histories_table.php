@@ -17,7 +17,6 @@ class CreateLoginHistoriesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->ipAddress('ipAddress');
-            $table->unsignedBigInteger('country_id');
             $table->unsignedBigInteger('state_id');
             $table->unsignedBigInteger('city_id');
             $table->string('timezone');

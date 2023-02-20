@@ -165,17 +165,14 @@
                                     <input type="text" name="address" value="{{ $shop->street}}" readonly class="form-control" id="inputAddress" >
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        <label for="country">Country</label>
-                                        <input type="text" class="form-control" name="country" value="{{ $shop->country->name}}" readonly>
-                                    </div>
+                                    
                                     <div class="form-group col-md-4">
                                         <label for="inputState">State</label>
-                                        <input type="text" class="form-control" name="country" value="{{ $shop->state->name}}" readonly>
+                                        <input type="text" class="form-control" name="state" value="{{ $shop->state->name}}" readonly>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="inputCity">Area</label>
-                                        <input type="text" class="form-control" name="country" value="{{ $shop->city->name}}" readonly>
+                                        <input type="text" class="form-control" name="city" value="{{ $shop->city->name}}" readonly>
                                     </div>
                                     
                                     
@@ -265,18 +262,13 @@
                                             <div class="box-content">
                                                 <div class="form-group">
                                                     <label for="bank w-100">Bank</label>
-                                                    <input type="text" class="form-control" name="country" value="{{ $shop->bankaccount->bank->name}}" readonly>
+                                                    <input type="text" class="form-control" name="bank" value="{{ $shop->bankaccount->bank->name}}" readonly>
                                                 </div>   
                                                 <div class="form-group">
                                                     <label for="account_number">Account Number</label>
                                                     <input name="account_number" value="{{ $shop->bankaccount->account_number}}" readonly class="form-control" id="account_number" >
                                                 </div>
-                                                @if($shop->bankaccount->branch_code)
-                                                <div class="form-group">
-                                                    <label for="bank_branch"> Branch</label>
-                                                    <input type="text" class="form-control" name="country" value="{{ $shop->bankaccount->branch_code}}" readonly>
-                                                </div>
-                                                @endif
+                                                
                                                 <div class="form-group">
                                                     <label for="account_number">Account Name</label>
                                                     <input name="account_name" type="text" class="form-control" id="account_name" value="{{ $shop->bankaccount->account_name}}" readonly >

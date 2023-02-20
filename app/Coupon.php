@@ -8,7 +8,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Coupon extends Model
 {
     use SoftDeletes,Sluggable;
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [
@@ -21,9 +21,9 @@ class Coupon extends Model
         return 'slug';
     }
     protected $fillable = ['name','user_id','is_global','code','start_at','end_at','quantity','available','is_percentage','value','free_shipping',
-                        'category_limit','product_limit','country_limit','limit_per_user','status'];
+                        'category_limit','product_limit','limit_per_user','status'];
     
-    protected $casts = ['start_at'=> 'datetime','end_at'=> 'datetime','category_limit'=> 'array','item_limit'=> 'array','country_limit'=> 'array'];
+    protected $casts = ['start_at'=> 'datetime','end_at'=> 'datetime','category_limit'=> 'array','item_limit'=> 'array'];
 
     
 }

@@ -62,21 +62,6 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="email">Country
-                                    @error('country')
-                                    <span class="invalid-feedback d-inline ml-2" role="alert">
-                                        <strong>- {{$message}}</strong>
-                                    </span>
-                                    @enderror
-                                </label>
-                                <select name="country" class="form-control select2 @error('country') is-invalid @enderror" id="country" required="">
-                                    @foreach ($countries as $country)
-                                        <option value="{{$country->id}}">{{$country->name}}</option>
-                                    @endforeach
-                                    
-                                </select>
-                            </div>
-                            <div class="col-md-6">
                                 <label for="mobile">State
                                     @error('state')
                                     <span class="invalid-feedback d-inline ml-2" role="alert">
@@ -88,6 +73,18 @@
                                     @foreach ($states as $state)
                                         <option value="{{$state->id}}">{{$state->name}}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="mobile">City
+                                    @error('city')
+                                    <span class="invalid-feedback d-inline ml-2" role="alert">
+                                        <strong>- {{$message}}</strong>
+                                    </span>
+                                    @enderror
+                                </label>
+                                <select name="city" class="form-control select2 @error('city') is-invalid @enderror" id="city" required="">
+                                    <option value="0">First select state</option>
                                 </select>
                             </div>
                             
@@ -122,5 +119,24 @@
 @push('scripts')
 <script>
     $('.select2').select2();
+    $('#state').on('change',function(){
+            var state_id = $(this).val();
+            // alert(state_id)
+            $.ajax({
+                type:'POST',
+                dataType: 'html',
+                url: "{{route('getCities')}}",
+                data:{
+                    '_token' : $('meta[name="csrf-token"]').attr('content'),
+                    'state_id': state_id
+                },
+                success:function(data) {
+                    $('#city').html(data);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        })
 </script>
 @endpush

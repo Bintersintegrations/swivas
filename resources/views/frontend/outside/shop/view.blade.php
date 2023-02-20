@@ -36,7 +36,7 @@
                     <div class="profile-detail flex-column">
                         
                         <h5 class="d-block">{{$shop->description}}</h5>
-                        <p><i class="ti-location-pin"></i>{{$shop->city->name}}, {{$shop->state->name}}, {{$shop->country->name}}</p>
+                        <p><i class="ti-location-pin"></i>{{$shop->city->name}}, {{$shop->state->name}}</p>
                         <p><i class="ti-email"></i> {{$shop->email}} </p>
                         <p><i class="ti-mobile"></i> {{$shop->mobile}}</p>
                     </div>
@@ -218,10 +218,10 @@
                                                         </a>
                                                         @if(!$product->onSale())
                                     
-                                                            <h4>{{$product->shop->country->currency_symbol.''.$product->price}}</h4>
+                                                            <h4>{{'₦'.$product->price}}</h4>
                                                         @else
-                                                            <h4><del>{{$product->shop->country->currency_symbol.''.$product->price}}</del>
-                                                            {{$product->shop->country->currency_symbol.''.$product->sale_price}}</h4>
+                                                            <h4><del>{{'₦'.$product->price}}</del>
+                                                            {{'₦'.$product->sale_price}}</h4>
                                                         @endif
                                                         
                                                     </div>

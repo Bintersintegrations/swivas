@@ -38,7 +38,7 @@
                                                 </div><span class="text-danger">@if($item['product']->quantity) {{$item['product']->quantity}} remaining @else Out of Stock @endif</span>
                                             </div>
                                             <div class="col-xs-3">
-                                                <h2 class="td-color">{{Cache::get(request()->ip())['currency_symbol']}}{{$item['product']->amount}}</h2>
+                                                <h2 class="td-color">₦{{$item['product']->amount}}</h2>
                                             </div>
                                             <div class="col-xs-3">
                                                 <h2 class="td-color"><a href="javascript:void(0)" class="icon remove-from-cart" data-item_id="{{$item['product']->id}}" data-slug="product{{$item['product']->id}}"><i class="ti-close"></i></a>
@@ -47,7 +47,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <h2>{{Cache::get(request()->ip())['currency_symbol']}}{{$item['product']->amount}}</h2>
+                                        <h2>₦{{$item['product']->amount}}</h2>
                                     </td>
                                     <td>
                                         <div class="qty-box">
@@ -59,7 +59,7 @@
                                         <span class="text-danger">@if($item['product']->quantity) {{$item['product']->quantity}} remaining @else Out of Stock @endif</span>
                                     </td>
                                     <td>
-                                        <h2 class="td-color" >{{Cache::get(request()->ip())['currency_symbol']}} <span class="total" data-slug="product{{$item['product']->id}}">{{$item['product']->amount * $item['quantity']}}</span></h2>
+                                        <h2 class="td-color" >₦ <span class="total" data-slug="product{{$item['product']->id}}">{{$item['product']->amount * $item['quantity']}}</span></h2>
                                     </td>
                                     <td><a href="javascript:void(0)" class="icon remove-from-cart" data-item_id="{{$item['product']->id}}" data-slug="product{{$item['product']->id}}"><i class="ti-close"></i></a></td>
                                     
@@ -76,7 +76,7 @@
                         <tr>
                             <td>total price :</td>
                             <td>
-                                <h2>{{Cache::get(request()->ip())['currency_symbol']}}<span class="subtotal">{{number_format($order['subtotal'])}}</span></h2>
+                                <h2>₦<span class="subtotal">{{number_format($order['subtotal'])}}</span></h2>
                             </td>
                         </tr>
                     </tfoot>

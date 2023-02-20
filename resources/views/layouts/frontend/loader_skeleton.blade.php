@@ -8,7 +8,7 @@
                     <div class="col-lg-6">
                         <div class="header-contact">
                             <ul>
-                                <li>Welcome to Swivas Multishops</li>
+                                <li>Welcome to Binters Integrations</li>
                                 <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: +234-817-933-3448</li>
                             </ul>
                         </div>
@@ -51,7 +51,7 @@
                                 </a>
                             </div>
                             <div class="brand-logo">
-                                <a href="{{route('index')}}"><img src="{{asset('assets/images/icon/swivas.jpg')}}" class="img-fluid blur-up lazyloaded" alt=""></a>
+                                <a href="{{route('index')}}"><img src="{{asset('assets/images/icon/binters.jpg')}}" class="img-fluid blur-up lazyloaded" alt=""></a>
                             </div>
                         </div>
                         <div>

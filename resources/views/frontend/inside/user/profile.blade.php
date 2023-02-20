@@ -58,21 +58,12 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="country">Country *</label>
-                                        <select class="form-control" id="country" name="country_id" disabled>
-                                            @foreach ($countries as $country)
-                                                <option value="{{$country->id}}" @if($user->country_id == $country->id) selected @endif>{{$country->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
+                                
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="state">State *</label>
                                         <select class="form-control select2" id="state" name="state_id">
-                                            @foreach ($user->country->states as $state)
+                                            @foreach ($states as $state)
                                                 <option value="{{$state->id}}" @if($user->state_id == $state->id) selected @endif>{{$state->name}}</option>
                                             @endforeach
                                         </select>
@@ -82,14 +73,13 @@
                                     <div class="form-group">
                                         <label for="city">City/Town *</label>
                                         <select class="form-control select2" id="city" name="city_id">
-                                            @foreach ($user->country->cities as $city)
+                                            @foreach ($user->state->cities as $city)
                                                 <option value="{{$city->id}}">{{$city->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 
-                        
                                 <div class="col-md-12">
                                     <button class="btn btn-sm btn-solid" type="submit">Save setting</button>
                                 </div>
@@ -161,25 +151,7 @@
     </script>
     <script>
         $('.select2').select2();
-        $('#country').on('change',function(){
-            var country_id = $(this).val();
-            // alert(state_id)
-            $.ajax({
-                type:'POST',
-                dataType: 'html',
-                url: "{{route('getStates')}}",
-                data:{
-                    '_token' : $('meta[name="csrf-token"]').attr('content'),
-                    'country_id': country_id
-                },
-                success:function(data) {
-                    $('#state').html(data);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        })
+        
         $('#state').on('change',function(){
             var state_id = $(this).val();
             // alert(state_id)

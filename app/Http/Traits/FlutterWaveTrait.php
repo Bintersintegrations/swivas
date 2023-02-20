@@ -22,15 +22,15 @@ trait FlutterWaveTrait
         ->withHeader('Authorization: Bearer '.config('services.flutter_test_secret_key'))
         ->withData( array('customer' => ['email'=> $user->email,'phonenumber'=> $user->mobile,'name'=> $user->name],
                         'tx_ref'=> $payment->reference,
-                        "currency" => $user->country->currency_iso,
+                        "currency" => 'NGN',
                         "payment_options"=>"card,account,ussd",
                         "redirect_url"=> route('payment.verification'),
                         'amount'=> $payment->amount,
                         'metadata' => ['order_ids'=> $payment->orders->pluck('id')->toArray()],
                         "customizations"=> [
-                            "title"=>"Swivas MultiShops",
+                            "title"=>"Binters Binters Integrations",
                             "description"=>"Middleout isn't free. Pay the price",
-                            "logo"=>"https://swivas.herokuapp.com/assets/images/icon/swivas.jpg"
+                            "logo"=>"https://binters.herokuapp.com/assets/images/icon/binters.jpg"
                         ]) )
         ->asJson()
         ->post();
@@ -103,7 +103,6 @@ trait FlutterWaveTrait
     //         "channel": "card",
     //         "signature": "SIG_idyuhgd87dUYSHO92D",
     //         "reusable": true,
-    //         "country_code": "NG",
     //         "account_name": "BoJack Horseman"
     //       },
     //       "customer": {

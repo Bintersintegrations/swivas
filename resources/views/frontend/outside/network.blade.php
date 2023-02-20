@@ -14,7 +14,7 @@
                 <div class="col-sm-12">
                     <h4>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium
                     </h4>
-                    <p>Smart people shop at Swivas! As a member, you earn points each time you shop here. You earn additional points when you refer friends and family to shop with us. Those you refer stay within your network. Shop, earn, shop and continue earning!
+                    <p>Smart people shop at Binters! As a member, you earn points each time you shop here. You earn additional points when you refer friends and family to shop with us. Those you refer stay within your network. Shop, earn, shop and continue earning!
                     </p>
                     <p>
                         To check your earnings, login to your dashboard.

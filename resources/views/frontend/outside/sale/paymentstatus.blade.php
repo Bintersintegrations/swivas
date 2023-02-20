@@ -58,7 +58,7 @@
                                 <div class="col-3 order_detail">
                                     <div>
                                         <h4>price</h4>
-                                        <h5>{{Cache::get(request()->ip())['currency_symbol']}}{{$item->unit_price}}</h5>
+                                        <h5>₦{{$item->unit_price}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -68,13 +68,13 @@
                     
                     <div class="total-sec">
                         <ul>
-                            <li>subtotal <span>{{Cache::get(request()->ip())['currency_symbol']}}{{number_format($payment->orders->sum('subtotal'))}}</span></li>
+                            <li>subtotal <span>₦{{number_format($payment->orders->sum('subtotal'))}}</span></li>
                             {{-- <li>shipping <span>$12.00</span></li> --}}
-                            <li>tax(VAT) <span>{{Cache::get(request()->ip())['currency_symbol']}}{{$payment->orders->sum('vat')}}</span></li>
+                            <li>tax(VAT) <span>₦{{$payment->orders->sum('vat')}}</span></li>
                         </ul>
                     </div>
                     <div class="final-total">
-                        <h3>total <span>{{Cache::get(request()->ip())['currency_symbol']}}{{number_format($payment->orders->sum('total'))}}</span></h3>
+                        <h3>total <span>₦{{number_format($payment->orders->sum('total'))}}</span></h3>
                     </div>
                 </div>
             </div>

@@ -25,7 +25,7 @@ class Product extends Model
         parent::observe(new \App\Observers\ProductObserver);
     }
     
-    public function sluggable()
+    public function sluggable():array
     {
         return [
             'slug' => [

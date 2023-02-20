@@ -11,7 +11,7 @@
             <div class="col-lg-6">
                 <div class="page-header-left">
                     <h3>List Coupons
-                        <small>Swivas Admin Panel</small>
+                        <small>Binters Admin Panel</small>
                     </h3>
                 </div>
             </div>
@@ -38,65 +38,65 @@
                 <div class="card-body">
                     <button type="button" class="btn btn-danger btn-sm btn-delete mb-0 b-r-4">Delete</button>
                     <div class="category-table order-table jsgrid" style="position: relative; height: auto; width: 100%;">
-                        <div class="jsgrid-grid-header jsgrid-header-scrollbar">
-                            <table class="jsgrid-table">
-                                <tr class="jsgrid-header-row">
-                                    <th class="jsgrid-header-cell jsgrid-align-center">
+                        <div class="">
+                            <table class="">
+                                <tr class="">
+                                    <th class="">
                                         <input type="checkbox">
                                     </th>
-                                    <th class="jsgrid-header-cell">Title</th>
-                                    <th class="jsgrid-header-cell jsgrid-align-right">Code</th>
-                                    <th class="jsgrid-header-cell jsgrid-align-right">Discount</th>
-                                    <th class="jsgrid-header-cell">Countries</th>
-                                    <th class="jsgrid-header-cell">Period</th>
-                                    <th class="jsgrid-header-cell">Status</th>
-                                    <th class="jsgrid-header-cell">Action</th>
+                                    <th class="">Title</th>
+                                    <th class="">Code</th>
+                                    <th class="">Discount</th>
+                                    
+                                    <th class="">Period</th>
+                                    <th class="">Status</th>
+                                    <th class="">Action</th>
                                 </tr>
                             </table>
                         </div>
-                        <div class="jsgrid-grid-body">
-                            <table class="jsgrid-table">
+                        <div class="table-responsive">
+                            <table class="table">
                                 <tbody>
                                     @forelse ($coupons as $coupon)
-                                        <tr class="jsgrid-row">
-                                            <td class="jsgrid-cell jsgrid-align-center">
+                                        <tr class="">
+                                            <td class=" ">
                                                 <input type="checkbox">
                                             </td>
-                                            <td class="jsgrid-cell jsgrid-align-right"> {{$coupon->name}}</td>
-                                            <td class="jsgrid-cell jsgrid-align-right"> {{$coupon->code}}</td>
-                                            <td class="jsgrid-cell"> @if($coupon->type=="percent") {{$coupon->value}}% Off @else -{{$coupon->value}}Off @endif</td>
-                                            <td class="jsgrid-cell">Nigeria</td>
-                                            <td class="jsgrid-cell"> @if($coupon->start_at && $coupon->end_at){{ $coupon->start_at->format('M-d')}} to {{$coupon->end_at->format('M-d')}} @else - @endif</td>
-                                            <td class="jsgrid-cell"><i class="fa fa-circle @if($coupon->status) font-success @else font-danger @endif f-12"></i></td>
-                                            <td class="jsgrid-cell">
+                                            <td class=" "> {{$coupon->name}}</td>
+                                            <td class=" "> {{$coupon->code}}</td>
+                                            <td class=""> @if($coupon->type=="percent") {{$coupon->value}}% Off @else -{{$coupon->value}}Off @endif</td>
+                                           
+                                            <td class=""> @if($coupon->start_at && $coupon->end_at){{ $coupon->start_at->format('M-d')}} to {{$coupon->end_at->format('M-d')}} @else - @endif</td>
+                                            <td class=""><i class="fa fa-circle @if($coupon->status) font-success @else font-danger @endif f-12"></i></td>
+                                            <td class="">
                                                 <a href="{{route('admin.coupons.edit',$coupon)}}" class="btn btn-xs btn-success" title="pen"><i class="fa fa-pencil"></i></a>
                                                 <button class="btn btn-xs btn-primary" title="delete"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr> 
                                     @empty
-                                        <td class="jsgrid-cell">No Coupon</td>
+                                        <td class="">No Coupon</td>
                                     @endforelse
                                     
                                 </tbody>
                             </table>
                         </div>
-                        <div class="jsgrid-pager-container" style="display: none;">
-                            <div class="jsgrid-pager">Pages: <span class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button">
+                        <div class="" style="display: none;">
+                            <div class="">Pages: <span class="">
                                 <a href="javascript:void(0);">First</a></span> 
-                                <span class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button">
+                                <span class="">
                                     <a href="javascript:void(0);">Prev</a>
                                 </span> 
-                                <span class="jsgrid-pager-page jsgrid-pager-current-page">1</span> 
-                                <span class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button">
+                                <span class="">1</span> 
+                                <span class="">
                                     <a href="javascript:void(0);">Next</a>
                                 </span> 
-                                <span class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button">
+                                <span class="">
                                     <a href="javascript:void(0);">Last</a>
                                 </span> &nbsp;&nbsp; 1 of 1 
                             </div>
                         </div>
-                        <div class="jsgrid-load-shader" style="display: none; position: absolute; inset: 0px; z-index: 1000;"></div>
-                        <div class="jsgrid-load-panel" style="display: none; position: absolute; top: 50%; left: 50%; z-index: 1000;">Please, wait...</div>
+                        <div class="" style="display: none; position: absolute; inset: 0px; z-index: 1000;"></div>
+                        <div class="" style="display: none; position: absolute; top: 50%; left: 50%; z-index: 1000;">Please, wait...</div>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,5 @@
 @endsection
 @push('scripts')
     <!-- Jsgrid js-->
-<script src="{{asset('assets/js/jsgrid/jsgrid.min.js')}}"></script>
-<script src="{{asset('assets/js/jsgrid/griddata-discount-coupon.js')}}"></script>
-<script src="{{asset('assets/js/jsgrid/jsgrid-discount-coupon.js')}}"></script>
+
 @endpush
