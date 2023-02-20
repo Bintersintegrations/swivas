@@ -131,7 +131,10 @@
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-xs btn-info" title="edit" data-toggle="modal" data-target="#atribute-edit{{$atribute->id}}"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-xs btn-primary" title="delete"><i class="fa fa-trash"></i></button>
+                                        <form action="{{route('admin.atributes.delete')}}" method="post">@csrf
+                                            <input type="hidden" name="atribute_id" value="{{$atribute->id}}">
+                                            <button class="btn btn-xs btn-primary" title="delete"><i class="fa fa-trash"></i></button>
+                                        </form>
                                         <div class="modal fade" id="atribute-edit{{$atribute->id}}" tabindex="-1" role="dialog" aria-labelledby="atribute-edit{{$atribute->id}}" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">

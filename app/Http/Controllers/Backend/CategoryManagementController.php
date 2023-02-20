@@ -22,31 +22,15 @@ class CategoryManagementController extends Controller
         return view('backend.categories.list',compact('categories','atributes'));
     }
     public function savecategories(Request $request){
-        //dd($request->all());
-        //if category is not grandparent, meaning we want to create a parent or a child
-        $parent_id = $request->input('parent_id');
-        if($parent_id == 'null'){
-            $grand_id = null;
-            $parent_id = null;
-        }     
-        else{
-            $parent = Category::find($request->parent_id);
-            if($parent->parent_id){ //meaning the parent has a parent too
-                $grand_id = $parent->parent_id;
-                $parent_id = $parent->id;
-            }
-            else {
-                $grand_id = null;
-                $parent_id = $parent->id;
-            }
-        }
+        
+        $parent_id = $request->input('parent_id') != 'null' ? $request->input('parent_id') :null;
         $fileName = '';
         if($request->has('image')){
             $ext = $request->file('image')->getClientOriginalExtension();
             $fileName = Auth::id().rand().time().'.'.$ext;
             $request->file('image')->storeAs('public/categories',$fileName);
         }
-        $category = Category::create(['name'=> $request->category_name,'image'=> $fileName,'grand_id'=> $grand_id,'parent_id'=> $parent_id]);
+        $category = Category::create(['name'=> $request->category_name,'image'=> $fileName,'parent_id'=> $parent_id]);
         $atributes = $request->input('atributes');
         $category->atributes()->attach($atributes);
         return redirect()->back();
@@ -64,7 +48,7 @@ class CategoryManagementController extends Controller
             $category->image = $fileName;
         }
         if($request->filled('category_name')) $category->name = $request->category_name;
-        $category->parent_id = $request->input('parent_id') == 'null' ? null: $request->input('parent_id') ;
+        $category->parent_id = $request->input('parent_id') != 'null' ? $request->input('parent_id') :null;
         $category->save();
         $atributes = $request->input('atributes');
         $category->atributes()->sync($atributes);
@@ -75,6 +59,7 @@ class CategoryManagementController extends Controller
         $atributes = Atribute::all();
         return view('backend.attributes.list',compact('atributes'));
     }
+
     public function saveatributes(Request $request){
         // dd($request->all());
         $atribute = Atribute::updateOrCreate(['name'=> $request->atribute_name,
@@ -82,8 +67,8 @@ class CategoryManagementController extends Controller
         if($request->options) {
             foreach(explode(',',$request->options) as $option){
                 $atribute->options()->sync([
-                    'name' => explode(':',option)[0],
-                    'description' => explode(':',option)[1]
+                    'name' => explode(':',$option)[0],
+                    'description' => explode(':',$option)[1]
                 ]);
             }
         } 

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Category;
 use App\AtributeOption;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -30,5 +31,7 @@ class Atribute extends Model
     public function getRouteKeyName(){
         return 'slug';
     }
-    
+    public function categories(){
+        return $this->belongsToMany(Category::class,'atribute_categories');
+    }
 }
