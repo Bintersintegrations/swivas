@@ -80,37 +80,16 @@
                                         
                                         
                                         @if($withdrawal->status == 'waiting')
-                                        <button class="btn btn-sm btn-info withdrawalpaid" title="request" data-toggle="modal" data-target="#status{{$withdrawal->id}}"><i class="fa fa-check"></i>  Mark Paid </button>
-                                        <button class="btn btn-sm btn-warning m-1 withdrawalcancelled" title="request" data-toggle="modal" data-target="#status{{$withdrawal->id}}"><i class="fa fa-times"></i>   Cancel </button>
+                                        <form class="needs-validation" action="{{route('admin.withdrawal.response')}}" method="POST" onsubmit="return confirm('Are you sure?')">@csrf
+                                            <input type="hidden" name="withdrawal_id" value="{{$withdrawal->id}}">
+                                            <button class="btn btn-sm btn-info " name="status" value="paid" title="request" type="submit"><i class="fa fa-check"></i>  Mark Paid </button>
+                                            <button class="btn btn-sm btn-warning m-1" name="status" value="cancelled" title="request" type="submit"><i class="fa fa-times"></i>   Cancel </button>
+                                        </form>
                                         @endif
                                         @if($withdrawal->status == 'paid')
                                         <span class="badge badge-success">Paid on {{$withdrawal->updated_at->format('M d')}}</span>
                                         @endif
-                                            
-                                        
-                                        <div class="modal fade" id="status{{$withdrawal->id}}" tabindex="-1" role="dialog" aria-labelledby="status{{$withdrawal->id}}" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title f-w-600" id="exampleModalLabel"> 
-                                                            Manage Withdrawals</h5>
-                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                                    </div>
-                                                    <form class="needs-validation" action="{{route('admin.withdrawal.response')}}" method="POST" enctype="multipart/form-data">@csrf
-                                                        <div class="modal-body">
-                                                            <h5>Are you sure you <span id="withdrawal_response"></span></h5>
-                                                            <input type="hidden" name="withdrawal_id" value="{{$withdrawal->id}}">
-                                                            <input type="hidden" name="status" id="withdrawal_status">
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button class="btn btn-danger" type="submit">Yes</button>
-                                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
+
                                     </td>
                                     
                                 </tr>
@@ -134,14 +113,5 @@
     <!-- Datatable js-->
 <script src="{{asset('assets/js/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('assets/js/datatables/custom-basic.js')}}"></script>
-<script>
-    $('.withdrawalpaid').on('click',function(){
-        $('#withdrawal_status').val('paid');
-        $('#withdrawal_response').text('have paid this request');
-    })
-    $('.withdrawalcancelled').on('click',function(){
-        $('#withdrawal_status').val('cancelled');
-        $('#withdrawal_response').text('want to cancel this request');
-    })
-</script>
+
 @endpush
