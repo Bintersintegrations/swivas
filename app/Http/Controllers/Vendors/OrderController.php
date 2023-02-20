@@ -14,7 +14,8 @@ class OrderController extends Controller
     }
 
     public function view(Shop $shop,Order $order){ 
-        return view('frontend.inside.shop.order.details',compact('order'));
+
+        return view('frontend.inside.shop.order.details',compact('shop','order'));
     }
 
     public function status(Order $order,Request $request){

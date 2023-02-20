@@ -122,7 +122,7 @@
                                 <h2>october 22, 2018</h2>
                                 <div class="row">
                                     <div class="col-8">
-                                        <form action="{{route('shop.order.status',[$shop,$order])}}" method="POST">
+                                        <form action="{{route('shop.order.status',[$shop,$order])}}" method="POST">@csrf
                                             <div class="input-group">
                                                 <select class="form-control" name="status">
                                                     <option selected value="processing">Processing</option>
