@@ -89,7 +89,7 @@
                                                     <div class="col-md-7 px-0">
                                                         <select class="form-control select2" id="items" name="products[]" multiple style="width:100%;">
                                                             @foreach ($products as $product)
-                                                                <option value="{{$product->id}}" @if($coupon->product_limit && in_array($product->id,$coupon->product_limit)) selected @endif>{{$item->name}}</option>
+                                                                <option value="{{$product->id}}" @if($coupon->product_limit && in_array($product->id,$coupon->product_limit)) selected @endif>{{$product->name}}</option>
                                                             @endforeach 
                                                         </select>
                                                     </div>
@@ -106,14 +106,14 @@
                                                     </div>
                                                 </div>
                                                 
-                                                <div class="form-group row">
+                                                {{-- <div class="form-group row">
                                                     <label for="minimum_spend" class="col-xl-3 col-md-4">Minimum Spend</label>
                                                     <input class="form-control col-md-7" id="minimum_spend" type="number" name="minimum_spend" value="{{$coupon->minimum_spend}}">
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="maximum_spend" class="col-xl-3 col-md-4">Maximum Spend</label>
                                                     <input class="form-control col-md-7" id="maximum_spend" type="number" name="maximum_spend" value="{{$coupon->maximum_spend}}">
-                                                </div>
+                                                </div> --}}
                                                 <h4>Usage Limits</h4>
                                                 <div class="form-group row">
                                                     <label for="per_customer" class="col-xl-3 col-md-4">Per Customer</label>

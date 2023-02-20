@@ -20,7 +20,7 @@ class Coupon extends Model
     public function getRouteKeyName(){
         return 'slug';
     }
-    protected $fillable = ['name','user_id','is_global','code','start_at','end_at','quantity','available','is_percentage','value','free_shipping',
+    protected $fillable = ['name','shop_id','is_global','code','start_at','end_at','quantity','available','is_percentage','value','free_shipping',
                         'category_limit','product_limit','limit_per_user','status'];
     
     protected $casts = ['start_at'=> 'datetime','end_at'=> 'datetime','category_limit'=> 'array','item_limit'=> 'array'];

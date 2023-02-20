@@ -46,7 +46,7 @@
                                                     <td scope="row"><i class="fa fa-circle @if($coupon->status) text-success @else text-danger @endif f-12"></i></td>
                                                     <td scope="row">
                                                         
-                                                        <a href="{{route('shop.coupon.edit',$coupon)}}" class="btn btn-sm btn-primary rounded" title="pen"><i class="fa fa-pencil"></i></a>
+                                                        <a href="{{route('shop.coupon.edit',[$shop,$coupon])}}" class="btn btn-sm btn-primary rounded" title="pen"><i class="fa fa-pencil"></i></a>
                                                         <button class="btn btn-sm btn-danger rounded" title="Delete" data-toggle="modal" data-target="#coupon{{$coupon->id}}"><i class="fa fa-trash"></i></button>
                                                         <div class="modal fade" id="coupon{{$coupon->id}}" tabindex="-1" role="dialog" aria-labelledby="coupon{{$coupon->id}}" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
@@ -57,7 +57,7 @@
                                                                             <span aria-hidden="true">×</span>
                                                                         </button>
                                                                     </div>
-                                                                    <form class="needs-validation" action="{{route('shop.coupon.delete')}}" method="POST" enctype="multipart/form-data">@csrf
+                                                                    <form class="needs-validation" action="{{route('shop.coupon.delete',$shop)}}" method="POST" enctype="multipart/form-data">@csrf
                                                                         <div class="modal-body">
                                                                             <h5>Are you sure you want to delete coupon: {{$coupon->name}} </h5>
                                                                             <input type="hidden" name="coupon_id" value="{{$coupon->id}}">
