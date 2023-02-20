@@ -27,7 +27,7 @@
                                         <ul class="order-detail">
                                             <li>order ID: {{$order->id}}</li>
                                             <li>Order Date: {{$order->created_at->format('F d, Y')}}</li>
-                                            <li>Order Total: {{Auth::user()->'₦'.number_format($order->total)}}</li>
+                                            <li>Order Total: {{'₦'.number_format($order->total)}}</li>
                                             <li>order Status: 
                                                 @switch($order->status)
                                                     @case('reported')
@@ -80,12 +80,10 @@
                                         
                                         <form action="{{route('user.order.status',$order)}}" method="POST" class="mt-4">@csrf
                                             <div class="form-group">
-                                                <input type="hidden" name="status" value="completed">
-                                                <button type="submit" class="btn btn-primary">Mark Order Received</button>
+                                                <button type="submit" name="status" value="completed" class="btn btn-primary">Mark Order Received</button>
                                             </div>
                                             <div class="form-group">
-                                                <input type="hidden" name="status" value="reported">
-                                                <button type="submit" class="btn btn-primary">Report Order</button>
+                                                <button type="button" name="status" value="reported" class="btn btn-danger">Report Order</button>
                                             </div>
                                         </form>
                                     </div>

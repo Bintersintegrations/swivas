@@ -73,7 +73,7 @@ Route::group(['as'=>'user.','middleware'=> 'role:user'], function () {
     
     Route::get('orders','SalesController@orders')->name('orders');
     Route::get('order/{order}/details','SalesController@orderDetails')->name('order.details');
-    Route::post('order/{order}/status','SalesController@status')->name('order.status');
+    Route::post('order/{order}/status','SalesController@orderStatus')->name('order.status');
     Route::post('order/{order}/review','SalesController@review')->name('order.review');
     Route::get('wishlist','SalesController@wishlist')->name('wishlist');
     Route::get('transactions','PaymentController@transactions')->name('payment.transactions');

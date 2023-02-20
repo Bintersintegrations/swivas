@@ -7,12 +7,19 @@ use App\User;
 use App\Review;
 use App\Payment;
 use App\OrderDetail;
+use App\Observers\OrderObserver;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
     protected $fillable = ['user_id','shop_id','payment_id','subtotal','vat','total','expected_at'];
     protected $casts = ['expected_at'=> 'datetime'];
+
+    public static function boot()
+    {
+        parent::boot();
+        parent::observe(new OrderObserver);
+    }
     public function payment(){
         return $this->belongsTo(Payment::class);
     }

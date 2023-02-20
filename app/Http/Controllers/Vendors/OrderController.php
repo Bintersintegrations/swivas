@@ -18,7 +18,7 @@ class OrderController extends Controller
         return view('frontend.inside.shop.order.details',compact('shop','order'));
     }
 
-    public function status(Order $order,Request $request){
+    public function status(Shop $shop,Order $order,Request $request){
         $order->status = $request->status;
         $order->save();
         return redirect()->back();

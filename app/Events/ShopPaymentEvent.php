@@ -14,6 +14,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 class ShopPaymentEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+    
     public $order;
     /**
      * Create a new event instance.

@@ -28,6 +28,7 @@ class ReleaseShopPayment implements ShouldQueue
     public function handle(ShopPaymentEvent $event)
     {
         // Access the order using $event->order...
+        dd('ok');
         $settings = Setting::all();
         $seller_percentage = $settings->where('name','seller_percentage')->first()->value;
         $event->order->shop->wallet = $seller_percentage * $event->order->subtotal / 100;
